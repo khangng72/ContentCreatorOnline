@@ -22,10 +22,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
+	// khoa-----------------
+	runtimeOnly 'org.postgresql:postgresql:42.5.4'
+	//---------------------
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	
 }
+
+
 
 tasks.named('test') {
 	useJUnitPlatform()
