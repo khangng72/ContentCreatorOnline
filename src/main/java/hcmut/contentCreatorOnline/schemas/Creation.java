@@ -7,4 +7,6 @@ public class Creation {
     private String creationName;
     private Date releaseDate;
     private boolean releaseStatus;
+    private boolean saleOnly;
+    private long salePrice;
 }
