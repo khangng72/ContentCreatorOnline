@@ -8,4 +8,5 @@ public class Creation {
     private Date releaseDate;
     private boolean releaseStatus;
     private boolean saleOnly;
+    private long salePrice;
 }
