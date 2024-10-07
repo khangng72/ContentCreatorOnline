@@ -26,6 +26,8 @@ public class creationCtroller {
 
                 new Creation((long) 1, "creationName1", dateFormat.parse("01/01/2024"), true, true, 1000000),
 
-                new Creation((long) 2, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000));
+                new Creation((long) 2, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000),
+                new Creation((long) 3, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000),
+                new Creation((long) 4, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000));
     }
 }
