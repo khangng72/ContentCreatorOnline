@@ -2,13 +2,22 @@ package hcmut.contentCreatorOnline.schemas;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Creation {
+    @Id
     private Long creationId;
     private String creationName;
     private Date releaseDate;
     private boolean releaseStatus;
     private boolean saleOnly;
     private long salePrice;
+
+    public Creation() {
+
+    }
 
     public Creation(Long creationId, java.lang.String creationName, Date releaseDate, boolean releaseStatus,
             boolean saleOnly, long salePrice) {
