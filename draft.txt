@@ -1,0 +1,2 @@
+# docker container cmd
+docker run --name content-creator-online -p 5431:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
