@@ -1,9 +1,17 @@
-package hcmut.contentCreatorOnline.schemas;
+package hcmut.contentCreatorOnline.model;
 
 import java.util.Date;
+import java.util.UUID;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 public class Creation {
-    private Long creationId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID creationId;
     private String creationName;
     private Date releaseDate;
     private boolean releaseStatus;
@@ -17,7 +25,7 @@ public class Creation {
     public Creation() {
     }
 
-    public Creation(Long creationId, String creationName, Date releaseDate, boolean releaseStatus, boolean saleOnly,
+    public Creation(UUID creationId, String creationName, Date releaseDate, boolean releaseStatus, boolean saleOnly,
             long salePrice, long numberOfLikes, long numberOfDislikes, String coverImageURI, String description) {
         this.creationId = creationId;
         this.creationName = creationName;
@@ -31,11 +39,11 @@ public class Creation {
         this.description = description;
     }
 
-    public Long getCreationId() {
+    public UUID getCreationId() {
         return creationId;
     }
 
-    public void setCreationId(Long creationId) {
+    public void setCreationId(UUID creationId) {
         this.creationId = creationId;
     }
 
