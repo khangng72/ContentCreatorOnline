@@ -1,4 +1,4 @@
-package hcmut.contentCreatorOnline.schemas;
+package hcmut.contentCreatorOnline.model;
 
 import java.util.Date;
 
