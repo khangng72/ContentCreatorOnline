@@ -21,10 +21,14 @@ public class creationCtroller {
 
         return Arrays.asList(
 
-                new Creation((long) 1, "creationName1", dateFormat.parse("01/01/2024"), true, true, 1000000),
+                new Creation((long) 1, "creationName1", dateFormat.parse("01/01/2024"), true, true, 1000000, 100, 100,
+                        "hshshdfhsd", "sdfsdgethers"),
 
-                new Creation((long) 2, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000),
-                new Creation((long) 3, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000),
-                new Creation((long) 4, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000));
+                new Creation((long) 2, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000, 100, 100,
+                        "hshshdfhsd", "sdfsdgethers"),
+                new Creation((long) 3, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000, 100, 100,
+                        "hshshdfhsd", "sdfsdgethers"),
+                new Creation((long) 4, "creationName2", dateFormat.parse("01/01/2024"), true, true, 1000000, 100, 100,
+                        "hshshdfhsd", "sdfsdgethers"));
     }
 }

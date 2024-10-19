@@ -24,6 +24,5 @@ public class jpa {
     public void deleteById(long id) {
         Creation creation = entityManager.find(Creation.class, id);
         entityManager.remove(creation);
-
     }
 }

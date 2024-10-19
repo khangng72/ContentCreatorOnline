@@ -9,5 +9,4 @@ public class ContentCreatorOnlineApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ContentCreatorOnlineApplication.class, args);
 	}
-
 }

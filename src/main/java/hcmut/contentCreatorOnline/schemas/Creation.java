@@ -14,19 +14,26 @@ public class Creation {
     private boolean releaseStatus;
     private boolean saleOnly;
     private long salePrice;
+    private long numberOfLikes;
+    private long numberOfDislikes;
+    private String coverImagaURI;
+    private String description;
 
     public Creation() {
-
     }
 
-    public Creation(Long creationId, java.lang.String creationName, Date releaseDate, boolean releaseStatus,
-            boolean saleOnly, long salePrice) {
+    public Creation(Long creationId, String creationName, Date releaseDate, boolean releaseStatus, boolean saleOnly,
+            long salePrice, long numberOfLikes, long numberOfDislikes, String coverImagaURI, String description) {
         this.creationId = creationId;
         this.creationName = creationName;
         this.releaseDate = releaseDate;
         this.releaseStatus = releaseStatus;
         this.saleOnly = saleOnly;
         this.salePrice = salePrice;
+        this.numberOfLikes = numberOfLikes;
+        this.numberOfDislikes = numberOfDislikes;
+        this.coverImagaURI = coverImagaURI;
+        this.description = description;
     }
 
     public Long getCreationId() {
@@ -75,6 +82,38 @@ public class Creation {
 
     public void setSalePrice(long salePrice) {
         this.salePrice = salePrice;
+    }
+
+    public long getNumberOfLikes() {
+        return numberOfLikes;
+    }
+
+    public void setNumberOfLikes(long numberOfLikes) {
+        this.numberOfLikes = numberOfLikes;
+    }
+
+    public long getNumberOfDislikes() {
+        return numberOfDislikes;
+    }
+
+    public void setNumberOfDislikes(long numberOfDislikes) {
+        this.numberOfDislikes = numberOfDislikes;
+    }
+
+    public String getCoverImagaURI() {
+        return coverImagaURI;
+    }
+
+    public void setCoverImagaURI(String coverImagaURI) {
+        this.coverImagaURI = coverImagaURI;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
