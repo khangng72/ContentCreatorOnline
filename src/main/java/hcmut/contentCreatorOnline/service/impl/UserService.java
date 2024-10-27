@@ -1,42 +1,42 @@
 package hcmut.contentCreatorOnline.service.impl;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hcmut.contentCreatorOnline.model.User.CCO_User;
+import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
+import hcmut.contentCreatorOnline.mapper.IUserMapper;
+import hcmut.contentCreatorOnline.model.User.UserAccount;
 import hcmut.contentCreatorOnline.repository.UserRepository;
+import hcmut.contentCreatorOnline.service.IUserService;
+import hcmut.contentCreatorOnline.service.exception.ElementNotFoundException;
+import jakarta.transaction.Transactional;
 
 @Service
-public class UserService {
-    private final UserRepository userRepository;
+public class UserService implements IUserService{
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private IUserMapper mapper;
+
+    @Override
+    public List<UserAccount> getAllUser() {
+        List<UserAccount> userAccountDtos = userRepository.findAll();
+        return userAccountDtos;
     }
 
-    public List<CCO_User> getAllUser() {
-        return userRepository.findAll();
-    }
-
-    public Optional<CCO_User> createNewUser(CCO_User newUser) {
-        userRepository.createNewUser(
-                newUser.getUser_id(),
-                newUser.getFirst_name(),
-                newUser.getLast_name(),
-                newUser.getGender(),
-                newUser.getUser_password(),
-                newUser.getBirthday(),
-                newUser.getNationality(),
-                newUser.getEmail(),
-                newUser.isIs_admin());
-        Optional<CCO_User> newUserCreated = userRepository.findUserById(newUser.getUser_id());
-        return newUserCreated;
-    }
-
-    public Optional<CCO_User> findUserById(UUID user_id) {
-        return userRepository.findUserById(user_id);
+    @Override
+    @Transactional
+    public UserAccountDto createNewUser(UserAccountDto newUserDto) {
+        UserAccount entity = mapper.toUserAccount(newUserDto);
+        if (entity != null) {
+            UserAccountDto savedEntity = mapper.toUserAccountDto(entity);
+            return savedEntity;
+        } else {
+            throw new ElementNotFoundException(UserAccount.class);
+        }
     }
 }
