@@ -14,7 +14,7 @@ import hcmut.contentCreatorOnline.service.exception.ElementNotFoundException;
 import jakarta.transaction.Transactional;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;

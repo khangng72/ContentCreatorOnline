@@ -1,10 +1,9 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
-import hcmut.contentCreatorOnline.model.User.UserAccount;
-
 import java.util.List;
 
+import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
+import hcmut.contentCreatorOnline.model.User.UserAccount;
 
 public interface IUserService {
     List<UserAccount> getAllUser();

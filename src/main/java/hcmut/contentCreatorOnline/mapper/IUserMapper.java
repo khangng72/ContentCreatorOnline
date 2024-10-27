@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 import hcmut.contentCreatorOnline.model.User.UserAccount;
 
-
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IUserMapper {
 
@@ -23,5 +22,3 @@ public interface IUserMapper {
 
     List<UserAccount> toListUserAccount(List<UserAccountDto> dtos);
 }
-
-

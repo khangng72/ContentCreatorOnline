@@ -1,7 +1,7 @@
 package hcmut.contentCreatorOnline.dto.user;
 
-import java.util.UUID;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
