@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
+import hcmut.contentCreatorOnline.dto.user.UserRegisterRequest;
 import hcmut.contentCreatorOnline.model.User.UserAccount;
 import hcmut.contentCreatorOnline.service.IUserService;
+import hcmut.contentCreatorOnline.service.impl.UserAcctService;
 
 @RestController
 @RequestMapping("/user")
@@ -35,5 +37,19 @@ public class UserController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Autowired
+    private UserAcctService userAcctService;
+
+    @PostMapping("/register")
+    public String postMethodName(@RequestBody String entity) {
+        // TODO: process POST request
+
+        return entity;
+    }
+
+    public String register(@RequestBody UserRegisterRequest request) {
+        return userAcctService.registerUser(request);
     }
 }

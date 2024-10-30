@@ -1,4 +1,4 @@
-package hcmut.contentCreatorOnline.repository;
+package hcmut.contentCreatorOnline.repository.user;
 
 import java.util.Optional;
 import java.util.UUID;
