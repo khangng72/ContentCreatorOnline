@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
-import hcmut.contentCreatorOnline.dto.user.UserRegisterRequest;
+import hcmut.contentCreatorOnline.dto.user.UserLoginRequestDto;
+import hcmut.contentCreatorOnline.dto.user.UserRegisterRequestDto;
 import hcmut.contentCreatorOnline.model.User.UserAccount;
 import hcmut.contentCreatorOnline.service.IUserService;
 import hcmut.contentCreatorOnline.service.impl.UserAcctService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/user")
@@ -39,17 +41,18 @@ public class UserController {
         }
     }
 
+    // khoa register
     @Autowired
     private UserAcctService userAcctService;
 
     @PostMapping("/register")
-    public String postMethodName(@RequestBody String entity) {
-        // TODO: process POST request
-
-        return entity;
-    }
-
-    public String register(@RequestBody UserRegisterRequest request) {
+    public String register(@RequestBody UserRegisterRequestDto request) {
         return userAcctService.registerUser(request);
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return userAcctService.getUser();
+    }
+
 }

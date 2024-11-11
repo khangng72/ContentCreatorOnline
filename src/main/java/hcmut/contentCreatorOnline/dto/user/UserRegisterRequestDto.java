@@ -1,7 +1,6 @@
 package hcmut.contentCreatorOnline.dto.user;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class UserRegisterRequest {
+public class UserRegisterRequestDto {
     private String first_name;
     private String last_name;
     private String gender;

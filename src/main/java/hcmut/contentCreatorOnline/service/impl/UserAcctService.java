@@ -1,10 +1,13 @@
 package hcmut.contentCreatorOnline.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import hcmut.contentCreatorOnline.dto.user.UserRegisterRequest;
+import hcmut.contentCreatorOnline.dto.user.UserLoginRequestDto;
+
+import hcmut.contentCreatorOnline.dto.user.UserRegisterRequestDto;
 import hcmut.contentCreatorOnline.model.User.UserAccount;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 
@@ -15,9 +18,10 @@ public class UserAcctService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String registerUser(UserRegisterRequest request) {
+    // handle register for user
+    public String registerUser(UserRegisterRequestDto request) {
         if (userRepository.findUserAccountByEmail(request.getEmail()).isPresent()) {
-            return "Email đã tồn tại!";
+            return "Email is existed!";
         }
 
         UserAccount user = new UserAccount();
@@ -31,6 +35,12 @@ public class UserAcctService {
         user.setAddress(request.getAddress());
 
         userRepository.save(user);
-        return "Đăng ký thành công!";
+        return "Register successful!";
     }
+
+    public String getUser() {
+
+        return "Login successful";
+    }
+
 }
