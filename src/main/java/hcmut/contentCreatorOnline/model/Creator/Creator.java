@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,13 +15,13 @@ import java.util.UUID;
 @Table(name="Creator")
 public class Creator {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "creatorId", updatable = false, nullable = false)
     private UUID creatorId;
 
-    private Long numberOfContents;
-    private Long numberOfFollowers;
+    @Column(name = "numberOfContents")
+    private BigInteger numberOfContents;
 
-    // Quan hệ nhiều-nhiều với READER (qua JOIN_TABLE)
-    @ManyToMany(mappedBy = "creators")
-    private List<Reader> readers;
+    @Column(name = "numberOfFollowers")
+    private BigInteger numberOfFollowers;
 }

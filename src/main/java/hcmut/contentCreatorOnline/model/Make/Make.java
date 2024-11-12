@@ -1,23 +1,25 @@
 package hcmut.contentCreatorOnline.model.Make;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 import hcmut.contentCreatorOnline.model.Reader.Reader;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
+@Getter
+@Setter
+@Entity
+@Table(name = "Make")
 public class Make {
     @Id
-    @GeneratedValue
-    @Column(name = "orderId")
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "orderId", updatable = false, nullable = false)
     private UUID orderId;
 
-    // Quan hệ nhiều-một với READER
-    @ManyToOne
-    @JoinColumn(name = "readerId", referencedColumnName = "readerId")
-    private Reader reader;
-
+    @Column(name = "readerId", nullable = false)
+    private BigInteger readerId;
 }

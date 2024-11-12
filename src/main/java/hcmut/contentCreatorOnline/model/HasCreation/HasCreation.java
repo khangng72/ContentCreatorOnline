@@ -14,18 +14,12 @@ import java.util.UUID;
 @Table(name = "HasCreation")
 public class HasCreation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+
+    @Column(name = "orderId", updatable = false, nullable = false)
     private UUID orderId;
 
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "creationId", updatable = false, nullable = false)
     private UUID creationId;
-
-    // Quan hệ nhiều-một với ORDER
-    @ManyToOne
-    @JoinColumn(name = "orderId", referencedColumnName = "orderId")
-    private Order order;
-
-    // Quan hệ nhiều-một với CREATION
-    @ManyToOne
-    @JoinColumn(name = "creationId", referencedColumnName = "creationId")
-    private Creation creation;
 }

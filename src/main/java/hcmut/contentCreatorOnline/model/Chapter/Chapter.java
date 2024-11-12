@@ -1,6 +1,5 @@
 package hcmut.contentCreatorOnline.model.Chapter;
 
-import hcmut.contentCreatorOnline.model.Creation.Creation;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,17 +11,21 @@ import java.util.UUID;
 @Entity
 @Table(name = "Chapter")
 public class Chapter {
+
     @Id
-    private int chapterNumber;
+    @Column(name = "chapterNumber", nullable = false)
+    private Integer chapterNumber;
+
     @Id
+    @Column(name = "creationId", nullable = false)
     private UUID creationId;
 
+    @Column(name = "chapterName", length = 250)
     private String chapterName;
-    private String chapterDescription;
-    private String chapterImageURI;
 
-    // Quan hệ nhiều-một với CREATION
-    @ManyToOne
-    @JoinColumn(name = "creationId", insertable = false, updatable = false)
-    private Creation creation;
+    @Column(name = "chapterDescription", length = 4000)
+    private String chapterDescription;
+
+    @Column(name = "chapterImageURI", length = 250)
+    private String chapterImageURI;
 }

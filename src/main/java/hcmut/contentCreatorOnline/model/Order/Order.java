@@ -15,16 +15,21 @@ import java.util.UUID;
 @Table(name = "Orders")
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "orderId", updatable = false, nullable = false)
     private UUID orderId;
 
+    @Column(name = "status", length = 250)
     private String status;
-    private Float totalPrice;
-    private Date paidDay;
-    private String paymentName;
 
-    // Quan hệ một-nhiều với HAS_CREATION
-    @OneToMany(mappedBy = "order")
-    private List<HasCreation> creations;
+    @Column(name = "totalPrice")
+    private Float totalPrice;
+
+    @Column(name = "paidDay")
+    @Temporal(TemporalType.DATE)
+    private Date paidDay;
+
+    @Column(name = "paymentName", length = 100)
+    private String paymentName;
 
 }

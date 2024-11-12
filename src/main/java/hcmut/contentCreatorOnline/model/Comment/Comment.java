@@ -14,28 +14,32 @@ import java.util.UUID;
 @Entity
 @Table(name ="Comment")
 public class Comment {
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "commentId", updatable = false, nullable = false)
     private UUID commentId;
 
-    private Date commenDate;
+    @Column(name = "commentDate")
+    @Temporal(TemporalType.DATE)
+    private Date commentDate;
+
+    @Column(name = "content", length = 250)
     private String content;
+
+    @Column(name = "numberOfLikes")
     private Long numberOfLikes;
+
+    @Column(name = "numberOfDislikes")
     private Long numberOfDislikes;
-    private boolean isPinned;
 
-//    private String userId;
-//    private String creationId;
-// Quan hệ nhiều-một với CCO_USER
-@ManyToOne
-@JoinColumn(name = "userId", referencedColumnName = "userId")
-    private UserAccount user;
+    @Column(name = "isPinned")
+    private Boolean isPinned;
 
-    // Quan hệ nhiều-một với CREATION
-    @ManyToOne
-    @JoinColumn(name = "creationId", referencedColumnName = "creationId")
-    private Creation creation;
+    @Column(name = "userId", updatable = false, nullable = false)
+    private UUID userId;
+
+    @Column(name = "creationId", updatable = false, nullable = false)
+    private UUID creationId;
 
 
 }

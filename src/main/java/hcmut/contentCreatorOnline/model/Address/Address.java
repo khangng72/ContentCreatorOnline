@@ -13,16 +13,19 @@ import java.util.UUID;
 @Table(name = "Address")
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "userId", updatable = false, nullable = false)
     private UUID userId;
 
+    @Column(name = "country", length = 250)
     private String country;
-    private String city;
-    private String street;
-    private String state;
 
-    // Quan hệ một-một với CCO_USER
-    @OneToOne
-    @JoinColumn(name = "userId")
-    private UserAccount user;
+    @Column(name = "city", length = 100)
+    private String city;
+
+    @Column(name = "street", length = 100)
+    private String street;
+
+    @Column(name = "state")
+    private String state;
 }

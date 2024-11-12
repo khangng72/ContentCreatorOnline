@@ -55,18 +55,17 @@ public class Creation {
     public Creation() {
     }
 
-    public Creation(UUID creationId, String creationName, Date releaseDate, boolean releaseStatus, boolean saleOnly,
-            long salePrice, long numberOfLikes, long numberOfDislikes, String coverImageURI, String description) {
+    public Creation(UUID creationId, Date releaseDate, boolean releaseStatus, String creationName, boolean saleOnly, long salePrice, long numberOfLikes, long numberOfDislikes, String coverImageURI, String description, String tag) {
         this.creationId = creationId;
-        this.creationName = creationName;
         this.releaseDate = releaseDate;
         this.releaseStatus = releaseStatus;
+        this.creationName = creationName;
         this.saleOnly = saleOnly;
         this.salePrice = salePrice;
         this.numberOfLikes = numberOfLikes;
         this.numberOfDislikes = numberOfDislikes;
         this.coverImageURI = coverImageURI;
         this.description = description;
+        this.tag = tag;
     }
-
 }
