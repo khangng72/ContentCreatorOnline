@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 import hcmut.contentCreatorOnline.mapper.IUserMapper;
-import hcmut.contentCreatorOnline.model.User.UserAccount;
+import hcmut.contentCreatorOnline.model.UserAccount;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 import hcmut.contentCreatorOnline.service.IUserService;
 import hcmut.contentCreatorOnline.service.exception.ElementNotFoundException;

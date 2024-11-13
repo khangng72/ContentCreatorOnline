@@ -7,7 +7,7 @@ import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
-import hcmut.contentCreatorOnline.model.User.UserAccount;
+import hcmut.contentCreatorOnline.model.UserAccount;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IUserMapper {

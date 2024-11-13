@@ -1,14 +1,11 @@
-package hcmut.contentCreatorOnline.model.User;
+package hcmut.contentCreatorOnline.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,4 +48,12 @@ public class UserAccount {
 
     @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Comment> comments;
+
+    @OneToMany(mappedBy = "readListId", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<ReadList> readLists;
 }

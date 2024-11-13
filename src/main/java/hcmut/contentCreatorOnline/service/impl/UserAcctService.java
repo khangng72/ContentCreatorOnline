@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import hcmut.contentCreatorOnline.dto.user.UserLoginRequestDto;
-
 import hcmut.contentCreatorOnline.dto.user.UserRegisterRequestDto;
-import hcmut.contentCreatorOnline.model.User.UserAccount;
+import hcmut.contentCreatorOnline.model.UserAccount;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 
 @Service

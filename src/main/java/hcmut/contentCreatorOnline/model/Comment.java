@@ -1,7 +1,6 @@
-package hcmut.contentCreatorOnline.model.Comment;
+package hcmut.contentCreatorOnline.model;
 
-import hcmut.contentCreatorOnline.model.Creation.Creation;
-import hcmut.contentCreatorOnline.model.User.UserAccount;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,15 +11,15 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name ="Comment")
+@Table(name = "Comments")
 public class Comment {
+
     @Id
     @GeneratedValue(generator = "UUID")
     @Column(name = "commentId", updatable = false, nullable = false)
     private UUID commentId;
 
     @Column(name = "commentDate")
-    @Temporal(TemporalType.DATE)
     private Date commentDate;
 
     @Column(name = "content", length = 250)
@@ -35,11 +34,14 @@ public class Comment {
     @Column(name = "isPinned")
     private Boolean isPinned;
 
-    @Column(name = "userId", updatable = false, nullable = false)
-    private UUID userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false, referencedColumnName = "user_id")
+    @JsonBackReference
+    private UserAccount user;
 
-    @Column(name = "creationId", updatable = false, nullable = false)
-    private UUID creationId;
-
+    @ManyToOne
+    @JoinColumn(name = "creationId",nullable = false, referencedColumnName = "creationId")
+    @JsonBackReference
+    private Creation creation;
 
 }
