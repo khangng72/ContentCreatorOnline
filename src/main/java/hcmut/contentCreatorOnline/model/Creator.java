@@ -13,21 +13,20 @@ import java.util.UUID;
 @Setter
 @Entity
 public class Creator extends CCO_User{
-
-    @Column(name = "creatorId", updatable = false, nullable = false)
-    private UUID creatorId;
+    @Column(name = "penName")
+    private String penName;
 
     @Column(name = "numberOfContents")
     private BigInteger numberOfContents;
 
     @Column(name = "numberOfFollowers")
     private BigInteger numberOfFollowers;
-
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<Creation> creationSet;
-
-    @OneToMany(mappedBy = "tierNumber", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<Join_Tier> joinTiers;
+//
+//    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    private Set<Creation> creationSet;
+//
+//    @OneToMany(mappedBy = "tierNumber", cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    private Set<Join_Tier> joinTiers;
 }

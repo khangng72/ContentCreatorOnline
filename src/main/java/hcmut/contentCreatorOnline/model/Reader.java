@@ -15,9 +15,8 @@ import java.util.UUID;
 @Entity
 public class Reader extends CCO_User{
 
-
-    @Column(name = "readerId", updatable = false, nullable = false)
-    private UUID readerId;
+//    @Column(name = "readerId", updatable = false, nullable = false)
+//    private UUID readerId;
 
     @Column(name = "readingTime")
     private Date readingTime;
@@ -25,11 +24,14 @@ public class Reader extends CCO_User{
     @Column(name = "isShowInfo", length = 100)
     private String isShowInfo;
 
-    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Order> orderSet;
-
-    @ManyToMany(mappedBy = "readers")
-    @JsonBackReference
-    private Set<Genre> genres;
+    @Column(name = "nickName", length = 100)
+    private String nickName;
+//
+//    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<Order> orderSet;
+//
+//    @ManyToMany(mappedBy = "readers")
+//    @JsonBackReference
+//    private Set<Genre> genres;
 }

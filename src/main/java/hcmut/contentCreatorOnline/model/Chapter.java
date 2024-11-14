@@ -1,12 +1,11 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -26,12 +25,9 @@ public class Chapter {
     @Column(name = "chapterImageURI", length = 250)
     private String chapterImageURI;
 
-    @ManyToOne
-    @JoinColumn(name = "creationId", nullable = false, referencedColumnName = "creationId")
-    @JsonBackReference
-    private Creation creation;
+    @Column(name = "creationId")
+    private UUID creationId;
 
-    @OneToMany(mappedBy = "paragraphNumber", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Paragraph> paragraphs;
+
+
 }

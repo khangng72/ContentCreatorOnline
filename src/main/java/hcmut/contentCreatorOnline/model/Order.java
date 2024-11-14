@@ -31,11 +31,6 @@ public class Order {
     @Column(name = "paymentName", length = 100)
     private String paymentName;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-    private Set<HasCreation> orders;
-
-    @ManyToOne
-    @JoinColumn(name = "readerId", referencedColumnName = "readerId")
-    @JsonBackReference
-    private Reader reader;
+    @Column(name = "readerId")
+    private UUID readerId;
 }

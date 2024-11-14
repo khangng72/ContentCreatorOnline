@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -50,29 +51,6 @@ public class Creation {
     @Column(name = "tags")
     private String Tags;
 
-    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Comment> comments;
-
-    @OneToMany(mappedBy = "chapterNumber", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Chapter> chapters;
-
-    @ManyToMany(mappedBy = "creationSet", cascade = CascadeType.ALL)
-    private Set<ReadList> readLists;
-
-    @OneToMany(mappedBy = "creation", cascade = CascadeType.ALL)
-    private Set<HasCreation> creation;
-
-    @ManyToMany(mappedBy = "creations", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<Genre> genres;
-
-    @ManyToOne
-    @JoinColumn(name = "creator_id")
-    @JsonManagedReference
-    private Creator creator;
-
-    @OneToMany(mappedBy = "creation", cascade = CascadeType.ALL)
-    private Set<Is_Available_In> creationDiscount;
+    @Column(name = "creatorId")
+    private UUID creatorId;
 }

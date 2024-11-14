@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Set;
+import java.util.UUID;
 
 
 @Getter
@@ -36,10 +37,9 @@ public class Join_Tier {
     @Column(name = "status")
     private Boolean status;
 
-    @ManyToOne
-    @JoinColumn(name = "creatorId", nullable = false,referencedColumnName = "creatorId")
-    private Creator creator;
-
-    @OneToMany(mappedBy = "joinTier", cascade = CascadeType.ALL)
-    private Set<Is_Available_In> tierDiscount;
+    @Column(name = "creatorId")
+    private UUID creatorId;
+//
+//    @OneToMany(mappedBy = "joinTier", cascade = CascadeType.ALL)
+//    private Set<Is_Available_In> tierDiscount;
 }

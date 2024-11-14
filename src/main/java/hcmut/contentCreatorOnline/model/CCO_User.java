@@ -1,10 +1,9 @@
 package hcmut.contentCreatorOnline.model;
 
 import java.time.LocalDate;
-import java.util.Set;
+
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +14,6 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "cco_user")
 public class CCO_User {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -50,14 +48,14 @@ public class CCO_User {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Comment> comments;
-
-    @OneToMany(mappedBy = "readListId", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<ReadList> readLists;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<IsUsed> user;
+//    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<Comment> comments;
+//
+//    @OneToMany(mappedBy = "readListId", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private Set<ReadList> readLists;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Set<IsUsed> user;
 }

@@ -1,6 +1,5 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,14 +33,13 @@ public class Comment {
     @Column(name = "isPinned")
     private Boolean isPinned;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false, referencedColumnName = "user_id")
-    @JsonBackReference
-    private CCO_User user;
+    @Column(name = "userId")
+    private UUID userId;
 
-    @ManyToOne
-    @JoinColumn(name = "creationId",nullable = false, referencedColumnName = "creationId")
-    @JsonBackReference
-    private Creation creation;
+    @Column(name = "childCommentId")
+    private UUID childCommentId;
+
+    @Column(name = "creationId")
+    private UUID creationId;
 
 }

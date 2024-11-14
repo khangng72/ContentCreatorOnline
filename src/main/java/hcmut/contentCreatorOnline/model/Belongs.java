@@ -9,19 +9,16 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "IsUsed")
-public class IsUsed {
+@Table(name = "Belongs")
+public class Belongs {
     @Id
     @GeneratedValue(generator = "UUID")
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "paymentId")
-    private UUID paymentId;
+    @Column(name = "genreId")
+    private UUID genreId;
 
-    @Column(name = "userId")
-    private UUID userId;
-
-    @Column(name = "accountNumber")
-    private String accountNumber;
+    @Column(name = "creationId")
+    private UUID creationId;
 }

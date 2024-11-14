@@ -9,19 +9,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "Has_Creation")
-public class HasCreation {
+@Table(name = "IsAvailableIn")
+public class IsAvailableIn {
     @Id
     @GeneratedValue(generator = "UUID")
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "orderId")
-    private UUID orderId;
+    @Column(name = "tierNumber")
+    private Integer tierNumber;
 
     @Column(name = "creationId")
     private UUID creationId;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "discountForSaleCreation")
+    private Double discountForSaleCreation;
 }

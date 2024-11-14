@@ -20,7 +20,7 @@ public class Payment {
 
     @Column(name = "paymentName", length = 100)
     private String paymentName;
-
-    @OneToMany(mappedBy = "payment")
-    private Set<IsUsed> payment;
+//
+//    @OneToMany(mappedBy = "payment")
+//    private Set<IsUsed> payment;
 }

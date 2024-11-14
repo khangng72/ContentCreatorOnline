@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
@@ -20,8 +22,6 @@ public class Paragraph {
     @Column(name = "paragraphImageURI", length = 250)
     private String paragraphImageURI;
 
-    @ManyToOne
-    @JoinColumn(name = "Chapter", nullable = false, referencedColumnName = "chapterNumber")
-    @JsonBackReference
-    private Chapter chapter;
+    @Column(name = "chapterNumber")
+    private UUID chapterNumber;
 }
