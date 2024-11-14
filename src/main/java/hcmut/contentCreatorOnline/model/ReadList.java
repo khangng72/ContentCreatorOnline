@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.math.BigInteger;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -32,5 +33,17 @@ public class ReadList {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false,referencedColumnName = "user_id")
     @JsonBackReference
-    private UserAccount user;
+    private CCO_User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Contains",
+            joinColumns = @JoinColumn(name = "creationId"),
+            inverseJoinColumns = @JoinColumn(name = "listId")
+    )
+    private Set<Creation> creationSet;
+
+    @ManyToMany(mappedBy = "readLists")
+    @JsonBackReference
+    private Set<Genre> genres;
 }

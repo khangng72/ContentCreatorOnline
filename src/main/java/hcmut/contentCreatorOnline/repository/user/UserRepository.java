@@ -6,11 +6,11 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import hcmut.contentCreatorOnline.model.UserAccount;
+import hcmut.contentCreatorOnline.model.CCO_User;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserAccount, UUID> {
-        Optional<UserAccount> findUserAccountByEmail(String email);
+public interface UserRepository extends JpaRepository<CCO_User, UUID> {
+        Optional<CCO_User> findUserAccountByEmail(String email);
 
         // // NATIVE QUERY FOR DBS ASSIGNMENT
         // @Query(value = "SELECT * FROM cco_user", nativeQuery = true)

@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import hcmut.contentCreatorOnline.dto.user.UserRegisterRequestDto;
-import hcmut.contentCreatorOnline.model.UserAccount;
+import hcmut.contentCreatorOnline.model.CCO_User;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 
 @Service
@@ -22,7 +22,7 @@ public class UserAcctService {
             return "Email is existed!";
         }
 
-        UserAccount user = new UserAccount();
+        CCO_User user = new CCO_User();
         user.setFirst_name(request.getFirst_name());
         user.setLast_name(request.getLast_name());
         user.setGender(request.getGender());

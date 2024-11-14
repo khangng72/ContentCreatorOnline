@@ -12,8 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "ma_user")
-public class UserAccount {
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "cco_user")
+public class CCO_User {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,4 +57,7 @@ public class UserAccount {
     @OneToMany(mappedBy = "readListId", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<ReadList> readLists;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<IsUsed> user;
 }

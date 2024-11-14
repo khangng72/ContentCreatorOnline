@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.controller;
 
 import java.util.List;
 
+import hcmut.contentCreatorOnline.model.CCO_User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 import hcmut.contentCreatorOnline.dto.user.UserRegisterRequestDto;
-import hcmut.contentCreatorOnline.model.UserAccount;
 import hcmut.contentCreatorOnline.service.IUserService;
 import hcmut.contentCreatorOnline.service.impl.UserAcctService;
 
@@ -25,7 +25,7 @@ public class UserController {
     IUserService service;
 
     @GetMapping("/all")
-    public List<UserAccount> getAllUsers() {
+    public List<CCO_User> getAllUsers() {
         return service.getAllUser();
     }
 

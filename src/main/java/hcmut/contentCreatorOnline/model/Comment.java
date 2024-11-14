@@ -37,7 +37,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false, referencedColumnName = "user_id")
     @JsonBackReference
-    private UserAccount user;
+    private CCO_User user;
 
     @ManyToOne
     @JoinColumn(name = "creationId",nullable = false, referencedColumnName = "creationId")

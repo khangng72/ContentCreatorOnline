@@ -2,12 +2,12 @@ package hcmut.contentCreatorOnline.service.impl;
 
 import java.util.List;
 
+import hcmut.contentCreatorOnline.model.CCO_User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 import hcmut.contentCreatorOnline.mapper.IUserMapper;
-import hcmut.contentCreatorOnline.model.UserAccount;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 import hcmut.contentCreatorOnline.service.IUserService;
 import hcmut.contentCreatorOnline.service.exception.ElementNotFoundException;
@@ -23,20 +23,20 @@ public class UserService implements IUserService {
     private IUserMapper mapper;
 
     @Override
-    public List<UserAccount> getAllUser() {
-        List<UserAccount> userAccountDtos = userRepository.findAll();
-        return userAccountDtos;
+    public List<CCO_User> getAllUser() {
+        List<CCO_User> CCOUserDtos = userRepository.findAll();
+        return CCOUserDtos;
     }
 
     @Override
     @Transactional
     public UserAccountDto createNewUser(UserAccountDto newUserDto) {
-        UserAccount entity = mapper.toUserAccount(newUserDto);
+        CCO_User entity = mapper.toUserAccount(newUserDto);
         if (entity != null) {
             UserAccountDto savedEntity = mapper.toUserAccountDto(entity);
             return savedEntity;
         } else {
-            throw new ElementNotFoundException(UserAccount.class);
+            throw new ElementNotFoundException(CCO_User.class);
         }
     }
 }
