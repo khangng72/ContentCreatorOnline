@@ -2,11 +2,11 @@ package hcmut.contentCreatorOnline.service.impl;
 
 import java.util.List;
 
+import hcmut.contentCreatorOnline.dto.user.CCOUserDTO;
 import hcmut.contentCreatorOnline.model.CCO_User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 import hcmut.contentCreatorOnline.mapper.IUserMapper;
 import hcmut.contentCreatorOnline.repository.user.UserRepository;
 import hcmut.contentCreatorOnline.service.IUserService;
@@ -30,13 +30,15 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public UserAccountDto createNewUser(UserAccountDto newUserDto) {
+    public CCOUserDTO createNewUser(CCOUserDTO newUserDto) {
         CCO_User entity = mapper.toUserAccount(newUserDto);
         if (entity != null) {
-            UserAccountDto savedEntity = mapper.toUserAccountDto(entity);
+            CCOUserDTO savedEntity = mapper.toUserAccountDto(entity);
             return savedEntity;
         } else {
             throw new ElementNotFoundException(CCO_User.class);
         }
     }
+
+
 }

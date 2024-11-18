@@ -1,6 +1,7 @@
 package hcmut.contentCreatorOnline.dto.user;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -8,17 +9,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserAccountDto {
+public class CCOUserDTO {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private String first_name;
-    private String last_name;
-    private String gender;
-    private String user_password;
-    private LocalDate birthday;
-    private String nationality;
+
+    private Date birthday;
+
     private String email;
-    private boolean is_admin = false;
+
     private String address;
 }

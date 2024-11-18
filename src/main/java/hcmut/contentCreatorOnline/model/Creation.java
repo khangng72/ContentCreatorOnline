@@ -1,14 +1,12 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -17,9 +15,9 @@ import java.util.UUID;
 @Table(name = "Creation")
 public class Creation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
     @Column(name = "creationId", nullable = false)
-    private Long creationId;
+    private UUID creationId;
 
     @Column(name = "creationName", length = 50, nullable = false)
     private String creationName;
@@ -37,10 +35,10 @@ public class Creation {
     private Double salePrice;
 
     @Column(name = "numberOfLikes")
-    private BigInteger numberOfLikes;
+    private int numberOfLikes;
 
     @Column(name = "numberOfDislikes")
-    private BigInteger numberOfDislikes;
+    private int numberOfDislikes;
 
     @Column(name = "coverImageURI", length = 250)
     private String coverImageURI;

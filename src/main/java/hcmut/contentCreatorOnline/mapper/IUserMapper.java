@@ -2,23 +2,22 @@ package hcmut.contentCreatorOnline.mapper;
 
 import java.util.List;
 
+import hcmut.contentCreatorOnline.dto.user.CCOUserDTO;
 import hcmut.contentCreatorOnline.model.CCO_User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
-
-import hcmut.contentCreatorOnline.dto.user.UserAccountDto;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IUserMapper {
 
     IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);
 
-    UserAccountDto toUserAccountDto(CCO_User entity);
+    CCOUserDTO toUserAccountDto(CCO_User entity);
 
-    CCO_User toUserAccount(UserAccountDto dto);
+    CCO_User toUserAccount(CCOUserDTO dto);
 
-    List<UserAccountDto> toListUserAccountDto(List<CCO_User> list);
+    List<CCOUserDTO> toListUserAccountDto(List<CCO_User> list);
 
-    List<CCO_User> toListUserAccount(List<UserAccountDto> dtos);
+    List<CCO_User> toListUserAccount(List<CCOUserDTO> dtos);
 }

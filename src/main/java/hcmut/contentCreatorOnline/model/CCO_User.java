@@ -48,14 +48,4 @@ public class CCO_User {
     @Column(name = "address")
     private String address;
 
-//    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    private Set<Comment> comments;
-//
-//    @OneToMany(mappedBy = "readListId", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    private Set<ReadList> readLists;
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private Set<IsUsed> user;
 }
