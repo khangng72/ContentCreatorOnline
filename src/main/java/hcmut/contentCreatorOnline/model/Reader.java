@@ -1,37 +1,48 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
-public class Reader extends CCO_User{
+@Data
+@Table(name = "reader")
+public class Reader {
 
-//    @Column(name = "readerId", updatable = false, nullable = false)
-//    private UUID readerId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "reader_id", columnDefinition = "UUID", nullable = false)
+    private UUID readerId;
 
-    @Column(name = "readingTime")
-    private Date readingTime;
+    private int readingTime;
 
-    @Column(name = "isShowInfo", length = 100)
-    private String isShowInfo;
+    private Boolean isShowInfo;
 
-    @Column(name = "nickName", length = 100)
+    @Column(length = 100)
     private String nickName;
-//
-//    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    private Set<Order> orderSet;
-//
-//    @ManyToMany(mappedBy = "readers")
-//    @JsonBackReference
-//    private Set<Genre> genres;
+
+    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Comment> comments;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "interested_in", joinColumns = @JoinColumn(name = "reader_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private Set<Genre> genres = new HashSet<>();
+
+    @OneToMany(mappedBy = "readers", cascade = CascadeType.ALL)
+    private List<ReaderJoinMembership> memberships;
 }

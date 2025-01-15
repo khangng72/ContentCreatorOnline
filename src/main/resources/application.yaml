@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: contentCreatorOnline
+    datasource:
+        url: jdbc:postgresql://localhost:5431/content_creator_online
+        username: postgres
+        password: postgres
+    jpa:
+        database: postgresql
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+    devtools:
+        restart:
+            enabled: true
+logging:
+        level:
+            root: INFO
+
+
+
+

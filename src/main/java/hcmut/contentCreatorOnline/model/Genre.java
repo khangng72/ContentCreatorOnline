@@ -1,50 +1,33 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
-@Table(name = "Genre")
+@Data
+@Table(name = "genre")
 public class Genre {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @Column(name = "genreId", updatable = false, nullable = false)
-    private UUID genreId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer genreId;
 
-    @Column(name = "genreName", length = 250)
     private String genreName;
-//
-//    @ManyToMany
-//    @JoinTable(
-//            name = "has_genre",
-//            joinColumns = @JoinColumn(name = "genreId"),
-//            inverseJoinColumns = @JoinColumn(name = "readlistid")
-//    )
-//    @JsonManagedReference
-//    private Set<ReadList> readLists;
-//
-//    @ManyToMany
-//    @JoinTable(
-//            name = "belongs",
-//            joinColumns = @JoinColumn(name = "genreId"),
-//            inverseJoinColumns = @JoinColumn(name = "creationId")
-//    )
-//    @JsonManagedReference
-//    private Set<Creation> creations;
-//
-//    @ManyToMany
-//    @JoinTable(
-//            name = "interested_in",
-//            joinColumns = @JoinColumn(name = "genre_id"),
-//            inverseJoinColumns = @JoinColumn(name = "reader_id")
-//    )
-//    @JsonManagedReference
-//    private Set<Reader> readers;
+
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<Story> stories = new HashSet<>();
+
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<ReadList> readLists = new HashSet<>();
+
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+    private Set<Reader> readers = new HashSet<>();
 }
