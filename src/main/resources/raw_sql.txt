@@ -1,0 +1,186 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+--CREATE TABLE ADDRESS
+DROP TABLE IF EXISTS user_address CASCADE;
+
+CREATE TABLE user_address (
+    address_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    street VARCHAR(255),
+    city VARCHAR(255) NOT NULL,
+    user_state VARCHAR(255),
+    postal_code VARCHAR(20),
+    country VARCHAR(255) NOT NULL
+);
+
+--CREATE TABLE CCO_USER
+DROP TABLE IF EXISTS cco_user CASCADE;
+
+CREATE TABLE cco_user (
+    user_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    user_password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255) NOT NULL,
+    gender VARCHAR(255),
+    is_admin BOOLEAN DEFAULT FALSE NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    nationality VARCHAR(255),
+    birthday DATE NOT NULL,
+    address_id UUID UNIQUE REFERENCES user_address (address_id) ON DELETE SET NULL
+);
+
+--CREAT TABLE CREATOR
+DROP TABLE IF EXISTS creator CASCADE;
+
+CREATE TABLE creator (
+    creator_id UUID PRIMARY KEY,
+    pen_name VARCHAR(255) NOT NULL,
+    number_of_contents INT,
+    number_of_followers INT
+);
+
+--CREATE TABLE READER
+DROP TABLE IF EXISTS reader CASCADE;
+
+CREATE TABLE reader (
+    reader_id UUID PRIMARY KEY,
+    reading_time INT,
+    is_show_info BOOLEAN DEFAULT TRUE,
+    nick_name VARCHAR(100)
+);
+
+--CREATE TABLE MEMBERSHIP_PLAN
+DROP TABLE IF EXISTS membership_plan CASCADE;
+
+CREATE TABLE membership_plan (
+    membership_plan_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    title VARCHAR(255),
+    membership_plan_description VARCHAR(255),
+    price FLOAT4 NOT NULL DEFAULT 0,
+    cover_uri VARCHAR(255),
+    is_charged BOOLEAN DEFAULT FALSE,
+    status VARCHAR(255),
+    lower_membership_plan_id UUID REFERENCES membership_plan (membership_plan_id),
+    creator_id UUID REFERENCES creator (creator_id)
+);
+
+--CREATE TABLE READER_JOIN_MEMBERSHIP
+DROP TABLE IF EXISTS reader_join_membership CASCADE;
+
+CREATE TABLE reader_join_membership (
+    reader_id UUID NOT NULL REFERENCES reader (reader_id),
+    membership_plan_id UUID NOT NULL REFERENCES membership_plan (membership_plan_id),
+    join_date DATE NOT NULL,
+    expire_date DATE NOT NULL
+);
+
+--CREATE TABLE STORY
+DROP TABLE IF EXISTS story CASCADE;
+
+CREATE TABLE story (
+    story_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    release_date DATE,
+    release_status BOOLEAN DEFAULT FALSE,
+    story_title VARCHAR(255) NOT NULL,
+    sale_only BOOLEAN DEFAULT FALSE,
+    sale_price DOUBLE PRECISION,
+    number_of_likes INTEGER,
+    cover_image_uri VARCHAR(255),
+    story_description TEXT,
+    tags VARCHAR(255),
+    creator_id UUID REFERENCES creator (creator_id) ON DELETE CASCADE,
+    membership_plan_id UUID REFERENCES membership_plan (membership_plan_id)
+);
+
+--CREATE TABLE CHAPTER
+DROP TABLE IF EXISTS chapter CASCADE;
+
+CREATE TABLE chapter (
+    chapter_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    chapter_number INTEGER NOT NULL,
+    chapter_title VARCHAR(255) NOT NULL,
+    chapter_description TEXT,
+    chapter_image_uri VARCHAR(255),
+    story_id UUID REFERENCES story (story_id) ON DELETE CASCADE
+);
+
+-- CREATE TABLE PARAGRAPH
+DROP TABLE IF EXISTS paragraph CASCADE;
+
+CREATE TABLE paragraph (
+    paragraph_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    paragraph_number INTEGER NOT NULL,
+    paragraph_content TEXT NOT NULL,
+    paragraph_image_uri VARCHAR(255),
+    chapter_id UUID REFERENCES chapter (chapter_id) ON DELETE CASCADE
+);
+
+--CREATE TABLE COMMENT
+DROP TABLE IF EXISTS comment CASCADE;
+
+CREATE TABLE comment (
+    comment_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    comment_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    comment_content VARCHAR(255) NOT NULL,
+    number_of_likes INTEGER,
+    is_pinned BOOLEAN DEFAULT FALSE,
+    is_deleted BOOLEAN DEFAULT FALSE,
+    reader_id UUID REFERENCES reader (reader_id) ON DELETE CASCADE,
+    creator_id UUID REFERENCES creator (creator_id) ON DELETE CASCADE,
+    story_id UUID REFERENCES story (story_id) ON DELETE CASCADE
+);
+
+-- CREATE TABLE genre
+DROP TABLE IF EXISTS genre CASCADE;
+
+CREATE TABLE GENRE (
+    genre_id SERIAL PRIMARY KEY,
+    genre_name VARCHAR(255)
+);
+
+-- CREATE TABLE BELONGS
+DROP TABLE IF EXISTS belongs CASCADE;
+
+CREATE TABLE belongs (
+    genre_id INTEGER NOT NULL REFERENCES genre (genre_id) ON DELETE CASCADE,
+    story_id UUID NOT NULL REFERENCES story (story_id) ON DELETE CASCADE,
+    PRIMARY KEY (genre_id, story_id)
+);
+
+-- CREATE TABLE READ_LIST
+DROP TABLE IF EXISTS read_list CASCADE;
+
+CREATE TABLE read_list (
+    read_list_id UUID DEFAULT uuid_generate_v4 () PRIMARY KEY,
+    read_list_title VARCHAR(255) NOT NULL,
+    read_list_description VARCHAR(1000),
+    number_of_likes INTEGER,
+    quantity INTEGER,
+    read_list_cover VARCHAR(255)
+);
+
+-- CREATE TABLE CONTAINS
+DROP TABLE IF EXISTS contains CASCADE;
+
+CREATE TABLE contains (
+    read_list_id UUID NOT NULL REFERENCES read_list (read_list_id) ON DELETE CASCADE,
+    story_id UUID NOT NULL REFERENCES story (story_id) ON DELETE CASCADE,
+    PRIMARY KEY (read_list_id, story_id)
+);
+
+--CREATE TABLE HAS_GENRE
+DROP TABLE IF EXISTS has_genre CASCADE;
+
+CREATE TABLE has_genre (
+    genre_id INT NOT NULL REFERENCES genre (genre_id) ON DELETE CASCADE,
+    read_list_id UUID NOT NULL REFERENCES read_list (read_list_id) ON DELETE CASCADE,
+    PRIMARY KEY (genre_id, read_list_id)
+);
+
+--CREATE TABLE INTERESTED_IN
+DROP TABLE IF EXISTS interested_in CASCADE;
+
+CREATE TABLE interested_in (
+    reader_id UUID NOT NULL REFERENCES reader (reader_id) ON DELETE CASCADE,
+    genre_id INT NOT NULL REFERENCES genre (genre_id) ON DELETE CASCADE
+);

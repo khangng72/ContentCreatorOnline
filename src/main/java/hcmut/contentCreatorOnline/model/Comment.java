@@ -1,45 +1,46 @@
 package hcmut.contentCreatorOnline.model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
-@Table(name = "Comments")
+@Data
+@Table(name = "comment")
 public class Comment {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @Column(name = "commentId", updatable = false, nullable = false)
+    @Column(name = "comment_id", nullable = false)
     private UUID commentId;
 
-    @Column(name = "commentDate")
-    private Date commentDate;
+    private LocalDate commentDate;
 
-    @Column(name = "content", length = 250)
-    private String content;
+    private String commentContent;
 
-    @Column(name = "numberOfLikes")
-    private Long numberOfLikes;
+    private Integer numberOfLikes;
 
-    @Column(name = "numberOfDislikes")
-    private Long numberOfDislikes;
-
-    @Column(name = "isPinned")
     private Boolean isPinned;
 
-    @Column(name = "userId")
-    private UUID userId;
+    @ManyToOne
+    @JoinColumn(name = "reader_id")
+    private Reader reader;
 
-    @Column(name = "childCommentId")
-    private UUID childCommentId;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private Creator creator;
 
-    @Column(name = "creationId")
-    private UUID creationId;
+    @ManyToOne
+    @JoinColumn(name = "story_id")
+    private Story story;
 
+    private Boolean isDeleted;
 }

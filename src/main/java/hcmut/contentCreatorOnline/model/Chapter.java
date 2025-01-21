@@ -1,33 +1,42 @@
 package hcmut.contentCreatorOnline.model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
-@Table(name = "Chapter")
+@Data
+@Table(name = "chapter")
 public class Chapter {
     @Id
-    @Column(name = "chapterNumber", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
+    private UUID chapterId;
+
     private Integer chapterNumber;
 
-    @Column(name = "chapterName", length = 250)
-    private String chapterName;
+    private String chapterTitle;
 
-    @Column(name = "chapterDescription", length = 4000)
+    @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
 
-    @Column(name = "chapterImageURI", length = 250)
-    private String chapterImageURI;
+    private String chapterImageUri;
 
-    @Column(name = "creationId")
-    private UUID creationId;
+    @ManyToOne
+    @JoinColumn(name = "story_id", nullable = false)
+    private Story story;
 
-
-
+    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Paragraph> paragraphs;
 }
