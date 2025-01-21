@@ -1,27 +1,36 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.UUID;
 
-@Getter
-@Setter
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
-@Table(name = "Paragraph")
+@Data
+@Table(name = "paragraph")
 public class Paragraph {
     @Id
-    @Column(name = "paragraphNumber", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
+    private UUID paragraphId;
+
+    @Column(name = "paragraph_number", nullable = false)
     private Integer paragraphNumber;
 
-    @Column(name = "paragraphContent", length = 250)
+    @Column(name = "paragraph_content", columnDefinition = "TEXT")
     private String paragraphContent;
 
-    @Column(name = "paragraphImageURI", length = 250)
-    private String paragraphImageURI;
+    @Column(name = "paragraph_image_uri")
+    private String paragraphImageUri;
 
-    @Column(name = "chapterNumber")
-    private UUID chapterNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chapter_id", nullable = false)
+    private Chapter chapter;
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class InitialController {
 
     @GetMapping
-    private ResponseEntity<Map<String, String>> getInitial() {
+    public ResponseEntity<Map<String, String>> getInitial() {
         Map<String, String> response = new HashMap<>();
         response.put("message:", "SERVER IS HEALTHY");
         response.put("status:", HttpStatus.OK.toString());
