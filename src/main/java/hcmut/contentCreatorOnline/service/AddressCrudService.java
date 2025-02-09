@@ -7,6 +7,9 @@ import hcmut.contentCreatorOnline.model.Address;
 import java.util.UUID;
 
 public interface AddressCrudService {
-    Address UpdateUserAddress(UUID userId, AddressUpdateRequest request);
-    Address GetAddress(UUID userId);
+    Address createUserAddress(UUID userId, AddressUpdateRequest request);
+
+    Address getAddress(UUID userId);
+
+    String deleteAddress(UUID userId);
 }

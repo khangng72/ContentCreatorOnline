@@ -2,33 +2,40 @@ package hcmut.contentCreatorOnline.controller.user;
 
 import hcmut.contentCreatorOnline.dto.user.AddressUpdateRequest;
 import hcmut.contentCreatorOnline.model.Address;
-import hcmut.contentCreatorOnline.service.impl.AddressCrudServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import hcmut.contentCreatorOnline.service.AddressCrudService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/address")
 public class AddressCrudController {
-    @Autowired
-    private AddressCrudServiceImpl addressCrudService;
+    private final AddressCrudService addressCrudService;
 
-    @GetMapping("/{userId}")
-    public Address GetAddress(@PathVariable UUID userId){
-        return addressCrudService.GetAddress(userId);
+    public AddressCrudController(AddressCrudService addressCrudService) {
+        this.addressCrudService = addressCrudService;
     }
 
-    @PutMapping("/{userId}")
-    public ResponseEntity<Address> updateUserAddress(
+    @GetMapping("/{userId}")
+    public ResponseEntity<Address> getAddress(@PathVariable UUID userId) {
+        Address address = addressCrudService.getAddress(userId);
+
+        return new ResponseEntity<>(address, HttpStatus.OK);
+    }
+
+    @PostMapping("/{userId}")
+    public ResponseEntity<Address> createUserAddress(
             @PathVariable UUID userId,
             @RequestBody AddressUpdateRequest request
-    ){
-        Address updateAddress = addressCrudService.UpdateUserAddress(userId, request);
+    ) {
+        Address updateAddress = addressCrudService.createUserAddress(userId, request);
         return ResponseEntity.ok(updateAddress);
     }
 
-
+    @DeleteMapping("/{userId}")
+    public String deleteAddress(@PathVariable UUID userId) {
+        return addressCrudService.deleteAddress(userId);
+    }
 }
