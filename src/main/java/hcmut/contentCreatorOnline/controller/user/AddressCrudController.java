@@ -30,5 +30,8 @@ public class AddressCrudController {
         return ResponseEntity.ok(updateAddress);
     }
 
-
+    @DeleteMapping("/{userId}")
+    public String deleteAddress(@PathVariable UUID userId){
+        return addressCrudService.deleteAddress(userId);
+    }
 }

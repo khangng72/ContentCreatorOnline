@@ -21,6 +21,4 @@ public class InitialController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
 }

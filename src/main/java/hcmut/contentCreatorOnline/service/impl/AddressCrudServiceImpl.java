@@ -1,6 +1,7 @@
 package hcmut.contentCreatorOnline.service.impl;
 
 import hcmut.contentCreatorOnline.dto.user.AddressUpdateRequest;
+import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.model.Address;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.repository.AddressRepository;
@@ -59,4 +60,26 @@ public class AddressCrudServiceImpl implements AddressCrudService {
 
         return address;
     };
+
+    @Transactional
+    @Override
+    public String deleteAddress(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+
+        Address address = user.getAddress();
+
+        if (address == null) {
+            throw new RuntimeException("User does not have an address to delete");
+        }
+
+        user.setAddress(null);
+        userRepository.save(user);
+
+        addressRepository.deleteById(address.getAddressId());
+
+        return "Delete successful";
+    }
+
+
 }
