@@ -29,7 +29,7 @@ CREATE TABLE cco_user (
     address_id UUID UNIQUE REFERENCES user_address (address_id) ON DELETE SET NULL
 );
 
---CREAT TABLE CREATOR
+--CREATe TABLE CREATOR
 DROP TABLE IF EXISTS creator CASCADE;
 
 CREATE TABLE creator (

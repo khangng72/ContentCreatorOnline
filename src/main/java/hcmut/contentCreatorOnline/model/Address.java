@@ -2,10 +2,7 @@ package hcmut.contentCreatorOnline.model;
 
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.Data;
 @Table(name = "user_address")
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "address_id", columnDefinition = "UUID", nullable = false)
     private UUID addressId;
 
