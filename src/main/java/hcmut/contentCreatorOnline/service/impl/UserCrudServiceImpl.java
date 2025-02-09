@@ -1,5 +1,11 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.dto.user.AddressUpdateRequest;
+import hcmut.contentCreatorOnline.dto.user.UpdateUserDTO;
+import jakarta.persistence.EntityManager;
+
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +20,10 @@ import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.service.UserCrudService;
 import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserCrudServiceImpl implements UserCrudService {
@@ -77,4 +87,59 @@ public class UserCrudServiceImpl implements UserCrudService {
         }
     }
 
+    @Override
+    public List<User> getAllUser() throws ApplicationException{
+        try {
+            return userRepository.findAll();
+        }
+        catch (ApplicationException e){
+            throw e;
+        }
+    }
+
+    @Override
+    public Optional<User> getUserById(UUID userId) throws ApplicationException{
+        try {
+            return userRepository.findById(userId);
+        }
+        catch (ApplicationException e){
+            throw e;
+        }
+    }
+
+    @Transactional
+    public User updateUser(UUID userId, UpdateUserDTO request){
+        return userRepository.findById(userId).map(user -> {
+            user.setFirstName(request.getFirstName());
+            user.setLastName(request.getLastName());
+            user.setGender(request.getGender());
+            user.setNationality(request.getNationality());
+            user.setBirthday(request.getBirthday());
+            //user.setEmail(user.getEmail());
+
+            return userRepository.save(user);
+        }).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public String deleteUser(UUID userId){
+
+        userRepository.deleteById(userId);
+        return "User deleted successfully";
+    }
+//    @Transactional
+//    public void updateUserAddress(UUID userId, AddressUpdateRequest request){
+//        try {
+//            userRepository.updateUserAddress(
+//                    userId,
+//                    request.getStreet(),
+//                    request.getCity(),
+//                    request.getState(),
+//                    request.getPostalCode(),
+//                    request.getCountry()
+//            );
+//        } catch(Exception e){
+//            throw new RuntimeException("Failed to update address: " + e.getMessage());
+//        }
+//    }
 }
