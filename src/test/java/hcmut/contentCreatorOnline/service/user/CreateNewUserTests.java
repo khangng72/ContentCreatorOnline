@@ -22,10 +22,11 @@ import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.repository.UserRepository;
-import hcmut.contentCreatorOnline.service.impl.UserCrudServiceImpl;
+import hcmut.contentCreatorOnline.service.impl.UserServiceImpl;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
 
 public class CreateNewUserTests {
+
     @Mock
     private UserRepository userRepository;
 
@@ -33,7 +34,7 @@ public class CreateNewUserTests {
     private PasswordUtil passwordUtil;
 
     @InjectMocks
-    private UserCrudServiceImpl userCrudService;
+    private UserServiceImpl userService;
 
     @BeforeEach
     public void setUp() {
@@ -80,11 +81,11 @@ public class CreateNewUserTests {
                 .build();
 
         when(userRepository.findByEmail(getMockRequest().getEmail())).thenReturn(null);
-        when(passwordUtil.hashPassword(getMockRequest().getPassword())).thenReturn(getMockHashedPassword());
+        when(passwordUtil.encode(getMockRequest().getPassword())).thenReturn(getMockHashedPassword());
         when(userRepository.save(any(User.class))).thenReturn(newUser);
 
         // Method Call
-        RegisterNewUserResponse response = userCrudService.createNewUser(getMockRequest());
+        RegisterNewUserResponse response = userService.createNewUser(getMockRequest());
 
         // Assert
         assertNotNull(response);
@@ -110,7 +111,7 @@ public class CreateNewUserTests {
 
         // Method call
         ApplicationException thrownException = assertThrows(ApplicationException.class, () -> {
-            userCrudService.createNewUser(getMockRequest());
+            userService.createNewUser(getMockRequest());
         });
 
         // Assert
@@ -124,11 +125,11 @@ public class CreateNewUserTests {
     void testCreateNewUser_UnexpectedError() throws ApplicationException {
         // Arrange
         when(userRepository.findByEmail(getMockRequest().getEmail())).thenReturn(null);
-        when(passwordUtil.hashPassword(getMockRequest().getPassword())).thenReturn(getMockHashedPassword());
+        when(passwordUtil.encode(getMockRequest().getPassword())).thenReturn(getMockHashedPassword());
         when(userRepository.save(any(User.class))).thenThrow(new RuntimeException("Database error"));
 
         ApplicationException thrownException = assertThrows(ApplicationException.class, () -> {
-            userCrudService.createNewUser(getMockRequest());
+            userService.createNewUser(getMockRequest());
         });
 
         assertEquals(ErrorConst.UNEXPECTED_ERROR.getMessage(), thrownException.getMessage());
