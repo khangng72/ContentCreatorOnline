@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
-import hcmut.contentCreatorOnline.service.UserCrudService;
+import hcmut.contentCreatorOnline.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
 public class UserCrudController {
     @Autowired
-    private UserCrudService userCrudService;
+    private UserService userService;
 
     @PostMapping("/register")
     public ResponseEntity<RegisterNewUserResponse> registerNewUser(
@@ -26,11 +26,10 @@ public class UserCrudController {
             throws ApplicationException {
 
         try {
-            RegisterNewUserResponse response = userCrudService.createNewUser(registerNewUserRequest);
+            RegisterNewUserResponse response = userService.createNewUser(registerNewUserRequest);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (ApplicationException ex) {
-            throw ex;
+        } catch (ApplicationException exception) {
+            throw exception;
         }
-
     }
 }

@@ -2,19 +2,23 @@ package hcmut.contentCreatorOnline.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
-public class PasswordUtil {
+@Component
+public class PasswordUtil implements PasswordEncoder {
     private final PasswordEncoder passwordEncoder;
 
     public PasswordUtil() {
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = new BCryptPasswordEncoder(5);
     }
 
-    public String hashPassword(String plainPassword) {
-        return passwordEncoder.encode(plainPassword);
+    @Override
+    public String encode(CharSequence rawPassword) {
+        return passwordEncoder.encode(rawPassword.toString());
     }
 
-    public boolean verifyPassword(String plainPassword, String hashedPassword) {
-        return passwordEncoder.matches(plainPassword, hashedPassword);
+    @Override
+    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword.toString(), encodedPassword);
     }
 }
