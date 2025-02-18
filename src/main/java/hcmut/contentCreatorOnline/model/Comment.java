@@ -31,14 +31,6 @@ public class Comment {
     private Boolean isPinned;
 
     @ManyToOne
-    @JoinColumn(name = "reader_id")
-    private Reader reader;
-
-    @ManyToOne
-    @JoinColumn(name = "creator_id")
-    private Creator creator;
-
-    @ManyToOne
     @JoinColumn(name = "story_id")
     private Story story;
 

@@ -57,10 +57,6 @@ public class Story {
     @Column(name = "tags")
     private String tags;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "creator_id", nullable = false)
-    private Creator creator;
-
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Chapter> chapters;
 
@@ -71,7 +67,18 @@ public class Story {
     @ManyToMany(mappedBy = "stories")
     private Set<ReadList> readLists = new HashSet<>();
 
+    @ManyToMany(mappedBy =  "produces")
+    private Set<Order> orders = new HashSet<>();
+
     @ManyToOne
-    @JoinColumn(name = "membership_plan_id")
-    private MembershipPlan membershipPlan;
+    @JoinColumn(name = "user_id")
+    private User userPost;
+
+    @ManyToMany
+    @JoinTable(name = "userOwnStory", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> userOwn = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "userLikeStory", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> userLike = new HashSet<>();
 }
