@@ -3,13 +3,7 @@ package hcmut.contentCreatorOnline.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -28,6 +22,7 @@ public class Genre {
     @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
     private Set<ReadList> readLists = new HashSet<>();
 
-    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
-    private Set<Reader> readers = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "interested_in", joinColumns = @JoinColumn(name = "genre_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users = new HashSet<>();
 }

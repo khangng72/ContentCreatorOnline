@@ -1,17 +1,12 @@
 package hcmut.contentCreatorOnline.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -58,7 +53,25 @@ public class User {
     @Column(name = "birthday")
     private LocalDate birthday;
 
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ReadList> readLists;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Order> orders;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private Set<Genre> genreSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "userPost")
+    private Set<Story> storyPost = new HashSet<>();
+
+    @ManyToMany(mappedBy =  "userOwn")
+    private Set<Story> ownStory = new HashSet<>();
+
+    @ManyToMany(mappedBy =  "userLike")
+    private Set<Story> likeStory = new HashSet<>();
 }
