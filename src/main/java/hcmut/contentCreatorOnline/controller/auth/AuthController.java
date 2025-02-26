@@ -22,11 +22,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginUserRequest loginUserRequest) throws ApplicationException {
-        try {
-            String token = userService.verify(loginUserRequest);
-            return new ResponseEntity<>(token, HttpStatus.OK);
-        } catch (ApplicationException e) {
-            throw e;
-        }
+        String token = userService.verify(loginUserRequest);
+        return new ResponseEntity<>(token, HttpStatus.OK);
     }
 }
