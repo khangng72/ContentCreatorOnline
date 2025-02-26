@@ -1,5 +1,6 @@
 package hcmut.contentCreatorOnline.controller.auth;
 
+import hcmut.contentCreatorOnline.dto.auth.LoginResponse;
 import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.service.UserService;
@@ -21,8 +22,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginUserRequest loginUserRequest) throws ApplicationException {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginUserRequest loginUserRequest) throws ApplicationException {
         String token = userService.verify(loginUserRequest);
-        return new ResponseEntity<>(token, HttpStatus.OK);
+        return new ResponseEntity<>(new LoginResponse(token, HttpStatus.OK.value()), HttpStatus.OK);
     }
 }
