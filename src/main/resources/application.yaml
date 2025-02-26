@@ -6,28 +6,28 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql
     show-sql: true
     hibernate:
       ddl-auto: update
-
   security:
     user:
       name: user
       password: password
-
   devtools:
     restart:
       enabled: true
 jwt:
   SECRET_KEY: 5336fad139294ad56f208ef0a54de4c73c61f9d97e4ca624dd9917e7086647495cb17af4a6c6455bf48d9eaa7a2742ba8678a4510ed38811d47432cbc18b60ab
   EXPIRATION_IN_MS: 1800000
+  
 logging:
   level:
     root: INFO
+
+allowedOrigin: http://localhost:3000
 
 
 
