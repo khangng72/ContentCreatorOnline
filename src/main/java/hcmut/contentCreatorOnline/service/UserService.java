@@ -1,15 +1,14 @@
 package hcmut.contentCreatorOnline.service;
 
-import org.springframework.stereotype.Service;
-
 import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    public String verify(LoginUserRequest user);
+    String verify(LoginUserRequest user);
 
-    public RegisterNewUserResponse createNewUser(RegisterNewUserRequest user) throws ApplicationException;
+    RegisterNewUserResponse createNewUser(RegisterNewUserRequest user) throws ApplicationException;
 }
