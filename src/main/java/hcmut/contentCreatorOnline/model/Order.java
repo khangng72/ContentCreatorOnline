@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "order_tbl")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class Order {
     private Double totalPrice;
 
     @Column(name = "status")
-    private boolean status = false;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

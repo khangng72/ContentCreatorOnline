@@ -32,6 +32,7 @@ flyway {
     user = 'postgres'
     password = 'postgres'
     locations = ['classpath:db/migration']
+    cleanDisabled = false
 }
 
 dependencies {

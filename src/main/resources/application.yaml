@@ -13,6 +13,7 @@ spring:
     hibernate:
       ddl-auto: update
   flyway:
+    clean-disabled: false
     enabled: true
     baseline-on-migrate: true
   security:
