@@ -1,16 +1,14 @@
 package hcmut.contentCreatorOnline.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-
 import java.util.Set;
 import java.util.UUID;
 
-@Builder
+
 @Entity
 @Data
 @Table(name = "order_tbl")
@@ -27,7 +25,6 @@ public class Order {
     private Double totalPrice;
 
     @Column(name = "status")
-    @Builder.Default
     private boolean status = false;
 
     @ManyToOne
@@ -35,8 +32,6 @@ public class Order {
     private User userId;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "orderContain", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "story_id"))
+    @JoinTable(name = "order_contain", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "story_id"))
     private Set<Story> produces = new HashSet<>();
-
-
 }
