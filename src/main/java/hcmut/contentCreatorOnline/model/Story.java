@@ -1,25 +1,13 @@
 package hcmut.contentCreatorOnline.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.Data;
 
 @Entity
 @Data
@@ -67,7 +55,7 @@ public class Story {
     @ManyToMany(mappedBy = "stories")
     private Set<ReadList> readLists = new HashSet<>();
 
-    @ManyToMany(mappedBy =  "produces")
+    @ManyToMany(mappedBy = "produces")
     private Set<Order> orders = new HashSet<>();
 
     @ManyToOne
@@ -75,10 +63,10 @@ public class Story {
     private User userPost;
 
     @ManyToMany
-    @JoinTable(name = "userOwnStory", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "user_own_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> userOwn = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "userLikeStory", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "user_like_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> userLike = new HashSet<>();
 }
