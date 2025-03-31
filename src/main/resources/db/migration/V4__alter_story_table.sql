@@ -1,0 +1,2 @@
+ALTER TABLE story
+    ADD COLUMN created_date DATE DEFAULT CURRENT_DATE;
