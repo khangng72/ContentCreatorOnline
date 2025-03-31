@@ -21,6 +21,9 @@ public class Story {
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
+    @Column(name = "created_date")
+    private LocalDate createdDate;
+
     @Column(name = "release_status")
     private Boolean releaseStatus;
 
