@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class GenreResult {
-    private int genreId;
+    private Integer genreId;
     private String genreName;
 }

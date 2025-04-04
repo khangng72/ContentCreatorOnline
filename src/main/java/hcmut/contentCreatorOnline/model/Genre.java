@@ -5,13 +5,18 @@ import java.util.Set;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Data
+@Getter
+@Setter
 @Table(name = "genre")
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "genre_id")
     private Integer genreId;
 
     private String genreName;
@@ -25,4 +30,6 @@ public class Genre {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "interested_in", joinColumns = @JoinColumn(name = "genre_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
+
+
 }

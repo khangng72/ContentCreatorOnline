@@ -37,7 +37,7 @@ public class Story {
     private Double salePrice;
 
     @Column(name = "number_of_likes")
-    private int numberOfLikes;
+    private Integer numberOfLikes;
 
     @Column(name = "cover_image_uri")
     private String coverImageUri;

@@ -1,16 +1,14 @@
 package hcmut.contentCreatorOnline.controller.story;
 
-import hcmut.contentCreatorOnline.dto.story.CreateStoryRequest;
-import hcmut.contentCreatorOnline.dto.story.CreateStoryResponse;
-import hcmut.contentCreatorOnline.dto.story.CreateStoryResult;
+import hcmut.contentCreatorOnline.dto.genre.GenreListRequest;
+import hcmut.contentCreatorOnline.dto.story.*;
 import hcmut.contentCreatorOnline.service.StoryService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/story")
@@ -29,6 +27,15 @@ public class StoryController {
         CreateStoryResponse createStoryResponse = new CreateStoryResponse(HttpStatus.CREATED.value(), result);
 
         return new ResponseEntity<>(createStoryResponse, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/updateGenre/{story_id}")
+    public ResponseEntity<UpdateStoryGenreResponse> updateStoryGenres(@PathVariable("story_id") UUID storyId,
+                                                                      @RequestBody GenreListRequest genreListRequest) {
+        UpdateStoryGenreResult result = storyService.updateStoryGenres(storyId, genreListRequest.getGenreList());
+
+        return new ResponseEntity<>(new UpdateStoryGenreResponse(HttpStatus.OK.value(), result), HttpStatus.OK);
+
     }
 }
 
