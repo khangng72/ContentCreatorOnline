@@ -6,5 +6,6 @@ import lombok.Data;
 public class ChapterRequest {
     private String chapterTitle;
     private String chapterDescription;
+    private String ChapterContent;
     private String chapterImageUri;
 }

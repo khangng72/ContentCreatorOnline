@@ -29,6 +29,7 @@ public class ChapterService {
         chapter.setChapterNumber(newChapterNumber);
         chapter.setChapterTitle(request.getChapterTitle());
         chapter.setChapterDescription(request.getChapterDescription());
+        chapter.setChapterContent(request.getChapterContent());
         chapter.setChapterImageUri(request.getChapterImageUri());
         chapter.setStory(story);
 
