@@ -30,6 +30,4 @@ public class Genre {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "interested_in", joinColumns = @JoinColumn(name = "genre_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
-
-
 }
