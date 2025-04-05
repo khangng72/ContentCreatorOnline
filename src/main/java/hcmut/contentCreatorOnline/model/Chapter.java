@@ -21,14 +21,13 @@ public class Chapter {
     @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
 
+    @Column(name = "chapter_content", columnDefinition = "TEXT")
+    private String chapterContent;
+
     private String chapterImageUri;
 
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
-
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Paragraph> paragraphs;
-
 
 }
