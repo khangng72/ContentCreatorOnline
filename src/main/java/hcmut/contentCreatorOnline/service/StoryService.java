@@ -38,10 +38,10 @@ public class StoryService {
                 .salePrice(story.getSalePrice())
                 .numberOfLikes(story.getNumberOfLikes())
                 .tags(story.getTags())
-                .chapters(story.getChapters())
-                .genres(story.getGenres())
-                .readLists(story.getReadLists())
-                .orders(story.getOrders())
+//                .chapters(story.getChapters())
+//                .genres(story.getGenres())
+//                .readLists(story.getReadLists())
+//                .orders(story.getOrders())
                 .userPost(story.getUserPost())
                 .build();
     }
