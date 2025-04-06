@@ -97,6 +97,13 @@ public class StoryService {
                 .collect(Collectors.toList());
     }
 
+    public List<StoryDTO> getStoriesOwnedByUser(UUID userId) {
+        List<Story> stories = storyRepository.findByUserOwn_Id(userId);
+        return stories.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
     public StoryDTO getStoryByStoryId(UUID storyId){
         Story story = storyRepository.findById(storyId)
                 .orElseThrow(() -> new RuntimeException("Story not found with ID: " + storyId));
