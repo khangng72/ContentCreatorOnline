@@ -13,10 +13,7 @@ import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -29,11 +26,23 @@ public class StoryService {
 
     private StoryDTO mapToDTO(Story story) {
         return StoryDTO.builder()
-                .storyId(story.getStoryId())
+                //.storyId(story.getStoryId()
                 .storyTitle(story.getStoryTitle())
                 .storyDescription(story.getStoryDescription())
                 .coverImageUri(story.getCoverImageUri())
                 .releaseDate(story.getReleaseDate())
+                .releaseDate(story.getReleaseDate())
+                .createdDate(story.getCreatedDate())
+                .releaseStatus(story.getReleaseStatus())
+                .saleOnly(story.getSaleOnly())
+                .salePrice(story.getSalePrice())
+                .numberOfLikes(story.getNumberOfLikes())
+                .tags(story.getTags())
+                .chapters(story.getChapters())
+                .genres(story.getGenres())
+                .readLists(story.getReadLists())
+                .orders(story.getOrders())
+                .userPost(story.getUserPost())
                 .build();
     }
 
@@ -86,5 +95,11 @@ public class StoryService {
         return stories.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public StoryDTO getStoryByStoryId(UUID storyId){
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new RuntimeException("Story not found with ID: " + storyId));
+        return mapToDTO(story);
     }
 }

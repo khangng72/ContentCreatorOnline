@@ -40,10 +40,16 @@ public class StoryController {
 
     }
 
-    @GetMapping("/author/{user_id}")
+    @GetMapping("/post/{user_id}")
     public ResponseEntity<List<StoryDTO>> getStoriesOwnedByUser(@PathVariable UUID user_id) {
         List<StoryDTO> storiesDTOs = storyService.getStoriesPostedByUser(user_id);
         return ResponseEntity.ok(storiesDTOs);
+    }
+
+    @GetMapping("/{story_id}")
+    public ResponseEntity<StoryDTO> getStoryByStoryId(@PathVariable UUID story_id){
+        StoryDTO storyDTO = storyService.getStoryByStoryId(story_id);
+        return ResponseEntity.ok(storyDTO);
     }
 }
 
