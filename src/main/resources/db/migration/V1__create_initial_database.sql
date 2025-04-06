@@ -76,14 +76,14 @@ CREATE TABLE chapter
 -- CREATE TABLE PARAGRAPH
 DROP TABLE IF EXISTS paragraph CASCADE;
 --
---CREATE TABLE paragraph
---(
---    paragraph_id        UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
---    paragraph_number    INTEGER NOT NULL,
---    paragraph_content   TEXT    NOT NULL,
---    paragraph_image_uri VARCHAR(255),
---    chapter_id          UUID REFERENCES chapter (chapter_id) ON DELETE CASCADE
---);
+CREATE TABLE paragraph
+(
+    paragraph_id        UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    paragraph_number    INTEGER NOT NULL,
+    paragraph_content   TEXT    NOT NULL,
+    paragraph_image_uri VARCHAR(255),
+    chapter_id          UUID REFERENCES chapter (chapter_id) ON DELETE CASCADE
+);
 
 --CREATE TABLE COMMENT
 DROP TABLE IF EXISTS comment CASCADE;

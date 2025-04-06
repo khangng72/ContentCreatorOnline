@@ -2,12 +2,14 @@ package hcmut.contentCreatorOnline.controller.story;
 
 import hcmut.contentCreatorOnline.dto.genre.GenreListRequest;
 import hcmut.contentCreatorOnline.dto.story.*;
+import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.service.StoryService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -38,6 +40,10 @@ public class StoryController {
 
     }
 
-
+    @GetMapping("/author/{user_id}")
+    public ResponseEntity<List<StoryDTO>> getStoriesOwnedByUser(@PathVariable UUID user_id) {
+        List<StoryDTO> storiesDTOs = storyService.getStoriesPostedByUser(user_id);
+        return ResponseEntity.ok(storiesDTOs);
+    }
 }
 
