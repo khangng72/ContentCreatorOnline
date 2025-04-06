@@ -19,19 +19,19 @@ public class Story {
     private UUID storyId;
 
     @Column(name = "release_date")
-    private LocalDate releaseDate;
+    private LocalDate releaseDate = null;
 
     @Column(name = "created_date")
-    private LocalDate createdDate;
+    private LocalDate createdDate = LocalDate.now();
 
     @Column(name = "release_status")
-    private Boolean releaseStatus;
+    private Boolean releaseStatus = true;
 
     @Column(name = "story_title", nullable = false)
     private String storyTitle;
 
     @Column(name = "sale_only")
-    private Boolean saleOnly;
+    private Boolean saleOnly = false;
 
     @Column(name = "sale_price")
     private Double salePrice;
