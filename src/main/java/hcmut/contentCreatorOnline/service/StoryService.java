@@ -3,6 +3,7 @@ package hcmut.contentCreatorOnline.service;
 import hcmut.contentCreatorOnline.dto.genre.GenreResult;
 import hcmut.contentCreatorOnline.dto.story.CreateStoryRequest;
 import hcmut.contentCreatorOnline.dto.story.CreateStoryResult;
+import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.dto.story.UpdateStoryGenreResult;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
@@ -16,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -24,6 +26,16 @@ public class StoryService {
     private final StoryRepository storyRepository;
 
     private final GenreRepository genreRepository;
+
+    private StoryDTO mapToDTO(Story story) {
+        return StoryDTO.builder()
+                .storyId(story.getStoryId())
+                .storyTitle(story.getStoryTitle())
+                .storyDescription(story.getStoryDescription())
+                .coverImageUri(story.getCoverImageUri())
+                .releaseDate(story.getReleaseDate())
+                .build();
+    }
 
     public StoryService(StoryRepository storyRepository, GenreRepository genreRepository) {
         this.storyRepository = storyRepository;
@@ -69,4 +81,10 @@ public class StoryService {
         return new UpdateStoryGenreResult(result.getStoryId());
     }
 
+    public List<StoryDTO> getStoriesPostedByUser(UUID userId) {
+        List<Story> stories = storyRepository.findByUserPost_Id(userId);
+        return stories.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
 }
