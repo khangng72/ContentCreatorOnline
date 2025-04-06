@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/story")
+@RequestMapping("/chapter")
 @RequiredArgsConstructor
 public class ChapterController {
     private final ChapterService chapterService;
 
-    @PostMapping("/newChapter/{storyId}")
+    @PostMapping("/new/{storyId}")
     public ResponseEntity<CreateNewChapterStoryResponse> createNewChapterStory(
             @PathVariable("storyId") UUID storyId,
             @RequestBody ChapterRequest chapterRequest) {
