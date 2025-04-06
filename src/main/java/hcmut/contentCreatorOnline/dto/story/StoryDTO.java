@@ -47,13 +47,13 @@ public class StoryDTO {
 
     private String tags;
 
-    private List<Chapter> chapters;
+//    private List<Chapter> chapters;
 
-    private Set<Genre> genres = new HashSet<>();
-
-    private Set<ReadList> readLists = new HashSet<>();
-
-    private Set<Order> orders = new HashSet<>();
+//    private Set<Genre> genres = new HashSet<>();
+//
+//    private Set<ReadList> readLists = new HashSet<>();
+//
+//    private Set<Order> orders = new HashSet<>();
 
     private User userPost;
 }
