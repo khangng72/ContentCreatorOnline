@@ -37,5 +37,5 @@ public class StoryController {
         return new ResponseEntity<>(new UpdateStoryGenreResponse(HttpStatus.OK.value(), result), HttpStatus.OK);
 
     }
-}
 
+}
