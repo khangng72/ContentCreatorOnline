@@ -3,7 +3,9 @@ package hcmut.contentCreatorOnline.controller.chapter;
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
 import hcmut.contentCreatorOnline.dto.chapter.NewChapterResponseDTO;
 import hcmut.contentCreatorOnline.model.Chapter;
-
+import hcmut.contentCreatorOnline.model.Story;
+import hcmut.contentCreatorOnline.repository.ChapterRepository;
+import hcmut.contentCreatorOnline.repository.StoryRepository;
 import hcmut.contentCreatorOnline.service.impl.ChapterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
