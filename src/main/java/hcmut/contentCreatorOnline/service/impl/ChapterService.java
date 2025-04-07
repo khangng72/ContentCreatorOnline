@@ -1,8 +1,6 @@
 package hcmut.contentCreatorOnline.service.impl;
 
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
-import hcmut.contentCreatorOnline.exception.ApplicationException;
-import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.repository.ChapterRepository;
@@ -21,7 +19,7 @@ public class ChapterService {
 
     public Chapter createNewChapter(UUID storyId, ChapterRequest request) {
         Story story = storyRepository.findById(storyId)
-                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found"));
+                .orElseThrow(() -> new RuntimeException("Story not found"));
 
         // Có thể tối ưu bằng cách viết query lấy max chapterNumber
         int maxChapterNumber = chapterRepository.findMaxChapterNumberByStoryId(storyId);
