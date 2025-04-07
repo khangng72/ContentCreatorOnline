@@ -72,6 +72,7 @@ public class StoryService {
         story.setCoverImageUri(createStoryRequest.getCoverImageUri());
         story.setStoryDescription(createStoryRequest.getStoryDescription());
         story.setUserPost(creator);
+        story.setReleaseDate(createStoryRequest.getReleaseDate());
 
         Story saveStoryResult = storyRepository.save(story);
         return new CreateStoryResult(saveStoryResult.getStoryId());

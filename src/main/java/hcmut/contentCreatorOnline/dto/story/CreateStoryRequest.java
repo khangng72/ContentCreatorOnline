@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,8 +15,9 @@ public class CreateStoryRequest {
 
     @NotNull
     private String storyTitle;
-    private Boolean saleOnly;
-    private Double salePrice;
-    private String coverImageUri;
-    private String storyDescription;
+    private Boolean saleOnly = false;
+    private Double salePrice = null;
+    private String coverImageUri = null;
+    private String storyDescription = null;
+    private LocalDate releaseDate = null;
 }
