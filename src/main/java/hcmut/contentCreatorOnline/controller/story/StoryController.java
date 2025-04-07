@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -37,5 +38,16 @@ public class StoryController {
         return new ResponseEntity<>(new UpdateStoryGenreResponse(HttpStatus.OK.value(), result), HttpStatus.OK);
 
     }
-}
 
+    @GetMapping("/post/{user_id}")
+    public ResponseEntity<List<StoryResponse>> getStoriesPostedByUser(@PathVariable UUID user_id) {
+        List<StoryResponse> storyResponses = storyService.getStoriesPostedByUser(user_id);
+        return ResponseEntity.ok(storyResponses);
+    }
+
+    @GetMapping("/{story_id}")
+    public ResponseEntity<StoryResponse> getStoryByStoryId(@PathVariable UUID story_id) {
+        StoryResponse storyDTO = storyService.getStoryByStoryId(story_id);
+        return ResponseEntity.ok(storyDTO);
+    }
+}
