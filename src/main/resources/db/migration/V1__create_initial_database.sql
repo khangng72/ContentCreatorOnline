@@ -72,9 +72,10 @@ CREATE TABLE chapter
     story_id            UUID REFERENCES story (story_id) ON DELETE CASCADE
 );
 
+
 -- CREATE TABLE PARAGRAPH
 DROP TABLE IF EXISTS paragraph CASCADE;
-
+--
 CREATE TABLE paragraph
 (
     paragraph_id        UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
