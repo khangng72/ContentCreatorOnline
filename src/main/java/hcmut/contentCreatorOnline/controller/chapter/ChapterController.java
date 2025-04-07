@@ -1,6 +1,7 @@
 package hcmut.contentCreatorOnline.controller.chapter;
 
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
+import hcmut.contentCreatorOnline.dto.chapter.NewChapterResponseDTO;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.repository.ChapterRepository;
