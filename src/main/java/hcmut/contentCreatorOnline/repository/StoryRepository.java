@@ -12,6 +12,7 @@ import java.util.UUID;
 @Repository
 public interface StoryRepository extends JpaRepository<Story, UUID> {
     List<Story> findByUserPost_Id(UUID userId);
+
     @Query("SELECT s FROM Story s JOIN s.userOwn u WHERE u.id = :userId")
     List<Story> findByUserOwn_Id(@Param("userId") UUID userId);
 }
