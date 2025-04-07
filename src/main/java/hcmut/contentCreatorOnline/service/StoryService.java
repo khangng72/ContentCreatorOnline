@@ -8,8 +8,11 @@ import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Genre;
 import hcmut.contentCreatorOnline.model.Story;
+import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -32,12 +35,19 @@ public class StoryService {
 
     public CreateStoryResult createNewStory(CreateStoryRequest createStoryRequest) {
 
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+
+        User creator = new User();
+        creator.setId(userId);
+
         Story story = new Story();
         story.setStoryTitle(createStoryRequest.getStoryTitle());
         story.setSaleOnly(createStoryRequest.getSaleOnly());
         story.setSalePrice(createStoryRequest.getSalePrice());
         story.setCoverImageUri(createStoryRequest.getCoverImageUri());
         story.setStoryDescription(createStoryRequest.getStoryDescription());
+        story.setUserPost(creator);
 
         Story saveStoryResult = storyRepository.save(story);
         return new CreateStoryResult(saveStoryResult.getStoryId());
