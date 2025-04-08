@@ -1,5 +1,6 @@
 package hcmut.contentCreatorOnline.model;
 
+import hcmut.contentCreatorOnline.dto.order.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,8 +25,9 @@ public class Order {
     @Column(name = "total_price")
     private Double totalPrice;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private OrderStatus status;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -35,3 +37,4 @@ public class Order {
     @JoinTable(name = "order_contain", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "story_id"))
     private Set<Story> produces = new HashSet<>();
 }
+

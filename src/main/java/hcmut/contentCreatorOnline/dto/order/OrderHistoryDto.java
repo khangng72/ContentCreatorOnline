@@ -11,23 +11,20 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderResponseDto {
+public class OrderHistoryDto {
     private UUID orderId;
     private LocalDate orderDate;
     private Double totalPrice;
     private String status;
-
-    private UUID userId;
-    private String userName;
-
-    private List<StorySummary> stories;
+    private List<StoryItem> stories;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class StorySummary {
+    public static class StoryItem {
         private UUID storyId;
         private String title;
         private Double salePrice;
     }
 }
+
