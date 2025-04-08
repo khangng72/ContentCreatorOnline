@@ -56,4 +56,6 @@ public class StoryController {
         List<StoryResponse> storyResponses = storyService.getStoriesOwnedByUser(user_id);
         return ResponseEntity.ok(storyResponses);
     }
+
+
 }
