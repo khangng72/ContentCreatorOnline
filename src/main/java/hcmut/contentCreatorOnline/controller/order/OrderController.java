@@ -1,0 +1,27 @@
+package hcmut.contentCreatorOnline.controller.order;
+
+import hcmut.contentCreatorOnline.dto.ApiResponse;
+import hcmut.contentCreatorOnline.dto.order.OrderRequestDto;
+import hcmut.contentCreatorOnline.dto.order.OrderResponseDto;
+import hcmut.contentCreatorOnline.model.Order;
+import hcmut.contentCreatorOnline.service.impl.OrderService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/order")
+public class OrderController {
+    public OrderService orderService;
+    public OrderController(OrderService orderService) {this.orderService = orderService;}
+
+    @PostMapping("/create")
+    public ResponseEntity<ApiResponse<OrderResponseDto>> createOrder(@RequestBody @Valid OrderRequestDto dto) {
+        OrderResponseDto response = orderService.createOrder(dto);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new ApiResponse<>(201, response));
+    }
+
+}

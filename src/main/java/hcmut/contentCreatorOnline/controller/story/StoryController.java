@@ -36,13 +36,12 @@ public class StoryController {
         UpdateStoryGenreResult result = storyService.updateStoryGenres(storyId, genreListRequest.getGenreList());
 
         return new ResponseEntity<>(new UpdateStoryGenreResponse(HttpStatus.OK.value(), result), HttpStatus.OK);
-
     }
 
     @GetMapping("/post/{user_id}")
-    public ResponseEntity<List<StoryResponse>> getStoriesPostByUser(@PathVariable UUID user_id) {
-        List<StoryResponse> storiesDTOs = storyService.getStoriesPostedByUser(user_id);
-        return ResponseEntity.ok(storiesDTOs);
+    public ResponseEntity<List<StoryResponse>> getStoriesPostedByUser(@PathVariable UUID user_id) {
+        List<StoryResponse> storyResponses = storyService.getStoriesPostedByUser(user_id);
+        return ResponseEntity.ok(storyResponses);
     }
 
     @GetMapping("/{story_id}")
@@ -50,12 +49,4 @@ public class StoryController {
         StoryResponse storyDTO = storyService.getStoryByStoryId(story_id);
         return ResponseEntity.ok(storyDTO);
     }
-
-    @GetMapping("/own/{user_id}")
-    public ResponseEntity<List<StoryResponse>> getStoriesOwnedByUser(@PathVariable UUID user_id) {
-        List<StoryResponse> storyResponses = storyService.getStoriesOwnedByUser(user_id);
-        return ResponseEntity.ok(storyResponses);
-    }
-
-
 }

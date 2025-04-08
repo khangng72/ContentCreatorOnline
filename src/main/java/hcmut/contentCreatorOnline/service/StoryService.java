@@ -72,6 +72,7 @@ public class StoryService {
         story.setCoverImageUri(createStoryRequest.getCoverImageUri());
         story.setStoryDescription(createStoryRequest.getStoryDescription());
         story.setUserPost(creator);
+        story.setReleaseDate(createStoryRequest.getReleaseDate());
 
         Story saveStoryResult = storyRepository.save(story);
         return new CreateStoryResult(saveStoryResult.getStoryId());
@@ -110,16 +111,9 @@ public class StoryService {
                 .collect(Collectors.toList());
     }
 
-    public List<StoryResponse> getStoriesOwnedByUser(UUID userId) {
-        List<Story> stories = storyRepository.findByUserOwn_Id(userId);
-        return stories.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public StoryResponse getStoryByStoryId(UUID storyId){
+    public StoryResponse getStoryByStoryId(UUID storyId) {
         Story story = storyRepository.findById(storyId)
-                .orElseThrow(() -> new RuntimeException("Story not found with ID: " + storyId));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
         return mapToDTO(story);
     }
 
