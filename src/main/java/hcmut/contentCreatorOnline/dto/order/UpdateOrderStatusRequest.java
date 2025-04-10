@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateOrderStatusRequest {
-    private String status; // Expect: "PAID", "CANCELLED", ...
+    private String status;
 }
 

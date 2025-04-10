@@ -1,11 +1,9 @@
 package hcmut.contentCreatorOnline.controller.order;
 
 import hcmut.contentCreatorOnline.dto.ApiResponse;
-import hcmut.contentCreatorOnline.dto.order.OrderHistoryDto;
-import hcmut.contentCreatorOnline.dto.order.OrderRequestDto;
-import hcmut.contentCreatorOnline.dto.order.OrderResponseDto;
-import hcmut.contentCreatorOnline.dto.order.UpdateOrderStatusRequest;
+import hcmut.contentCreatorOnline.dto.order.*;
 import hcmut.contentCreatorOnline.dto.user.UserDetailsImpl;
+import hcmut.contentCreatorOnline.model.Order;
 import hcmut.contentCreatorOnline.service.impl.OrderService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -45,18 +43,19 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    @PutMapping("/orders/{id}/status")
-    public ResponseEntity<?> updateOrderStatus(
-            @PathVariable UUID id,
-            @RequestBody UpdateOrderStatusRequest request,
-            @AuthenticationPrincipal UserDetailsImpl currentUser // hoặc cách bạn lấy current user
-    ) {
-        OrderResponseDto updatedOrder = orderService.updateOrderStatus(id, request.getStatus(), currentUser.getId());
-        if (currentUser == null) {
-            throw new RuntimeException("User is not authenticated");
-        }
-
-        return ResponseEntity.ok(updatedOrder);
+    @PutMapping("/{id}/status")
+    public ResponseEntity<OrderResponseDto> updateOrderStatus(@PathVariable UUID id,
+                                                              @RequestBody UpdateOrderStatusRequest request) {
+        Order updatedOrder = orderService.updateOrderStatus(id, OrderStatus.valueOf(request.getStatus()));
+        OrderResponseDto dto = orderService.mapToOrderResponse(updatedOrder);
+        return ResponseEntity.ok(dto);
     }
+
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<OrderResponseDto> cancelOrder(@PathVariable UUID id) {
+        OrderResponseDto cancelledOrder = orderService.cancelOrder(id);
+        return ResponseEntity.ok(cancelledOrder);
+    }
+
 
 }

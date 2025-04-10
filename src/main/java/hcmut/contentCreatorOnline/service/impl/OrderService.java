@@ -14,6 +14,7 @@ import hcmut.contentCreatorOnline.repository.StoryRepository;
 import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.service.UserService;
 import hcmut.contentCreatorOnline.utils.LoggerUtil;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.access.AccessDeniedException;
 
@@ -42,7 +43,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
         this.storyRepository = storyRepository;
     }
-    private OrderResponseDto mapToOrderResponse(Order order) {
+    public OrderResponseDto mapToOrderResponse(Order order) {
         OrderResponseDto dto = new OrderResponseDto();
         dto.setOrderId(order.getOrderId());
         dto.setOrderDate(order.getOrderDate());
@@ -64,9 +65,6 @@ public class OrderService {
         dto.setStories(storySummaries);
         return dto;
     }
-
-
-
 
     @Transactional
     public OrderResponseDto createOrder(OrderRequestDto dto) {
@@ -124,7 +122,6 @@ public class OrderService {
                         story.getSalePrice()
                 )).collect(Collectors.toList());
 
-
         dto.setStories(storyDtos);
         return dto;
     }
@@ -151,24 +148,29 @@ public class OrderService {
         }).collect(Collectors.toList());
     }
 
-    public OrderResponseDto updateOrderStatus(UUID orderId, String status, UUID currentUserId) {
+    public Order updateOrderStatus(UUID orderId, OrderStatus newStatus) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new EntityNotFoundException("Order not found"));
+
+        order.setStatus(newStatus);
+        return orderRepository.save(order);
+    }
+
+
+    @Transactional
+    public OrderResponseDto cancelOrder(UUID orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Order not found"));
 
-        User currentUser = userRepository.findById(currentUserId)
-                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
-
-        // Chỉ admin mới được update đơn hàng của người khác
-        if (!order.getUserId().getId().equals(currentUserId) && !currentUser.isAdmin()) {
-            throw new AccessDeniedException("You are not allowed to update this order");
+        // Kiểm tra trạng thái trước khi huỷ
+        if (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED) {
+            throw new ApplicationException(ErrorConst.BAD_REQUEST, "Order cannot be cancelled in its current status.");
         }
 
-            OrderStatus newStatus = OrderStatus.valueOf(status.toUpperCase());
-            order.setStatus(newStatus); // Gán chuỗi "PENDING", "COMPLETED",...
-            orderRepository.save(order);
+        order.setStatus(OrderStatus.CANCELLED);
+        orderRepository.save(order);
 
-
-        return mapToOrderResponse(order);
+        return mapToOrderResponse(order); // Nếu mapToOrderResponse là private thì hãy public
     }
 
 }

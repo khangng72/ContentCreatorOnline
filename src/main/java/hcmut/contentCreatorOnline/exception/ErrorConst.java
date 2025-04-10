@@ -76,4 +76,9 @@ public class ErrorConst {
             OccurredPoint.DB.toString(),
             "Delete data failed");
 
+    public static final ErrorConstParams BAD_REQUEST = new ErrorConstParams(
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            "5000005",
+            OccurredPoint.DB.toString(),
+            "Update status failed");;
 }
