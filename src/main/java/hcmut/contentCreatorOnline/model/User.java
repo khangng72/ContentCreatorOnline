@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -74,4 +75,8 @@ public class User {
 
     @ManyToMany(mappedBy =  "userLike")
     private Set<Story> likeStory = new HashSet<>();
+
+    @OneToMany(mappedBy = "userUpload")
+    @JsonManagedReference
+    private Set<UploadImage> uploadImage = new HashSet<>();
 }
