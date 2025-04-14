@@ -3,6 +3,8 @@ package hcmut.contentCreatorOnline.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,6 +22,9 @@ public class Chapter {
 
     @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
+
+    @Column(name = "created_time")
+    private LocalDateTime createdTime = LocalDateTime.now();
 
     @Column(name = "chapter_content", columnDefinition = "TEXT")
     private String chapterContent;

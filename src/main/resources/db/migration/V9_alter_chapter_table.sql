@@ -1,0 +1,2 @@
+ALTER TABLE story
+    ADD COLUMN created_time TIMESTAMP DEFAULT Now();
