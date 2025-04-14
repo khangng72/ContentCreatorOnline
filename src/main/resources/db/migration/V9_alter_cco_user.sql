@@ -1,2 +1,0 @@
-ALTER TABLE cco_user
-    ADD COLUMN upload_image DATE DEFAULT CURRENT_DATE;

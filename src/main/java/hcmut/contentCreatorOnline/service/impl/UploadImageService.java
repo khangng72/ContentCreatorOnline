@@ -1,5 +1,7 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.exception.ApplicationException;
+import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.UploadImage;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.repository.UploadImageRepository;
@@ -14,26 +16,27 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UploadImageService {
     private final UploadImageRepository uploadImageRepository;
-    private final UserRepository userRepository; // giả sử bạn đã có repo này
+    private final UserRepository userRepository;
 
-    public UploadImage saveImage(UUID userId, String imageUrl) {
+    public UploadImage saveImage(UUID userId, String imageUri) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User with id " + userId + " not found"));
 
         UploadImage image = new UploadImage();
-        image.setImageUrl(imageUrl);
+        image.setImageUri(imageUri);
         image.setUserUpload(user);
-        image.setStatus(true);
-        image.setCreatedDay(LocalDate.now());
-        image.setUpdatedDay(LocalDate.now());
+        image.setUploadedDay(LocalDate.now());
 
         return uploadImageRepository.save(image);
     }
 
+    // This is a soft delete
     public void deleteImage(UUID imageId) {
         UploadImage image = uploadImageRepository.findById(imageId)
-                .orElseThrow(() -> new RuntimeException("Image not found"));
-        uploadImageRepository.delete(image);
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Image with id " + imageId + " not found"));
+
+        image.setIsDeleted(true);
+        uploadImageRepository.save(image);
     }
 }
 
