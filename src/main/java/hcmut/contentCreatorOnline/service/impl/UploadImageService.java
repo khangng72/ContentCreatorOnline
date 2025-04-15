@@ -1,11 +1,14 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.dto.uploadImage.DeleteImageResult;
+import hcmut.contentCreatorOnline.dto.uploadImage.UploadImageResult;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.UploadImage;
 import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.UploadImageRepository;
-import hcmut.contentCreatorOnline.repository.UserRepository;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,27 +19,35 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UploadImageService {
     private final UploadImageRepository uploadImageRepository;
-    private final UserRepository userRepository;
 
-    public UploadImage saveImage(UUID userId, String imageUri) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User with id " + userId + " not found"));
+    public UploadImageResult saveImage(String imageUri) {
+
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+
+        User uploader = new User();
+        uploader.setId(userId);
 
         UploadImage image = new UploadImage();
         image.setImageUri(imageUri);
-        image.setUserUpload(user);
+        image.setUserUpload(uploader);
         image.setUploadedDay(LocalDate.now());
 
-        return uploadImageRepository.save(image);
+        UploadImage savedImage = uploadImageRepository.save(image);
+
+        return new UploadImageResult(savedImage.getImageId(), savedImage.getImageUri());
     }
 
     // This is a soft delete
-    public void deleteImage(UUID imageId) {
+    public DeleteImageResult deleteImage(UUID imageId) {
         UploadImage image = uploadImageRepository.findById(imageId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Image with id " + imageId + " not found"));
 
         image.setIsDeleted(true);
-        uploadImageRepository.save(image);
+
+        UploadImage result = uploadImageRepository.save(image);
+
+        return new DeleteImageResult(result.getImageId(), result.getIsDeleted());
     }
 }
 
