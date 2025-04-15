@@ -1,16 +1,16 @@
 package hcmut.contentCreatorOnline.model;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -69,9 +69,12 @@ public class User {
     @OneToMany(mappedBy = "userPost")
     private Set<Story> storyPost = new HashSet<>();
 
-    @ManyToMany(mappedBy =  "userOwn")
+    @ManyToMany(mappedBy = "userOwn")
     private Set<Story> ownStory = new HashSet<>();
 
-    @ManyToMany(mappedBy =  "userLike")
+    @ManyToMany(mappedBy = "userLike")
     private Set<Story> likeStory = new HashSet<>();
+
+    @OneToMany(mappedBy = "userUpload", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UploadImage> uploadImage = new HashSet<>();
 }
