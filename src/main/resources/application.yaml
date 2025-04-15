@@ -16,6 +16,7 @@ spring:
     clean-disabled: false
     enabled: true
     baseline-on-migrate: true
+    out-of-order: true
   security:
     user:
       name: user
