@@ -1,7 +1,8 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.dto.chapter.ChapterPageElement;
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
-import hcmut.contentCreatorOnline.dto.chapter.ChapterResponseDTO;
+import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -16,9 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -48,41 +47,22 @@ public class ChapterService {
         return chapterRepository.save(chapter);
     }
 
-//    public List<ChapterResponseDTO> getAllChaptersNewestFirst() {
-//        return chapterRepository.findAllChaptersWithStoryAndUser()
-//                .stream()
-//                .map(c -> {
-//                    Story s = c.getStory();
-//                    User u = s.getUserPost();
-//                    return new ChapterResponseDTO(
-//                            c.getChapterId(),
-//                            c.getChapterTitle(),
-//                            c.getChapterDescription(),
-//                            c.getChapterContent(),
-//                            c.getChapterImageUri(),
-//                            null, // c.getCreatedAt() nếu có
-//                            s.getStoryTitle(),
-//                            s.getStoryDescription(),
-//                            u.getFirstName(),
-//                            u.getLastName(),
-//                            u.getEmail()
-//                    );
-//                }).collect(Collectors.toList());
-//    }
-
-    public Map<String, Object> getAllChaptersNewestFirstPaged(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("createdTime").descending());
+    public GetChaptersPagedResponse getChaptersPaged(int page, int size, String sortBy, String sortDirection) {
+        Sort.Direction sortDirectionEnum = Sort.Direction.fromString(sortDirection);
+        Sort sort = Sort.by(sortDirectionEnum, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
         Page<Chapter> chapterPage = chapterRepository.findAllChaptersWithStoryAndUser(pageable);
 
-        List<ChapterResponseDTO> chapterDTOs = chapterPage.getContent().stream().map(c -> {
+        List<ChapterPageElement> chapterList = chapterPage.getContent().stream().map(c -> {
             Story s = c.getStory();
             User u = s.getUserPost();
-            return new ChapterResponseDTO(
+            return new ChapterPageElement(
                     c.getChapterId(),
                     c.getChapterTitle(),
                     c.getChapterDescription(),
                     c.getChapterContent(),
                     c.getChapterImageUri(),
+                    c.getChapterNumber(),
                     c.getCreatedTime(),
                     s.getStoryTitle(),
                     s.getStoryDescription(),
@@ -92,13 +72,13 @@ public class ChapterService {
             );
         }).collect(Collectors.toList());
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", 200);
-        response.put("result", chapterDTOs);
-        response.put("currentPage", chapterPage.getNumber());
-        response.put("totalItems", chapterPage.getTotalElements());
-        response.put("totalPages", chapterPage.getTotalPages());
 
-        return response;
+        return new GetChaptersPagedResponse(
+                200,
+                chapterList,
+                chapterPage.getNumber(),
+                (int) chapterPage.getTotalElements(),
+                chapterPage.getTotalPages()
+        );
     }
 }

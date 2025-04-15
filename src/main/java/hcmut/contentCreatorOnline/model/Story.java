@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,9 @@ public class Story {
 
     @Column(name = "created_date")
     private LocalDate createdDate = LocalDate.now();
+
+    @Column(name = "created_time")
+    private LocalDateTime createdTime = LocalDateTime.now();
 
     @Column(name = "release_status")
     private Boolean releaseStatus = true;

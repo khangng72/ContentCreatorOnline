@@ -10,14 +10,15 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChapterResponseDTO {
+public class ChapterPageElement {
     private UUID chapterId;
     private String chapterTitle;
     private String chapterDescription;
     private String chapterContent;
     private String chapterImageUri;
+    private Integer chapterNumber;
 
-    private LocalDateTime createdAt; // nếu có field created date
+    private LocalDateTime chapterCreatedTime; // nếu có field created date
 
     private String storyTitle;
     private String storyDescription;
