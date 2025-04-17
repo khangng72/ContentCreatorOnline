@@ -1,0 +1,2 @@
+ALTER TABLE chapter
+    ADD COLUMN is_published BOOLEAN DEFAULT TRUE;

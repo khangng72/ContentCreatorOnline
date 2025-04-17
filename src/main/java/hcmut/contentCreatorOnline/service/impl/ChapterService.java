@@ -1,16 +1,25 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.dto.chapter.ChapterPageElement;
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
+import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.model.Story;
+import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.repository.ChapterRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +45,40 @@ public class ChapterService {
         chapter.setStory(story);
 
         return chapterRepository.save(chapter);
+    }
+
+    public GetChaptersPagedResponse getChaptersPaged(int page, int size, String sortBy, String sortDirection) {
+        Sort.Direction sortDirectionEnum = Sort.Direction.fromString(sortDirection);
+        Sort sort = Sort.by(sortDirectionEnum, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<Chapter> chapterPage = chapterRepository.findAllChaptersWithStoryAndUser(pageable);
+
+        List<ChapterPageElement> chapterList = chapterPage.getContent().stream().map(c -> {
+            Story s = c.getStory();
+            User u = s.getUserPost();
+            return new ChapterPageElement(
+                    c.getChapterId(),
+                    c.getChapterTitle(),
+                    c.getChapterDescription(),
+                    c.getChapterContent(),
+                    c.getChapterImageUri(),
+                    c.getChapterNumber(),
+                    c.getCreatedTime(),
+                    s.getStoryTitle(),
+                    s.getStoryDescription(),
+                    u.getFirstName(),
+                    u.getLastName(),
+                    u.getEmail()
+            );
+        }).collect(Collectors.toList());
+
+
+        return new GetChaptersPagedResponse(
+                200,
+                chapterList,
+                chapterPage.getNumber(),
+                (int) chapterPage.getTotalElements(),
+                chapterPage.getTotalPages()
+        );
     }
 }

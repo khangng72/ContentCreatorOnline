@@ -3,7 +3,7 @@ package hcmut.contentCreatorOnline.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -18,8 +18,14 @@ public class Chapter {
 
     private String chapterTitle;
 
+    @Column(name = "is_published")
+    private Boolean isPublished = true;
+
     @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
+
+    @Column(name = "created_time")
+    private LocalDateTime createdTime = LocalDateTime.now();
 
     @Column(name = "chapter_content", columnDefinition = "TEXT")
     private String chapterContent;

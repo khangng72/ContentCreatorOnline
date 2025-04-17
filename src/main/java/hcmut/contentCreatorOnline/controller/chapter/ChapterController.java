@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.controller.chapter;
 
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
 import hcmut.contentCreatorOnline.dto.chapter.CreateNewChapterStoryResponse;
+import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
 import hcmut.contentCreatorOnline.dto.chapter.NewChapterResponseDTO;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.service.impl.ChapterService;
@@ -33,4 +34,16 @@ public class ChapterController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    @GetMapping("/latest")
+    public ResponseEntity<GetChaptersPagedResponse> getChaptersPaged(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "createdTime") String sortBy,
+            @RequestParam(defaultValue = "desc") String sortDirection
+    ) {
+        GetChaptersPagedResponse result = chapterService.getChaptersPaged(page, size, sortBy, sortDirection);
+        return ResponseEntity.ok(result);
+    }
+
 }
