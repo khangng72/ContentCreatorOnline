@@ -37,7 +37,7 @@ public class Chapter {
     private String chapterContent;
 
     private String chapterImageUri;
-
+    
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
