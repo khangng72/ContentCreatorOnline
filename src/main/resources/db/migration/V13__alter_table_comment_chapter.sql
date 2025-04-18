@@ -10,3 +10,5 @@ ALTER TABLE comment
     ADD COLUMN created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE comment
     DROP COLUMN story_id;
+ALTER TABLE chapter
+    ADD COLUMN number_of_comment INT DEFAULT 0;

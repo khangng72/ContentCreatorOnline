@@ -20,6 +20,8 @@ public class Chapter {
 
     private Integer chapterNumber;
 
+    private Integer numberOfComment;
+
     private String chapterTitle;
 
     @Column(name = "is_published")

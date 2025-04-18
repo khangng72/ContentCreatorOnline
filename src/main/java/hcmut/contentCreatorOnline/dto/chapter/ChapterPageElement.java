@@ -17,7 +17,6 @@ public class ChapterPageElement {
     private String chapterContent;
     private String chapterImageUri;
     private Integer chapterNumber;
-
     private LocalDateTime chapterCreatedTime; // nếu có field created date
 
     private String storyTitle;
@@ -26,4 +25,6 @@ public class ChapterPageElement {
     private String userFirstName;
     private String userLastName;
     private String userEmail;
+
+    private Integer numberOfComment;
 }
