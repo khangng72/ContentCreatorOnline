@@ -1,7 +1,12 @@
 package hcmut.contentCreatorOnline.dto.user;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
+import hcmut.contentCreatorOnline.model.Genre;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,4 +40,8 @@ public class RegisterNewUserRequest {
 
     @NotNull(message = "birthday is null")
     private LocalDate birthday;
+
+    // Chỉ cần truyền ID genre
+    private Set<Integer> genreIds;
+
 }

@@ -16,4 +16,5 @@ public interface UserService {
     RegisterNewUserResponse createNewUser(RegisterNewUserRequest user) throws ApplicationException;
 
     UserResponseDTO getUserById(UUID id);
+
 }
