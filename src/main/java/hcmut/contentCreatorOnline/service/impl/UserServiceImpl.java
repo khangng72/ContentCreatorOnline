@@ -8,12 +8,14 @@ import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Genre;
 import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.service.JwtService;
 import hcmut.contentCreatorOnline.service.UserService;
 import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -132,8 +134,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public UserResponseDTO getUserById(UUID id) {
-        User user = userRepository.findById(id)
+    public UserResponseDTO getUserById() {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return UserResponseDTO.builder()
                 .id(user.getId())
