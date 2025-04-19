@@ -47,7 +47,12 @@ public class CommentService {
                     .map(comment -> new CommentPageElement(
                             comment.getCommentId(),
                             comment.getCommentContent(),
-                            comment.getCreatedTime()))
+                            comment.getCreatedTime(),
+                            comment.getChapter().getChapterId(),
+                            comment.getUser().getId(),
+                            comment.getUser().getFirstName(),
+                            comment.getUser().getLastName()
+                    ))
                     .toList();
 
             return new CommentPageResponse(

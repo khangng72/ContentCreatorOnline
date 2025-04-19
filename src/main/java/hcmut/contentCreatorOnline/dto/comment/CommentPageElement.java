@@ -14,4 +14,9 @@ public class CommentPageElement {
     private UUID commentId;
     private String comment_content;
     private LocalDateTime createdTime;
+
+    private UUID chapterId;
+    private UUID userId;
+    private String userFirstName;
+    private String userLastName;
 }
