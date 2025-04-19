@@ -1,20 +1,19 @@
 package hcmut.contentCreatorOnline.model;
 
-import java.time.LocalDate;
-import java.util.UUID;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Data
 @Table(name = "comment")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
 
     @Id
@@ -22,17 +21,28 @@ public class Comment {
     @Column(name = "comment_id", nullable = false)
     private UUID commentId;
 
-    private LocalDate commentDate;
+    private LocalDateTime createdTime = LocalDateTime.now();
 
     private String commentContent;
 
-    private Integer numberOfLikes;
+    private Integer numberOfLikes = 0;
 
-    private Boolean isPinned;
+    private Boolean isPinned = false;
 
-    @ManyToOne
-    @JoinColumn(name = "story_id")
-    private Story story;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "chapter_id")
+    private Chapter chapter;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_comment_id")
+    private Comment parentComment;
+
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> replies;
 
     private Boolean isDeleted;
 }

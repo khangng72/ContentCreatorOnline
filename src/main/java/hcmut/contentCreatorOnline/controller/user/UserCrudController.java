@@ -2,15 +2,17 @@ package hcmut.contentCreatorOnline.controller.user;
 
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
+import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -28,5 +30,14 @@ public class UserCrudController {
 
         RegisterNewUserResponse response = userService.createNewUser(registerNewUserRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable UUID id) {
+        UserResponseDTO user = userService.getUserById(id);
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", 200);
+        response.put("result", user);
+        return ResponseEntity.ok(response);
     }
 }

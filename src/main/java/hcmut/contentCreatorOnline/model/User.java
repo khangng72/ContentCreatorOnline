@@ -28,6 +28,9 @@ public class User {
     @Column(name = "user_password", nullable = false)
     private String password;
 
+    @Column
+    private String avatarUrl;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
@@ -72,6 +75,9 @@ public class User {
 
     @ManyToMany(mappedBy = "userLike")
     private Set<Story> likeStory = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     @OneToMany(mappedBy = "userUpload", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UploadImage> uploadImage = new HashSet<>();

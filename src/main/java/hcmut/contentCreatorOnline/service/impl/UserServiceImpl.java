@@ -3,6 +3,7 @@ package hcmut.contentCreatorOnline.service.impl;
 import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
+import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Genre;
@@ -21,6 +22,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +38,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private GenreRepository genreRepository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordUtil passwordUtil, JwtService jwtService, AuthenticationManager authenticationManager) {
+    public UserServiceImpl(UserRepository userRepository, PasswordUtil passwordUtil, JwtService jwtService,
+            AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordUtil = passwordUtil;
         this.jwtService = jwtService;
@@ -74,8 +78,6 @@ public class UserServiceImpl implements UserService {
                 }
             }
 
-
-
             if (userWithEmail != null) {
                 logger.error("User with email {} is already exist", userWithEmail.getEmail());
                 throw new ApplicationException(ErrorConst.RESOURCE_EXIST, "Email is exist");
@@ -101,7 +103,7 @@ public class UserServiceImpl implements UserService {
             // Gán genreSet cho user
             newUser.setGenreSet(genres);
 
-// Gán user ngược lại cho từng genre
+            // Gán user ngược lại cho từng genre
             for (Genre genre : genres) {
                 genre.getUsers().add(newUser);
             }
@@ -128,6 +130,22 @@ public class UserServiceImpl implements UserService {
             logger.error("Cannot create user with email {}", user.getEmail());
             throw new ApplicationException(ErrorConst.UNEXPECTED_ERROR);
         }
+    }
+
+    public UserResponseDTO getUserById(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return UserResponseDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .gender(user.getGender())
+                .isAdmin(user.isAdmin())
+                .isActive(user.isActive())
+                .nationality(user.getNationality())
+                .birthday(user.getBirthday())
+                .build();
     }
 
 }
