@@ -2,10 +2,18 @@ package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.comment.CommentPageElement;
 import hcmut.contentCreatorOnline.dto.comment.CommentPageResponse;
+import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterRequest;
+import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterResult;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
+import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.model.Comment;
+import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
+import hcmut.contentCreatorOnline.repository.ChapterRepository;
 import hcmut.contentCreatorOnline.repository.CommentRepository;
+import hcmut.contentCreatorOnline.repository.UserRepository;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +27,13 @@ import java.util.UUID;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final ChapterRepository chapterRepository;
+    private final UserRepository userRepository;
 
-    public CommentService(CommentRepository commentRepository) {
+    public CommentService(CommentRepository commentRepository, ChapterRepository chapterRepository, UserRepository userRepository) {
         this.commentRepository = commentRepository;
+        this.chapterRepository = chapterRepository;
+        this.userRepository = userRepository;
     }
 
     public CommentPageResponse getCommentsPagedByChapterId(UUID chapterId, int page, int size, String sortBy, String sortDirection) {
@@ -49,4 +61,36 @@ public class CommentService {
             throw new ApplicationException(ErrorConst.INTERNAL_DATA_SELECT_FAIL, "Failed to get comments");
         }
     }
+
+    public CreateCommentOnChapterResult createCommentOnChapter(UUID chapterId, CreateCommentOnChapterRequest commentRequest) {
+        try {
+            Chapter chapter = chapterRepository.findById(chapterId)
+                    .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+            UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+            UUID userId = currentUser.getId();
+
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+            Comment comment = new Comment();
+            comment.setCommentContent(commentRequest.getComment_content());
+            comment.setChapter(chapter);
+            comment.setUser(user);
+
+            Comment queryResult = commentRepository.save(comment);
+
+            return new CreateCommentOnChapterResult(
+                    queryResult.getCommentId(),
+                    queryResult.getCreatedTime(),
+                    queryResult.getCommentContent(),
+                    queryResult.getNumberOfLikes(),
+                    queryResult.getIsPinned()
+            );
+        } catch (Exception e) {
+            throw new ApplicationException(ErrorConst.INTERNAL_DATA_INSERT_FAIL, "Failed to create comment");
+        }
+    }
+
+
 }

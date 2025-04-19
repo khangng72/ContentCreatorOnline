@@ -7,6 +7,8 @@ ALTER TABLE comment
 ALTER TABLE comment
     ADD COLUMN parent_comment_id UUID REFERENCES comment (comment_id);
 ALTER TABLE comment
+    ALTER COLUMN number_of_likes SET DEFAULT 0;
+ALTER TABLE comment
     ADD COLUMN created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE comment
     DROP COLUMN story_id;

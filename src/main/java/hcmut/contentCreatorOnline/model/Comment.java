@@ -25,15 +25,15 @@ public class Comment {
 
     private String commentContent;
 
-    private Integer numberOfLikes;
+    private Integer numberOfLikes = 0;
 
-    private Boolean isPinned;
+    private Boolean isPinned = false;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
