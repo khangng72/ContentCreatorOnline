@@ -3,6 +3,7 @@ package hcmut.contentCreatorOnline.service.impl;
 import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
+import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.User;
@@ -17,6 +18,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -101,6 +104,22 @@ public class UserServiceImpl implements UserService {
             logger.error("Cannot create user with email {}", user.getEmail());
             throw new ApplicationException(ErrorConst.UNEXPECTED_ERROR);
         }
+    }
+
+    public UserResponseDTO getUserById(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return UserResponseDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .gender(user.getGender())
+                .isAdmin(user.isAdmin())
+                .isActive(user.isActive())
+                .nationality(user.getNationality())
+                .birthday(user.getBirthday())
+                .build();
     }
 
 }
