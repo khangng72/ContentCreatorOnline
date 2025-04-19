@@ -69,6 +69,7 @@ public class ChapterService {
                     u.getFirstName(),
                     u.getLastName(),
                     u.getEmail(),
+                    u.getAvatarUrl(),
                     c.getNumberOfComment()
             );
         }).collect(Collectors.toList());

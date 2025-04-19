@@ -30,6 +30,9 @@ public class User {
     @Column(name = "user_password", nullable = false)
     private String password;
 
+    @Column
+    private String avatarUrl;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
