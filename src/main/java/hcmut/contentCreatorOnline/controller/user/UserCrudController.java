@@ -32,9 +32,9 @@ public class UserCrudController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable UUID id) {
-        UserResponseDTO user = userService.getUserById(id);
+    @GetMapping("/profile")
+    public ResponseEntity<?> getUserById() {
+        UserResponseDTO user = userService.getUserById();
         Map<String, Object> response = new HashMap<>();
         response.put("status", 200);
         response.put("result", user);
