@@ -1,0 +1,2 @@
+-- ALTER TABLE chapter
+--     ADD COLUMN number_of_likes number;

@@ -81,4 +81,7 @@ public class User {
 
     @OneToMany(mappedBy = "userUpload", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UploadImage> uploadImage = new HashSet<>();
+
+    @ManyToMany(mappedBy = "userChapter")
+    private Set<Chapter> likeChapter = new HashSet<>();
 }
