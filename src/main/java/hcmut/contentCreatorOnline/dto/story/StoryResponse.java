@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Data
@@ -50,5 +51,5 @@ public class StoryResponse {
 //
 //    private Set<Order> orders = new HashSet<>();
 
-    private User userPost;
+    private UUID userId;;
 }
