@@ -53,7 +53,7 @@ public class StoryService {
 //                .genres(story.getGenres())
 //                .readLists(story.getReadLists())
 //                .orders(story.getOrders())
-                .userPost(story.getUserPost())
+                .userId(story.getUserPost().getId())
                 .build();
     }
 
