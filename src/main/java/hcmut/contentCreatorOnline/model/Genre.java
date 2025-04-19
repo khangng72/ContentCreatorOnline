@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Data
+@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "genre")
 public class Genre {
     @Id
@@ -30,6 +30,5 @@ public class Genre {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "interested_in", joinColumns = @JoinColumn(name = "genre_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
-
 
 }

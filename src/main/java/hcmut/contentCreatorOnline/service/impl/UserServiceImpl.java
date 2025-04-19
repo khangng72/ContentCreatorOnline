@@ -5,18 +5,24 @@ import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
 import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
+import hcmut.contentCreatorOnline.model.Genre;
 import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.service.JwtService;
 import hcmut.contentCreatorOnline.service.UserService;
 import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,6 +32,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordUtil passwordUtil;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    @Autowired
+    private GenreRepository genreRepository;
 
     public UserServiceImpl(UserRepository userRepository, PasswordUtil passwordUtil, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
@@ -58,6 +66,16 @@ public class UserServiceImpl implements UserService {
         try {
             User userWithEmail = userRepository.findByEmail(user.getEmail());
 
+            Set<Genre> genres = new HashSet<>();
+            if (user.getGenreIds() != null && !user.getGenreIds().isEmpty()) {
+                genres = new HashSet<>(genreRepository.findAllById(user.getGenreIds()));
+                if (genres.size() != user.getGenreIds().size()) {
+                    throw new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "One or more genres not found");
+                }
+            }
+
+
+
             if (userWithEmail != null) {
                 logger.error("User with email {} is already exist", userWithEmail.getEmail());
                 throw new ApplicationException(ErrorConst.RESOURCE_EXIST, "Email is exist");
@@ -77,7 +95,16 @@ public class UserServiceImpl implements UserService {
                     .gender(user.getGender())
                     .nationality(user.getNationality())
                     .birthday(user.getBirthday())
+                    .genreSet(genres)
                     .build();
+
+            // Gán genreSet cho user
+            newUser.setGenreSet(genres);
+
+// Gán user ngược lại cho từng genre
+            for (Genre genre : genres) {
+                genre.getUsers().add(newUser);
+            }
 
             User queryResult = userRepository.save(newUser);
             logger.info("Finish adding user with email {}", queryResult.getEmail());

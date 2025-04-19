@@ -1,7 +1,9 @@
 package hcmut.contentCreatorOnline.dto.user;
 
 import java.time.LocalDate;
+import java.util.Set;
 
+import hcmut.contentCreatorOnline.model.Genre;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,4 +23,6 @@ public class RegisterNewUserResponse {
     private String nationality;
 
     private LocalDate birthday;
+
+    private Set<Genre> genreSet;
 }
