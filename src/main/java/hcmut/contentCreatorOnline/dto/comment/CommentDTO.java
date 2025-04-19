@@ -10,10 +10,16 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateCommentOnChapterResult {
+public class CommentDTO {
     private UUID commentId;
+    private String comment_content;
     private LocalDateTime createdTime;
-    private String commentContent;
     private Integer numberOfLikes;
-    private boolean isPinned;
+    private Boolean isPinned;
+
+    private UUID chapterId;
+    
+    private UUID userId;
+    private String userFirstName;
+    private String userLastName;
 }

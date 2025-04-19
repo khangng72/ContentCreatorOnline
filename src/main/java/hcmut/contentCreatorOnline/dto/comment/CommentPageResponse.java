@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CommentPageResponse {
     private Integer status;
-    private List<CommentPageElement> result;
+    private List<CommentDTO> result;
     private Integer currentPage;
     private Integer totalItems;
     private Integer totalPages;

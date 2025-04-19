@@ -1,9 +1,8 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.comment.CommentPageElement;
+import hcmut.contentCreatorOnline.dto.comment.CommentDTO;
 import hcmut.contentCreatorOnline.dto.comment.CommentPageResponse;
 import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterRequest;
-import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterResult;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -43,11 +42,13 @@ public class CommentService {
             Pageable pageable = PageRequest.of(page, size, sort);
 
             Page<Comment> commentPage = commentRepository.findByChapter_ChapterId(pageable, chapterId);
-            List<CommentPageElement> commentPageElementList = commentPage.getContent().stream()
-                    .map(comment -> new CommentPageElement(
+            List<CommentDTO> commentPageElementList = commentPage.getContent().stream()
+                    .map(comment -> new CommentDTO(
                             comment.getCommentId(),
                             comment.getCommentContent(),
                             comment.getCreatedTime(),
+                            comment.getNumberOfLikes(),
+                            comment.getIsPinned(),
                             comment.getChapter().getChapterId(),
                             comment.getUser().getId(),
                             comment.getUser().getFirstName(),
@@ -67,7 +68,7 @@ public class CommentService {
         }
     }
 
-    public CreateCommentOnChapterResult createCommentOnChapter(UUID chapterId, CreateCommentOnChapterRequest commentRequest) {
+    public CommentDTO createCommentOnChapter(UUID chapterId, CreateCommentOnChapterRequest commentRequest) {
         try {
             Chapter chapter = chapterRepository.findById(chapterId)
                     .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
@@ -85,12 +86,16 @@ public class CommentService {
 
             Comment queryResult = commentRepository.save(comment);
 
-            return new CreateCommentOnChapterResult(
+            return new CommentDTO(
                     queryResult.getCommentId(),
-                    queryResult.getCreatedTime(),
                     queryResult.getCommentContent(),
+                    queryResult.getCreatedTime(),
                     queryResult.getNumberOfLikes(),
-                    queryResult.getIsPinned()
+                    queryResult.getIsPinned(),
+                    queryResult.getChapter().getChapterId(),
+                    queryResult.getUser().getId(),
+                    queryResult.getUser().getFirstName(),
+                    queryResult.getUser().getLastName()
             );
         } catch (Exception e) {
             throw new ApplicationException(ErrorConst.INTERNAL_DATA_INSERT_FAIL, "Failed to create comment");
