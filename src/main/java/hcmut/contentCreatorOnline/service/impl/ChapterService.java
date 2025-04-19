@@ -83,4 +83,8 @@ public class ChapterService {
                 chapterPage.getTotalPages()
         );
     }
+
+    public int getNumberOfLikes(UUID chapterId) {
+        return chapterRepository.countLikesByChapterId(chapterId);
+    }
 }

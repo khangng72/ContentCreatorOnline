@@ -17,4 +17,7 @@ public interface ChapterRepository extends JpaRepository<Chapter, UUID> {
 
     @Query("SELECT c FROM Chapter c JOIN c.story s WHERE c.isPublished = true AND s.saleOnly = false")
     Page<Chapter> findAllChaptersWithStoryAndUser(Pageable pageable);
+
+    @Query("SELECT SIZE(c.userChapter) FROM Chapter c WHERE c.chapterId = :chapterId")
+    int countLikesByChapterId(@Param("chapterId") UUID chapterId);
 }

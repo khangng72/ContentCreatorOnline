@@ -2,13 +2,18 @@ package hcmut.contentCreatorOnline.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "chapter")
 public class Chapter {
     @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -23,6 +28,9 @@ public class Chapter {
     private Integer numberOfComment;
 
     private String chapterTitle;
+
+    @Column(name = "number_of_likes")
+    private Integer numberOfLikes = 0;
 
     @Column(name = "is_published")
     private Boolean isPublished = true;
@@ -41,5 +49,9 @@ public class Chapter {
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
+
+    @ManyToMany
+    @JoinTable(name = "user_like_chapter", joinColumns = @JoinColumn(name = "chapter_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> userChapter = new HashSet<>();
 
 }
