@@ -73,8 +73,8 @@ public class User {
     @ManyToMany(mappedBy = "userOwn")
     private Set<Story> ownStory = new HashSet<>();
 
-    @ManyToMany(mappedBy = "userLike")
-    private Set<Story> likeStory = new HashSet<>();
+//    @ManyToMany(mappedBy = "userLike")
+//    private Set<Story> likeStory = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comments;

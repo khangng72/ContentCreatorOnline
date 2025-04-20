@@ -52,6 +52,10 @@ public class Story {
     @Column(name = "tags")
     private String tags;
 
+    @Column(name = "average_rating")
+    private Double averageRating = 0.0;
+
+
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Chapter> chapters;
 
@@ -73,7 +77,7 @@ public class Story {
     @JoinTable(name = "user_own_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> userOwn = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "user_like_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> userLike = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(name = "user_like_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    private Set<User> userLike = new HashSet<>();
 }
