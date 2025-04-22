@@ -82,6 +82,7 @@ public class User {
     @OneToMany(mappedBy = "userUpload", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UploadImage> uploadImage = new HashSet<>();
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UserStoryRating> userStoryRatings = new HashSet<>();
 

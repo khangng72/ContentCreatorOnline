@@ -46,4 +46,10 @@ public class ChapterController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/{chapterId}/likes")
+    public ResponseEntity<Integer> getNumberOfLikes(@PathVariable UUID chapterId) {
+        int numberOfLikes = chapterService.getNumberOfLikes(chapterId);
+        return ResponseEntity.ok(numberOfLikes);
+    }
+
 }

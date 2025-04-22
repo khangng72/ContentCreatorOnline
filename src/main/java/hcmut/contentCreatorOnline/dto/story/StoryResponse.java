@@ -5,6 +5,7 @@ import hcmut.contentCreatorOnline.model.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Getter
@@ -51,5 +52,8 @@ public class StoryResponse {
 //
 //    private Set<Order> orders = new HashSet<>();
 
+
 //    private User userPost;
+
+    private UUID userId;
 }
