@@ -1,15 +1,14 @@
 package hcmut.contentCreatorOnline.dto.story;
 
+import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
 import hcmut.contentCreatorOnline.model.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -42,6 +41,8 @@ public class StoryResponse {
 
     private String tags;
 
+    private Double averageRating;
+
 //    private List<Chapter> chapters;
 
 //    private Set<Genre> genres = new HashSet<>();
@@ -50,5 +51,5 @@ public class StoryResponse {
 //
 //    private Set<Order> orders = new HashSet<>();
 
-    private User userPost;
+//    private User userPost;
 }

@@ -1,5 +1,7 @@
 package hcmut.contentCreatorOnline.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -77,7 +79,7 @@ public class Story {
     @JoinTable(name = "user_own_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> userOwn = new HashSet<>();
 
-//    @ManyToMany
-//    @JoinTable(name = "user_like_story", joinColumns = @JoinColumn(name = "story_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private Set<User> userLike = new HashSet<>();
+    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserStoryRating> userStoryRatings = new HashSet<>();
+
 }

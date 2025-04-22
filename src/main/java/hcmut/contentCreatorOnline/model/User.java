@@ -1,5 +1,7 @@
 package hcmut.contentCreatorOnline.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -73,12 +75,14 @@ public class User {
     @ManyToMany(mappedBy = "userOwn")
     private Set<Story> ownStory = new HashSet<>();
 
-//    @ManyToMany(mappedBy = "userLike")
-//    private Set<Story> likeStory = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "userUpload", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UploadImage> uploadImage = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserStoryRating> userStoryRatings = new HashSet<>();
+
 }

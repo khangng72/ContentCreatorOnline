@@ -17,6 +17,7 @@ public class StoryController {
 
     private final StoryService storyService;
 
+
     public StoryController(StoryService storyService) {
         this.storyService = storyService;
     }
@@ -50,4 +51,5 @@ public class StoryController {
         StoryResponse storyDTO = storyService.getStoryByStoryId(story_id);
         return ResponseEntity.ok(storyDTO);
     }
+
 }
