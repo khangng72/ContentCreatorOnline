@@ -30,6 +30,7 @@ public class StoryService {
 
     private final GenreRepository genreRepository;
 
+
     public StoryService(StoryRepository storyRepository, GenreRepository genreRepository) {
         this.storyRepository = storyRepository;
         this.genreRepository = genreRepository;
@@ -53,7 +54,8 @@ public class StoryService {
 //                .genres(story.getGenres())
 //                .readLists(story.getReadLists())
 //                .orders(story.getOrders())
-                .userId(story.getUserPost().getId())
+//                .userPost(story.getUserPost())
+                .averageRating(story.getAverageRating())
                 .build();
     }
 
@@ -116,5 +118,6 @@ public class StoryService {
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
         return mapToDTO(story);
     }
+
 
 }
