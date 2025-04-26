@@ -1,25 +1,16 @@
 package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.genre.GenreResult;
-import hcmut.contentCreatorOnline.dto.story.CreateStoryRequest;
-import hcmut.contentCreatorOnline.dto.story.CreateStoryResult;
-import hcmut.contentCreatorOnline.dto.story.StoryResponse;
-import hcmut.contentCreatorOnline.dto.story.UpdateStoryGenreResult;
+import hcmut.contentCreatorOnline.dto.story.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
-import hcmut.contentCreatorOnline.model.Genre;
-import hcmut.contentCreatorOnline.model.Story;
-import hcmut.contentCreatorOnline.model.User;
-import hcmut.contentCreatorOnline.model.UserPrincipal;
+import hcmut.contentCreatorOnline.model.*;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -30,7 +21,6 @@ public class StoryService {
 
     private final GenreRepository genreRepository;
 
-
     public StoryService(StoryRepository storyRepository, GenreRepository genreRepository) {
         this.storyRepository = storyRepository;
         this.genreRepository = genreRepository;
@@ -38,7 +28,7 @@ public class StoryService {
 
     private StoryResponse mapToDTO(Story story) {
         return StoryResponse.builder()
-                .id(story.getStoryId())
+                .storyId(story.getStoryId())
                 .storyTitle(story.getStoryTitle())
                 .storyDescription(story.getStoryDescription())
                 .coverImageUri(story.getCoverImageUri())
@@ -116,7 +106,41 @@ public class StoryService {
     public StoryResponse getStoryByStoryId(UUID storyId) {
         Story story = storyRepository.findById(storyId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
-        return mapToDTO(story);
+
+        if (!story.getReleaseStatus()) {
+            throw new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId);
+        }
+
+        List<ChapterStoryResponse> chapterList = story.getChapters().stream()
+                .sorted(Comparator.comparingInt(Chapter::getChapterNumber))
+                .map(
+                        chapter -> new ChapterStoryResponse(
+                                chapter.getChapterId(),
+                                chapter.getChapterTitle(),
+                                chapter.getChapterDescription(),
+                                chapter.getChapterContent(),
+                                chapter.getChapterImageUri(),
+                                chapter.getChapterNumber()
+                        )
+                ).toList();
+
+
+        return new StoryResponse(
+                story.getStoryId(),
+                story.getReleaseDate(),
+                story.getCreatedDate(),
+                story.getReleaseStatus(),
+                story.getStoryTitle(),
+                story.getSaleOnly(),
+                story.getSalePrice(),
+                story.getNumberOfLikes(),
+                story.getCoverImageUri(),
+                story.getStoryDescription(),
+                story.getTags(),
+                story.getAverageRating(),
+                story.getUserPost().getId(),
+                chapterList
+        );
     }
 
 
