@@ -14,6 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class StoryResponse {
+    private UUID id;
+    
     private LocalDate releaseDate;
 
     private LocalDate createdDate;
