@@ -38,7 +38,7 @@ public class StoryService {
 
     private StoryResponse mapToDTO(Story story) {
         return StoryResponse.builder()
-                //.storyId(story.getStoryId()
+                .id(story.getStoryId())
                 .storyTitle(story.getStoryTitle())
                 .storyDescription(story.getStoryDescription())
                 .coverImageUri(story.getCoverImageUri())
