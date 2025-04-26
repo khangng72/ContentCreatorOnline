@@ -17,17 +17,15 @@ import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,15 +35,15 @@ public class UserServiceImpl implements UserService {
     private final PasswordUtil passwordUtil;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    @Autowired
-    private GenreRepository genreRepository;
+    private final GenreRepository genreRepository;
 
     public UserServiceImpl(UserRepository userRepository, PasswordUtil passwordUtil, JwtService jwtService,
-            AuthenticationManager authenticationManager) {
+                           AuthenticationManager authenticationManager, GenreRepository genreRepository) {
         this.userRepository = userRepository;
         this.passwordUtil = passwordUtil;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
+        this.genreRepository = genreRepository;
     }
 
     @Override
@@ -150,6 +148,9 @@ public class UserServiceImpl implements UserService {
                 .isActive(user.isActive())
                 .nationality(user.getNationality())
                 .birthday(user.getBirthday())
+                .avatarUrl(user.getAvatarUrl())
+                .backgroundUrl(user.getBackgroundUrl())
+                .introduction(user.getIntroduction())
                 .build();
     }
 

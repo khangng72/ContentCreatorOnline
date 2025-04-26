@@ -20,4 +20,7 @@ public class UserResponseDTO {
     private boolean isActive;
     private String nationality;
     private LocalDate birthday;
+    private String avatarUrl;
+    private String backgroundUrl;
+    private String introduction;
 }

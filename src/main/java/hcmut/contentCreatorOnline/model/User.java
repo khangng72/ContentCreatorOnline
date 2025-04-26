@@ -1,7 +1,5 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +31,9 @@ public class User {
     @Column
     private String avatarUrl;
 
+    @Column
+    private String backgroundUrl;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
@@ -55,6 +56,9 @@ public class User {
 
     @Column(name = "birthday")
     private LocalDate birthday;
+
+    @Column(columnDefinition = "TEXT")
+    private String introduction;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ReadList> readLists;
