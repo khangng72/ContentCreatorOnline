@@ -170,4 +170,11 @@ public class UserServiceImpl implements UserService {
         return result.getContent();
     }
 
+    @Override
+    public List<FollowingDTO> getFollowingByUserId(UUID userId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<FollowingDTO> result = userRepository.findFollowingById(userId, pageable);
+        return result.getContent();
+    }
+
 }

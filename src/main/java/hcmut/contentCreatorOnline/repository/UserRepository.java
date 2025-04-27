@@ -1,6 +1,7 @@
 package hcmut.contentCreatorOnline.repository;
 
 import hcmut.contentCreatorOnline.dto.user.FollowerDTO;
+import hcmut.contentCreatorOnline.dto.user.FollowingDTO;
 import hcmut.contentCreatorOnline.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,9 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<User, UUID> {
     User findByEmail(String email);
 
-    @Query("SELECT new hcmut.contentCreatorOnline.dto.user.FollowerDTO(u.id, u.firstName, u.lastName) FROM User u JOIN u.following f WHERE f.id = :userId")
+    @Query("SELECT new hcmut.contentCreatorOnline.dto.user.FollowerDTO(u.id, u.firstName, u.lastName, u.avatarUrl) FROM User u JOIN u.following f WHERE f.id = :userId")
     Page<FollowerDTO> findFollowersById(@Param("userId") UUID id, Pageable pageable);
+
+    @Query("SELECT new hcmut.contentCreatorOnline.dto.user.FollowingDTO(u.id, u.firstName, u.lastName, u.avatarUrl) FROM User u JOIN u.followers f WHERE f.id = :userId")
+    Page<FollowingDTO> findFollowingById(@Param("userId") UUID id, Pageable pageable);
 }

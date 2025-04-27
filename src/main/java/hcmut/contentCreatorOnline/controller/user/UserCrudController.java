@@ -44,7 +44,7 @@ public class UserCrudController {
     public ResponseEntity<GetFollowersResponse> getFollowersByUserId(
             @PathVariable UUID userId,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "7") int size
+            @RequestParam(defaultValue = "15") int size
     ) {
         List<FollowerDTO> result = userService.getFollowersByUserId(userId, page, size);
         return ResponseEntity.ok(
@@ -52,5 +52,19 @@ public class UserCrudController {
                         .status(200)
                         .result(result)
                         .build());
+    }
+
+
+    @GetMapping("/following/{userId}")
+    public ResponseEntity<GetFollowingResponse> getFollowingByUserId(
+            @PathVariable UUID userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "15") int size
+    ) {
+        List<FollowingDTO> result = userService.getFollowingByUserId(userId, page, size);
+        return ResponseEntity.ok(GetFollowingResponse.builder()
+                .status(200)
+                .result(result)
+                .build());
     }
 }

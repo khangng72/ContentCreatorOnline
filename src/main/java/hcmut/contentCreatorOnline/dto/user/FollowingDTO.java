@@ -9,7 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FollowerDTO {
+public class FollowingDTO {
     private UUID userId;
     private String firstName;
     private String lastName;

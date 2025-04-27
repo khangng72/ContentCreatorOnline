@@ -16,4 +16,6 @@ public interface UserService {
     UserResponseDTO getCurrentUser();
 
     List<FollowerDTO> getFollowersByUserId(UUID userId, int page, int size);
+
+    List<FollowingDTO> getFollowingByUserId(UUID userId, int page, int size);
 }
