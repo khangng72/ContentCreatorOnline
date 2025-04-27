@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.service.impl;
 
-import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
-import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
+import hcmut.contentCreatorOnline.dto.user.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Genre;
@@ -17,6 +14,9 @@ import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.slf4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +24,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -132,12 +133,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public UserResponseDTO getUserById() {
+    @Override
+    public UserResponseDTO getCurrentUser() {
         UserPrincipal currentUser = SecurityUtils.getCurrentUser();
         UUID userId = currentUser.getId();
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+        Integer numberOfStories = user.getStoryPost().size();
+        Integer numberOfFollowers = user.getFollowers().size();
+        Integer numberOfFollowing = user.getFollowing().size();
+
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -151,7 +157,17 @@ public class UserServiceImpl implements UserService {
                 .avatarUrl(user.getAvatarUrl())
                 .backgroundUrl(user.getBackgroundUrl())
                 .introduction(user.getIntroduction())
+                .numberOfFollowers(numberOfFollowers)
+                .numberOfStories(numberOfStories)
+                .numberOfFollowing(numberOfFollowing)
                 .build();
+    }
+
+    @Override
+    public List<FollowerDTO> getFollowersByUserId(UUID userId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<FollowerDTO> result = userRepository.findFollowersById(userId, pageable);
+        return result.getContent();
     }
 
 }

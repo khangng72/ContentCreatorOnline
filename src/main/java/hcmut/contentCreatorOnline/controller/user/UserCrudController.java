@@ -1,8 +1,6 @@
 package hcmut.contentCreatorOnline.controller.user;
 
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
-import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
+import hcmut.contentCreatorOnline.dto.user.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.service.UserService;
 import jakarta.validation.Valid;
@@ -11,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -32,11 +32,25 @@ public class UserCrudController {
     }
 
     @GetMapping("/profile")
-    public ResponseEntity<?> getUserById() {
-        UserResponseDTO user = userService.getUserById();
+    public ResponseEntity<?> getCurrentUser() {
+        UserResponseDTO user = userService.getCurrentUser();
         Map<String, Object> response = new HashMap<>();
         response.put("status", 200);
         response.put("result", user);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/followers/{userId}")
+    public ResponseEntity<GetFollowersResponse> getFollowersByUserId(
+            @PathVariable UUID userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "7") int size
+    ) {
+        List<FollowerDTO> result = userService.getFollowersByUserId(userId, page, size);
+        return ResponseEntity.ok(
+                GetFollowersResponse.builder()
+                        .status(200)
+                        .result(result)
+                        .build());
     }
 }

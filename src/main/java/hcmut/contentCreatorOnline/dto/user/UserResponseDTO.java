@@ -23,4 +23,7 @@ public class UserResponseDTO {
     private String avatarUrl;
     private String backgroundUrl;
     private String introduction;
+    private Integer numberOfStories;
+    private Integer numberOfFollowers;
+    private Integer numberOfFollowing;
 }

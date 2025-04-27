@@ -1,12 +1,10 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.user.LoginUserRequest;
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserRequest;
-import hcmut.contentCreatorOnline.dto.user.RegisterNewUserResponse;
-import hcmut.contentCreatorOnline.dto.user.UserResponseDTO;
+import hcmut.contentCreatorOnline.dto.user.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -15,6 +13,7 @@ public interface UserService {
 
     RegisterNewUserResponse createNewUser(RegisterNewUserRequest user) throws ApplicationException;
 
-    UserResponseDTO getUserById();
+    UserResponseDTO getCurrentUser();
 
+    List<FollowerDTO> getFollowersByUserId(UUID userId, int page, int size);
 }
