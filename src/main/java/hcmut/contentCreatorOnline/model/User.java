@@ -1,5 +1,6 @@
 package hcmut.contentCreatorOnline.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -56,6 +57,8 @@ public class User {
 
     @Column(name = "birthday")
     private LocalDate birthday;
+    
+    private LocalDate joinDate = LocalDate.now();
 
     @Column(columnDefinition = "TEXT")
     private String introduction;
@@ -90,4 +93,15 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UserStoryRating> userStoryRatings = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_followers",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "follower_id")
+    )
+    private Set<User> followers = new HashSet<>();
+
+    @ManyToMany(mappedBy = "followers", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<User> following = new HashSet<>();
 }
