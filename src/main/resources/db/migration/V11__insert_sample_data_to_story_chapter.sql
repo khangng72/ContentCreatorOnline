@@ -182,3 +182,299 @@ VALUES ('d6f94d5e-33ed-42de-a2b7-c7ef7d3b5c41',
         <p>We rushed to check, and what we found sent chills down my spine. The walls were covered in strange markings, and Sarah’s belongings were scattered across the floor, as if she had been dragged away in a hurry. 😵</p>
         <p>The whispers returned, louder now. "You shouldn’t have come," they hissed, the voices echoing in my mind. We were no longer alone in Hollow Creek. The house had awakened, and it had plans for us. 👹</p>',
         '2025-04-02 16:04:00.000000');
+
+-- Insert the new story
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('b8a1fbe3-2f92-4971-a097-bd01d42b9140',
+        true,
+        'Echoes of the Forgotten Forest',
+        'A group of hikers venture into the mysterious Forgotten Forest, a place rumored to be cursed. As they make their way deeper into the woods, they start to experience strange phenomena — the trees seem to whisper their names, shadows follow them, and the air grows unnaturally cold. As night falls, they realize they are not alone. Something ancient and vengeful is hunting them, and they must find a way out before it’s too late.',
+        '3df592a4-daa8-4819-863e-d4f7998ad0f3',
+        '2025-04-02 17:00:00.000000');
+
+-- The First Step
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('a12d8c6f-37b0-43d5-9c6a-39a594d4b37b',
+        1,
+        'The First Step',
+        'b8a1fbe3-2f92-4971-a097-bd01d42b9140',
+        '<p>The sun was setting as we entered the forest. The trees, thick with age, seemed to stretch on forever. With every step, the feeling of being watched grew stronger. Our leader, Tom, reassured us that it was just the nature of the forest, but I couldn’t shake the feeling that something was wrong. The air was thick with silence, and the occasional rustle of leaves felt too deliberate. 🌲</p>
+        <p>"I’m not sure about this," Sarah whispered, her voice shaking. "It feels like we’re being followed." 😟</p>',
+        '2025-04-02 17:01:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('c08c08f0-06c4-4ef6-b7d1-6a2d350f3b8a',
+        2,
+        'Whispers in the Dark',
+        'b8a1fbe3-2f92-4971-a097-bd01d42b9140',
+        '<p>Night had fallen, and we set up camp under the towering trees. The fire crackled in front of us, but there was an odd stillness in the air. That’s when we heard it — a whisper. Faint at first, but then clearer: "Leave." The voice was coming from everywhere and nowhere at once. 😱</p>
+        <p>We all froze, eyes darting around the campfire. "Who’s playing a prank?" Tom asked, but no one answered. The whispering continued, growing louder. "Leave this place." It was as though the forest itself was speaking. 😳</p>',
+        '2025-04-02 17:02:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('b3f56d9c-05d1-44f3-81b3-c8a0625c0f79',
+        3,
+        'The Hunter in the Shadows',
+        'b8a1fbe3-2f92-4971-a097-bd01d42b9140',
+        '<p>The next morning, Sarah was gone. There were no signs of a struggle, just her backpack left behind near the campfire. Panic set in as we searched the surrounding area, but it was like she had vanished into thin air. We decided to leave, but as we tried to retrace our steps, we realized the forest had shifted. The path we had come down no longer existed. 😰</p>
+        <p>Then we saw it — a figure moving in the shadows between the trees. It was tall, impossibly tall, and its movements were unnatural. "We have to run," Tom hissed, his face pale. But it was too late. The hunter was already closing in on us, its eyes glowing like embers in the darkness. 🔥</p>',
+        '2025-04-02 17:03:00.000000');
+
+-- The Colors of Us
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('db14a441-e4b4-4d72-9c72-e9f23fae0c68',
+        true,
+        'The Colors of Us',
+        'When two individuals from different worlds meet at a pride parade, they are drawn together by a deep, unspoken connection. One is a quiet artist, afraid to embrace their identity, while the other is an outspoken advocate, passionate about change. As they navigate their relationship, they face challenges from society and within themselves, learning what it truly means to love, accept, and be loved in return.',
+        '3df592a4-daa8-4819-863e-d4f7998ad0f3',
+        '2025-04-02 17:30:00.000000');
+
+-- Insert chapters for the new LGBTQ+ love story
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('dbd6b8fa-e8b0-4a88-b4ff-d12ec10fded7',
+        1,
+        'A Chance Encounter',
+        'db14a441-e4b4-4d72-9c72-e9f23fae0c68',
+        '<p>The streets were alive with vibrant colors as the pride parade marched through the city. The air was electric with joy and love, but I felt out of place. As an artist, I often stayed in the background, watching the world unfold through the lens of my sketches. But that day, something felt different. I was drawn to the loud, passionate voices that filled the air.</p>
+        <p>And that’s when I saw her — standing tall, her rainbow flag draped over her shoulders, her eyes gleaming with purpose. There was something in her gaze, something that made my heart skip a beat. Our eyes met, and I could feel the electricity between us, like we were the only two people in the crowd. I tried to look away, but she smiled, and I couldn’t help but smile back. 🌈</p>',
+        '2025-04-02 17:31:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('4e35b332-c923-4027-a582-073df31f3ec1',
+        2,
+        'Unspoken Words',
+        'db14a441-e4b4-4d72-9c72-e9f23fae0c68',
+        '<p>We spent the next few days texting back and forth, sharing our thoughts and dreams. I could feel myself opening up to her in a way I had never done with anyone. Her name was Maya, and she was everything I admired — fearless, kind, and unapologetically herself. But as we talked, I could feel the weight of my own fears creeping in. I wasn’t ready to be fully open about who I was.</p>
+        <p>"Why don’t you come to the gallery opening tonight?" Maya asked one evening. "You’ll love it, I promise." I hesitated, my heart pounding. Could I really step into that world? Could I be the person I was too afraid to show? 🌟</p>',
+        '2025-04-02 17:32:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('d074f508-c3d5-47cd-84e3-e7da3d29c95b',
+        3,
+        'A Leap of Faith',
+        'db14a441-e4b4-4d72-9c72-e9f23fae0c68',
+        '<p>The night of the gallery opening, I found myself standing in front of a mirror, my hands trembling as I adjusted my outfit. I had never felt more vulnerable. But Maya’s words echoed in my mind: "You are beautiful, exactly as you are." With that thought, I took a deep breath and left my apartment, walking into the unknown.</p>
+        <p>When I arrived at the gallery, Maya was waiting for me. She beamed when she saw me, and I felt a warmth spread through me. "I’m so glad you came," she said, her hand brushing against mine. In that moment, everything felt right. Maybe, just maybe, I was ready to embrace who I was. 💖</p>',
+        '2025-04-02 17:33:00.000000');
+
+
+-- A Son of War
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('2f93538f-0f99-45ff-a9f6-4b8f6369380e',
+        true,
+        'A Son of War',
+        'Born amidst the chaos of the Vietnam War, a boy struggles with the stigma of being the son of an American soldier and a poor Vietnamese villager. Abandoned by his mother and rejected by society because of his mixed blood, he dreams of becoming a doctor, determined to prove to the world that he is more than the circumstances of his birth. Despite the hardships, he fights against the prejudice surrounding him, aiming to change the way people see him and build a better future for himself and his people.',
+        '3df592a4-daa8-4819-863e-d4f7998ad0f3',
+        '2025-04-02 18:00:00.000000');
+
+-- Insert chapters for the new story
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('42b5bdb4-6e2a-4671-a703-98428a622a57',
+        1,
+        'The Birth of a Child in the Shadows of War',
+        '2f93538f-0f99-45ff-a9f6-4b8f6369380e',
+        '<p>The war had torn everything apart — homes, families, lives. Amidst the devastation, I was born. My father, an American soldier, left before I could even remember his face. My mother, a poor Vietnamese villager, was left to raise me in a world that was hostile to us both. The villagers whispered behind her back, calling me the son of an enemy. To them, I was nothing more than a reminder of the violence that had ravaged their land. 🏚️</p>
+        <p>My mother loved me, but the burden of her shame weighed heavily on her. One night, I woke to find her gone, leaving nothing but a note that told me to survive. I was left alone, abandoned by the only person who had ever cared for me. The villagers made it clear that I was unwanted. "Go back to where you came from," they would say, their words sharp and cruel. 🥀</p>',
+        '2025-04-02 18:01:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('a1c72ed1-f3fe-49c9-b4c5-d635d37de804',
+        2,
+        'An Unlikely Dream',
+        '2f93538f-0f99-45ff-a9f6-4b8f6369380e',
+        '<p>Despite the rejection, I never stopped dreaming. I wanted to be something more than the label they put on me. I wanted to prove that I wasn’t just the son of a war. I began studying whenever I could, reading whatever books I could find. The more I learned, the more I became determined. I would become a doctor, not only to heal the sick but to change the perception of who I was.</p>
+        <p>The path wasn’t easy. I was a poor, half-blood child in a world that refused to accept me. But every time they called me names or mocked me, I told myself, "I will show them all." I would be a doctor, and they would see me as more than the son of a soldier. 🌱</p>',
+        '2025-04-02 18:02:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('d9ed6a1d-4c4b-44b5-b396-381e6b70b58d',
+        3,
+        'The Struggle and the Triumph',
+        '2f93538f-0f99-45ff-a9f6-4b8f6369380e',
+        '<p>Years passed, and the road to my dream was filled with hardship. I worked hard, often late into the night, studying medical books by the dim light of a candle. I was rejected by many schools, turned away because of my background. But I didn’t give up. I had to prove them wrong. The scars of my past, the prejudice I faced, they only fueled my fire. 🔥</p>
+        <p>Finally, after years of struggle, I was accepted into medical school. It was a victory, not just for me but for every person who had ever been told they didn’t belong. I was going to become a doctor, and I was going to change the world — one patient, one heart, at a time.</p>',
+        '2025-04-02 18:03:00.000000');
+
+-- Insert the new story
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad',
+        true,
+        'The Echoes of War',
+        'Haunted by the ghosts of those he killed in the Vietnam War, an American soldier struggles with the guilt that has plagued him for ten years. The spirits of the fallen soldiers and civilians follow him, demanding justice and revenge. As the years go by, he becomes determined not just to rid himself of the ghosts that haunt his soul, but to heal the wounds of the past between Vietnam and America. His mission becomes one of redemption — a journey of reconciliation between two nations scarred by war.',
+        '3df592a4-daa8-4819-863e-d4f7998ad0f3',
+        '2025-04-02 18:30:00.000000');
+
+-- The Weight of Guilt
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('b5fd8e77-c2d0-43de-bb78-6c1a1cfcde5e',
+        1,
+        'The Weight of Guilt',
+        'f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad',
+        '<p>It was the middle of the night when the whispers started again. At first, it was just a faint murmur, barely audible, like a distant memory tugging at the edges of my mind. But then it grew louder — the voices of the men, women, and children I had killed in Vietnam. The faces I couldn’t forget, their eyes filled with rage and sorrow, were everywhere I looked. 🖤</p>
+        <p>Ten years had passed since the war ended, but the ghosts had never left me. Every night, I would relive those moments, hear the screams of my victims as if they were happening all over again. I had thought I could escape it — leave the war behind when I returned home. But the war was never truly over for me. It had followed me like a shadow, and I couldn’t outrun it.</p>',
+        '2025-04-02 18:31:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('bc9c028f-cf7d-4b36-bf57-ef35c1efab62',
+        2,
+        'The Battle Within',
+        'f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad',
+        '<p>Each night, the ghosts grew more insistent. The visions became clearer, their faces more defined. I could hear their names, feel their anger, their sorrow. "You killed me," they whispered, "Now, you must make it right." I didn’t know how to fix what I had done. I had tried to bury the past, to push it all down, but it always came back to haunt me. Every step I took felt like I was walking through the battlefield once again.</p>
+        <p>But then, a thought struck me — what if I could do something to make up for my actions? What if I could help heal the wounds of war, not just for me but for both the Vietnamese people and my fellow Americans? Maybe, just maybe, that was the redemption I had been searching for. 🕊️</p>',
+        '2025-04-02 18:32:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('0ef4c214-f71d-4428-8c1a-61d636a83b4f',
+        3,
+        'A New Mission',
+        'f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad',
+        '<p>Determined to make amends, I began working on a mission of reconciliation. I reached out to Vietnam, seeking ways to help rebuild what had been destroyed — not just the buildings, but the hearts and minds of those affected by the war. I started by sponsoring medical missions, providing aid to villages that had suffered from the war’s devastation. Slowly, the ghosts seemed to quiet. But I knew I hadn’t yet earned their forgiveness.</p>
+        <p>As I spent more time in Vietnam, I began to understand their pain, their distrust. The wounds of war ran deep on both sides. I could never undo the horrors I had participated in, but I could help bring two nations together — a mission not of battle, but of peace. And perhaps, in doing so, I would finally find the peace I had been seeking for so long. 🇻🇳🇺🇸</p>',
+        '2025-04-02 18:33:00.000000');
+
+-- The Grand Adventure of Clutch the Cockroach
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('c1b05e6d-6c96-4744-92ca-65ac0409250d',
+        true,
+        'The Grand Adventure of Clutch the Cockroach',
+        'Clutch the cockroach has always dreamed of more than scurrying around in the dark corners of the kitchen. One night, an unexpected turn of events leads him on a grand adventure beyond the confines of the house. From evading traps to discovering the hidden wonders of the outside world, Clutch learns about bravery, survival, and the unexpected friendships found in the most unlikely places.',
+        '3df592a4-daa8-4819-863e-d4f7998ad0f3',
+        '2025-04-02 19:00:00.000000');
+
+-- Insert chapters for the new story
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('f6b9e80e-7f42-41c7-8b12-689332c3270d',
+        1,
+        'The Great Escape',
+        'c1b05e6d-6c96-4744-92ca-65ac0409250d',
+        '<p>Clutch had always known the kitchen as his kingdom — the dimly lit corners, the towering cabinets, and the scraps of food that fell to the floor. But lately, he had begun to grow restless. There had to be more to life than scuttling around in the shadows, avoiding the broom and dodging the sticky traps. He had heard whispers from the other cockroaches about the outside world, a place of vast horizons and endless possibilities. And tonight, he decided, he would find out for himself.</p>
+        <p>As he squeezed through a crack in the door, Clutch felt the cool night air for the first time. It smelled fresh, like freedom. His tiny legs wobbled with excitement. Little did he know, this was just the beginning of his grand adventure.</p>',
+        '2025-04-02 19:01:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('a4b47836-f18f-47fc-91ac-f9e387b4c3bc',
+        2,
+        'The Forest Beyond the Walls',
+        'c1b05e6d-6c96-4744-92ca-65ac0409250d',
+        '<p>Clutch found himself in a vast garden, the leaves of plants towering over him like giants. It was overwhelming at first, with strange sounds and creatures he had never seen before. He narrowly escaped being squashed by a curious frog and had to dodge a swarm of ants on a mission to gather food. The forest beyond the walls was dangerous, but also exhilarating. Every nook and cranny seemed to hold new mysteries, and Clutch couldn’t help but be excited by the unknown.</p>
+        <p>But it wasn’t all peril. He discovered the wonders of the world outside the kitchen — the sweet scent of flowers, the rush of wind through the trees, and the sparkling dew on the grass in the early morning. There was so much more to life than he had ever imagined. And yet, his adventure was far from over.</p>',
+        '2025-04-02 19:02:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('e9b0b6fe-6184-4451-b6f1-b7da56a855a3',
+        3,
+        'An Unexpected Ally',
+        'c1b05e6d-6c96-4744-92ca-65ac0409250d',
+        '<p>As Clutch journeyed deeper into the unknown, he came across a creature he had never seen before. It was a bright yellow caterpillar, plodding along slowly, its tiny legs moving with determination. At first, Clutch was wary — after all, most creatures in the garden seemed dangerous. But to his surprise, the caterpillar spoke.</p>
+        <p>"Where are you heading, little roach?" the caterpillar asked, its voice kind but curious.</p>
+        <p>"I’m not sure," Clutch replied. "I’m on an adventure. I want to see what lies beyond the kitchen." </p>
+        <p>The caterpillar smiled. "You’re brave, I can see that. The world is vast and full of wonders, but also dangers. If you stick with me, I can show you some of the safest paths." Clutch hesitated but then realized he could use a guide. And so, the unlikely duo continued their journey together, forming a friendship that would help them overcome even the most dangerous obstacles ahead.</p>',
+        '2025-04-02 19:03:00.000000');
+
+DELETE
+FROM story
+WHERE user_id = 'f6b24e76-2cd6-4881-86e9-ffadbba23720';
+
+-- Insert the new story
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21',
+        true,
+        'Lost in the Emerald Wilds',
+        'When an ambitious young explorer named Leo ventures deep into the uncharted Emerald Wilds, he expects to find ancient ruins and rare wildlife. But when a sudden storm separates him from his team, Leo must rely on his wits, courage, and the unexpected allies he meets in the jungle to survive. Through danger and wonder, he uncovers secrets that have been hidden for centuries.',
+        'f6b24e76-2cd6-4881-86e9-ffadbba23720',
+        '2025-04-27 18:00:00.000000');
+
+-- Insert chapters for the new story
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('2e9db3af-6c59-45d5-9d39-065839c9b7b4',
+        1,
+        'Into the Heart of the Jungle',
+        '8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21',
+        '<p>The sun blazed overhead as Leo and his expedition team hacked their way through the dense undergrowth. Vines clung to every branch, and the distant call of unseen creatures echoed all around them. The Emerald Wilds lived up to its name — a vast, living sea of green.</p>
+        <p>They were searching for the fabled ruins of the Zanak people, an ancient civilization believed to be lost for centuries. Spirits were high until dark clouds rolled in and a sudden storm scattered the team. Alone and disoriented, Leo realized he was no longer following the marked trail. Now, the real adventure had begun. 🌿🌧️</p>',
+        '2025-04-27 18:01:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('7ac39207-0de4-4ac6-8be9-7f542d2a8b25',
+        2,
+        'The River of Echoes',
+        '8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21',
+        '<p>After wandering for hours, Leo stumbled upon a wide river with shimmering, turquoise waters. The trees leaned over it like ancient sentinels, their leaves whispering secrets to the wind. He followed the riverbank, hoping it would lead him back to civilization — or at least somewhere safe.</p>
+        <p>As dusk fell, the river came alive with the calls of nocturnal creatures. Then, he heard something else — drums. Faint, rhythmic beats echoing over the water. Was it the lost tribe? Or something far more dangerous? With no other choice, Leo tightened his backpack and pressed on into the deepening night. 🌌🛶</p>',
+        '2025-04-27 18:02:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('0e69d157-5a5d-4a86-9fc7-ffdbf0b0b6e2',
+        3,
+        'Secrets of the Lost City',
+        '8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21',
+        '<p>Guided by the sound of the drums, Leo found himself standing before towering stone gates overgrown with moss and vines. This was it — the lost city of the Zanak! 🌿🏛️</p>
+        <p>Inside, the ruins were a labyrinth of crumbling temples and hidden passageways. Strange symbols adorned the walls, telling stories of a civilization that once thrived in harmony with the jungle. But not everything was abandoned. Shadows moved in the corners of his vision, and Leo soon realized he wasn’t alone. An ancient guardian still watched over these ruins, protecting secrets that had slumbered for centuries.</p>
+        <p>Would Leo earn their trust — or would he become just another lost soul in the Emerald Wilds?</p>',
+        '2025-04-27 18:03:00.000000');
+
+-- Insert the new story
+INSERT INTO story
+(story_id, release_status, story_title, story_description, user_id, created_time)
+VALUES ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501',
+        true,
+        'The Little Wizard and the Crystal of Dreams',
+        'In the hidden village of Moonhollow, young wizard Finn dreams of becoming the greatest sorcerer of all time. When the village''s magical Crystal of Dreams is stolen, Finn sets off on a daring quest beyond the Misty Mountains to retrieve it. Along the way, he faces fierce beasts, puzzling riddles, and discovers that true magic isn''t just about spells — it''s about heart.',
+        'f6b24e76-2cd6-4881-86e9-ffadbba23720',
+        '2025-04-27 18:10:00.000000');
+
+-- Insert chapters for the new story
+-- Chapter 1
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('6fb9d7f2-6639-497e-9100-b9d7e4e9c6f2',
+        1,
+        'The Shattered Peace',
+        'd7eecb7c-8e92-4f2f-8d40-3b58c537c501',
+        '<p>Finn, the youngest wizard of Moonhollow, could barely control his excitement. His days were filled with small spells — lighting candles, floating apples, making flowers sing. 🎵✨ But everything changed the night the Crystal of Dreams was stolen. Without it, the village would fall into an eternal slumber.</p>
+        <p>Gathering his courage (and his tiny, squeaky wand), Finn vowed to find the crystal and restore peace to his home. His journey would begin at dawn, beyond the safety of the village borders — into a world he had only heard about in stories. 🌕🏞️</p>',
+        '2025-04-27 18:11:00.000000');
+
+-- Chapter 2
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('e89fbb0f-8788-4893-b5fc-1ea8d4e5b7af',
+        2,
+        'Trials of the Misty Mountains',
+        'd7eecb7c-8e92-4f2f-8d40-3b58c537c501',
+        '<p>The Misty Mountains loomed large before him, wrapped in a veil of silver fog. 🏔️🌫️ Finn''s tiny heart pounded in his chest. Along the narrow trails, he faced enchanted riddles that blocked his path, mischievous spirits who tried to lead him astray, and fierce winds that howled through the rocks like ancient ghosts.</p>
+        <p>When fear gnawed at him, Finn remembered his mentor''s words: "Magic is strong, but a brave heart is stronger." Armed with determination and a few clever tricks, Finn pressed on — each step bringing him closer to the crystal... and closer to the truth about his own strength. 💪✨</p>',
+        '2025-04-27 18:12:00.000000');
+
+-- Chapter 3
+INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
+VALUES ('4c2d5a1f-6b59-4f44-8e12-d3134c99179a',
+        3,
+        'The Dream Thief',
+        'd7eecb7c-8e92-4f2f-8d40-3b58c537c501',
+        '<p>At last, Finn reached the ancient ruins where the Crystal of Dreams glowed, trapped inside a dark cage of twisted roots. Guarding it was the Dream Thief — a shadowy sorcerer who had once been a wizard like Finn, but who had given in to greed and loneliness. 🕯️🌑</p>
+        <p>Instead of fighting, Finn spoke to the Dream Thief with kindness and understanding. He listened to the old sorcerer''s sorrow and shared the joy that the crystal had brought to Moonhollow. Touched by Finn''s compassion, the Dream Thief released the crystal and vanished into the morning mist, finally at peace.</p>
+        <p>With the Crystal of Dreams safely in hand, Finn returned home — not just as a little wizard, but as a true hero of Moonhollow. 🧙‍♂️🏡🌟</p>',
+        '2025-04-27 18:13:00.000000');

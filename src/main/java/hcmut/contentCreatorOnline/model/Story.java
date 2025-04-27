@@ -1,7 +1,5 @@
 package hcmut.contentCreatorOnline.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -57,6 +55,8 @@ public class Story {
     @Column(name = "average_rating")
     private Double averageRating = 0.0;
 
+    @Column(name = "language")
+    private String language = "en";
 
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Chapter> chapters;
