@@ -1,3 +1,3 @@
 ALTER TABLE cco_user
-    ADD COLUMN backgroundUrl VARCHAR(255),
-    ADD COLUMN introduction  TEXT;
+    ADD COLUMN background_url VARCHAR(255),
+    ADD COLUMN introduction   TEXT;

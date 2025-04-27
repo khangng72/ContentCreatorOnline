@@ -31,7 +31,7 @@ public class User {
     @Column
     private String avatarUrl;
 
-    @Column
+    @Column(name = "background_url")
     private String backgroundUrl;
 
     @Column(name = "first_name", nullable = false)
