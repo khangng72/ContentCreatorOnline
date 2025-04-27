@@ -103,6 +103,13 @@ public class StoryService {
                 .collect(Collectors.toList());
     }
 
+    public List<StoryResponse> getLatestStoriesPostedByUser(UUID userId) {
+        List<Story> stories = storyRepository.findTop10ByUserPost_IdOrderByCreatedTimeDesc(userId);
+        return stories.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
     public StoryResponse getStoryByStoryId(UUID storyId) {
         Story story = storyRepository.findById(storyId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));

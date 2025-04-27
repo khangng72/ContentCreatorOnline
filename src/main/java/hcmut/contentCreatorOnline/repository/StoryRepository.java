@@ -9,5 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface StoryRepository extends JpaRepository<Story, UUID> {
+    List<Story> findTop10ByUserPost_IdOrderByCreatedTimeDesc(UUID userId);
+
     List<Story> findByUserPost_Id(UUID userId);
 }

@@ -46,6 +46,13 @@ public class StoryController {
         return ResponseEntity.ok(storyResponses);
     }
 
+    @GetMapping("/post/latest/{user_id}")
+    public ResponseEntity<List<StoryResponse>> getLatestStoriesPostedByUser(@PathVariable UUID user_id) {
+        List<StoryResponse> storyResponses = storyService.getLatestStoriesPostedByUser(user_id);
+        return ResponseEntity.ok(storyResponses);
+    }
+
+
     @GetMapping("/{story_id}")
     public ResponseEntity<StoryResponse> getStoryByStoryId(@PathVariable UUID story_id) {
         StoryResponse storyDTO = storyService.getStoryByStoryId(story_id);
