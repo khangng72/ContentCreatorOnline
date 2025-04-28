@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface ChapterRepository extends JpaRepository<Chapter, UUID> {
@@ -20,4 +21,7 @@ public interface ChapterRepository extends JpaRepository<Chapter, UUID> {
 
     @Query("SELECT SIZE(c.userChapter) FROM Chapter c WHERE c.chapterId = :chapterId")
     int countLikesByChapterId(@Param("chapterId") UUID chapterId);
+
+    @Query("SELECT c FROM Chapter c WHERE c.story.storyId = :storyId")
+    List<Chapter> findByStoryId(UUID storyId);
 }

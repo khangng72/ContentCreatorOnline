@@ -1,5 +1,6 @@
 package hcmut.contentCreatorOnline.service.impl;
 
+import hcmut.contentCreatorOnline.dto.chapter.ChapterListOnlyView;
 import hcmut.contentCreatorOnline.dto.chapter.ChapterPageElement;
 import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
 import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
@@ -27,6 +28,19 @@ public class ChapterService {
 
     private final StoryRepository storyRepository;
     private final ChapterRepository chapterRepository;
+
+    // Model to DTO by using mapper
+    // ChapterListOnlyView
+    private ChapterListOnlyView toChapterListOnlyView(Chapter chapter) {
+        return ChapterListOnlyView.builder()
+                .chapterId(chapter.getChapterId())
+                .chapterTitle(chapter.getChapterTitle())
+                .chapterCreatedTime(chapter.getCreatedTime())
+                .isPublished(chapter.getIsPublished())
+                .numberOfComment(chapter.getNumberOfComment())
+                .numberOfLikes(chapter.getNumberOfLikes())
+                .build();
+    }
 
     public Chapter createNewChapter(UUID storyId, ChapterRequest request) {
         Story story = storyRepository.findById(storyId)
@@ -86,5 +100,12 @@ public class ChapterService {
 
     public int getNumberOfLikes(UUID chapterId) {
         return chapterRepository.countLikesByChapterId(chapterId);
+    }
+
+    public List<ChapterListOnlyView> getChaptersByStoryId(UUID storyId) {
+        List<Chapter> chapters = chapterRepository.findByStoryId(storyId);
+        return chapters.stream()
+                .map(this::toChapterListOnlyView)
+                .collect(Collectors.toList());
     }
 }
