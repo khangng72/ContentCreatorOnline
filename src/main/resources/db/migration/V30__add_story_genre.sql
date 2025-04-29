@@ -1,0 +1,232 @@
+-- for drama
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 15),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 15),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 15),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 15),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 15),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 15),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 15),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 15),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 15),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 15),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 15),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 15),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 15),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 15),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 15),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 15),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 15),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 15);
+
+-- for fantasy
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 1),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 1),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 1),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 1),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 1),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 1),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 1),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 1),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 1),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 1),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 1),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 1),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 1),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 1),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 1),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 1),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 1),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 1);
+
+-- Science Fiction
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 2),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 2),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 2),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 2),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 2),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 2),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 2),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 2),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 2),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 2),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 2),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 2),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 2),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 2),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 2),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 2),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 2),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 2);
+
+-- genre_id = 3
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 3),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 3),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 3),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 3),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 3),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 3),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 3),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 3),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 3),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 3),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 3),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 3),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 3),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 3),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 3),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 3),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 3),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 3);
+
+-- genre_id = 4
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 4),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 4),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 4),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 4),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 4),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 4),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 4),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 4),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 4),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 4),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 4),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 4),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 4),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 4),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 4),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 4),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 4),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 4);
+
+
+-- genre_id = 5
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 5),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 5),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 5),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 5),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 5),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 5),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 5),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 5),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 5),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 5),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 5),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 5),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 5),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 5),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 5),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 5),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 5),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 5);
+
+-- genre_id = 6
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 6),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 6),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 6),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 6),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 6),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 6),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 6),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 6),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 6),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 6),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 6),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 6),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 6),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 6),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 6),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 6),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 6),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 6);
+
+-- genre_id = 7
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 7),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 7),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 7),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 7),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 7),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 7),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 7),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 7),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 7),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 7),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 7),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 7),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 7),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 7),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 7),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 7),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 7),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 7);
+
+-- genre_id = 8
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 8),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 8),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 8),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 8),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 8),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 8),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 8),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 8),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 8),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 8),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 8),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 8),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 8),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 8),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 8),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 8),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 8),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 8);
+
+-- genre_id = 9
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 9),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 9),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 9),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 9),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 9),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 9),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 9),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 9),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 9),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 9),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 9),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 9),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 9),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 9),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 9),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 9),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 9),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 9);
+
+-- genre_id = 10
+INSERT INTO belongs (story_id, genre_id)
+VALUES ('d30eb63f-655a-47db-ad8d-52d81a3e552f', 10),
+       ('a7b8c9d0-e1f2-3456-7890-abcdef123456', 10),
+       ('e7c4f9a0-5d8f-4bdb-bce5-123456789abc', 10),
+       ('b8a1fbe3-2f92-4971-a097-bd01d42b9140', 10),
+       ('db14a441-e4b4-4d72-9c72-e9f23fae0c68', 10),
+       ('2f93538f-0f99-45ff-a9f6-4b8f6369380e', 10),
+       ('f5a5fe61-cc78-43fc-b8a0-4305d3fbb6ad', 10),
+       ('c1b05e6d-6c96-4744-92ca-65ac0409250d', 10),
+       ('8b3a1c2d-512e-4d62-9d04-8f6f3cf33c21', 10),
+       ('d7eecb7c-8e92-4f2f-8d40-3b58c537c501', 10),
+       ('a3e41d5d-51f1-4e3a-8d9a-4d0e9e8c7c05', 10),
+       ('f8d3a2e7-0b5e-4cf7-9c9e-4d6f6f35e0aa', 10),
+       ('e3a5c7b8-1c3d-4f78-9421-8f4e1234abcd', 10),
+       ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234', 10),
+       ('c4b3f8e4-2453-4f5b-9f85-6b839bb7e453', 10),
+       ('2a9f7b84-5cb4-4b45-a951-6e432fcdce42', 10),
+       ('7b8d9d70-bf6f-48ac-96f2-33a330c6fae2', 10),
+       ('3f9a690b-94d7-4c7b-a243-907d0a254a11', 10);
+
