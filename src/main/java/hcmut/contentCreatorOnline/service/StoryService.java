@@ -8,6 +8,9 @@ import hcmut.contentCreatorOnline.model.*;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -148,6 +151,12 @@ public class StoryService {
                 story.getUserPost().getId(),
                 chapterList
         );
+    }
+
+    public List<StoryDTO> getStoriesByGenreId(Integer genreId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<StoryDTO> stories = storyRepository.findByGenreId(genreId, pageable);
+        return stories.getContent();
     }
 
 

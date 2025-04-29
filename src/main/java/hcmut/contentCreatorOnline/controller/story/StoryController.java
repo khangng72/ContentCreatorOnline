@@ -7,14 +7,12 @@ import hcmut.contentCreatorOnline.service.StoryService;
 import hcmut.contentCreatorOnline.service.impl.ChapterService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/story")
@@ -66,5 +64,13 @@ public class StoryController {
     public ResponseEntity<List<ChapterListOnlyView>> getChaptersByStoryId(@PathVariable UUID story_id) {
         List<ChapterListOnlyView> chapters = chapterService.getChaptersByStoryId(story_id);
         return ResponseEntity.ok(chapters);
+    }
+
+    @GetMapping("/genre/{genre_id}")
+    public ResponseEntity<GetStoriesByGenreResponse> getStoriesByGenreId(@PathVariable Integer genre_id,
+                                                                         @RequestParam(defaultValue = "0") Integer page,
+                                                                         @RequestParam(defaultValue = "10") Integer size) {
+        List<StoryDTO> storyResponses = storyService.getStoriesByGenreId(genre_id, page, size);
+        return ResponseEntity.ok(new GetStoriesByGenreResponse(200, storyResponses));
     }
 }
