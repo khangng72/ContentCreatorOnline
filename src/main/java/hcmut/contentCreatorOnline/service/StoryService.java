@@ -8,6 +8,9 @@ import hcmut.contentCreatorOnline.model.*;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Tuple;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,12 +24,15 @@ import java.util.stream.Collectors;
 public class StoryService {
 
     private final StoryRepository storyRepository;
-
     private final GenreRepository genreRepository;
+    private final EntityManager entityManager;
+    @Value("${spring.application.fuzzy-search.threshold}")
+    private double threshold;
 
-    public StoryService(StoryRepository storyRepository, GenreRepository genreRepository) {
+    public StoryService(StoryRepository storyRepository, GenreRepository genreRepository, EntityManager entityManager) {
         this.storyRepository = storyRepository;
         this.genreRepository = genreRepository;
+        this.entityManager = entityManager;
     }
 
     private StoryResponse mapToDTO(Story story) {
@@ -157,6 +163,62 @@ public class StoryService {
         Pageable pageable = PageRequest.of(page, size);
         Page<StoryDTO> stories = storyRepository.findByGenreId(genreId, pageable);
         return stories.getContent();
+    }
+
+    private String buildSearchQuery(String sortBy, String order) {
+        String validSortBy = switch (sortBy) {
+            case "createdDate" -> "created_date";
+            case "averageRating" -> "average_rating";
+            default -> throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "Invalid sortBy: " + sortBy);
+        };
+
+        String validOrder = switch (order.toUpperCase()) {
+            case "ASC", "DESC" -> order.toUpperCase();
+            default -> throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "Invalid order: " + order);
+        };
+
+        return """
+                 SELECT story_id, story_title, story_description, cover_image_uri FROM story
+                        WHERE similarity(story_title, :query) > :threshold
+                           OR document @@ plainto_tsquery('english', :query)
+                        ORDER BY
+                            ts_rank(document, plainto_tsquery('english', :query)) DESC,
+                            similarity(story_title, :query) DESC,
+                            %s %s
+                        OFFSET :offset LIMIT :limit
+                """.formatted(validSortBy, validOrder);
+    }
+
+    public List<StoryDTO> fuzzySearchStoriesByQueryString(
+            String searchTitle,
+            int page,
+            int size,
+            String sortBy,
+            String sortDirection) {
+
+        String sqlQuery = buildSearchQuery(sortBy, sortDirection);
+        
+        List<?> rawList = entityManager.createNativeQuery(sqlQuery, Tuple.class)
+                .setParameter("query", searchTitle)
+                .setParameter("offset", page * size)
+                .setParameter("limit", size)
+                .setParameter("threshold", threshold)
+                .getResultList();
+
+        List<Tuple> tuples = rawList.stream()
+                .map(Tuple.class::cast)
+                .toList();
+
+        return tuples.stream()
+                .map(t -> new StoryDTO(
+                        t.get("story_id", UUID.class),
+                        t.get("story_title", String.class),
+                        t.get("story_description", String.class),
+                        t.get("cover_image_uri", String.class)
+                ))
+                .toList();
+
+
     }
 
 

@@ -1,6 +1,8 @@
 spring:
   application:
     name: contentCreatorOnline
+    fuzzy-search:
+      threshold: 0.001
   datasource:
     url: jdbc:postgresql://localhost:5431/content_creator_online
     username: postgres

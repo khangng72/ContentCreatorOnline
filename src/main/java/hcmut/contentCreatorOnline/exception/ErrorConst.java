@@ -76,4 +76,10 @@ public class ErrorConst {
             OccurredPoint.DB.toString(),
             "Delete data failed");
 
+    public static final ErrorConstParams ILLEGAL_ARGUMENT = new ErrorConstParams(
+            HttpStatus.BAD_REQUEST,
+            "4000002",
+            OccurredPoint.APP.toString(),
+            "Illegal argument");
+
 }

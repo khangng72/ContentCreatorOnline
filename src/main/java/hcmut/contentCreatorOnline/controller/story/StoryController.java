@@ -73,4 +73,16 @@ public class StoryController {
         List<StoryDTO> storyResponses = storyService.getStoriesByGenreId(genre_id, page, size);
         return ResponseEntity.ok(new GetStoriesByGenreResponse(200, storyResponses));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<SearchStoryResponse> searchStory(
+            @RequestParam String searchTitle,
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "createdDate") String sortBy,
+            @RequestParam(defaultValue = "desc") String sortDirection
+    ) {
+        List<StoryDTO> result = storyService.fuzzySearchStoriesByQueryString(searchTitle, page, size, sortBy, sortDirection);
+        return ResponseEntity.ok(new SearchStoryResponse(HttpStatus.OK.value(), result));
+    }
 }
