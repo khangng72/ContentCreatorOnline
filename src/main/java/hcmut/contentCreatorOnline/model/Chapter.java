@@ -24,6 +24,7 @@ public class Chapter {
 
     private Integer chapterNumber;
 
+    @Column(name = "number_of_comment")
     private Integer numberOfComment;
 
     private String chapterTitle;
