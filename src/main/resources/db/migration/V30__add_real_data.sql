@@ -52,7 +52,6 @@ VALUES
 ('cb00add0-0cea-4005-8c5c-0750325b3411', 'michelle.burton@example.com', '$2a$05$bHb1fgUgqLr1F8PfOBrI4OzQHg3X7EEr5vj2uQfAH7uQSfi/MT4xS', 'Michelle', 'Burton', 'Male', false, true, 'Vietnamese', '2005-09-09', '<p>🎶 <i>Michelle Burton</i> đam mê âm nhạc và viết lời bài hát ✍️.</p>', '2025-04-30'),
 ('3999adec-2896-414e-b5ab-fa408661268d', 'dawn.flowers@example.com', '$2a$05$bHb1fgUgqLr1F8PfOBrI4OzQHg3X7EEr5vj2uQfAH7uQSfi/MT4xS', 'Dawn', 'Flowers', 'Male', false, true, 'Vietnamese', '2000-01-11', '<p>🎶 <i>Dawn Flowers</i> đam mê âm nhạc và viết lời bài hát ✍️.</p>', '2025-04-30');
 
-
 -- Insert story 1
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
@@ -99,7 +98,7 @@ VALUES ('e9f8e7e6-5432-1098-7654-321098765432',
 
 -- Chapter 1 for story 2
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('c3c4c5c6-d7d8-e9e0-f1f2-g3g4g5g6g7g8',
+VALUES ('d4e5d9a9-4e32-40fe-9011-6052e220b69d',
         1,
         'Đêm Đầu Tiên Trong Địa Ngục',
         'e9f8e7e6-5432-1098-7654-321098765432',
@@ -110,7 +109,7 @@ VALUES ('c3c4c5c6-d7d8-e9e0-f1f2-g3g4g5g6g7g8',
 
 -- Chapter 2 for story 2
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('d4d5d6d7-e8e9-f0f1-g2g3-h4h5h6h7h8h9',
+VALUES ('5daf2a3b-29ec-49af-aace-8e8550a77b1a',
         2,
         'Ca Phẫu Thuật Lúc Nửa Đêm',
         'e9f8e7e6-5432-1098-7654-321098765432',
@@ -122,7 +121,7 @@ VALUES ('d4d5d6d7-e8e9-f0f1-g2g3-h4h5h6h7h8h9',
 -- Insert story 3
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('i9j8k7l6-m5n4-o3p2-q1r0-s1t2u3v4w5x',
+VALUES ('aa1a73ce-2ce1-4705-9878-57213158925d',
         true,
         'Chuyến Tàu Ma Xuyên Đêm',
         'Chuyến tàu SE7 từ Sài Gòn ra Hà Nội mỗi đêm đều có một toa đặc biệt không ai dám bước vào - toa số 13. Người ta đồn rằng đó là nơi trú ngụ của những linh hồn không thể siêu thoát sau một vụ tai nạn thảm khốc năm xưa. Khi một nhóm bạn trẻ tò mò quyết định khám phá sự thật, họ không ngờ rằng mình sẽ trở thành hành khách vĩnh viễn của chuyến tàu định mệnh này...',
@@ -132,10 +131,10 @@ VALUES ('i9j8k7l6-m5n4-o3p2-q1r0-s1t2u3v4w5x',
 
 -- Chapter 1 for story 3
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('e5e6e7e8-f9f0-g1g2-h3h4-i5i6i7i8i9i0',
+VALUES ('51a18f20-3975-4464-b453-2834aa4c4a14',
         1,
         'Toa Tàu Bí Ẩn',
-        'i9j8k7l6-m5n4-o3p2-q1r0-s1t2u3v4w5x',
+        'aa1a73ce-2ce1-4705-9878-57213158925d',
         '<p>Ga Sài Gòn lúc nửa đêm vắng lặng đến rợn người. Chúng tôi - nhóm 4 người - cố tình mua vé chuyến SE7 để khám phá toa số 13 huyền thoại. 🚂</p>
         <p>Khi tàu chuyển bánh, chúng tôi lén lút di chuyển về phía toa cuối cùng. Cánh cửa toa 13 phủ đầy bụi bặm, nhưng kỳ lạ là ổ khóa vẫn sáng bóng như mới. 🔑</p>
         <p>Khi mở cửa, một làn gió lạnh thổi ra mang theo mùi máu khô và... mùi thuốc súng. Bên trong, những hành khách ngồi im lìm, tất cả đều mặc trang phục từ những năm 1980...</p>',
@@ -143,10 +142,10 @@ VALUES ('e5e6e7e8-f9f0-g1g2-h3h4-i5i6i7i8i9i0',
 
 -- Chapter 2 for story 3
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('f6f7f8f9-g0g1-h2h3-i4i5-j6j7j8j9j0j1',
+VALUES ('ac1f02a1-19a2-4645-ace7-009a647d6544',
         2,
         'Những Hành Khách Vô Hình',
-        'i9j8k7l6-m5n4-o3p2-q1r0-s1t2u3v4w5x',
+        'aa1a73ce-2ce1-4705-9878-57213158925d',
         '<p>Chúng tôi ngồi xuống ghế, cố gắng tỏ ra bình thường nhưng tim đập thình thịch. Những hành khách xung quanh không nói chuyện, không cử động, chỉ ngồi nhìn thẳng về phía trước. 👻</p>
         <p>Bỗng tàu đi vào đường hầm, mọi ánh sáng tắt ngúm. Khi đèn bật lại, cảnh tượng trước mắt khiến máu trong người tôi đông cứng: những hành khách giờ đã quay đầu nhìn chằm chằm vào chúng tôi, khuôn mặt biến dạng không còn hình người. 😱</p>
         <p>Chiếc tàu vẫn lao về phía trước, nhưng qua cửa sổ, tôi thấy cảnh vật không phải là đồng ruộng hay thành phố, mà là một vùng đất xám xịt đầy bóng người đang vẫy tay...</p>',
@@ -155,7 +154,7 @@ VALUES ('f6f7f8f9-g0g1-h2h3-i4i5-j6j7j8j9j0j1',
 -- Insert story 4
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k',
+VALUES ('50ab8f7f-a905-40b3-8d20-08133f293fa2',
         true,
         'Lời Nguyền Trong Bức Tranh Cổ',
         'Tại một phòng trưng bày nghệ thuật ở Huế, có một bức tranh cổ vẽ người phụ nữ với đôi mắt buồn thăm thẳm. Người ta đồn rằng ai nhìn vào mắt bà quá lâu sẽ gặp phải vận rủi khủng khiếp. Khi một sinh viên mỹ thuật vô tình khám phá ra bí mật đằng sau bức tranh, cô không ngờ rằng mình đã đánh thức một lời nguyền cổ xưa và kéo theo hàng loạt cái chết bí ẩn...',
@@ -165,10 +164,10 @@ VALUES ('z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k',
 
 -- Chapter 1 for story 4
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('k1k2k3k4-l5l6-m7m8-n9n0-o1o2o3o4o5o6',
+VALUES ('d8c313fa-fe2a-411d-895c-5767766b41ca',
         1,
         'Ánh Mắt Từ Quá Khứ',
-        'z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k',
+        '50ab8f7f-a905-40b3-8d20-08133f293fa2',
         '<p>Bức tranh "Mỹ nhân bên cửa sổ" được treo trong góc tối nhất của phòng trưng bày. Tôi - Mai - sinh viên năm cuối khoa Mỹ thuật bị cuốn hút bởi nó ngay từ cái nhìn đầu tiên. 🎨</p>
         <p>Đôi mắt người phụ nữ trong tranh như có linh hồn, nhìn thẳng vào tâm can người xem. Càng ngắm, tôi càng thấy chúng như thật, thậm chí có lần tôi thấy chúng chớp nhẹ. 👁️</p>
         <p>Đêm đó, tôi mơ thấy mình đứng trong khung tranh, và người phụ nữ kia thì đang ngồi ở bàn học của tôi, mỉm cười với chiếc gương mà tôi vẫn dùng mỗi sáng...</p>',
@@ -176,10 +175,10 @@ VALUES ('k1k2k3k4-l5l6-m7m8-n9n0-o1o2o3o4o5o6',
 
 -- Chapter 2 for story 4
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('l2l3l4l5-m6m7-n8n9-o0o1-p2p3p4p5p6p7',
+VALUES ('5ef87db6-7bac-43f4-9f87-a69befb3f8e4',
         2,
         'Sự Thay Đổi Kỳ Lạ',
-        'z1y2x3w4-v5u6-t7s8-r9q0-p1o2n3m4l5k',
+        '50ab8f7f-a905-40b3-8d20-08133f293fa2',
         '<p>Sau giấc mơ đó, mọi thứ bắt đầu thay đổi. Bạn cùng phòng tôi - Linh - đột nhiên mất tích sau khi vô tình nhìn thấy bức tranh trong phòng tôi (tôi đã chụp lại bằng điện thoại). 📱</p>
         <p>Điều kinh khủng hơn là mỗi sáng thức dậy, tôi thấy bức tranh trong điện thoại có sự thay đổi nhỏ: người phụ nữ đã tiến gần hơn đến mép tranh, và... khuôn mặt cô ấy dần giống tôi. 😨</p>
         <p>Khi tôi quyết định xóa bức ảnh đi, điện thoại bỗng nóng lên bất thường. Màn hình hiện lên dòng chữ bằng chữ Nho cổ: "Ngươi đã nhìn vào mắt ta, giờ đến lượt ta nhìn ngươi..."</p>',
@@ -188,7 +187,7 @@ VALUES ('l2l3l4l5-m6m7-n8n9-o0o1-p2p3p4p5p6p7',
 -- Insert story 5
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('j1i2h3g4-f5e6-d7c8-b9a0-v1w2x3y4z5a',
+VALUES ('7238e2f0-09cb-4fc8-9131-e1e49d0d7738',
         true,
         'Căn Nhà Số 13 Trên Phố Cổ',
         'Con phố cổ 200 tuổi ở Hội An có một ngôi nhà không ai dám bước vào - số 13. Người thuê nào cũng chết hoặc phát điên sau một đêm ở đó. Khi một nhà báo quyết định ở lại qua đêm để điều tra, anh phát hiện ra bí mật kinh hoàng: căn nhà thực chất là cổng vào thế giới bên kia, nơi những linh hồn oán hận chờ đợi cơ hội trở về dương gian...',
@@ -198,10 +197,10 @@ VALUES ('j1i2h3g4-f5e6-d7c8-b9a0-v1w2x3y4z5a',
 
 -- Chapter 1 for story 5
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('m3m4m5m6-n7n8-o9o0-p1p2-q3q4q5q6q7q8',
+VALUES ('b6d9ac55-77c5-46fe-819a-2e6bedc76d8a',
         1,
         'Đêm Đầu Ở Nhà Ma',
-        'j1i2h3g4-f5e6-d7c8-b9a0-v1w2x3y4z5a',
+        '7238e2f0-09cb-4fc8-9131-e1e49d0d7738',
         '<p>Căn nhà gỗ cổ kính trông hoàn toàn bình thường dưới ánh nắng ban ngày. Tôi - Phong - thuê nó với giá rẻ mạt, dĩ nhiên là không nói cho chủ nhà ý định ở lại qua đêm. 🏚️</p>
         <p>Khi màn đêm buông xuống, không khí trong nhà thay đổi hoàn toàn. Những bức tường gỗ bắt đầu rỉ máu, tiếng thì thầm vang lên từ góc nhà tối nhất. 🩸</p>
         <p>Nửa đêm, tôi giật mình tỉnh giấc vì tiếng gõ cửa. Khi mở ra, một cô gái xinh đẹp trong trang phục áo dài cổ đứng đó, mời tôi dự tiệc... nhưng khi nhìn xuống, tôi thấy cô ấy không có bàn chân, chỉ là một làn khói mờ nhạt...</p>',
@@ -209,10 +208,10 @@ VALUES ('m3m4m5m6-n7n8-o9o0-p1p2-q3q4q5q6q7q8',
 
 -- Chapter 2 for story 5
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('n4n5n6n7-o8o9-p0p1-q2q3-r4r5r6r7r8r9',
+VALUES ('958f91c2-b549-4c47-8cec-94418fc2777b',
         2,
         'Bữa Tiệc Của Những Linh Hồn',
-        'j1i2h3g4-f5e6-d7c8-b9a0-v1w2x3y4z5a',
+        '7238e2f0-09cb-4fc8-9131-e1e49d0d7738',
         '<p>Theo cô gái kỳ lạ, tôi bước vào một không gian hoàn toàn khác - căn nhà số 13 giờ đây rộng lớn như một dinh thự, đầy ắp khách mặc trang phục từ nhiều thời đại khác nhau. 🎭</p>
         <p>Họ ăn uống, nhảy múa, nhưng thức ăn trên bàn toàn là đồ cúng, và rượu trong ly có mùi máu tanh. Khi đồng hồ điểm 12 tiếng, tất cả khách khứa đồng loạt quay sang nhìn tôi, để lộ khuôn mặt thật: những bộ xương trắng hếu với đôi mắt đen ngòm. 💀</p>
         <p>Người chủ tiệc tuyên bố: "Chào mừng thành viên mới của chúng ta!" và tôi nhận ra mình đang mặc trang phục tang lễ, tay cầm một tờ giấy ghi ngày chết của chính mình: đêm nay...</p>',
@@ -221,7 +220,7 @@ VALUES ('n4n5n6n7-o8o9-p0p1-q2q3-r4r5r6r7r8r9',
 -- Insert story 6
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('b3c4d5e6-f7g8-h9i0-j1k2-l3m4n5o6p7q',
+VALUES ('36a185fa-dc9b-4592-aae1-6f1fa79a5eba',
         true,
         'Hồn Ma Trong Trường Học Cũ',
         'Trường tiểu học Lê Văn Tám đã bị đóng cửa sau một vụ án mạng kinh hoàng cách đây 20 năm. Giờ đây, vào mỗi đêm, người ta vẫn nghe thấy tiếng trẻ con hát bài đồng dao quen thuộc, cùng với tiếng khóc thét đầy đau đớn. Khi một nhóm học sinh cũ quay lại thăm trường, họ phát hiện ra sự thật đáng sợ: những linh hồn nhỏ bé vẫn đang "học bài" dưới bàn tay của một giáo viên từ cõi chết...',
@@ -231,10 +230,10 @@ VALUES ('b3c4d5e6-f7g8-h9i0-j1k2-l3m4n5o6p7q',
 
 -- Chapter 1 for story 6
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('o5o6o7o8-p9p0-q1q2-r3r4-s5s6s7s8s9s0',
+VALUES ('37cbc049-4720-42a1-9bb4-d58e19ce8a08',
         1,
         'Lời Đồng Dao Lúc Nửa Đêm',
-        'b3c4d5e6-f7g8-h9i0-j1k2-l3m4n5o6p7q',
+        '36a185fa-dc9b-4592-aae1-6f1fa79a5eba',
         '<p>Chúng tôi - nhóm 6 người từng học ở đây 10 năm trước - quay lại trường cũ vào một đêm mưa. Cổng trường khóa chặt, nhưng có một lối vào nhỏ phía sau nhà để xe mà chỉ học sinh cũ mới biết. 🏫</p>
         <p>Khi bước vào hành lang tối om, tai tôi bắt đầu nghe thấy tiếng hát trẻ con văng vẳng: "Chi chi chành chành...". Tiếng hát ngày càng rõ, nhưng khi mở cửa lớp học, không có ai ở đó. 👧👦</p>
         <p>Bỗng tôi thấy những dòng phấn trắng tự viết lên bảng đen: "Cô giáo ơi, em đau quá...". Cùng lúc đó, tiếng roi quất "đét đét" vang lên từ phòng cuối hành lang...</p>',
@@ -242,10 +241,10 @@ VALUES ('o5o6o7o8-p9p0-q1q2-r3r4-s5s6s7s8s9s0',
 
 -- Chapter 2 for story 6
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('p6p7p8p9-q0q1-r2r3-s4s5-t6t7t8t9t0t1',
+VALUES ('ef46853b-20c2-4f5d-827d-1bc2b6bce69d',
         2,
         'Lớp Học Của Những Linh Hồn',
-        'b3c4d5e6-f7g8-h9i0-j1k2-l3m4n5o6p7q',
+        '36a185fa-dc9b-4592-aae1-6f1fa79a5eba',
         '<p>Chúng tôi lần theo tiếng roi đến phòng học cuối cùng. Qua khe cửa, một cảnh tượng kinh hoàng hiện ra: một lớp học đầy trẻ nhỏ trong trang phục trắng toát đang ngồi viết bài, trong khi một người phụ nữ mặc áo dài đen đi lại giữa các dãy bàn. 👩‍🏫</p>
         <p>Mỗi lần cô giáo đi qua, những đứa trẻ lại run rẩy. Khi một em bé làm rơi bút, cô giáo quay lại, và chúng tôi thấy rõ khuôn mặt cô - một hộp sọ với những sợi tóc thưa thớt, tay cầm chiếc roi dính đầy máu. 💀</p>
         <p>Bỗng cô giáo ngừng lại, quay thẳng về phía cửa nơi chúng tôi đứng và mỉm cười: "À, có học sinh mới đến muộn. Vào lớp ngay!" Cánh cửa trước mặt chúng tôi bật mở...</p>',
@@ -254,7 +253,7 @@ VALUES ('p6p7p8p9-q0q1-r2r3-s4s5-t6t7t8t9t0t1',
 -- Insert story 7
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('c8d9e0f1-g2h3-i4j5-k6l7-m8n9o0p1q2r',
+VALUES ('ec8b78a2-6f62-4f23-8ce5-ab99ba57f750',
         true,
         'Chiếc Điện Thoại Tử Thần',
         'Một chiếc điện thoại cổ lạnh toát xuất hiện trong cửa hàng đồ cũ, luôn đổ chuông lúc 3 giờ sáng. Ai nhấc máy sẽ nghe thấy giọng nói thì thầm dự đoán chính xác cái chết của họ trong 7 ngày tới. Khi một sinh viên tò mò trả lời cuộc gọi, cô không ngờ mình đã kích hoạt đồng hồ đếm ngược cho số phận không thể tránh khỏi...',
@@ -264,10 +263,10 @@ VALUES ('c8d9e0f1-g2h3-i4j5-k6l7-m8n9o0p1q2r',
 
 -- Chapter 1 for story 7
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('q7q8q9q0-r1r2-s3s4-t5t6-u7u8u9u0u1u2',
+VALUES ('e1eefd80-86be-4dc8-9094-08899dd8c929',
         1,
         'Cuộc Gọi Lúc 3 Giờ Sáng',
-        'c8d9e0f1-g2h3-i4j5-k6l7-m8n9o0p1q2r',
+        'ec8b78a2-6f62-4f23-8ce5-ab99ba57f750',
         '<p>Chiếc điện thoại Nokia 1280 màu đen nằm lặng lẽ giữa đống đồ cũ, màn hình phủ lớp bụi mỏng. Tôi - Linh - mua nó chỉ vì tò mò với giá 50k. 📞</p>
         <p>Đêm đầu tiên, chuông reo đúng 3:00:00. Giọng đàn ông the thé bên kia đầu dây thở dài: "Ngày thứ nhất... em sẽ thấy bóng đen sau lưng mình trong gương..." 😨</p>
         <p>Tôi tưởng trò đùa cho đến khi rửa mặt sáng hôm sau, trong gương phòng tắm mờ hơi nước, một bóng người cao lêu nghêu đứng ngay sau lưng tôi - dù phòng trống hoác...</p>',
@@ -275,10 +274,10 @@ VALUES ('q7q8q9q0-r1r2-s3s4-t5t6-u7u8u9u0u1u2',
 
 -- Chapter 2 for story 7
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('r8r9r0r1-s2s3-t4t5-u6u7-v8v9v0v1v2v3',
+VALUES ('f3cc9191-8cca-438b-87cb-106c2c5468fc',
         2,
         'Lời Tiên Tri Kinh Hoàng',
-        'c8d9e0f1-g2h3-i4j5-k6l7-m8n9o0p1q2r',
+        'ec8b78a2-6f62-4f23-8ce5-ab99ba57f750',
         '<p>Đêm thứ hai, giọng nói lại vang lên: "Ngày thứ hai... em sẽ nhận quà từ người đã khuất..." 🎁</p>
         <p>Sáng hôm sau, trước cửa phòng tôi xuất hiện gói quà bọc giấy đen. Bên trong là chiếc vòng cổ tôi từng đánh mất của bà ngoại - người đã mất 3 năm trước. Trên dây vòng còn vết máu khô. 💀</p>
         <p>Đến đêm thứ ba, giọng nói cười khúc khích: "Ngày thứ ba... em sẽ gặp tai nạn nhỏ..." - ngay lúc đó, tôi trượt chân ngã xuống cầu thang ký túc xá...</p>',
@@ -287,7 +286,7 @@ VALUES ('r8r9r0r1-s2s3-t4t5-u6u7-v8v9v0v1v2v3',
 -- Insert story 8
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('s3t4u5v6-w7x8-y9z0-a1b2-c3d4e5f6g7h',
+VALUES ('eacbffd6-29af-472d-af3b-03c39bdb6f61',
         true,
         'Búp Bê Của Đứa Trẻ Mất Tích',
         'Trong căn nhà hoang cuối ngõ có một con búp bê vải cũ kỹ luôn tự di chuyển vị trí. Người ta đồn đó là linh hồn của đứa trẻ mất tích năm xưa đang tìm kiếm thủ phạm. Khi một nhiếp ảnh gia trẻ vô tình chụp được hình ảnh con búp bê biết cử động, anh bị cuốn vào vòng xoáy của những bí mật đen tối mà cả làng không dám nhắc đến...',
@@ -297,10 +296,10 @@ VALUES ('s3t4u5v6-w7x8-y9z0-a1b2-c3d4e5f6g7h',
 
 -- Chapter 1 for story 8
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('s9s0s1s2-t3t4-u5u6-v7v8-w9w0w1w2w3w4',
+VALUES ('88879606-278a-4283-82e1-f3d1927fdcd0',
         1,
         'Bức Ảnh Kỳ Lạ',
-        's3t4u5v6-w7x8-y9z0-a1b2-c3d4e5f6g7h',
+        'eacbffd6-29af-472d-af3b-03c39bdb6f61',
         '<p>Tôi - Duy - chuyên chụp ảnh đô thị hoang tàn, bị cuốn hút bởi căn nhà gỗ mục nát cuối con ngõ hẻo lánh. Cửa sổ tầng hai có bóng dáng một con búp bê vải cũ kỹ ngồi tựa lưng vào khung cửa. 📸</p>
         <p>Khi phóng to bức ảnh chụp được, máu trong người tôi đông cứng: con búp bê đã quay đầu nhìn thẳng vào ống kính, đôi mắt bằng cúc áo đen kịt như có linh hồn. 👁️</p>
         <p>Đêm đó, xem lại file ảnh, tôi thấy rõ bàn tay vải của nó đang giơ lên vẫy chào... trong khi tôi chắc chắn lúc chụp nó không cử động...</p>',
@@ -309,7 +308,7 @@ VALUES ('s9s0s1s2-t3t4-u5u6-v7v8-w9w0w1w2w3w4',
 -- Insert story 9
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('i8j7k6l5-m4n3-o2p1-q0r9-s8t7u6v5w4',
+VALUES ('b9870c68-7c84-497f-a5ca-d073964b1ae9',
         true,
         'Căn Phòng Trọ Cuối Dãy',
         'Ký túc xá trường Y có một căn phòng bị niêm phong 20 năm qua sau khi 5 sinh viên tự tử cùng lúc. Khi một nhóm thực tập sinh dũng cảm quyết định vào khám phá, họ phát hiện những ghi chép y khoa kinh dị về thí nghiệm bất hợp pháp - nơi ranh giới giữa sự sống và cái chết bị xóa nhòa. Giờ đây, "bệnh nhân" từ thí nghiệm năm xưa đang tìm cách hoàn thành công trình dở dang...',
@@ -319,10 +318,10 @@ VALUES ('i8j7k6l5-m4n3-o2p1-q0r9-s8t7u6v5w4',
 
 -- Chapter 1 for story 9
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('t0t1t2t3-u4u5-v6v7-w8w9-x0x1x2x3x4x5',
+VALUES ('cc39c4b3-e344-430a-898e-6fada76865ef',
         1,
         'Phòng 402',
-        'i8j7k6l5-m4n3-o2p1-q0r9-s8t7u6v5w4',
+        'b9870c68-7c84-497f-a5ca-d073964b1ae9',
         '<p>Phòng 402 nằm cuối hành lang tối nhất ký túc xá, cửa vẫn còn dấu niêm phong từ năm 2003. Chúng tôi - nhóm 3 sinh viên năm cuối - lén mở khóa vào một đêm mưa gió. 🚪</p>
         <p>Bên trong vẫn nguyên hiện trường như ngày xưa: 5 chiếc giường tầng với ga trải giường ố vàng, bàn học phủ đầy bụi. Nhưng kỳ lạ là tủ thuốc y tế vẫn đầy ắp các lọ hóa chất lạ. 💉</p>
         <p>Khi giở cuốn nhật ký trên bàn, tôi đọc được dòng chữ cuối cùng viết bằng máu: "Chúng tôi đã đánh thức nó dậy... giờ nó muốn hoàn thành thí nghiệm..."</p>',
@@ -331,7 +330,7 @@ VALUES ('t0t1t2t3-u4u5-v6v7-w8w9-x0x1x2x3x4x5',
 -- Insert story 10
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('x3y2z1a0-b9c8-d7e6-f5g4-h3i2j1k0l9m',
+VALUES ('15fcd5d1-d101-499c-ae2d-38f8ac960d58',
         true,
         'Con Đường Ma Ám Ở Đồi Thiên An',
         'Con đường vòng qua đồi Thiên An lúc nửa đêm luôn xuất hiện làn sương trắng đặc quánh, dù trời nắng ráo. Những người đi qua đó thường nghe tiếng khóc trẻ con và thấy bóng người đứng giữa đường, nhưng khi lại gần thì biến mất. Khi một tài xế xe tải quyết định dừng lại tìm hiểu, anh phát hiện ra sự thật kinh hoàng: đó là linh hồn của những đứa trẻ mồ côi bị bỏ rơi từ thời chiến, vẫn đang chờ đợi được cứu giúp...',
@@ -341,10 +340,10 @@ VALUES ('x3y2z1a0-b9c8-d7e6-f5g4-h3i2j1k0l9m',
 
 -- Chapter 1 for story 10
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('u1u2u3u4-v5v6-w7w8-x9x0-y1y2y3y4y5y6',
+VALUES ('1ea73dc7-eb51-4ec9-bda2-1fbad84f5aa0',
         1,
         'Hành Trình Xuyên Sương Mù',
-        'x3y2z1a0-b9c8-d7e6-f5g4-h3i2j1k0l9m',
+        '15fcd5d1-d101-499c-ae2d-38f8ac960d58',
         '<p>Chuyến hàng đêm của tôi luôn phải đi qua con đường đồi Thiên An. Đêm nay, làn sương trắng dày đặc như mọi khi, nhưng có gì đó khác lạ - một bóng người nhỏ bé đứng giữa đường. 🚛</p>
         <p>Tôi đạp phanh gấp, nhưng khi bước xuống kiểm tra, không có ai cả. Chỉ có một con búp bê vải rách nát nằm giữa đường, đôi mắt bằng cúc áo long lanh ướt át. 👶</p>
         <p>Khi quay lại xe, tôi giật mình thấy hàng chục bàn tay nhỏ xíu in hằn trên kính chắn gió - như thể có đám trẻ vừa vỗ tay vào xe tôi...</p>',
@@ -353,7 +352,7 @@ VALUES ('u1u2u3u4-v5v6-w7w8-x9x0-y1y2y3y4y5y6',
 -- Insert story 11
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('n8m7l6k5-j4i3-h2g1-f0e9-d8c7b6a5a4b',
+VALUES ('4ec2c602-7bf6-47c5-b0df-53d5f05a9430',
         true,
         'Chiếc Áo Dài Đẫm Máu',
         'Trong viện bảo tàng phụ nữ Nam Bộ có một chiếc áo dài trắng nhuốm đầy vết máu không thể giặt sạch. Người ta đồn rằng đó là hiện vật từ vụ án mạng bí ẩn năm xưa, và linh hồn người mặc nó vẫn lang thang tìm kiếm công lý. Khi một nhà nghiên cứu trẻ quyết định điều tra nguồn gốc chiếc áo, cô không ngờ mình đã đánh thức cơn thịnh nộ từ quá khứ...',
@@ -363,10 +362,10 @@ VALUES ('n8m7l6k5-j4i3-h2g1-f0e9-d8c7b6a5a4b',
 
 -- Chapter 1 for story 11
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('v2v3v4v5-w6w7-x8x9-y0y1-z2z3z4z5z6z7',
+VALUES ('b49a0952-b27f-44dc-9dce-552c218d79e4',
         1,
         'Hiện Vật Số 13',
-        'n8m7l6k5-j4i3-h2g1-f0e9-d8c7b6a5a4b',
+        '4ec2c602-7bf6-47c5-b0df-53d5f05a9430',
         '<p>Chiếc áo dài trắng được trưng bày trong tủ kính riêng biệt, những vết máu đỏ thẫm loang lổ như mới đổ hôm qua. Tôi - Thư - được phân công nghiên cứu hiện vật đặc biệt này. 👗</p>
         <p>Đêm đầu tiên ở lại bảo tàng, tôi nghe tiếng bước chân nhẹ nhàng đi lại trong phòng trưng bày. Khi bật đèn lên, chiếc áo dài đã không còn trong tủ kính - nó được treo gọn gàng trên giá, như thể vừa có người mặc xong. 🩸</p>
         <p>Trên bàn làm việc, cuốn sổ ghi chép của tôi tự mở ra, dòng chữ hiện lên: "Hãy giúp tôi tìm ra sự thật..."</p>',
@@ -375,7 +374,7 @@ VALUES ('v2v3v4v5-w6w7-x8x9-y0y1-z2z3z4z5z6z7',
 -- Insert story 12
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('c6d5e4f3-g2h1-i0j9-k8l7-m6n5o4p3q2r',
+VALUES ('3eab9be4-adec-430a-aff5-c7e59d577562',
         true,
         'Lời Nguyền Trong Bình Tro Cốt',
         'Tại một ngôi chùa cổ ở Huế, có một bình tro cốt không tên được đặt trong góc tối nhất của điện thờ. Người trụ trì cũ luôn dặn dò không được di chuyển nó, nhưng khi vị sư mới không tin vào ma quỷ quyết định dọn dẹp, ông đã vô tình giải phóng linh hồn độc ác bị phong ấn suốt trăm năm. Giờ đây, làng quê yên bình bỗng chìm trong bạo bệnh và những cái chết không rõ nguyên nhân...',
@@ -385,10 +384,10 @@ VALUES ('c6d5e4f3-g2h1-i0j9-k8l7-m6n5o4p3q2r',
 
 -- Chapter 1 for story 12
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('w3w4w5w6-x7x8-y9y0-z1z2-a3a4a5a6a7a8',
+VALUES ('92262c6b-f96f-4bb0-8e68-1c4bd5467fd1',
         1,
         'Bình Tro Bí Ẩn',
-        'c6d5e4f3-g2h1-i0j9-k8l7-m6n5o4p3q2r',
+        '3eab9be4-adec-430a-aff5-c7e59d577562',
         '<p>Bình gốm men xanh rêu nằm im lìm trong góc tối, phủ đầy mạng nhện. Tôi - sư Thích Tâm - mới về trụ trì chùa Linh Ứng, quyết định dọn dẹp lại điện thờ cho khang trang. 🏯</p>
         <p>Khi nâng bình tro lên, một luồng khí lạnh buốt thổi qua khiến tôi suýt làm rơi. Từ đáy bình, tiếng thì thầm vang lên: "Cuối cùng... ta đã tự do..." 🗣️</p>
         <p>Đêm đó, toàn bộ làng Hương Long nằm mơ chung một giấc mơ: một bóng đen cao lớn đi từng nhà, gõ cửa từng phòng...</p>',
@@ -397,7 +396,7 @@ VALUES ('w3w4w5w6-x7x8-y9y0-z1z2-a3a4a5a6a7a8',
 -- Insert story 13
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('s1t2u3v4-w5x6-y7z8-a9b0-c1d2e3f4g5h',
+VALUES ('c391158a-52f9-4a8d-a6e2-1310e49d1c3c',
         true,
         'Căn Nhà Nghiêng Bên Sông',
         'Căn nhà gỗ lâu đời nhất phố cổ Hội An có một bí mật kinh hoàng: nó không thực sự "nghiêng" do thời gian, mà vì có thứ gì đó dưới tầng hầm đang cố gắng chui lên. Khi chủ nhà mới quyết định đào sâu nền móng, họ phát hiện ra hệ thống đường hầm bí mật dẫn đến một ngôi đền cổ - nơi thực hiện những nghi lễ hiến tế chưa từng được ghi chép trong sử sách...',
@@ -407,10 +406,10 @@ VALUES ('s1t2u3v4-w5x6-y7z8-a9b0-c1d2e3f4g5h',
 
 -- Chapter 1 for story 13
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('x4x5x6x7-y8y9-z0z1-a2a3-b4b5b6b7b8b9',
+VALUES ('916c60f8-3d06-42d7-87d2-383e47d68491',
         1,
         'Bí Mật Dưới Tầng Hầm',
-        's1t2u3v4-w5x6-y7z8-a9b0-c1d2e3f4g5h',
+        'c391158a-52f9-4a8d-a6e2-1310e49d1c3c',
         '<p>Căn nhà 200 tuổi của gia đình tôi nghiêng một góc kỳ lạ, như thể có sức nặng khủng khiếp đang kéo nó xuống từ phía tầng hầm. Khi thuê đội xây dựng về kiểm tra, máy đo địa chất phát hiện có khoảng trống lớn dưới nền nhà. 🏚️</p>
         <p>Khi đục bể nền, chúng tôi tìm thấy cầu thang đá dẫn xuống lòng đất. Không khí ẩm mốc bốc lên mang theo mùi tanh tưởi lạ thường. 🔦</p>
         <p>Ánh đèn rọi xuống hé lộ những bức tường đá phủ đầy hình vẽ kỳ dị: hàng trăm con người bị trói đang cầu xin trước một sinh vật nửa người nửa thú...</p>',
@@ -419,7 +418,7 @@ VALUES ('x4x5x6x7-y8y9-z0z1-a2a3-b4b5b6b7b8b9',
 -- Insert story 14
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('i7j6k5l4-m3n2-o1p0-q9r8-s7t6u5v4w3x',
+VALUES ('aaf08a98-8cf0-4db2-a48e-2649be61f17b',
         true,
         'Bóng Đen Trong Bệnh Viện Tâm Thần',
         'Khu biệt lập của bệnh viện tâm thần Trung ương 2 từng là nơi giam giữ những bệnh nhân nguy hiểm nhất. Sau khi đóng cửa, người ta đồn rằng những linh hồn bệnh nhân vẫn lang thang trong hành lang tối, tiếp tục "điều trị" theo cách của họ. Khi đoàn làm phim trẻ vào quay phim tài liệu, họ không ngờ mình sẽ trở thành "bệnh nhân" trong trò chơi kinh dị của những linh hồn mất trí...',
@@ -429,10 +428,10 @@ VALUES ('i7j6k5l4-m3n2-o1p0-q9r8-s7t6u5v4w3x',
 
 -- Chapter 1 for story 14
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('y5y6y7y8-z9z0-a1a2-b3b4-c5c6c7c8c9c0',
+VALUES ('98f834dc-e7dd-4ec1-a8e5-289b0a13d103',
         1,
         'Khu Biệt Lập',
-        'i7j6k5l4-m3n2-o1p0-q9r8-s7t6u5v4w3x',
+        'aaf08a98-8cf0-4db2-a48e-2649be61f17b',
         '<p>Dãy nhà G - khu biệt lập cũ - nằm tách biệt hoàn toàn với thế giới bên ngoài bằng hàng rào thép gai. Chúng tôi - đoàn làm phim 3 người - được cấp phép ghi hình trong 3 giờ đồng hồ. 🎥</p>
         <p>Phòng giam số 13 có tường phủ đầy những vết cào xé và công thức toán học phức tạp viết bằng phân. Bỗng máy quay tự động bật lên, ghi lại hình ảnh một bóng đen ngồi xổm trong góc phòng. 👤</p>
         <p>Khi phóng to, chúng tôi nhận ra đó không phải bóng người - mà là một sinh vật gầy trơ xương, đầu to dị dạng đang cười với ống kính bằng hai hàng răng nhọn hoắt...</p>',
@@ -441,7 +440,7 @@ VALUES ('y5y6y7y8-z9z0-a1a2-b3b4-c5c6c7c8c9c0',
 -- Insert story 15
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('y2z1a0b9-c8d7-e6f5-g4h3-i2j1k0l9m8n',
+VALUES ('4bdbd795-40d3-4bce-b27f-6d2672757ffa',
         true,
         'Con Mèo Đen Ở Nghĩa Trang',
         'Con mèo đen với đôi mắt vàng luôn xuất hiện ở nghĩa trang Bình Hưng Hòa mỗi đêm. Người ta đồn rằng ai bị nó nhìn thấy sẽ chết trong vòng 7 ngày. Khi một nhiếp ảnh gia cố tình chụp hình nó, anh phát hiện ra sự thật kinh hoàng: đó không phải mèo mà là linh hồn của phù thủy xưa đang tìm kiếm linh hồn thay thế để thoát khỏi lời nguyền...',
@@ -451,10 +450,10 @@ VALUES ('y2z1a0b9-c8d7-e6f5-g4h3-i2j1k0l9m8n',
 
 -- Chapter 1 for story 15
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('z6z7z8z9-a0a1-b2b3-c4c5-d6d7d8d9d0d1',
+VALUES ('28591c53-a86b-4364-bedf-7291700ec2dd',
         1,
         'Ánh Mắt Trong Đêm',
-        'y2z1a0b9-c8d7-e6f5-g4h3-i2j1k0l9m8n',
+        '4bdbd795-40d3-4bce-b27f-6d2672757ffa',
         '<p>Con mèo đen to bằng chó nhỏ ngồi chễm chệ trên nấm mộ cổ, đôi mắt vàng lục phát sáng trong đêm. Tôi - Hùng - giơ máy lên chụp, nhưng mỗi lần bấm nút, máy lại đơ cứng. 📷</p>
         <p>Khi tôi tiến lại gần, nó không bỏ chạy mà chỉ ngồi yên nhìn tôi, miệng nhếch lên như cười. Kỳ lạ là xung quanh nó không có bóng, dù trăng sáng rõ. 🌕</p>
         <p>Đêm đó, khi xem lại những bức ảnh chụp được, tôi giật mình thấy trong mỗi khung hình đều có thêm một người phụ nữ mặc áo đen đứng sau lưng tôi - nhưng tôi chắc chắn lúc đó chỉ có một mình...</p>',
@@ -463,7 +462,7 @@ VALUES ('z6z7z8z9-a0a1-b2b3-c4c5-d6d7d8d9d0d1',
 -- Insert story 16
 INSERT INTO story
 (story_id, release_status, story_title, story_description, user_id, created_time, language)
-VALUES ('o7n6m5l4-k3j2-i1h0-g9f8-e7d6c5b4a3b',
+VALUES ('9042cdfd-5822-4e12-b315-849fe6d800bb',
         true,
         'Chiếc Xe Buýt Ma',
         'Chuyến xe buýt đêm số 113 từng bị tai nạn thảm khốc năm 1999, nay bỗng nhiên xuất hiện trở lại trên tuyến đường cũ. Những hành khách dám bước lên xe đều kể lại gặp những người lạ kỳ dị, và luôn thấy thiếu mất một khoản tiền sau chuyến đi. Khi một sinh viên tò mò quyết định lên xe, anh không ngờ mình đã trả giá bằng thứ quý giá hơn tiền bạc...',
@@ -473,10 +472,10 @@ VALUES ('o7n6m5l4-k3j2-i1h0-g9f8-e7d6c5b4a3b',
 
 -- Chapter 1 for story 16
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
-VALUES ('a7a8a9a0-b1b2-c3c4-d5d6-e7e8e9e0e1e2',
+VALUES ('900941da-d415-4eb6-aeca-d3dfb804f747',
         1,
         'Chuyến Xe Lúc Nửa Đêm',
-        'o7n6m5l4-k3j2-i1h0-g9f8-e7d6c5b4a3b',
+        '9042cdfd-5822-4e12-b315-849fe6d800bb',
         '<p>Chiếc xe buýt màu xanh cũ kỹ dừng trước trạm dù không có ai đợi. Tôi - Minh - nhìn thấy biển số "113" và tò mò bước lên, dù biết tuyến này đã ngừng hoạt động từ lâu. 🚌</p>
         <p>Bên trong, những hành khách ngồi im lìm, ánh đèn vàng mờ ảo chiếu lên khuôn mặt xám xịt của họ. Khi xe chuyển bánh, tôi chợt nhận ra qua cửa sổ: chúng tôi đang đi trên con đường không có trong bản đồ thành phố. 🗺️</p>
         <p>Người soát vé đến bên tôi, giọng khàn đặc: "Vé của anh là một ký ức vui... anh có thể trả chứ?" Trong khi nói, tay anh ta chỉ vào đầu tôi...</p>',
