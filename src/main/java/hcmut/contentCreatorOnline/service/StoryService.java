@@ -161,8 +161,19 @@ public class StoryService {
 
     public List<StoryDTO> getStoriesByGenreId(Integer genreId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<StoryDTO> stories = storyRepository.findByGenreId(genreId, pageable);
-        return stories.getContent();
+        Page<Story> stories = storyRepository.findByGenreId(genreId, pageable);
+
+        return stories.getContent().stream().map(
+                story -> new StoryDTO(
+                        story.getStoryId(),
+                        story.getStoryTitle(),
+                        story.getStoryDescription(),
+                        story.getCoverImageUri(),
+                        story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
+                        story.getNumberOfViews(),
+                        story.getChapters().size()
+                )
+        ).toList();
     }
 
     private String buildSearchQuery(String sortBy, String order) {
@@ -197,7 +208,7 @@ public class StoryService {
             String sortDirection) {
 
         String sqlQuery = buildSearchQuery(sortBy, sortDirection);
-        
+
         List<?> rawList = entityManager.createNativeQuery(sqlQuery, Tuple.class)
                 .setParameter("query", searchTitle)
                 .setParameter("offset", page * size)
@@ -214,7 +225,10 @@ public class StoryService {
                         t.get("story_id", UUID.class),
                         t.get("story_title", String.class),
                         t.get("story_description", String.class),
-                        t.get("cover_image_uri", String.class)
+                        t.get("cover_image_uri", String.class),
+                        null,
+                        null,
+                        null
                 ))
                 .toList();
 

@@ -52,6 +52,9 @@ public class Story {
     @Column(name = "tags")
     private String tags;
 
+    @Column(name = "number_of_views")
+    private int numberOfViews = 0;
+
     @Column(name = "average_rating")
     private Double averageRating = 0.0;
 

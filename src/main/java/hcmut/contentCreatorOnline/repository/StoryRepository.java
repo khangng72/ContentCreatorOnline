@@ -1,6 +1,5 @@
 package hcmut.contentCreatorOnline.repository;
 
-import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.model.Story;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +17,6 @@ public interface StoryRepository extends JpaRepository<Story, UUID> {
 
     List<Story> findByUserPost_Id(UUID userId);
 
-    @Query("SELECT new hcmut.contentCreatorOnline.dto.story.StoryDTO(s.storyId, s.storyTitle, s.storyDescription, s.coverImageUri) FROM Story s JOIN s.genres g WHERE g.genreId = :genreId")
-    Page<StoryDTO> findByGenreId(@Param("genreId") Integer genreId, Pageable pageable);
+    @Query("SELECT s FROM Story s JOIN s.genres g WHERE g.genreId = :genreId ORDER BY s.averageRating DESC")
+    Page<Story> findByGenreId(@Param("genreId") Integer genreId, Pageable pageable);
 }
