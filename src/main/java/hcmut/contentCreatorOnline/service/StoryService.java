@@ -171,7 +171,8 @@ public class StoryService {
                         story.getCoverImageUri(),
                         story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
                         story.getNumberOfViews(),
-                        story.getChapters().size()
+                        story.getChapters().size(),
+                        story.getAverageRating()
                 )
         ).toList();
     }
@@ -226,6 +227,7 @@ public class StoryService {
                         t.get("story_title", String.class),
                         t.get("story_description", String.class),
                         t.get("cover_image_uri", String.class),
+                        null,
                         null,
                         null,
                         null

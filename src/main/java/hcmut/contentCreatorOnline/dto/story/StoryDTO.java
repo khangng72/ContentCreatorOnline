@@ -17,4 +17,5 @@ public class StoryDTO {
     private String userPost;
     private Integer numberOfViews;
     private Integer numberOfChapters;
+    private Double averageRating;
 }
