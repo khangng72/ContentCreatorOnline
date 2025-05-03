@@ -85,4 +85,11 @@ public class StoryController {
         List<StoryDTO> result = storyService.fuzzySearchStoriesByQueryString(searchTitle, page, size, sortBy, sortDirection);
         return ResponseEntity.ok(new SearchStoryResponse(HttpStatus.OK.value(), result));
     }
+
+    @GetMapping("/basicInfo/{story_id}")
+    public ResponseEntity<StoryDTO> getBasicInfoByStoryId(@PathVariable UUID story_id) {
+        System.out.println(story_id);
+        StoryDTO response = storyService.getStoryBasicInfoByStoryId(story_id);
+        return ResponseEntity.ok(response);
+    }
 }

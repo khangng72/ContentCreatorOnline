@@ -247,4 +247,21 @@ public class StoryService {
                 )
         ).toList();
     }
+
+
+    public StoryDTO getStoryBasicInfoByStoryId(UUID storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        return new StoryDTO(
+                story.getStoryId(),
+                story.getStoryTitle(),
+                story.getStoryDescription(),
+                story.getCoverImageUri(),
+                story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
+                story.getNumberOfViews(),
+                story.getChapters().size(),
+                story.getAverageRating()
+        );
+    }
 }
