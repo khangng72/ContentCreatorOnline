@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.service.impl;
 
-import hcmut.contentCreatorOnline.dto.chapter.ChapterListOnlyView;
-import hcmut.contentCreatorOnline.dto.chapter.ChapterPageElement;
-import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
-import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
+import hcmut.contentCreatorOnline.dto.chapter.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -107,5 +104,18 @@ public class ChapterService {
         return chapters.stream()
                 .map(this::toChapterListOnlyView)
                 .collect(Collectors.toList());
+    }
+
+    public List<BasicChapterInfoDTO> getBasicChaptersInfoByStoryId(UUID storyId) {
+        List<Chapter> chapters = chapterRepository.findByStoryId(storyId);
+
+        return chapters.stream()
+                .map(chapter -> new BasicChapterInfoDTO(
+                        chapter.getChapterId(),
+                        chapter.getChapterTitle(),
+                        chapter.getChapterDescription(),
+                        chapter.getChapterNumber(),
+                        chapter.getCreatedTime()))
+                .toList();
     }
 }

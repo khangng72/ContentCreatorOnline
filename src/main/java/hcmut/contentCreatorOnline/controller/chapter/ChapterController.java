@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.controller.chapter;
 
-import hcmut.contentCreatorOnline.dto.chapter.ChapterRequest;
-import hcmut.contentCreatorOnline.dto.chapter.CreateNewChapterStoryResponse;
-import hcmut.contentCreatorOnline.dto.chapter.GetChaptersPagedResponse;
-import hcmut.contentCreatorOnline.dto.chapter.NewChapterResponseDTO;
+import hcmut.contentCreatorOnline.dto.chapter.*;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.service.impl.ChapterService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -50,6 +48,12 @@ public class ChapterController {
     public ResponseEntity<Integer> getNumberOfLikes(@PathVariable UUID chapterId) {
         int numberOfLikes = chapterService.getNumberOfLikes(chapterId);
         return ResponseEntity.ok(numberOfLikes);
+    }
+
+    @GetMapping("/story/{storyId}")
+    public ResponseEntity<GetBasicChaptersInfoResponse> getBasicChaptersInfoByStoryId(@PathVariable UUID storyId) {
+        List<BasicChapterInfoDTO> basicChaptersInfo = chapterService.getBasicChaptersInfoByStoryId(storyId);
+        return ResponseEntity.ok(new GetBasicChaptersInfoResponse(HttpStatus.OK.value(), basicChaptersInfo));
     }
 
 }
