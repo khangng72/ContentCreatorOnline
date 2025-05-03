@@ -190,7 +190,7 @@ public class StoryService {
         };
 
         return """
-                 SELECT story_id, story_title, story_description, cover_image_uri FROM story
+                 SELECT story_id FROM story
                         WHERE similarity(story_title, :query) > :threshold
                            OR document @@ plainto_tsquery('english', :query)
                         ORDER BY
@@ -220,22 +220,31 @@ public class StoryService {
         List<Tuple> tuples = rawList.stream()
                 .map(Tuple.class::cast)
                 .toList();
-
-        return tuples.stream()
-                .map(t -> new StoryDTO(
-                        t.get("story_id", UUID.class),
-                        t.get("story_title", String.class),
-                        t.get("story_description", String.class),
-                        t.get("cover_image_uri", String.class),
-                        null,
-                        null,
-                        null,
-                        null
-                ))
+        List<UUID> storyIds = tuples.stream()
+                .map(t -> t.get("story_id", UUID.class))
                 .toList();
 
+        List<Story> stories = new ArrayList<>();
+        for (UUID storyId : storyIds) {
+            Story story = storyRepository.findById(storyId)
+                    .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+            if (!story.getReleaseStatus()) {
+                throw new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId);
+            }
+            stories.add(story);
+        }
 
+        return stories.stream().map(
+                story -> new StoryDTO(
+                        story.getStoryId(),
+                        story.getStoryTitle(),
+                        story.getStoryDescription(),
+                        story.getCoverImageUri(),
+                        story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
+                        story.getNumberOfViews(),
+                        story.getChapters().size(),
+                        story.getAverageRating()
+                )
+        ).toList();
     }
-
-
 }
