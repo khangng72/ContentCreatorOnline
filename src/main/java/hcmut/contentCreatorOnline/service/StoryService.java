@@ -172,7 +172,13 @@ public class StoryService {
                         story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
                         story.getNumberOfViews(),
                         story.getChapters().size(),
-                        story.getAverageRating()
+                        story.getAverageRating(),
+                        story.getGenres().stream().map(
+                                genre -> new GenreResult(
+                                        genre.getGenreId(),
+                                        genre.getGenreName()
+                                )
+                        ).toList()
                 )
         ).toList();
     }
@@ -243,7 +249,13 @@ public class StoryService {
                         story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
                         story.getNumberOfViews(),
                         story.getChapters().size(),
-                        story.getAverageRating()
+                        story.getAverageRating(),
+                        story.getGenres().stream().map(
+                                genre -> new GenreResult(
+                                        genre.getGenreId(),
+                                        genre.getGenreName()
+                                )
+                        ).toList()
                 )
         ).toList();
     }
@@ -261,7 +273,13 @@ public class StoryService {
                 story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
                 story.getNumberOfViews(),
                 story.getChapters().size(),
-                story.getAverageRating()
+                story.getAverageRating(),
+                story.getGenres().stream().map(
+                        genre -> new GenreResult(
+                                genre.getGenreId(),
+                                genre.getGenreName()
+                        )
+                ).toList()
         );
     }
 }

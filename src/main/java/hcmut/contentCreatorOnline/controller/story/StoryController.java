@@ -88,7 +88,6 @@ public class StoryController {
 
     @GetMapping("/basicInfo/{story_id}")
     public ResponseEntity<StoryDTO> getBasicInfoByStoryId(@PathVariable UUID story_id) {
-        System.out.println(story_id);
         StoryDTO response = storyService.getStoryBasicInfoByStoryId(story_id);
         return ResponseEntity.ok(response);
     }
