@@ -14,6 +14,7 @@ import hcmut.contentCreatorOnline.utils.LoggerUtil;
 import hcmut.contentCreatorOnline.utils.PasswordUtil;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,9 @@ public class UserServiceImpl implements UserService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final GenreRepository genreRepository;
+
+    @Value("${spring.application.fuzzy-search.threshold}")
+    private double threshold;
 
     public UserServiceImpl(UserRepository userRepository, PasswordUtil passwordUtil, JwtService jwtService,
                            AuthenticationManager authenticationManager, GenreRepository genreRepository) {
@@ -175,6 +179,31 @@ public class UserServiceImpl implements UserService {
         Pageable pageable = PageRequest.of(page, size);
         Page<FollowingDTO> result = userRepository.findFollowingById(userId, pageable);
         return result.getContent();
+    }
+
+    @Override
+    public List<UserResponseDTO> searchUserByKeyword(String keyword, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<User> result = userRepository.searchUserByKeyword(keyword, pageable, threshold);
+        return result.getContent().stream().map(
+                user -> UserResponseDTO.builder()
+                        .id(user.getId())
+                        .email(user.getEmail())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .gender(user.getGender())
+                        .isAdmin(user.isAdmin())
+                        .isActive(user.isActive())
+                        .nationality(user.getNationality())
+                        .birthday(user.getBirthday())
+                        .avatarUrl(user.getAvatarUrl())
+                        .backgroundUrl(user.getBackgroundUrl())
+                        .introduction(user.getIntroduction())
+                        .numberOfStories(user.getStoryPost().size())
+                        .numberOfFollowers(user.getFollowers().size())
+                        .numberOfFollowing(user.getFollowing().size()).build()
+
+        ).toList();
     }
 
 }

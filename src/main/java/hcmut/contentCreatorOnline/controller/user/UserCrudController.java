@@ -67,4 +67,14 @@ public class UserCrudController {
                 .result(result)
                 .build());
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<SearchUserResponse> searchUser(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "15") int size
+    ) {
+        List<UserResponseDTO> result = userService.searchUserByKeyword(keyword, page, size);
+        return ResponseEntity.ok(new SearchUserResponse(HttpStatus.OK.value(), result));
+    }
 }

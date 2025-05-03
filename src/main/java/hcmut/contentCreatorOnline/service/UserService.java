@@ -18,4 +18,6 @@ public interface UserService {
     List<FollowerDTO> getFollowersByUserId(UUID userId, int page, int size);
 
     List<FollowingDTO> getFollowingByUserId(UUID userId, int page, int size);
+
+    List<UserResponseDTO> searchUserByKeyword(String keyword, int page, int size);
 }
