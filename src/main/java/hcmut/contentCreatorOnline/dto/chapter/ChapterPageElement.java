@@ -21,6 +21,7 @@ public class ChapterPageElement {
 
     private String storyTitle;
     private String storyDescription;
+    private UUID storyId;
 
     private String userFirstName;
     private String userLastName;
