@@ -75,5 +75,11 @@ public class ReadListController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/specific/{read_list_id}")
+    public ResponseEntity<ReadListDTO> getReadListById(@PathVariable UUID read_list_id) {
+        ReadListDTO readList = readListService.getReadListById(read_list_id);
+        return ResponseEntity.ok(readList);
+    }
+
 
 }

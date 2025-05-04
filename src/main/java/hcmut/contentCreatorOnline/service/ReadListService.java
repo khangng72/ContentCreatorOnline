@@ -165,4 +165,21 @@ public class ReadListService {
         return new DeleteStoriesFromReadListResponse(result.getReadListId());
     }
 
+    public ReadListDTO getReadListById(UUID readListId) {
+        if (readListId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
+        }
+
+        ReadList readList = readListRepository.findById(readListId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Read list not found"));
+
+        return ReadListDTO.builder()
+                .read_list_id(readList.getReadListId())
+                .read_list_title(readList.getReadListTitle())
+                .read_list_description(readList.getDescription())
+                .number_of_stories(readList.getStories() == null ? 0 : readList.getStories().size())
+                .user_id(readList.getUserCreated().getId())
+                .build();
+    }
+
 }
