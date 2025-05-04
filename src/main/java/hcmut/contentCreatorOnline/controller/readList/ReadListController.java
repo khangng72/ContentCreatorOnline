@@ -59,4 +59,21 @@ public class ReadListController {
         return ResponseEntity.ok(new CreateNewReadListResponse(HttpStatus.CREATED.value(), newReadList));
     }
 
+    @GetMapping("/stories/{read_list_id}")
+    public ResponseEntity<GetStoriesByReadListIdResponse> getAllStoriesByReadListId(@PathVariable UUID read_list_id) {
+        List<StoryDTO> stories = readListService.getAllStoriesByReadListId(read_list_id);
+        return ResponseEntity.ok(new GetStoriesByReadListIdResponse(HttpStatus.OK.value(), stories));
+    }
+
+    @DeleteMapping("/delete_stories/{read_list_id}")
+    public ResponseEntity<DeleteStoriesFromReadListResponse> deleteStoriesFromReadList(
+            @PathVariable UUID read_list_id,
+            @RequestBody DeleteStoriesFromReadList storyIds) {
+
+        DeleteStoriesFromReadListResponse result = readListService.deleteStoriesFromReadList(read_list_id, storyIds.getStoryIds());
+
+        return ResponseEntity.ok(result);
+    }
+
+
 }

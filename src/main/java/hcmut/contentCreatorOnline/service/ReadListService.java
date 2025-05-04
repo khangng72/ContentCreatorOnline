@@ -1,11 +1,13 @@
 package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.readList.CreateNewReadListRequest;
+import hcmut.contentCreatorOnline.dto.readList.DeleteStoriesFromReadListResponse;
 import hcmut.contentCreatorOnline.dto.readList.ReadListDTO;
 import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.ReadList;
+import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.ReadListRepository;
@@ -115,6 +117,51 @@ public class ReadListService {
                 .number_of_stories(saveResult.getStories() == null ? 0 : saveResult.getStories().size())
                 .user_id(saveResult.getUserCreated().getId())
                 .build();
+    }
+
+    public List<StoryDTO> getAllStoriesByReadListId(UUID readListId) {
+        if (readListId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
+        }
+
+        ReadList readList = readListRepository.findById(readListId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Read list not found"));
+
+        return readList.getStories()
+                .stream()
+                .map(story -> StoryDTO.builder()
+                        .storyId(story.getStoryId())
+                        .storyTitle(story.getStoryTitle())
+                        .storyDescription(story.getStoryDescription())
+                        .coverImageUri(story.getCoverImageUri())
+                        .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
+                        .numberOfViews(story.getNumberOfViews())
+                        .averageRating(story.getAverageRating())
+                        .build()
+                ).toList();
+    }
+
+    public DeleteStoriesFromReadListResponse deleteStoriesFromReadList(UUID readListId, List<UUID> storyIds) {
+        if (readListId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
+        }
+
+        if (storyIds == null || storyIds.isEmpty()) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "storyIds cannot be null or empty");
+        }
+
+        ReadList readList = readListRepository.findById(readListId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Read list not found"));
+
+        List<Story> storiesToRemove = readList.getStories()
+                .stream()
+                .filter(story -> storyIds.contains(story.getStoryId()))
+                .toList();
+
+        readList.getStories().removeAll(storiesToRemove);
+        ReadList result = readListRepository.save(readList);
+
+        return new DeleteStoriesFromReadListResponse(result.getReadListId());
     }
 
 }
