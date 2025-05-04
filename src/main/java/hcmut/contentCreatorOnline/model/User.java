@@ -57,13 +57,13 @@ public class User {
 
     @Column(name = "birthday")
     private LocalDate birthday;
-    
+
     private LocalDate joinDate = LocalDate.now();
 
     @Column(columnDefinition = "TEXT")
     private String introduction;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userCreated", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ReadList> readLists;
 
     @OneToOne(cascade = CascadeType.ALL)

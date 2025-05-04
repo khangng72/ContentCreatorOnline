@@ -1,11 +1,11 @@
 package hcmut.contentCreatorOnline.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Data
@@ -22,15 +22,11 @@ public class ReadList {
     @Column(name = "read_list_description", length = 1000)
     private String description;
 
-    private Integer numberOfLikes;
-
     private Integer quantity;
-
-    private String readListCover;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User userCreated;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "read_list_id"), inverseJoinColumns = @JoinColumn(name = "story_id"))
