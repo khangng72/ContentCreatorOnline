@@ -137,6 +137,7 @@ public class ReadListService {
                         .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
                         .numberOfViews(story.getNumberOfViews())
                         .averageRating(story.getAverageRating())
+                        .numberOfChapters(story.getChapters().size())
                         .build()
                 ).toList();
     }
