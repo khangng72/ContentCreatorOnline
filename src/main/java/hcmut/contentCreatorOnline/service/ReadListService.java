@@ -3,6 +3,7 @@ package hcmut.contentCreatorOnline.service;
 import hcmut.contentCreatorOnline.dto.readList.CreateNewReadListRequest;
 import hcmut.contentCreatorOnline.dto.readList.DeleteStoriesFromReadListResponse;
 import hcmut.contentCreatorOnline.dto.readList.ReadListDTO;
+import hcmut.contentCreatorOnline.dto.readList.UpdateReadListRequest;
 import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
@@ -182,4 +183,34 @@ public class ReadListService {
                 .build();
     }
 
+    public ReadListDTO updateReadList(UUID readListId, UpdateReadListRequest request) {
+        if (readListId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
+        }
+
+        if (request == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "request cannot be null");
+        }
+
+        ReadList readList = readListRepository.findById(readListId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Read list not found"));
+
+        if (request.getReadListTitle() != null && !request.getReadListTitle().isEmpty()) {
+            readList.setReadListTitle(request.getReadListTitle());
+        }
+
+        if (request.getReadListDescription() != null && !request.getReadListDescription().isEmpty()) {
+            readList.setDescription(request.getReadListDescription());
+        }
+
+        ReadList updatedReadList = readListRepository.save(readList);
+
+        return ReadListDTO.builder()
+                .read_list_id(updatedReadList.getReadListId())
+                .read_list_title(updatedReadList.getReadListTitle())
+                .read_list_description(updatedReadList.getDescription())
+                .number_of_stories(updatedReadList.getStories() == null ? 0 : updatedReadList.getStories().size())
+                .user_id(updatedReadList.getUserCreated().getId())
+                .build();
+    }
 }

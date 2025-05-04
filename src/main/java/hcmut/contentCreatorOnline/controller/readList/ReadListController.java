@@ -81,5 +81,14 @@ public class ReadListController {
         return ResponseEntity.ok(readList);
     }
 
+    @PutMapping("/update/{read_list_id}")
+    public ResponseEntity<ReadListDTO> updateReadList(
+            @RequestBody UpdateReadListRequest request,
+            @PathVariable UUID read_list_id) {
+
+        ReadListDTO updatedReadList = readListService.updateReadList(read_list_id, request);
+        return ResponseEntity.ok(updatedReadList);
+    }
+
 
 }
