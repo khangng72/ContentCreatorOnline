@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.controller.readList;
 
-import hcmut.contentCreatorOnline.dto.readList.DeleteReadListResponse;
-import hcmut.contentCreatorOnline.dto.readList.ReadListDTO;
-import hcmut.contentCreatorOnline.dto.readList.ReadListTopStoriesResponse;
-import hcmut.contentCreatorOnline.dto.readList.ReadList_ListResponse;
+import hcmut.contentCreatorOnline.dto.readList.*;
 import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.service.ReadListService;
@@ -53,4 +50,13 @@ public class ReadListController {
 
         return ResponseEntity.ok(new DeleteReadListResponse(HttpStatus.OK.value()));
     }
+
+    @PostMapping("/new")
+    public ResponseEntity<CreateNewReadListResponse> createNewReadList(@RequestBody CreateNewReadListRequest request) {
+
+        ReadListDTO newReadList = readListService.createNewReadList(request);
+
+        return ResponseEntity.ok(new CreateNewReadListResponse(HttpStatus.CREATED.value(), newReadList));
+    }
+
 }

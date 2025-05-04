@@ -1,15 +1,21 @@
 package hcmut.contentCreatorOnline.service;
 
+import hcmut.contentCreatorOnline.dto.readList.CreateNewReadListRequest;
 import hcmut.contentCreatorOnline.dto.readList.ReadListDTO;
 import hcmut.contentCreatorOnline.dto.story.StoryDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
+import hcmut.contentCreatorOnline.model.ReadList;
+import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.ReadListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+
+import static hcmut.contentCreatorOnline.utils.SecurityUtils.getCurrentUser;
 
 @Service
 @RequiredArgsConstructor
@@ -78,6 +84,37 @@ public class ReadListService {
                     String.format("Failed to delete read list with id %s", readListId)
             );
         }
+    }
+
+    public ReadListDTO createNewReadList(CreateNewReadListRequest request) {
+        if (request == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "request cannot be null");
+        }
+
+        if (request.getReadListTitle() == null || request.getReadListTitle().isEmpty()) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListTitle cannot be null or empty");
+        }
+
+        UserPrincipal currentUser = getCurrentUser();
+
+        User userCreated = User.builder().id(currentUser.getId()).build();
+
+        ReadList readList = ReadList.builder()
+                .readListTitle(request.getReadListTitle())
+                .description(request.getReadListDescription())
+                .userCreated(userCreated)
+                .build();
+
+        ReadList saveResult = readListRepository.save(readList);
+
+
+        return ReadListDTO.builder()
+                .read_list_id(saveResult.getReadListId())
+                .read_list_title(saveResult.getReadListTitle())
+                .read_list_description(saveResult.getDescription())
+                .number_of_stories(saveResult.getStories() == null ? 0 : saveResult.getStories().size())
+                .user_id(saveResult.getUserCreated().getId())
+                .build();
     }
 
 }
