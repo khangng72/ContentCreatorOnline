@@ -13,6 +13,6 @@ public class ReadListDTO {
     private UUID read_list_id;
     private String read_list_title;
     private String read_list_description;
-    private Integer quantity;
+    private Integer number_of_stories;
     private UUID user_id;
 }

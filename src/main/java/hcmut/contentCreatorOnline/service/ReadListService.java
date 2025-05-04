@@ -21,13 +21,13 @@ public class ReadListService {
             if (userId == null) {
                 throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "userId cannot be null");
             }
-            
+
             return readListRepository.findAllByUserCreated_Id(userId).stream().map(
                     readList -> new ReadListDTO(
                             readList.getReadListId(),
                             readList.getReadListTitle(),
                             readList.getDescription(),
-                            readList.getQuantity(),
+                            readList.getStories().size(),
                             readList.getUserCreated().getId()
                     )).toList();
 
