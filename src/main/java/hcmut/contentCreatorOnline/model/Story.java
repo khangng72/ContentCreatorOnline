@@ -69,7 +69,7 @@ public class Story {
     private Set<Genre> genres = new HashSet<>();
 
     @ManyToMany(mappedBy = "stories")
-    private Set<ReadList> readLists = new HashSet<>();
+    private List<ReadList> readLists;
 
     @ManyToMany(mappedBy = "produces")
     private Set<Order> orders = new HashSet<>();

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class ReadList {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "read_list_id"), inverseJoinColumns = @JoinColumn(name = "story_id"))
-    private Set<Story> stories = new HashSet<>();
+    private List<Story> stories;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "has_genre", joinColumns = @JoinColumn(name = "read_list_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
