@@ -64,4 +64,20 @@ public class ReadListService {
             throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
         }
     }
+
+    public void deleteReadListById(UUID readListId) {
+        if (readListId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "readListId cannot be null");
+        }
+
+        try {
+            readListRepository.deleteById(readListId);
+        } catch (IllegalArgumentException e) {
+            throw new ApplicationException(
+                    ErrorConst.UNEXPECTED_ERROR,
+                    String.format("Failed to delete read list with id %s", readListId)
+            );
+        }
+    }
+
 }

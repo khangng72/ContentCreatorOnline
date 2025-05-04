@@ -1,5 +1,6 @@
 package hcmut.contentCreatorOnline.controller.readList;
 
+import hcmut.contentCreatorOnline.dto.readList.DeleteReadListResponse;
 import hcmut.contentCreatorOnline.dto.readList.ReadListDTO;
 import hcmut.contentCreatorOnline.dto.readList.ReadListTopStoriesResponse;
 import hcmut.contentCreatorOnline.dto.readList.ReadList_ListResponse;
@@ -42,7 +43,14 @@ public class ReadListController {
             @PathVariable UUID read_list_id,
             @RequestParam(defaultValue = "3") int amount) {
         List<StoryDTO> result = readListService.getTopStoriesInReadList(read_list_id, amount);
-        
+
         return ResponseEntity.ok(new ReadListTopStoriesResponse(HttpStatus.OK.value(), result));
+    }
+
+    @DeleteMapping("/{read_list_id}")
+    public ResponseEntity<DeleteReadListResponse> deleteReadListById(@PathVariable UUID read_list_id) {
+        readListService.deleteReadListById(read_list_id);
+
+        return ResponseEntity.ok(new DeleteReadListResponse(HttpStatus.OK.value()));
     }
 }
