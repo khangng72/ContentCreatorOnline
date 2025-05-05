@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.dto.readList;
 
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -14,5 +15,6 @@ public class ReadListDTO {
     private String read_list_title;
     private String read_list_description;
     private Integer number_of_stories;
+    private List<UUID> story_ids;
     private UUID user_id;
 }

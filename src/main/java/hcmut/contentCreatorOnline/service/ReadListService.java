@@ -33,13 +33,14 @@ public class ReadListService {
             }
 
             return readListRepository.findAllByUserCreated_Id(userId).stream().map(
-                    readList -> new ReadListDTO(
-                            readList.getReadListId(),
-                            readList.getReadListTitle(),
-                            readList.getDescription(),
-                            readList.getStories().size(),
-                            readList.getUserCreated().getId()
-                    )).toList();
+                    readList -> ReadListDTO.builder()
+                            .read_list_id(readList.getReadListId())
+                            .read_list_title(readList.getReadListTitle())
+                            .read_list_description(readList.getDescription())
+                            .number_of_stories(readList.getStories() == null ? 0 : readList.getStories().size())
+                            .user_id(readList.getUserCreated().getId())
+                            .story_ids(readList.getStories().stream().map(Story::getStoryId).toList()).build()
+            ).toList();
 
         } catch (IllegalArgumentException e) {
             throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "userId cannot be null");
