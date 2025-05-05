@@ -12,9 +12,11 @@ import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.ReadListRepository;
+import hcmut.contentCreatorOnline.repository.StoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +27,8 @@ import static hcmut.contentCreatorOnline.utils.SecurityUtils.getCurrentUser;
 public class ReadListService {
 
     private final ReadListRepository readListRepository;
+
+    private final StoryRepository storyRepository;
 
     public List<ReadListDTO> getReadListByUserId(UUID userId) {
         try {
@@ -214,4 +218,51 @@ public class ReadListService {
                 .user_id(updatedReadList.getUserCreated().getId())
                 .build();
     }
+
+    public List<UUID> addStoryToManyReadList(UUID storyId, List<UUID> readListIds) {
+        if (storyId == null) {
+            throw new ApplicationException(ErrorConst.ILLEGAL_ARGUMENT, "storyId cannot be null");
+        }
+
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found"));
+
+        // Step 1: Clear story from old readLists (bidirectional cleanup)
+        for (ReadList oldReadList : story.getReadLists()) {
+            oldReadList.getStories().remove(story);
+        }
+
+        // Step 2: If readListIds is empty or null, clear all read lists
+        if (readListIds == null || readListIds.isEmpty()) {
+            story.getReadLists().clear(); // or story.setReadLists(new ArrayList<>());
+            storyRepository.save(story);  // Save the inverse side
+            return Collections.emptyList();
+        }
+
+        // Step 3: Fetch new readLists
+        List<ReadList> newReadLists = readListRepository.findAllById(readListIds);
+
+        if (newReadLists.size() != readListIds.size()) {
+            throw new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Some read lists not found");
+        }
+
+        // Step 4: Set new readLists on the story
+        story.setReadLists(newReadLists);
+
+        // Step 5: Add the story to each new readList (owning side)
+        for (ReadList newReadList : newReadLists) {
+            if (!newReadList.getStories().contains(story)) {
+                newReadList.getStories().add(story);
+            }
+        }
+
+        // Step 6: Save owning side to persist changes
+        readListRepository.saveAll(newReadLists);
+
+        return newReadLists.stream()
+                .map(ReadList::getReadListId)
+                .toList();
+    }
+
+
 }

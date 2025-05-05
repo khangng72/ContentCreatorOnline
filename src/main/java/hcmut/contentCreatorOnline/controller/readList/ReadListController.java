@@ -91,4 +91,14 @@ public class ReadListController {
     }
 
 
+    @PostMapping("/add_story/{story_id}")
+    public ResponseEntity<AddStoryToManyReadListResponse> addStoryToManyReadList(
+            @PathVariable UUID story_id,
+            @RequestBody AddStoryToManyReadListRequest request) {
+
+        List<UUID> result = readListService.addStoryToManyReadList(story_id, request.getRead_list_ids());
+        return ResponseEntity.ok(new AddStoryToManyReadListResponse(story_id, result));
+    }
+
+
 }
