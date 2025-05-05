@@ -13,62 +13,234 @@ VALUES ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('c3a9d8b2-47f7-4a89-b72e-23ac12345678',
         1,
-        'Bước Vào Cõi Âm',
+        'Lời Đồn Giữa Màn Sương',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Ánh hoàng hôn nhuốm đỏ cả bầu trời khi nhóm bạn chúng tôi — Minh, Thảo, Duy và tôi — đứng trước cánh cổng sắt gỉ sét, nhìn lên ngôi nhà bỏ hoang trên đỉnh đồi. Những cành thông già rì rào trong gió lạnh, như thì thầm những điều không ai muốn nghe. 🌲🌫️</p>
-        <p>"Có chắc mình muốn vào không?" Thảo run rẩy hỏi. Nhưng sự tò mò đã chiến thắng nỗi sợ. Chúng tôi đẩy cổng bước vào, mỗi bước chân nặng trĩu giữa màn sương dày đặc. 😨</p>
-        <p>Bên trong ngôi nhà, mùi ẩm mốc và lạnh lẽo bủa vây lấy chúng tôi. Những bức tranh chân dung trên tường nứt nẻ, đôi mắt như dõi theo từng cử động. Một tiếng cười khúc khích vang lên đâu đó, lạnh toát sống lưng. 👻</p>
-        <p>Chúng tôi không biết rằng, từ khoảnh khắc bước chân qua cánh cửa ấy, linh hồn oán hận của ngôi nhà đã mở mắt chào đón những vị khách mới...</p>',
+        '<p>Đà Lạt vào một buổi sáng mùa thu mờ ảo. Sương mù phủ dày đặc trên những triền đồi thông u tịch, khiến cho cả thành phố như chìm vào một thế giới khác – mờ nhòe, ma mị và đầy bí ẩn. Tiếng chuông gió leng keng khe khẽ bên hiên một quán cà phê cổ kính vang lên như những hồi chuông báo hiệu một điều gì đó chẳng lành đang đến gần.</p>
+
+<p>Bên trong quán, năm người bạn thân từ thời đại học – <strong>Nam</strong>, <strong>Linh</strong>, <strong>Tuấn</strong>, <strong>Hà</strong> và <strong>Phúc</strong> – đang tụ họp sau một thời gian dài xa cách. Quán cà phê này từng là nơi họ thường xuyên lui tới trong những chuyến đi phượt thời sinh viên, nơi chứa đầy kỷ niệm, nhưng hôm nay không khí dường như lạnh lẽo hơn thường lệ.</p>
+
+<p>Giữa lúc cuộc trò chuyện rôm rả xoay quanh công việc và cuộc sống, Hà bất ngờ hỏi: “Mấy người còn nhớ ngôi biệt thự hoang trên đồi thông không? Cái nơi mà người ta hay đồn có ma á…” Cô nói, ánh mắt thoáng vẻ mơ màng pha chút rụt rè.</p>
+
+<p>“Nghe bảo hồi xưa cả gia đình chủ nhà chết một cách bí ẩn, đến giờ vẫn không ai dám ở,” Tuấn chen vào, giọng nửa tin nửa ngờ. “Có người bảo vào buổi tối, nếu đứng trước cổng biệt thự mà lắng tai nghe kỹ, sẽ nghe thấy tiếng khóc của một người phụ nữ…”</p>
+
+<p>Linh bỗng rùng mình, kéo sát chiếc khăn choàng. “Mấy chuyện đó chắc đồn cho vui thôi. Nhưng cũng rợn người thật.”</p>
+
+<p>Nam – kẻ phiêu lưu nhất nhóm – cười lớn: “Vậy thì tối mai mình lên đó đi. Lâu rồi không làm gì kích thích một chút. Biết đâu lại có chuyện hay ho để kể.”</p>
+
+<p>“Điên à?” – Linh phản đối. “Lỡ có chuyện gì thì sao?”</p>
+
+<p>Phúc, vốn là người điềm đạm, nhìn ra ngoài trời, nơi lớp sương mù đang dày đặc hơn. “Chúng ta từng đi qua bao nhiêu nơi rừng sâu nước độc, một căn nhà hoang thì có gì đâu. Tối mai nhé.”</p>
+
+<p>Không khí trong quán chợt thay đổi. Một làn gió lạnh lùa qua khe cửa, làm những tấm rèm cửa bay phần phật. Trong khoảnh khắc mất điện chớp nhoáng, bóng một người phụ nữ mặc áo dài trắng thấp thoáng qua tấm kính mờ. Tất cả im lặng. Không ai nói gì, nhưng đôi mắt của mỗi người đều ngập tràn hoang mang.</p>
+
+<p>Ý tưởng đi thám hiểm ban đầu chỉ là trò đùa – nhưng giờ đây, có điều gì đó như đang dẫn dắt họ. Không ai biết, quyết định ấy sẽ kéo họ vào một chuỗi ngày kinh hoàng, nơi ranh giới giữa thực và ảo, sống và chết, chỉ cách nhau một hơi thở.</p>
+
+<p><em>Đồi thông sẽ không chỉ là kỷ niệm. Nó sẽ là nơi chôn vùi tất cả...</em></p>',
         '2025-04-27 19:31:00.000000');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('b5d7e1a9-22e4-438a-8d8e-00aa12345671',
         2,
-        'Tiếng Thì Thầm Trong Đêm',
+        'Con đường mù sương',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Đêm đầu tiên trong ngôi nhà, chúng tôi quyết định cắm trại ngay giữa phòng khách lạnh lẽo. 🕯️</p>
-        <p>Khi tất cả đã chìm vào giấc ngủ, tôi bỗng giật mình tỉnh giấc vì nghe thấy tiếng thì thầm sát bên tai: "Cứu tôi..."</p>
-        <p>Mở mắt ra, tôi chỉ thấy bóng tối đặc quánh và tiếng gió hú qua khe cửa vỡ. Nhưng sâu trong tiềm thức, tôi biết... ai đó, hay thứ gì đó, đang lặng lẽ quan sát chúng tôi. 👀</p>',
+        '<p>Tối hôm sau, màn đêm buông xuống nhanh hơn thường lệ. Bầu trời Đà Lạt trở nên xám xịt, không trăng, không sao, chỉ có những lớp sương mù dày đặc trườn xuống các sườn đồi như những tấm màn tang trắng. Cả nhóm tụ tập trước cổng rừng thông, nơi dẫn vào con đường đất nhỏ hẹp dẫn lên ngôi biệt thự bị bỏ hoang.</p>
+
+<p>“Chúng ta chắc chắn về chuyện này chứ?” – Linh hỏi, tay nắm chặt đèn pin. Giọng cô run nhẹ, không rõ vì lạnh hay vì lo lắng.</p>
+
+<p>Nam dẫn đầu, cười lớn để xua đi sự căng thẳng: “Sợ gì, có năm người lận. Với lại chúng ta chỉ đến xem rồi về thôi, đâu có ở lại.”</p>
+
+<p>Họ bắt đầu bước đi trên con đường nhỏ giữa rừng thông. Những cây thông cao lớn, đứng chen chúc sát nhau, tạo nên bầu không khí ngột ngạt lạ thường. Tiếng bước chân lạo xạo trên lớp lá khô, thỉnh thoảng vang lên tiếng cú rúc khiến ai nấy đều giật mình.</p>
+
+<p>Đi được một đoạn, Hà bất chợt dừng lại: “Mọi người có nghe thấy gì không? Như tiếng ai đó thì thầm…”</p>
+
+<p>Phúc liếc nhìn quanh, nhưng ngoài âm thanh của gió và lá cây xào xạc, không có gì khác thường. “Chắc gió thôi mà,” anh nói, nhưng nét mặt có phần căng thẳng.</p>
+
+<p>Đi được gần nửa giờ, sương mù càng lúc càng dày đặc. Ánh đèn pin chỉ chiếu được vài bước trước mặt. Cả nhóm phải bám sát nhau để không bị lạc. Đúng lúc đó, con đường đột ngột rẽ ngoặt. Một tấm cổng sắt han gỉ hiện ra giữa màn sương, gần như ẩn mình dưới lớp dây leo rậm rạp.</p>
+
+<p>“Tới nơi rồi…” – Nam nói khẽ. Cánh cổng cũ kỹ dường như đã không được chạm đến trong nhiều năm. Một tấm bảng gỗ treo lủng lẳng bên cổng, chữ đã mờ gần hết, chỉ còn lờ mờ dòng chữ <em>“Cấm vào – Khu vực nguy hiểm”</em>.</p>
+
+<p>“Chúng ta thực sự nên quay về,” Linh thì thầm, nhưng không ai đáp lại. Một thứ gì đó vô hình đang lôi kéo cả nhóm bước vào bên trong.</p>
+
+<p>Nam đưa tay đẩy cổng. Nó kêu lên một tiếng <strong>két</strong> dài, rợn người, rồi mở ra chậm rãi như chào đón những vị khách không mời. Phía trước là một con đường lát đá lởm chởm dẫn lên ngọn đồi, nơi ngôi biệt thự u ám đang lẩn khuất trong bóng tối.</p>
+
+<p>Bầu không khí đặc quánh như thể thời gian nơi đây bị đóng băng từ rất lâu rồi. Mỗi bước chân họ đặt lên con đường ấy như đang lùi sâu vào một thế giới khác – nơi mà ánh sáng, lý trí và cả hy vọng dường như không còn chỗ tồn tại.</p>
+
+<p><em>Đêm đầu tiên đã bắt đầu. Và không một ai trong số họ biết rằng, cánh cổng sau lưng mình đã khép lại từ lúc nào.</em></p>
+',
         '2025-04-27 19:35:00.000000');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('a6b8f3c1-43d2-499b-a5e5-90ab12345672',
         3,
-        'Người Con Gái Trong Gương',
+        'Tiếng Gọi Trong Đêm',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Ngày hôm sau, khi lang thang khám phá tầng trên, Thảo phát hiện một tấm gương cũ phủ bụi. Cô ấy lau sạch mặt gương — và ngay lập tức hét thất thanh. 🪞😱</p>
-        <p>Trong gương, đứng sau lưng cô là một cô gái mặc áo dài trắng, mái tóc dài che khuất khuôn mặt. Nhưng khi quay đầu lại, phía sau Thảo không có ai cả.</p>
-        <p>Từ đó, tấm gương bắt đầu tự mình phản chiếu những cảnh tượng kinh hoàng mà không ai dám nhìn lâu thêm một lần nào nữa. 🔥👻</p>',
+        '<p>Ngôi biệt thự hiện ra như một bóng ma giữa màn sương. Từng mảng tường rêu phong, cửa kính vỡ, mái ngói sụp xuống ở vài chỗ. Cảnh tượng trước mắt khiến tất cả nín lặng. Sự phấn khích ban đầu đã hoàn toàn tan biến, thay vào đó là một cảm giác bất an bám lấy từng hơi thở.</p>
+
+<p>“Chúng ta chỉ nhìn xung quanh rồi đi nhé,” Tuấn nói, giọng trầm xuống rõ rệt. Phúc gật đầu, nhưng đôi mắt anh không giấu nổi vẻ nghi hoặc. Nam vẫn đi trước, đầy tự tin, như thể nơi đây là điểm đến của một trò chơi mạo hiểm đã được tính toán kỹ.</p>
+
+<p>Họ bước vào nhà bằng lối cửa chính đã mục nát, bản lề kêu rên rỉ. Bên trong tối om. Mùi ẩm mốc, gỗ mục và thứ gì đó giống như máu khô khiến Linh lập tức đưa tay bịt miệng. Những bức tranh chân dung cũ kỹ treo trên tường, ánh mắt từ tranh như đang dõi theo từng cử động của họ.</p>
+
+<p>“Nơi này giống như bị mắc kẹt trong thời gian,” Hà nói, bàn tay run rẩy cầm đèn pin quét một vòng quanh phòng khách. Bỗng nhiên, tiếng bước chân vang lên từ tầng hai. Tất cả đứng sững. Không ai vừa di chuyển cả.</p>
+
+<p>“Có ai khác trong nhà này không?” – Linh thốt lên, lùi lại sát Nam.</p>
+
+<p>Nam nheo mắt nhìn lên cầu thang gỗ. “Chắc là chuột thôi,” anh nói, rồi quay lại trấn an cả nhóm. Nhưng khi ánh đèn pin lia qua hành lang, một cái bóng vụt qua. Nhanh như gió.</p>
+
+<p>“Cái gì vậy!?” – Hà hét lên.</p>
+
+<p>“Bình tĩnh đã! Tuấn đâu rồi?” – Phúc đột ngột nhận ra.</p>
+
+<p>Họ nhìn quanh. Tuấn – người đi sau cùng – đã biến mất từ lúc nào. Không ai nghe thấy tiếng la, tiếng động. Chỉ là... anh không còn ở đó.</p>
+
+<p>Nam dẫn nhóm chia nhau tìm kiếm, chia làm hai tốp nhỏ. Linh và Phúc đi về phía nhà bếp, trong khi Nam và Hà lên lầu. Nhưng chưa kịp đi xa, một tiếng thét chói tai vang lên từ phía sau nhà. Cả nhóm tức tốc chạy tới.</p>
+
+<p>Họ phát hiện Tuấn... nằm bất động dưới giếng cạn phía sau biệt thự. Đôi mắt mở to kinh hoàng, môi mấp máy như định nói điều gì trước khi chết. Trên cổ anh là những vết bầm tím – như bị bóp nghẹt bởi bàn tay vô hình.</p>
+
+<p>Linh ôm mặt khóc nức nở. “Không thể nào… chúng ta mới chỉ vừa đến đây!”</p>
+
+<p>Phúc siết chặt tay, nhìn xuống xác bạn mình. “Chúng ta phải rời khỏi đây ngay lập tức.”</p>
+
+<p>Nam lắc đầu: “Không thể. Điện thoại mất sóng. Và con đường... không còn ở phía sau.”</p>
+
+<p>Họ quay lại nhìn cánh cổng sắt – nơi họ từng bước qua. Giờ đây, chỉ còn là một bức tường rậm rạp dây leo, như chưa từng có lối vào.</p>
+
+<p><em>Họ đã bị mắc kẹt. Và cái chết của Tuấn chỉ là sự khởi đầu.</em></p>
+',
         '2025-04-27 19:36:00.000000');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('c7e9f4d2-57f5-41c1-b6e5-76bb12345673',
         4,
-        'Căn Hầm Bị Lãng Quên',
+        'Nhật ký máu',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Khi khám phá khu vực bếp, Duy tìm thấy một cánh cửa gỗ nhỏ bị khóa chặt. Sau nhiều nỗ lực, chúng tôi phá được ổ khóa và mở cửa ra — một cầu thang xoắn dẫn xuống lòng đất. 🔦</p>
-        <p>Không khí lạnh buốt và mùi tanh tưởi bốc lên nồng nặc. Dưới căn hầm, chúng tôi phát hiện những bức tranh vẽ nguệch ngoạc lên tường: hình ảnh những linh hồn bị xiềng xích và gào thét trong tuyệt vọng. 🔥💀</p>
-        <p>Chúng tôi nhận ra: ngôi nhà này không chỉ đơn giản là "bị ma ám" — nó là nơi giam giữ những oán hồn chưa được siêu thoát.</p>',
+        '<p>Không khí trong ngôi biệt thự giờ đây như bị bóp nghẹt. Cái chết đột ngột của Tuấn khiến mọi người mất phương hướng. Linh vẫn chưa ngừng khóc, còn Hà thì ngồi bệt xuống nền nhà, ánh mắt vô hồn.</p>
+
+<p>Nam cố giữ bình tĩnh: “Chúng ta không thể ở đây mà chờ chết. Phải tìm hiểu xem thứ gì đang xảy ra. Có thể trong nhà có lối ra khác, hoặc ít nhất là thứ gì đó chỉ dẫn.”</p>
+
+<p>Phúc gật đầu, giọng lạc hẳn: “Tôi cũng nghĩ thế. Chúng ta chia ra tìm hiểu các phòng, nhưng không được tách nhóm nữa. Ai cũng phải đi cùng ít nhất một người.”</p>
+
+<p>Họ bắt đầu khám phá tầng trệt, lục tìm mọi thứ trong các phòng. Mỗi căn phòng là một thế giới chết chóc: phòng ăn phủ bụi dày, bàn ăn còn nguyên bộ bát đĩa sứ như bị bỏ lại giữa bữa ăn dang dở; phòng khách có tủ sách đầy sách cũ với nhiều trang bị xé rách; và cuối cùng, họ tìm thấy một căn phòng nhỏ nằm sau lưng bếp, như một kho chứa tạm bị niêm kín bằng đinh gỉ.</p>
+
+<p>Nam dùng xà beng đập bung cửa. Bên trong là một căn phòng chật chội, chỉ có một chiếc bàn gỗ mục nát và một cuốn sổ dày phủ đầy bụi nằm trên đó.</p>
+
+<p>Phúc nhặt lên, lau sơ bìa và đọc to nhan đề đã mờ: <em>“Nhật ký của bác sĩ Hoàng – 1972”</em>. Những dòng chữ bên trong viết tay nguệch ngoạc, nhiều trang dính máu khô. Họ lặng người khi đọc được những đoạn viết về thí nghiệm trên trẻ em, những giấc ngủ bị chi phối bởi ảo giác, và những tiếng nói vang lên trong đầu bệnh nhân.</p>
+
+<p><em>“Tôi không còn kiểm soát được nữa. Những đứa trẻ biến đổi. Có thứ gì đó trong ngôi nhà này… nó điều khiển mọi thứ.”</em></p>
+
+<p>“Đây từng là bệnh viện tâm thần ngầm?” – Hà thì thầm, lùi lại, mặt tái xanh.</p>
+
+<p>Đúng lúc đó, tiếng rít chói tai vang lên từ phía hành lang. Cả nhóm giật mình quay lại thì thấy… Linh đã biến mất.</p>
+
+<p>“Linh!” – Nam hét lên, chạy theo hướng âm thanh. Họ lao ra hành lang, đèn pin quét loạng choạng trên tường. Cửa phòng tắm mở toang. Và bên trong...</p>
+
+<p>... là Linh. Cô nằm co quắp trong bồn tắm rỉ sét, mắt trợn trắng, miệng há hốc. Hai bàn tay cô cào cấu da thịt đến rớm máu như thể cố gắng thoát khỏi một nỗi ám ảnh vô hình. Trên tường, có dòng chữ được viết bằng máu:</p>
+
+<p><strong><em>“Một người nữa. Vẫn chưa đủ.”</em></strong></p>
+
+<p>Hà hét lên thảm thiết, ngã quỵ xuống nền gạch lạnh ngắt. Phúc đứng lặng, bàn tay nắm chặt cuốn nhật ký. Nam quay mặt đi, nhưng đôi mắt đỏ hoe không giấu được sự phẫn nộ.</p>
+
+<p>“Thứ này… nó không muốn chúng ta rời đi. Nó đang chơi đùa.”</p>
+
+<p>Bên ngoài, sương mù lại dày lên. Ngôi nhà rên rỉ trong gió như đang cười. Và họ biết: <em>họ chỉ còn ba người…</em></p>
+',
         '2025-04-27 19:37:00.000000');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('d8f0a5e3-68f7-4c92-82e5-12cc12345674',
         5,
-        'Bóng Ma Của Chủ Nhân',
+        'Bóng ma ký ức',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Đêm thứ ba, khi đang nhóm lửa để xua tan cái lạnh, Minh bỗng lảo đảo như bị ai đó đẩy mạnh. 🕯️</p>
-        <p>Chúng tôi quay lại thì thấy một bóng đen cao lớn đang đứng sừng sững bên lò sưởi — đôi mắt đỏ rực nhìn chằm chằm vào chúng tôi. 🧛🏻‍♂️</p>
-        <p>Đó chính là hồn ma của vị chủ nhân đầu tiên của ngôi nhà, người từng bị đồn đã ra tay tàn sát chính gia đình mình để đổi lấy sự bất tử... Một lời nguyền kinh hoàng đã trói buộc linh hồn ông ta ở đây mãi mãi.</p>',
+        '<p>Tiếng gió hú hòa lẫn với tiếng mưa rơi lộp độp trên mái ngói mục nát tạo thành bản hòa âm chết chóc. Ba người còn lại – Nam, Phúc và Hà – ngồi trong phòng khách, bao quanh bởi những cuốn sách phủ bụi và ký ức đang thức tỉnh.</p>
+
+<p>Phúc mở lại cuốn nhật ký của bác sĩ Hoàng. Giọng anh run run đọc tiếp:</p>
+
+<p><em>“Ngày 12 tháng 9 năm 1972 – Thí nghiệm thất bại. Những đứa trẻ bắt đầu nghe thấy giọng nói, và rồi… chúng không còn là chính mình nữa. Có thứ gì đó trong ngôi nhà này đã thức tỉnh. Tôi thấy nó trong gương. Nó là chính tôi... hoặc từng là tôi.”</em></p>
+
+<p>Hà ôm đầu, đôi mắt như dại đi: “Những đứa trẻ đó... bị đem ra làm vật thí nghiệm? Trên chính vùng đất này sao?”</p>
+
+<p>Nam đứng dậy, cầm đèn pin và nói: “Tôi cần kiểm tra lại tầng hầm. Trong bản vẽ ngôi nhà có ghi chú ‘phòng đặc biệt’ dưới lòng đất. Có thể đó là nơi mọi thứ bắt đầu.”</p>
+
+<p>Phúc do dự một lúc rồi gật đầu: “Tôi sẽ đi cùng. Hà, em nên ở lại đây.”</p>
+
+<p>“Không! Tôi không ở một mình nữa đâu!” – Hà kêu lên. Cô vẫn chưa hoàn hồn từ cái chết của Linh, nhưng nỗi sợ ở một mình còn lớn hơn.</p>
+
+<p>Cả ba cùng xuống tầng hầm. Cầu thang gỗ mục nát kêu rên rỉ dưới bước chân. Ánh sáng đèn pin chập chờn như sắp tắt. Khi đến nơi, họ phát hiện một cánh cửa sắt dày khóa bằng ổ khóa cũ kỹ.</p>
+
+<p>Nam dùng xà beng phá khóa. Khi cửa bật mở, một luồng hơi lạnh như tử khí tràn ra. Bên trong là căn phòng kín không cửa sổ. Tường được lót bằng đệm cách âm, ở giữa là chiếc ghế sắt với dây trói. Trên tường có hàng trăm vết khắc chằng chịt:</p>
+
+<p><em>“Đừng tin hắn.” – “Tôi vẫn còn sống.” – “Tôi nghe thấy mẹ.” – “Nó đang nhìn.”</em></p>
+
+<p>Hà bước lùi lại, miệng lắp bắp: “Đây không phải bệnh viện… đây là phòng tra tấn.”</p>
+
+<p>Phúc mở một tủ hồ sơ bên góc. Bên trong là những tập hồ sơ y tế, ghi tên hàng chục đứa trẻ. Mỗi tệp đều kết thúc bằng dòng: <em>“Đối tượng không phản hồi. Chuyển xử lý.”</em></p>
+
+<p>Nam cầm một bản hồ sơ lên. Khi đọc tên, anh chết lặng: “Nguyễn Văn Nam – 5 tuổi – ký hiệu: Thí nghiệm số 14.”</p>
+
+<p>“Đợi đã…” – Hà thì thào – “Nam… đó là tên anh.”</p>
+
+<p>Nam siết chặt tay, trán toát mồ hôi. “Tôi không nhớ gì về tuổi thơ. Bố mẹ tôi… chỉ nói rằng tôi được nhận nuôi sau một vụ cháy lớn ở viện mồ côi gần Đà Lạt.”</p>
+
+<p>Phúc nhìn Nam chằm chằm. “Anh là một trong những đứa trẻ được thí nghiệm?”</p>
+
+<p>Trước khi Nam kịp phản ứng, đèn pin phụt tắt. Một tiếng thét vang lên – Hà bị kéo ngược vào bóng tối, bàn tay vô hình siết lấy cổ cô. Phúc và Nam lao đến nhưng không thấy gì ngoài một làn khói đen đặc quánh như tro tàn.</p>
+
+<p>Tiếng Hà dần im bặt. Chỉ còn lại làn khói nhạt và một sợi dây chuyền rơi lại trên sàn lạnh lẽo.</p>
+
+<p>Nam quỳ xuống, nắm lấy sợi dây. “Chúng ta không thể thoát nếu chưa đối mặt với nó.”</p>
+
+<p>Phúc gật đầu, ánh mắt tràn đầy đau thương. “Chỉ còn lại hai người. Và tôi sợ… người tiếp theo sẽ là tôi.”</p>
+
+<p>Bên trong những bức tường ngôi nhà, tiếng cười khúc khích vang lên. <em>Không phải của con người.</em></p>
+',
         '2025-04-27 19:38:00.000000');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('e9f1b6f4-79f8-4fa3-91e5-23dd12345675',
         6,
-        'Lời Nguyền Máu',
+        'Lời thì thầm cuối cùng',
         'd8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
-        '<p>Cuối cùng, chúng tôi tìm thấy một cuốn sách cổ bằng da người cất giấu dưới nền căn hầm. 📖🩸</p>
-        <p>Trong đó ghi lại nghi thức tà ác mà chủ nhân ngôi nhà từng thực hiện: mỗi đời chủ mới đặt chân vào đây đều phải "hiến tế" để nuôi dưỡng ngôi nhà ma ám.</p>
-        <p>Nhận ra điều đó, chúng tôi lập kế hoạch phá vỡ lời nguyền — nhưng trước khi thực hiện, một trong chúng tôi bắt đầu biến mất bí ẩn trong màn đêm... 🌑👤</p>',
+        '<p>Trong không khí đặc quánh và ẩm mốc của tầng hầm, Nam và Phúc đứng bất động trước cái chết đầy ám ảnh của Hà. Căn phòng im lặng đến nghẹt thở. Không còn tiếng gió, tiếng mưa, hay cả tiếng thì thầm quái đản – như thể ngôi nhà đang nín thở... chờ đợi.</p>
+
+<p>Phúc run rẩy chạm tay vào vai Nam: “Chúng ta phải rời khỏi đây. Không còn gì để tìm nữa.”</p>
+
+<p>Nhưng Nam lắc đầu, mắt đỏ rực, ánh nhìn như bừng tỉnh khỏi một cơn mê: “Tôi phải biết sự thật. Nếu tôi là một phần trong cái thí nghiệm này… nếu tôi sống sót… thì tôi cần biết tại sao.”</p>
+
+<p>Họ quay lại phòng chứa tài liệu, lật tung những ngăn kéo cuối cùng. Một cuốn băng ghi âm được giấu trong hộp thiếc cũ. Bên ngoài đề: <em>“Ghi âm cuối cùng – 15/11/1972”</em>. Họ tìm thấy một máy phát cũ, lắp pin và bấm nút.</p>
+
+<p><em>“Tôi là bác sĩ Hoàng… nếu ai đó tìm thấy cuốn băng này, hãy tha thứ cho tôi. Những thí nghiệm được chính phủ tài trợ – họ muốn tạo ra những đứa trẻ đặc biệt, miễn nhiễm với sợ hãi. Nhưng họ không lường trước được điều gì xảy ra khi ta buộc linh hồn con người phải chịu đựng vượt quá giới hạn. Bóng tối sinh ra từ chính nỗi sợ ấy. Và giờ… nó đã có nhận thức.”</em></p>
+
+<p><em>“Tôi thấy nó... trong gương. Nó dùng hình ảnh của tôi để điều khiển bọn trẻ. Và giờ... tôi không biết mình còn là ai nữa.”</em></p>
+
+<p>Bỗng nhiên, từ tấm gương ở góc phòng, một bóng đen lóe lên. Nam và Phúc quay lại. Trong gương, là hình ảnh cả hai – nhưng phía sau là một bóng người đội nón bác sĩ, không có mặt, chỉ là khoảng trống đen ngòm.</p>
+
+<p>“Chạy!” – Phúc hét lên.</p>
+
+<p>Họ lao lên cầu thang, cửa tầng trệt giờ đã mở toang. Nhưng ngôi nhà dường như đang co lại – hành lang dài thêm, tường đổi chỗ, và những tiếng cười khúc khích vọng lại từ mọi phía.</p>
+
+<p>Phúc ngã xuống, chân bị một sợi dây từ đâu siết lấy. Anh gào lên: “Nam! Đừng quay lại! Chạy đi!”</p>
+
+<p>Nam dừng lại trong tích tắc. Anh muốn cứu bạn mình, nhưng rồi… nhìn thấy từ gương trên tường: Phúc đã bị lôi xuống tầng hầm, kéo vào bóng tối, và cánh cửa đóng sập lại.</p>
+
+<p>Nam không còn lựa chọn. Anh lao thẳng ra ngoài cửa chính – nhưng ngôi nhà vẫn chưa buông tha.</p>
+
+<p>Khi Nam bước ra đến thềm hiên, sương mù dày đặc quấn lấy cơ thể anh. Tiếng thì thầm vọng bên tai: <em>“Ngươi là kẻ cuối cùng. Ngươi nhớ chưa? Ngươi từng là một trong bọn ta…”</em></p>
+
+<p>Hình ảnh mờ ảo ùa về trong đầu: căn phòng trắng, tiếng la hét của những đứa trẻ, những giấc mơ không tên, và đôi mắt đen trống rỗng của bác sĩ Hoàng – người từng đứng trước Nam khi anh còn là một đứa trẻ năm tuổi.</p>
+
+<p>Nam gào lên: “Tôi không thuộc về các người!”</p>
+
+<p>Và rồi… ánh sáng. Một tia nắng đầu tiên sau cơn mưa xuyên qua tầng mây xám, chiếu thẳng vào cửa sổ lớn của ngôi biệt thự.</p>
+
+<p>Ngôi nhà rên rỉ. Gạch đá nứt vỡ. Các cửa sổ vỡ tung, và từ trong các khe nứt, những luồng khói đen tuôn ra, kêu lên thảm thiết rồi tan biến như chưa từng tồn tại.</p>
+
+<p>Nam ngã quỵ trước hiên nhà, thở dốc. Trời đã sáng.</p>
+
+<p>Người dân địa phương phát hiện ra anh sáng hôm sau, lang thang trên đồi, người đầy thương tích nhưng sống sót. Khi được hỏi chuyện gì đã xảy ra, anh chỉ lắc đầu: “Không ai sẽ tin… và không ai nên quay lại đó nữa.”</p>
+
+<p><strong>Một tháng sau</strong>, ngôi biệt thự bị phá bỏ. Nhưng đêm nào trời có sương, người ta vẫn nghe thấy tiếng trẻ con cười khúc khích vọng lên từ lòng đất đồi thông…</p>
+
+<p><em>Chỉ một người sống sót. Nhưng ký ức... sẽ không bao giờ chết.</em></p>
+',
         '2025-04-27 19:39:00.000000');
 
 INSERT INTO story
