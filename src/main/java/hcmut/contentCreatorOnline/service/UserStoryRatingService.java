@@ -1,6 +1,8 @@
 package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.RatingDTO;
+import hcmut.contentCreatorOnline.exception.ApplicationException;
+import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.model.UserStoryRating;
@@ -28,10 +30,12 @@ public class UserStoryRatingService {
         Double ratingValue = ratingDTO.getRating();
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND,
+                        "User not found"));
 
         Story story = storyRepository.findById(storyId)
-                .orElseThrow(() -> new RuntimeException("Story not found"));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND,
+                        "Story not found"));
 
         UserStoryRatingId id = new UserStoryRatingId(userId, storyId);
         UserStoryRating rating = ratingRepository.findById(id)
@@ -41,11 +45,9 @@ public class UserStoryRatingService {
         rating.setUser(user);
         rating.setStory(story);
         rating.setRating(ratingValue);
-
-        updateAverageRating(story);
+        
         ratingRepository.save(rating);
-
-
+        updateAverageRating(story);
 
     }
 
