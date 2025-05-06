@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 import static hcmut.contentCreatorOnline.utils.SecurityUtils.getCurrentUser;
 
 @RestController
@@ -30,17 +32,17 @@ public class UserStoryRatingController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<RatingDTO> getUserStoryRating(@RequestBody RatingDTO ratingDTO) {
-        if (ratingDTO.getUserId() == null) {
-            UserPrincipal currentUser = getCurrentUser();
-            ratingDTO.setUserId(currentUser.getId());
-        }
+    @GetMapping("/current_user/{storyId}")
+    public ResponseEntity<RatingDTO> getStoryRatingByCurrentUser(@PathVariable UUID storyId) {
 
-        Double rating = ratingService.getUserStoryRating(ratingDTO);
+        UserPrincipal currentUser = getCurrentUser();
+        UUID userId = currentUser.getId();
+
+
+        Double rating = ratingService.getUserStoryRating(userId, storyId);
         return ResponseEntity.ok(RatingDTO.builder()
-                .userId(ratingDTO.getUserId())
-                .storyId(ratingDTO.getStoryId())
+                .userId(userId)
+                .storyId(storyId)
                 .rating(rating).build());
 
     }

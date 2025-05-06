@@ -66,9 +66,7 @@ public class UserStoryRatingService {
         storyRepository.save(story);
     }
 
-    public Double getUserStoryRating(RatingDTO ratingDTO) {
-        UUID userId = ratingDTO.getUserId();
-        UUID storyId = ratingDTO.getStoryId();
+    public Double getUserStoryRating(UUID userId, UUID storyId) {
 
         UserStoryRatingId id = new UserStoryRatingId(userId, storyId);
         Optional<UserStoryRating> rating = ratingRepository.findById(id);
