@@ -1,6 +1,6 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.RatingDTO;
+import hcmut.contentCreatorOnline.dto.userStoryRating.RatingDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Story;
@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -45,7 +46,7 @@ public class UserStoryRatingService {
         rating.setUser(user);
         rating.setStory(story);
         rating.setRating(ratingValue);
-        
+
         ratingRepository.save(rating);
         updateAverageRating(story);
 
@@ -63,6 +64,16 @@ public class UserStoryRatingService {
             story.setAverageRating(avg);
         }
         storyRepository.save(story);
+    }
+
+    public Double getUserStoryRating(RatingDTO ratingDTO) {
+        UUID userId = ratingDTO.getUserId();
+        UUID storyId = ratingDTO.getStoryId();
+
+        UserStoryRatingId id = new UserStoryRatingId(userId, storyId);
+        Optional<UserStoryRating> rating = ratingRepository.findById(id);
+
+        return rating.map(UserStoryRating::getRating).orElse(null);
     }
 }
 

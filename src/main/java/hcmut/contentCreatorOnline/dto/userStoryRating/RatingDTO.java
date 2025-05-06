@@ -1,4 +1,4 @@
-package hcmut.contentCreatorOnline.dto;
+package hcmut.contentCreatorOnline.dto.userStoryRating;
 
 import lombok.*;
 
@@ -10,7 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class RatingDTO {
-
     private UUID userId;
     private UUID storyId;
     private Double rating;
