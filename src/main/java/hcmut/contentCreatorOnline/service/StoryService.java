@@ -49,6 +49,7 @@ public class StoryService {
                 .salePrice(story.getSalePrice())
                 .numberOfLikes(story.getNumberOfLikes())
                 .tags(story.getTags())
+                .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
 //                .chapters(story.getChapters())
 //                .genres(story.getGenres())
 //                .readLists(story.getReadLists())
@@ -141,22 +142,40 @@ public class StoryService {
                 ).toList();
 
 
-        return new StoryResponse(
-                story.getStoryId(),
-                story.getReleaseDate(),
-                story.getCreatedDate(),
-                story.getReleaseStatus(),
-                story.getStoryTitle(),
-                story.getSaleOnly(),
-                story.getSalePrice(),
-                story.getNumberOfLikes(),
-                story.getCoverImageUri(),
-                story.getStoryDescription(),
-                story.getTags(),
-                story.getAverageRating(),
-                story.getUserPost().getId(),
-                chapterList
-        );
+        // return StoryResponse(
+        //         story.getStoryId(),
+        //         story.getReleaseDate(),
+        //         story.getCreatedDate(),
+        //         story.getReleaseStatus(),
+        //         story.getStoryTitle(),
+        //         story.getSaleOnly(),
+        //         story.getSalePrice(),
+        //         story.getNumberOfLikes(),
+        //         story.getCoverImageUri(),
+        //         story.getStoryDescription(),
+        //         story.getTags(),
+        //         story.getAverageRating(),
+        //         story.getUserPost().getId(),
+        //         chapterList
+        // );
+
+        return StoryResponse.builder()
+                .storyId(story.getStoryId())
+                .releaseDate(story.getReleaseDate())
+                .createdDate(story.getCreatedDate())
+                .releaseStatus(story.getReleaseStatus())
+                .storyTitle(story.getStoryTitle())
+                .saleOnly(story.getSaleOnly())
+                .salePrice(story.getSalePrice())
+                .numberOfLikes(story.getNumberOfLikes())
+                .coverImageUri(story.getCoverImageUri())
+                .storyDescription(story.getStoryDescription())
+                .tags(story.getTags())
+                .averageRating(story.getAverageRating())
+                .userId(story.getUserPost().getId())
+                .chapters(chapterList)
+                .build()
+                ;
     }
 
     public List<StoryDTO> getStoriesByGenreId(Integer genreId, int page, int size) {
