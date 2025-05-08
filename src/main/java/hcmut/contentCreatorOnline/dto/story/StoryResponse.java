@@ -29,6 +29,8 @@ public class StoryResponse {
 
     private Integer numberOfLikes;
 
+    private Integer numberOfViews;
+
     private String coverImageUri;
 
     private String storyDescription;

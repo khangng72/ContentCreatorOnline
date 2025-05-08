@@ -50,6 +50,7 @@ public class StoryService {
                 .numberOfLikes(story.getNumberOfLikes())
                 .tags(story.getTags())
                 .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
+                .numberOfViews(story.getNumberOfViews())
 //                .chapters(story.getChapters())
 //                .genres(story.getGenres())
 //                .readLists(story.getReadLists())
@@ -106,11 +107,20 @@ public class StoryService {
         return new UpdateStoryGenreResult(result.getStoryId());
     }
 
-    public List<StoryResponse> getStoriesPostedByUser(UUID userId) {
+    public List<StoryDTO> getStoriesPostedByUser(UUID userId) {
         List<Story> stories = storyRepository.findByUserPost_Id(userId);
         return stories.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
+                .map(story -> StoryDTO.builder()
+                        .storyId(story.getStoryId())
+                        .storyTitle(story.getStoryTitle())
+                        .storyDescription(story.getStoryDescription())
+                        .coverImageUri(story.getCoverImageUri())
+                        .numberOfChapters(story.getChapters().size())
+                        .averageRating(story.getAverageRating())
+                        .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
+                        .numberOfViews(story.getNumberOfViews())
+                        .build()
+                ).toList();
     }
 
     public List<StoryResponse> getLatestStoriesPostedByUser(UUID userId) {
@@ -140,24 +150,6 @@ public class StoryService {
                                 chapter.getChapterNumber()
                         )
                 ).toList();
-
-
-        // return StoryResponse(
-        //         story.getStoryId(),
-        //         story.getReleaseDate(),
-        //         story.getCreatedDate(),
-        //         story.getReleaseStatus(),
-        //         story.getStoryTitle(),
-        //         story.getSaleOnly(),
-        //         story.getSalePrice(),
-        //         story.getNumberOfLikes(),
-        //         story.getCoverImageUri(),
-        //         story.getStoryDescription(),
-        //         story.getTags(),
-        //         story.getAverageRating(),
-        //         story.getUserPost().getId(),
-        //         chapterList
-        // );
 
         return StoryResponse.builder()
                 .storyId(story.getStoryId())
