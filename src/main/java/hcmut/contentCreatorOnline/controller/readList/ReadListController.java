@@ -21,7 +21,7 @@ public class ReadListController {
 
     private final ReadListService readListService;
 
-    @GetMapping("/{user_id}")
+    @GetMapping("/user/{user_id}")
     public ResponseEntity<ReadList_ListResponse> getReadListByUserId(@PathVariable UUID user_id) {
 
         List<ReadListDTO> result = readListService.getReadListByUserId(user_id);
