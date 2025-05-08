@@ -1,7 +1,7 @@
 package hcmut.contentCreatorOnline.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,8 +11,12 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Data
 @Table(name = "story")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Story {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")

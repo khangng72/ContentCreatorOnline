@@ -100,5 +100,13 @@ public class ReadListController {
         return ResponseEntity.ok(new AddStoryToManyReadListResponse(story_id, result));
     }
 
+    @PostMapping("/clone/{read_list_id}")
+    public ResponseEntity<String> cloneReadListToCurrentUserLibrary(@PathVariable UUID read_list_id) {
+        System.out.println("watchout");
+        String message = readListService.cloneReadListToCurrentUserLibrary(read_list_id);
+
+        return ResponseEntity.ok(message);
+    }
+
 
 }

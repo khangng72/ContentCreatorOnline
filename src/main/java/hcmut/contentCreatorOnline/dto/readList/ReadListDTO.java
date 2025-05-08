@@ -17,4 +17,5 @@ public class ReadListDTO {
     private Integer number_of_stories;
     private List<UUID> story_ids;
     private UUID user_id;
+    private String user_name;
 }
