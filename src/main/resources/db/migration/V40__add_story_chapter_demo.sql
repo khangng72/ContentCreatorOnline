@@ -1,6 +1,6 @@
 -- Insert story 1-
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('ea728084-f3fe-4ea8-9d32-83653bee2580',
         true,
         'Khúc ca đoạt hồn giữa đêm khuya',
@@ -9,7 +9,8 @@ VALUES ('ea728084-f3fe-4ea8-9d32-83653bee2580',
         <p>“Thật vô lễ, các người chỉ là hạ nhân mà dám bước thêm một bước nữa, hoàng đế sẽ cho ngũ mã phanh thây các ngươi, tru di cửu tộc các ngươi,” cô gái Băng Băng, tức giận và phẫn nộ, ra lệnh cho các bảo vệ mặc đồng phục ở bên trái, cô vung tay khiến các bảo vệ hoảng sợ và liên tục lùi lại.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/khuc_ca_doat_hon.webp');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
@@ -737,14 +738,15 @@ VALUES ('7c86c041-8940-4c95-9fe1-34d63d504eb4',
 
 -- Insert story 4
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
         true,
         'Ma trẻ con',
         '<p>Thằng bạn tớ định kể tên là Thức, học dưới tớ một năm, tức là khoảng đầu năm hai thì nó mới được xếp vào cùng phòng ký túc. Ngoại hình cao gầy, mặt mũi tương đối thông minh, từ đầu thằng bé đã thể hiện là đứa cởi mở, vui tính, nhưng chỉ được khoảng nửa năm thì tính cách nó gần như thay đổi hẳn.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/ma_tre_con.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
@@ -906,7 +908,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
 
 -- Insert story 5
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
         true,
         'Chết Mất Xác',
@@ -914,7 +916,8 @@ VALUES ('e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
         <p>Anh ể oải mà bước xuống giường rồi ra ngoài để mở cửa.Cánh cổng trong nhà vừa được mở ra thì một người phụ nữ ngoài 50 tuổi nắm lấy tay anh mà hỏi dồn dập:</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/chet_mat_xac.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
@@ -1501,7 +1504,7 @@ VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
 
 -- Insert story 6
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('a97855e5-2f3d-4f13-9f85-8858b2dcab03',
         true,
         'Ngãi Miên-(Ngãi Ăn Thịt)',
@@ -1509,7 +1512,8 @@ VALUES ('a97855e5-2f3d-4f13-9f85-8858b2dcab03',
         <p>Vào năm 2005 thì trong xóm có một tiếng thét vang lên, ai nghe cũng giật mình và chạy lại thì thấy cái cô gái kia đang ôm xác con gái của mình( nghe kể lại rằng là ruột gan với tim…nó rơi ra và lòng thòng).</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/ngai_mien.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('74e2d51c-2a9d-4bf1-bccc-01eac97ff4cc',
@@ -1569,14 +1573,15 @@ VALUES ('74e2d51c-2a9d-4bf1-bccc-01eac97ff4cc',
 
 -- Insert story 7
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('3f04f812-2977-4f62-b233-29f4fc99fddb',
         true,
         'Tiếng khóc đêm trăng',
         '<p>Tôi nhớ buổi chiều đó, vừa đi học về đã thấy má chuẩn bị rất nhiều quà chất lên xe. Khỏi cần hỏi má, tôi cũng biết đó là những hộp bánh trung thu, mà bà nội và má cất công đi chọn lựa mấy ngày hôm nay, để ngày mai cả nhà tôi về quê thăm ông bà ngoại.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/tieng_khoc_dem_trang.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('2c3318cd-ab84-4e9c-87be-5a3ece28e0e6',
