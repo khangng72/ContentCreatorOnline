@@ -221,4 +221,31 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public UserResponseDTO getUserById(UUID userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+        Integer numberOfStories = user.getStoryPost().size();
+        Integer numberOfFollowers = user.getFollowers().size();
+        Integer numberOfFollowing = user.getFollowing().size();
+
+        return UserResponseDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .gender(user.getGender())
+                .isAdmin(user.isAdmin())
+                .isActive(user.isActive())
+                .nationality(user.getNationality())
+                .birthday(user.getBirthday())
+                .avatarUrl(user.getAvatarUrl())
+                .backgroundUrl(user.getBackgroundUrl())
+                .introduction(user.getIntroduction())
+                .numberOfFollowers(numberOfFollowers)
+                .numberOfStories(numberOfStories)
+                .numberOfFollowing(numberOfFollowing)
+                .build();
+    }
 }

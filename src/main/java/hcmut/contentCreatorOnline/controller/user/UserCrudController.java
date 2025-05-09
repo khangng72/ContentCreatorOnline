@@ -40,6 +40,17 @@ public class UserCrudController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/profile/{userId}")
+    public ResponseEntity<?> getUserProfile(
+            @PathVariable UUID userId
+    ) {
+        UserResponseDTO user = userService.getUserById(userId);
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", 200);
+        response.put("result", user);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/followers/{userId}")
     public ResponseEntity<GetFollowersResponse> getFollowersByUserId(
             @PathVariable UUID userId,

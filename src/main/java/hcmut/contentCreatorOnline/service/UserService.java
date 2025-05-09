@@ -22,4 +22,6 @@ public interface UserService {
     List<UserResponseDTO> searchUserByKeyword(String keyword, int page, int size);
 
     void updateUser(UUID userId, UpdateUserRequest updateUserRequest);
+
+    UserResponseDTO getUserById(UUID userId);
 }
