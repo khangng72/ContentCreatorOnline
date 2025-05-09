@@ -112,6 +112,7 @@ public class ChapterService {
         List<Chapter> chapters = chapterRepository.findByStoryId(storyId);
 
         return chapters.stream()
+                .filter(Chapter::getIsPublished)
                 .map(chapter -> new BasicChapterInfoDTO(
                         chapter.getChapterId(),
                         chapter.getChapterTitle(),
