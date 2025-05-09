@@ -20,4 +20,6 @@ public interface UserService {
     List<FollowingDTO> getFollowingByUserId(UUID userId, int page, int size);
 
     List<UserResponseDTO> searchUserByKeyword(String keyword, int page, int size);
+
+    void updateUser(UUID userId, UpdateUserRequest updateUserRequest);
 }

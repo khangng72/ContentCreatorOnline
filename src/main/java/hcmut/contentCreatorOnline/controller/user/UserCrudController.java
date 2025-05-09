@@ -77,4 +77,13 @@ public class UserCrudController {
         List<UserResponseDTO> result = userService.searchUserByKeyword(keyword, page, size);
         return ResponseEntity.ok(new SearchUserResponse(HttpStatus.OK.value(), result));
     }
+
+    @PutMapping("/update/{userId}")
+    public ResponseEntity<String> updateUser(
+            @PathVariable UUID userId,
+            @RequestBody UpdateUserRequest updateUserRequest
+    ) {
+        userService.updateUser(userId, updateUserRequest);
+        return ResponseEntity.ok("Update user successfully");
+    }
 }

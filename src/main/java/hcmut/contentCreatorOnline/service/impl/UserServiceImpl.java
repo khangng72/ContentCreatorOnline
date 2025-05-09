@@ -206,4 +206,19 @@ public class UserServiceImpl implements UserService {
         ).toList();
     }
 
+    @Override
+    public void updateUser(UUID userId, UpdateUserRequest updateUserRequest) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        user.setFirstName(updateUserRequest.getFirstName());
+        user.setLastName(updateUserRequest.getLastName());
+        user.setGender(updateUserRequest.getGender());
+        user.setNationality(updateUserRequest.getNationality());
+        user.setBirthday(updateUserRequest.getBirthday());
+        user.setIntroduction(updateUserRequest.getIntroduction());
+
+        userRepository.save(user);
+    }
+
 }
