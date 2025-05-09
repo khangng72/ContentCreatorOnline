@@ -121,4 +121,33 @@ public class ChapterService {
                         chapter.getCreatedTime()))
                 .toList();
     }
+
+    public ChapterDTO getChapterById(UUID chapterId) {
+        Chapter targetChapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        List<UUID> chapterIdLeft = targetChapter
+                .getStory()
+                .getChapters()
+                .stream()
+                .filter(chapter -> chapter.getChapterNumber() > targetChapter.getChapterNumber())
+                .map(Chapter::getChapterId)
+                .toList();
+
+        UUID nextChapterId = !chapterIdLeft.isEmpty() ? chapterIdLeft.get(0) : null;
+
+
+        return ChapterDTO.builder()
+                .chapterId(targetChapter.getChapterId())
+                .chapterTitle(targetChapter.getChapterTitle())
+                .chapterDescription(targetChapter.getChapterDescription())
+                .chapterContent(targetChapter.getChapterContent())
+                .chapterNumber(targetChapter.getChapterNumber())
+                .createdTime(targetChapter.getCreatedTime())
+                .nextChapterId(nextChapterId)
+                .numberOfLikes(targetChapter.getUsersLikeChapter().size())
+                .numberOfComments(targetChapter.getComments().size())
+                .build();
+
+    }
 }

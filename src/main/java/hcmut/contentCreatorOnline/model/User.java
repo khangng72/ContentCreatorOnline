@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -105,6 +102,9 @@ public class User {
     @JsonIgnore
     private Set<User> following = new HashSet<>();
 
+    @ManyToMany(mappedBy = "usersLikeChapter")
+    private List<Chapter> likedChapters = new ArrayList<>();
+
     // Reading Preference
     @Column(name = "default_reading_text_size")
     private Double defaultReadingTextSize;
@@ -114,4 +114,5 @@ public class User {
 
     @Column(name = "default_reading_line_height")
     private Double defaultReadingLineHeight;
+
 }

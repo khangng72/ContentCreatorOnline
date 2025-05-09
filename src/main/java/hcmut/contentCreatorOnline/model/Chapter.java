@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -45,13 +44,13 @@ public class Chapter {
     private String chapterContent;
 
     private String chapterImageUri;
-    
+
     @ManyToOne
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
 
     @ManyToMany
     @JoinTable(name = "user_like_chapter", joinColumns = @JoinColumn(name = "chapter_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> userChapter = new HashSet<>();
+    private List<User> usersLikeChapter = new ArrayList<>();
 
 }

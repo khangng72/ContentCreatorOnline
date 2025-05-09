@@ -56,4 +56,10 @@ public class ChapterController {
         return ResponseEntity.ok(new GetBasicChaptersInfoResponse(HttpStatus.OK.value(), basicChaptersInfo));
     }
 
+    @GetMapping("/{chapterId}")
+    public ResponseEntity<ChapterDTO> getChapterById(@PathVariable UUID chapterId) {
+        ChapterDTO chapter = chapterService.getChapterById(chapterId);
+        return ResponseEntity.ok(chapter);
+    }
+
 }
