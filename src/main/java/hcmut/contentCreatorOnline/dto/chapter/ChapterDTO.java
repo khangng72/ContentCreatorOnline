@@ -22,4 +22,5 @@ public class ChapterDTO {
     private Integer numberOfComments;
     private UUID nextChapterId;
     private String storyTitle;
+    private UUID storyId;
 }

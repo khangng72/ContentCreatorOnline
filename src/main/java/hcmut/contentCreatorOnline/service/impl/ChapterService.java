@@ -148,6 +148,7 @@ public class ChapterService {
                 .numberOfLikes(targetChapter.getUsersLikeChapter().size())
                 .numberOfComments(targetChapter.getComments().size())
                 .storyTitle(targetChapter.getStory().getStoryTitle())
+                .storyId(targetChapter.getStory().getStoryId())
                 .build();
     }
 }
