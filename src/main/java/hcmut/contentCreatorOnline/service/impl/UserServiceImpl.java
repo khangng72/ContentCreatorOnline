@@ -283,4 +283,27 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userToFollow);
     }
 
+    @Override
+    public ReadPreference getReadingPreference(UUID currentUserId) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        return ReadPreference.builder()
+                .defaultReadingLineHeight(currentUser.getDefaultReadingLineHeight())
+                .defaultReadingWordSpacing(currentUser.getDefaultReadingWordSpacing())
+                .defaultReadingTextSize(currentUser.getDefaultReadingTextSize())
+                .build();
+    }
+
+    @Override
+    public void updateReadingPreference(UUID currentUserId, ReadPreference readPreference) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+        currentUser.setDefaultReadingLineHeight(readPreference.getDefaultReadingLineHeight());
+        currentUser.setDefaultReadingWordSpacing(readPreference.getDefaultReadingWordSpacing());
+        currentUser.setDefaultReadingTextSize(readPreference.getDefaultReadingTextSize());
+
+        userRepository.save(currentUser);
+    }
+
 }

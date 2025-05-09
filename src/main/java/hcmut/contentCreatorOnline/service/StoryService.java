@@ -43,7 +43,7 @@ public class StoryService {
                 .coverImageUri(story.getCoverImageUri())
                 .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
                 .userId(story.getUserPost().getId())
-                .numberOfViews(story.getNumberOfViews())
+                .numberOfViews(story.getUserReadStory().size())
                 .numberOfChapters(story.getChapters().size())
                 .averageRating(story.getAverageRating())
                 .genres(

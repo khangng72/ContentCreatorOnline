@@ -134,4 +134,24 @@ public class UserCrudController {
         userService.toggleFollow(currentUserId, userId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
+
+    @GetMapping("/read_preference")
+    public ResponseEntity<ReadPreference> getCurrentUserReadingPreference() {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        ReadPreference readingPreference = userService.getReadingPreference(currentUserId);
+        return ResponseEntity.ok(readingPreference);
+    }
+
+    @PutMapping("/read_preference")
+    public ResponseEntity<String> updateCurrentUserReadingPreference(
+            @RequestBody ReadPreference readPreference
+    ) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        userService.updateReadingPreference(currentUserId, readPreference);
+        return ResponseEntity.ok("Update reading preference successfully");
+    }
 }

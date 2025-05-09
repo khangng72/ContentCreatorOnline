@@ -105,6 +105,9 @@ public class User {
     @ManyToMany(mappedBy = "usersLikeChapter")
     private List<Chapter> likedChapters = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserReadStory> userReadStory = new HashSet<>();
+
     // Reading Preference
     @Column(name = "default_reading_text_size")
     private Double defaultReadingTextSize;
@@ -114,5 +117,6 @@ public class User {
 
     @Column(name = "default_reading_line_height")
     private Double defaultReadingLineHeight;
+
 
 }

@@ -89,4 +89,7 @@ public class Story {
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UserStoryRating> userStoryRatings = new HashSet<>();
 
+    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserReadStory> userReadStory = new HashSet<>();
+
 }

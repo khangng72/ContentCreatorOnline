@@ -28,4 +28,8 @@ public interface UserService {
     boolean checkIfCurrentUserHaveFollowGivenId(UUID currentUserId, UUID userId);
 
     void toggleFollow(UUID currentUserId, UUID userId);
+
+    ReadPreference getReadingPreference(UUID currentUserId);
+
+    void updateReadingPreference(UUID currentUserId, ReadPreference readPreference);
 }
