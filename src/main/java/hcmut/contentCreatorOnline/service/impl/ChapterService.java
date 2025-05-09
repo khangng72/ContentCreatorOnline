@@ -6,8 +6,11 @@ import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
 import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.model.User;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.ChapterRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
+import hcmut.contentCreatorOnline.repository.UserRepository;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -25,6 +29,7 @@ public class ChapterService {
 
     private final StoryRepository storyRepository;
     private final ChapterRepository chapterRepository;
+    private final UserRepository userRepository;
 
     // Model to DTO by using mapper
     // ChapterListOnlyView
@@ -113,6 +118,7 @@ public class ChapterService {
 
         return chapters.stream()
                 .filter(Chapter::getIsPublished)
+                .sorted(Comparator.comparing(Chapter::getChapterNumber))
                 .map(chapter -> new BasicChapterInfoDTO(
                         chapter.getChapterId(),
                         chapter.getChapterTitle(),
@@ -120,6 +126,7 @@ public class ChapterService {
                         chapter.getChapterNumber(),
                         chapter.getCreatedTime()))
                 .toList();
+
     }
 
     public ChapterDTO getChapterById(UUID chapterId) {
@@ -150,5 +157,34 @@ public class ChapterService {
                 .storyTitle(targetChapter.getStory().getStoryTitle())
                 .storyId(targetChapter.getStory().getStoryId())
                 .build();
+    }
+
+    public boolean checkIfCurrentUserLiked(UUID chapterId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        return chapter.getUsersLikeChapter().stream()
+                .anyMatch(user -> user.getId().equals(currentUser.getId()));
+    }
+
+    public boolean toggleCurrentUserLike(UUID chapterId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+        User user = userRepository.findById(currentUser.getId())
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        if (chapter.getUsersLikeChapter().contains(user)) {
+            chapter.getUsersLikeChapter().remove(user);
+            chapter.setNumberOfLikes(chapter.getNumberOfLikes() - 1);
+            chapterRepository.save(chapter);
+            return false; // User unliked the chapter
+        } else {
+            chapter.getUsersLikeChapter().add(user);
+            chapter.setNumberOfLikes(chapter.getNumberOfLikes() + 1);
+            chapterRepository.save(chapter);
+            return true; // User liked the chapter
+        }
     }
 }
