@@ -156,6 +156,7 @@ public class ChapterService {
                 .numberOfComments(targetChapter.getComments().size())
                 .storyTitle(targetChapter.getStory().getStoryTitle())
                 .storyId(targetChapter.getStory().getStoryId())
+                .chapterImageUri(targetChapter.getChapterImageUri())
                 .build();
     }
 
