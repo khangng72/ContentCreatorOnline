@@ -17,6 +17,7 @@ public class StoryDTO {
     private String storyDescription;
     private String coverImageUri;
     private String userPost;
+    private UUID userId;
     private Integer numberOfViews;
     private Integer numberOfChapters;
     private Double averageRating;
