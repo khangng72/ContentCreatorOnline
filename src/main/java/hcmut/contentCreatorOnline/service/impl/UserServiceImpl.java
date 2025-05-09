@@ -248,4 +248,39 @@ public class UserServiceImpl implements UserService {
                 .numberOfFollowing(numberOfFollowing)
                 .build();
     }
+
+    @Override
+    public boolean checkIfCurrentUserHaveFollowGivenId(UUID currentUserId, UUID userId) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        for (User user : currentUser.getFollowing()) {
+            if (user.getId().equals(userId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void toggleFollow(UUID currentUserId, UUID userId) {
+        User userToFollow = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Current user not found"));
+
+        Set<User> followers = userToFollow.getFollowers();
+
+        if (followers.contains(currentUser)) {
+            followers.remove(currentUser);
+        } else {
+            followers.add(currentUser);
+        }
+
+        userToFollow.setFollowers(followers);
+        userRepository.save(userToFollow);
+    }
+
 }

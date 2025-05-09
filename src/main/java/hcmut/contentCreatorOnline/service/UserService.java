@@ -24,4 +24,8 @@ public interface UserService {
     void updateUser(UUID userId, UpdateUserRequest updateUserRequest);
 
     UserResponseDTO getUserById(UUID userId);
+
+    boolean checkIfCurrentUserHaveFollowGivenId(UUID currentUserId, UUID userId);
+
+    void toggleFollow(UUID currentUserId, UUID userId);
 }

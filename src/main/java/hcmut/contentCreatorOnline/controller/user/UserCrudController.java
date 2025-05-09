@@ -2,7 +2,9 @@ package hcmut.contentCreatorOnline.controller.user;
 
 import hcmut.contentCreatorOnline.dto.user.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
+import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.service.UserService;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,19 @@ public class UserCrudController {
 
         RegisterNewUserResponse response = userService.createNewUser(registerNewUserRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/verify/{user_id}")
+    public ResponseEntity<Boolean> verifyIfCurrentUser(
+            @PathVariable UUID user_id
+    ) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        if (currentUserId.equals(user_id)) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.OK);
     }
 
     @GetMapping("/profile")
@@ -96,5 +111,27 @@ public class UserCrudController {
     ) {
         userService.updateUser(userId, updateUserRequest);
         return ResponseEntity.ok("Update user successfully");
+    }
+
+    @GetMapping("/check_if_have_followed/{userId}")
+    public ResponseEntity<Boolean> checkIfCurrentUserHaveFollowGivenId(
+            @PathVariable UUID userId
+    ) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        if (userService.checkIfCurrentUserHaveFollowGivenId(currentUserId, userId)) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.OK);
+    }
+
+    @PutMapping("/toggleFollow/{userId}")
+    public ResponseEntity<Boolean> toggleFollow(@PathVariable UUID userId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        userService.toggleFollow(currentUserId, userId);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }
