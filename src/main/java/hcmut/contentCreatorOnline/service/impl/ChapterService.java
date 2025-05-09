@@ -78,6 +78,7 @@ public class ChapterService {
                     s.getStoryTitle(),
                     s.getStoryDescription(),
                     s.getStoryId(),
+                    u.getId(),
                     u.getFirstName(),
                     u.getLastName(),
                     u.getEmail(),
