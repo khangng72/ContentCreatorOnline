@@ -21,4 +21,5 @@ public class ChapterDTO {
     private Integer numberOfLikes;
     private Integer numberOfComments;
     private UUID nextChapterId;
+    private String storyTitle;
 }

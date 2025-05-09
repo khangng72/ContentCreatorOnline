@@ -147,7 +147,7 @@ public class ChapterService {
                 .nextChapterId(nextChapterId)
                 .numberOfLikes(targetChapter.getUsersLikeChapter().size())
                 .numberOfComments(targetChapter.getComments().size())
+                .storyTitle(targetChapter.getStory().getStoryTitle())
                 .build();
-
     }
 }
