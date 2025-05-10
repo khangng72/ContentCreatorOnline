@@ -1,14 +1,12 @@
 package hcmut.contentCreatorOnline.controller.comment;
 
-import hcmut.contentCreatorOnline.dto.comment.CommentDTO;
-import hcmut.contentCreatorOnline.dto.comment.CommentPageResponse;
-import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterRequest;
-import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterResponse;
+import hcmut.contentCreatorOnline.dto.comment.*;
 import hcmut.contentCreatorOnline.service.CommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -40,5 +38,11 @@ public class CommentController {
         CommentDTO result = commentService.createCommentOnChapter(chapterId, createCommentOnChapterRequest);
         CreateCommentOnChapterResponse response = new CreateCommentOnChapterResponse(HttpStatus.CREATED.value(), result);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/replies/{commentId}")
+    public ResponseEntity<GetRepliesResponse> getRepliesByCommentId(@PathVariable("commentId") UUID commentId) {
+        List<CommentDTO> replies = commentService.getRepliesByCommentId(commentId);
+        return ResponseEntity.ok(new GetRepliesResponse(HttpStatus.OK.value(), replies));
     }
 }

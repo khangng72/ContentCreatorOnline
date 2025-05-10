@@ -105,4 +105,24 @@ public class CommentService {
     }
 
 
+    public List<CommentDTO> getRepliesByCommentId(UUID commentId) {
+
+        Comment parentComment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Comment not found"));
+
+        List<Comment> replies = parentComment.getReplies();
+        return replies.stream()
+                .map(reply -> CommentDTO.builder()
+                        .commentId(reply.getCommentId())
+                        .comment_content(reply.getCommentContent())
+                        .createdTime(reply.getCreatedTime())
+                        .numberOfLikes(reply.getNumberOfLikes())
+                        .isPinned(reply.getIsPinned())
+                        .userId(reply.getUser().getId())
+                        .userFirstName(reply.getUser().getFirstName())
+                        .userLastName(reply.getUser().getLastName())
+                        .userAvatarUrl(reply.getUser().getAvatarUrl())
+                        .build())
+                .toList();
+    }
 }
