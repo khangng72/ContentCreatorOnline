@@ -112,6 +112,7 @@ public class CommentService {
 
         List<Comment> replies = parentComment.getReplies();
         return replies.stream()
+                .sorted((r1, r2) -> r2.getCreatedTime().compareTo(r1.getCreatedTime()))
                 .map(reply -> CommentDTO.builder()
                         .commentId(reply.getCommentId())
                         .comment_content(reply.getCommentContent())
