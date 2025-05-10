@@ -43,17 +43,18 @@ public class CommentService {
 
             Page<Comment> commentPage = commentRepository.findByChapter_ChapterId(pageable, chapterId);
             List<CommentDTO> commentPageElementList = commentPage.getContent().stream()
-                    .map(comment -> new CommentDTO(
-                            comment.getCommentId(),
-                            comment.getCommentContent(),
-                            comment.getCreatedTime(),
-                            comment.getNumberOfLikes(),
-                            comment.getIsPinned(),
-                            comment.getChapter().getChapterId(),
-                            comment.getUser().getId(),
-                            comment.getUser().getFirstName(),
-                            comment.getUser().getLastName()
-                    ))
+                    .map(comment -> CommentDTO.builder()
+                            .commentId(comment.getCommentId())
+                            .comment_content(comment.getCommentContent())
+                            .createdTime(comment.getCreatedTime())
+                            .numberOfLikes(comment.getNumberOfLikes())
+                            .isPinned(comment.getIsPinned())
+                            .chapterId(comment.getChapter().getChapterId())
+                            .userId(comment.getUser().getId())
+                            .userFirstName(comment.getUser().getFirstName())
+                            .userLastName(comment.getUser().getLastName())
+                            .userAvatarUrl(comment.getUser().getAvatarUrl())
+                            .build())
                     .toList();
 
             return new CommentPageResponse(
@@ -86,17 +87,18 @@ public class CommentService {
 
             Comment queryResult = commentRepository.save(comment);
 
-            return new CommentDTO(
-                    queryResult.getCommentId(),
-                    queryResult.getCommentContent(),
-                    queryResult.getCreatedTime(),
-                    queryResult.getNumberOfLikes(),
-                    queryResult.getIsPinned(),
-                    queryResult.getChapter().getChapterId(),
-                    queryResult.getUser().getId(),
-                    queryResult.getUser().getFirstName(),
-                    queryResult.getUser().getLastName()
-            );
+            return CommentDTO.builder()
+                    .commentId(queryResult.getCommentId())
+                    .comment_content(queryResult.getCommentContent())
+                    .createdTime(queryResult.getCreatedTime())
+                    .numberOfLikes(queryResult.getNumberOfLikes())
+                    .isPinned(queryResult.getIsPinned())
+                    .chapterId(queryResult.getChapter().getChapterId())
+                    .userId(queryResult.getUser().getId())
+                    .userFirstName(queryResult.getUser().getFirstName())
+                    .userLastName(queryResult.getUser().getLastName())
+                    .userAvatarUrl(queryResult.getUser().getAvatarUrl())
+                    .build();
         } catch (Exception e) {
             throw new ApplicationException(ErrorConst.INTERNAL_DATA_INSERT_FAIL, "Failed to create comment");
         }
