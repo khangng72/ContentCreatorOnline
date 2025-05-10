@@ -53,4 +53,10 @@ public class CommentController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @PostMapping("/like/{commentId}")
+    public ResponseEntity<String> likeComment(@PathVariable("commentId") UUID commentId) {
+        String result = commentService.likeComment(commentId);
+        return ResponseEntity.ok(result);
+    }
+
 }

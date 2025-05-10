@@ -49,7 +49,7 @@ public class CommentService {
                             .commentId(comment.getCommentId())
                             .comment_content(comment.getCommentContent())
                             .createdTime(comment.getCreatedTime())
-                            .numberOfLikes(comment.getNumberOfLikes())
+                            .numberOfLikes(comment.getLikedByUsers().size())
                             .isPinned(comment.getIsPinned())
                             .chapterId(comment.getChapter().getChapterId())
                             .userId(comment.getUser().getId())
@@ -119,7 +119,7 @@ public class CommentService {
                         .commentId(reply.getCommentId())
                         .comment_content(reply.getCommentContent())
                         .createdTime(reply.getCreatedTime())
-                        .numberOfLikes(reply.getNumberOfLikes())
+                        .numberOfLikes(reply.getLikedByUsers().size())
                         .isPinned(reply.getIsPinned())
                         .userId(reply.getUser().getId())
                         .userFirstName(reply.getUser().getFirstName())
@@ -151,12 +151,32 @@ public class CommentService {
                 .commentId(savedComment.getCommentId())
                 .comment_content(savedComment.getCommentContent())
                 .createdTime(savedComment.getCreatedTime())
-                .numberOfLikes(savedComment.getNumberOfLikes())
+                .numberOfLikes(savedComment.getLikedByUsers().size())
                 .isPinned(savedComment.getIsPinned())
                 .userId(savedComment.getUser().getId())
                 .userFirstName(savedComment.getUser().getFirstName())
                 .userLastName(savedComment.getUser().getLastName())
                 .userAvatarUrl(savedComment.getUser().getAvatarUrl())
                 .build();
+    }
+
+    public String likeComment(UUID commentId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+        // Load User
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        // Load Comment
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Comment not found"));
+
+        // Add the like (many-to-many)
+        if (!user.getLikedComments().contains(comment)) {
+            user.getLikedComments().add(comment);
+            userRepository.save(user);
+        }
+
+        return "success";
     }
 }
