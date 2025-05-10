@@ -45,4 +45,12 @@ public class CommentController {
         List<CommentDTO> replies = commentService.getRepliesByCommentId(commentId);
         return ResponseEntity.ok(new GetRepliesResponse(HttpStatus.OK.value(), replies));
     }
+
+    @PostMapping("/reply/{commentId}")
+    public ResponseEntity<CommentDTO> replyToComment(@PathVariable("commentId") UUID commentId,
+                                                     @RequestBody ReplyCommentRequest replyCommentRequest) {
+        CommentDTO result = commentService.replyToComment(commentId, replyCommentRequest);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
 }

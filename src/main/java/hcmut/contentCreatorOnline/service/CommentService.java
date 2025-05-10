@@ -3,6 +3,7 @@ package hcmut.contentCreatorOnline.service;
 import hcmut.contentCreatorOnline.dto.comment.CommentDTO;
 import hcmut.contentCreatorOnline.dto.comment.CommentPageResponse;
 import hcmut.contentCreatorOnline.dto.comment.CreateCommentOnChapterRequest;
+import hcmut.contentCreatorOnline.dto.comment.ReplyCommentRequest;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -125,5 +127,36 @@ public class CommentService {
                         .userAvatarUrl(reply.getUser().getAvatarUrl())
                         .build())
                 .toList();
+    }
+
+    public CommentDTO replyToComment(UUID commentId, ReplyCommentRequest replyCommentRequest) {
+        Comment parentComment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Comment not found"));
+
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        Comment comment = Comment.builder()
+                .commentContent(replyCommentRequest.getReplyContent())
+                .parentComment(parentComment)
+                .user(user)
+                .createdTime(LocalDateTime.now())
+                .build();
+
+        Comment savedComment = commentRepository.save(comment);
+
+        return CommentDTO.builder()
+                .commentId(savedComment.getCommentId())
+                .comment_content(savedComment.getCommentContent())
+                .createdTime(savedComment.getCreatedTime())
+                .numberOfLikes(savedComment.getNumberOfLikes())
+                .isPinned(savedComment.getIsPinned())
+                .userId(savedComment.getUser().getId())
+                .userFirstName(savedComment.getUser().getFirstName())
+                .userLastName(savedComment.getUser().getLastName())
+                .userAvatarUrl(savedComment.getUser().getAvatarUrl())
+                .build();
     }
 }

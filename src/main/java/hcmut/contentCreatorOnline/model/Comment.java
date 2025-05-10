@@ -1,19 +1,19 @@
 package hcmut.contentCreatorOnline.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Data
 @Table(name = "comment")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class Comment {
 
     @Id
@@ -21,12 +21,15 @@ public class Comment {
     @Column(name = "comment_id", nullable = false)
     private UUID commentId;
 
+    @Builder.Default
     private LocalDateTime createdTime = LocalDateTime.now();
 
     private String commentContent;
 
+    @Builder.Default
     private Integer numberOfLikes = 0;
 
+    @Builder.Default
     private Boolean isPinned = false;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
