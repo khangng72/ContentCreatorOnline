@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -48,4 +50,8 @@ public class Comment {
     private List<Comment> replies;
 
     private Boolean isDeleted;
+
+    @ManyToMany(mappedBy = "likedComments")
+    private Set<User> likedByUsers = new HashSet<>();
+
 }
