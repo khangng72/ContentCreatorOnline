@@ -21,7 +21,7 @@ public class ReadListController {
 
     private final ReadListService readListService;
 
-    @GetMapping("/{user_id}")
+    @GetMapping("/user/{user_id}")
     public ResponseEntity<ReadList_ListResponse> getReadListByUserId(@PathVariable UUID user_id) {
 
         List<ReadListDTO> result = readListService.getReadListByUserId(user_id);
@@ -98,6 +98,14 @@ public class ReadListController {
 
         List<UUID> result = readListService.addStoryToManyReadList(story_id, request.getRead_list_ids());
         return ResponseEntity.ok(new AddStoryToManyReadListResponse(story_id, result));
+    }
+
+    @PostMapping("/clone/{read_list_id}")
+    public ResponseEntity<String> cloneReadListToCurrentUserLibrary(@PathVariable UUID read_list_id) {
+        System.out.println("watchout");
+        String message = readListService.cloneReadListToCurrentUserLibrary(read_list_id);
+
+        return ResponseEntity.ok(message);
     }
 
 

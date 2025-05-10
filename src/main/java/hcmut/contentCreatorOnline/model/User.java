@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -104,4 +101,22 @@ public class User {
     @ManyToMany(mappedBy = "followers", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<User> following = new HashSet<>();
+
+    @ManyToMany(mappedBy = "usersLikeChapter")
+    private List<Chapter> likedChapters = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserReadStory> userReadStory = new HashSet<>();
+
+    // Reading Preference
+    @Column(name = "default_reading_text_size")
+    private Double defaultReadingTextSize;
+
+    @Column(name = "default_reading_word_spacing")
+    private Double defaultReadingWordSpacing;
+
+    @Column(name = "default_reading_line_height")
+    private Double defaultReadingLineHeight;
+
+
 }

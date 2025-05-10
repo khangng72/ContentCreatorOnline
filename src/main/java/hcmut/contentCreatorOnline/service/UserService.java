@@ -20,4 +20,16 @@ public interface UserService {
     List<FollowingDTO> getFollowingByUserId(UUID userId, int page, int size);
 
     List<UserResponseDTO> searchUserByKeyword(String keyword, int page, int size);
+
+    void updateUser(UUID userId, UpdateUserRequest updateUserRequest);
+
+    UserResponseDTO getUserById(UUID userId);
+
+    boolean checkIfCurrentUserHaveFollowGivenId(UUID currentUserId, UUID userId);
+
+    void toggleFollow(UUID currentUserId, UUID userId);
+
+    ReadPreference getReadingPreference(UUID currentUserId);
+
+    void updateReadingPreference(UUID currentUserId, ReadPreference readPreference);
 }

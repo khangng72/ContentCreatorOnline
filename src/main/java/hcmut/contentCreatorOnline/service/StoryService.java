@@ -35,6 +35,29 @@ public class StoryService {
         this.entityManager = entityManager;
     }
 
+    private StoryDTO mapToStoryDTO(Story story) {
+        return StoryDTO.builder()
+                .storyId(story.getStoryId())
+                .storyTitle(story.getStoryTitle())
+                .storyDescription(story.getStoryDescription())
+                .coverImageUri(story.getCoverImageUri())
+                .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
+                .userId(story.getUserPost().getId())
+                .numberOfViews(story.getUserReadStory().size())
+                .numberOfChapters(story.getChapters().size())
+                .averageRating(story.getAverageRating())
+                .genres(
+                        story.getGenres().stream()
+                                .map(genre -> GenreResult.builder()
+                                        .genreId(genre.getGenreId())
+                                        .genreName(genre.getGenreName())
+                                        .build()
+                                )
+                                .toList()
+                )
+                .build();
+    }
+
     private StoryResponse mapToDTO(Story story) {
         return StoryResponse.builder()
                 .storyId(story.getStoryId())
@@ -49,6 +72,8 @@ public class StoryService {
                 .salePrice(story.getSalePrice())
                 .numberOfLikes(story.getNumberOfLikes())
                 .tags(story.getTags())
+                .userPost(story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName())
+                .numberOfViews(story.getNumberOfViews())
 //                .chapters(story.getChapters())
 //                .genres(story.getGenres())
 //                .readLists(story.getReadLists())
@@ -105,11 +130,11 @@ public class StoryService {
         return new UpdateStoryGenreResult(result.getStoryId());
     }
 
-    public List<StoryResponse> getStoriesPostedByUser(UUID userId) {
+    public List<StoryDTO> getStoriesPostedByUser(UUID userId) {
         List<Story> stories = storyRepository.findByUserPost_Id(userId);
         return stories.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
+                .map(this::mapToStoryDTO
+                ).toList();
     }
 
     public List<StoryResponse> getLatestStoriesPostedByUser(UUID userId) {
@@ -140,47 +165,33 @@ public class StoryService {
                         )
                 ).toList();
 
-
-        return new StoryResponse(
-                story.getStoryId(),
-                story.getReleaseDate(),
-                story.getCreatedDate(),
-                story.getReleaseStatus(),
-                story.getStoryTitle(),
-                story.getSaleOnly(),
-                story.getSalePrice(),
-                story.getNumberOfLikes(),
-                story.getCoverImageUri(),
-                story.getStoryDescription(),
-                story.getTags(),
-                story.getAverageRating(),
-                story.getUserPost().getId(),
-                chapterList
-        );
+        return StoryResponse.builder()
+                .storyId(story.getStoryId())
+                .releaseDate(story.getReleaseDate())
+                .createdDate(story.getCreatedDate())
+                .releaseStatus(story.getReleaseStatus())
+                .storyTitle(story.getStoryTitle())
+                .saleOnly(story.getSaleOnly())
+                .salePrice(story.getSalePrice())
+                .numberOfLikes(story.getNumberOfLikes())
+                .coverImageUri(story.getCoverImageUri())
+                .storyDescription(story.getStoryDescription())
+                .tags(story.getTags())
+                .averageRating(story.getAverageRating())
+                .userId(story.getUserPost().getId())
+                .chapters(chapterList)
+                .build()
+                ;
     }
 
     public List<StoryDTO> getStoriesByGenreId(Integer genreId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Story> stories = storyRepository.findByGenreId(genreId, pageable);
 
-        return stories.getContent().stream().map(
-                story -> new StoryDTO(
-                        story.getStoryId(),
-                        story.getStoryTitle(),
-                        story.getStoryDescription(),
-                        story.getCoverImageUri(),
-                        story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
-                        story.getNumberOfViews(),
-                        story.getChapters().size(),
-                        story.getAverageRating(),
-                        story.getGenres().stream().map(
-                                genre -> new GenreResult(
-                                        genre.getGenreId(),
-                                        genre.getGenreName()
-                                )
-                        ).toList()
+        return stories.getContent().stream()
+                .map(this::mapToStoryDTO
                 )
-        ).toList();
+                .toList();
     }
 
     private String buildSearchQuery(String sortBy, String order) {
@@ -240,24 +251,10 @@ public class StoryService {
             stories.add(story);
         }
 
-        return stories.stream().map(
-                story -> new StoryDTO(
-                        story.getStoryId(),
-                        story.getStoryTitle(),
-                        story.getStoryDescription(),
-                        story.getCoverImageUri(),
-                        story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
-                        story.getNumberOfViews(),
-                        story.getChapters().size(),
-                        story.getAverageRating(),
-                        story.getGenres().stream().map(
-                                genre -> new GenreResult(
-                                        genre.getGenreId(),
-                                        genre.getGenreName()
-                                )
-                        ).toList()
+        return stories.stream()
+                .map(this::mapToStoryDTO
                 )
-        ).toList();
+                .toList();
     }
 
 
@@ -265,21 +262,6 @@ public class StoryService {
         Story story = storyRepository.findById(storyId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
 
-        return new StoryDTO(
-                story.getStoryId(),
-                story.getStoryTitle(),
-                story.getStoryDescription(),
-                story.getCoverImageUri(),
-                story.getUserPost().getFirstName() + " " + story.getUserPost().getLastName(),
-                story.getNumberOfViews(),
-                story.getChapters().size(),
-                story.getAverageRating(),
-                story.getGenres().stream().map(
-                        genre -> new GenreResult(
-                                genre.getGenreId(),
-                                genre.getGenreName()
-                        )
-                ).toList()
-        );
+        return mapToStoryDTO(story);
     }
 }

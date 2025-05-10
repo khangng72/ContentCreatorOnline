@@ -1,10 +1,12 @@
 package hcmut.contentCreatorOnline.dto.genre;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class GenreResult {
     private Integer genreId;
     private String genreName;

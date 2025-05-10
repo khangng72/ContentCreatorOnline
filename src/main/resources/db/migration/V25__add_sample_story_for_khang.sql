@@ -1,13 +1,13 @@
 -- Insert story
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('d8f6c2b7-5e3f-49c8-bc58-54d5b77b1234',
         true,
         'Ngôi Nhà Ma Trên Đồi Thông Đà Lạt',
         'Tại một vùng đồi hẻo lánh ở Đà Lạt, có một ngôi biệt thự cổ bị bỏ hoang, nơi mà người dân địa phương luôn rỉ tai nhau những câu chuyện ma quái. Khi nhóm bạn trẻ tò mò quyết định thám hiểm ngôi nhà ấy, họ đã đánh thức một bí mật đen tối bị chôn vùi suốt hàng chục năm. Mỗi đêm trôi qua, bóng tối nuốt chửng hy vọng sống sót của họ.',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-04-27 19:30:00.000000',
-        'vi');
+        'vi', '/uploads/sample_book_cover/ngoi_nha_ma_tren_doi_thong_da_lat.png');
 
 -- Insert Chapter 1
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)

@@ -1,6 +1,8 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.RatingDTO;
+import hcmut.contentCreatorOnline.dto.userStoryRating.RatingDTO;
+import hcmut.contentCreatorOnline.exception.ApplicationException;
+import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Story;
 import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.model.UserStoryRating;
@@ -12,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -28,10 +31,12 @@ public class UserStoryRatingService {
         Double ratingValue = ratingDTO.getRating();
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND,
+                        "User not found"));
 
         Story story = storyRepository.findById(storyId)
-                .orElseThrow(() -> new RuntimeException("Story not found"));
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND,
+                        "Story not found"));
 
         UserStoryRatingId id = new UserStoryRatingId(userId, storyId);
         UserStoryRating rating = ratingRepository.findById(id)
@@ -42,10 +47,8 @@ public class UserStoryRatingService {
         rating.setStory(story);
         rating.setRating(ratingValue);
 
-        updateAverageRating(story);
         ratingRepository.save(rating);
-
-
+        updateAverageRating(story);
 
     }
 
@@ -61,6 +64,14 @@ public class UserStoryRatingService {
             story.setAverageRating(avg);
         }
         storyRepository.save(story);
+    }
+
+    public Double getUserStoryRating(UUID userId, UUID storyId) {
+
+        UserStoryRatingId id = new UserStoryRatingId(userId, storyId);
+        Optional<UserStoryRating> rating = ratingRepository.findById(id);
+
+        return rating.map(UserStoryRating::getRating).orElse(null);
     }
 }
 

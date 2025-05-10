@@ -1,15 +1,15 @@
 package hcmut.contentCreatorOnline.dto.comment;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class CommentDTO {
     private UUID commentId;
     private String comment_content;
@@ -18,8 +18,9 @@ public class CommentDTO {
     private Boolean isPinned;
 
     private UUID chapterId;
-    
+
     private UUID userId;
     private String userFirstName;
     private String userLastName;
+    private String userAvatarUrl;
 }

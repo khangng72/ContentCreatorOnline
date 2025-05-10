@@ -13,6 +13,7 @@ import hcmut.contentCreatorOnline.model.User;
 import hcmut.contentCreatorOnline.model.UserPrincipal;
 import hcmut.contentCreatorOnline.repository.ReadListRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
+import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -144,6 +145,7 @@ public class ReadListService {
                         .numberOfViews(story.getNumberOfViews())
                         .averageRating(story.getAverageRating())
                         .numberOfChapters(story.getChapters().size())
+                        .userId(story.getUserPost().getId())
                         .build()
                 ).toList();
     }
@@ -185,6 +187,7 @@ public class ReadListService {
                 .read_list_description(readList.getDescription())
                 .number_of_stories(readList.getStories() == null ? 0 : readList.getStories().size())
                 .user_id(readList.getUserCreated().getId())
+                .user_name(readList.getUserCreated().getFirstName() + " " + readList.getUserCreated().getLastName())
                 .build();
     }
 
@@ -264,5 +267,30 @@ public class ReadListService {
                 .toList();
     }
 
+    public String cloneReadListToCurrentUserLibrary(UUID readListId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
 
+        User user = User.builder().id(userId).build();
+
+        ReadList readList = readListRepository.findById(readListId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Read list not found with ID: " + readListId));
+
+        List<Story> clonedStories = readList.getStories().stream()
+                .map(story -> Story.builder()
+                        .storyId(story.getStoryId()).build()) // or clone manually
+                .toList();
+
+        ReadList newReadList = ReadList.builder()
+                .readListTitle(readList.getReadListTitle() + " (copy)")
+                .description(readList.getDescription())
+                .stories(clonedStories)
+                .userCreated(user)
+                .build();
+
+        readListRepository.save(newReadList);
+
+
+        return "Clone read list successfully";
+    }
 }

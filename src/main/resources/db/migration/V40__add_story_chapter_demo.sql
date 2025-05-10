@@ -1,6 +1,6 @@
 -- Insert story 1-
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('ea728084-f3fe-4ea8-9d32-83653bee2580',
         true,
         'Khúc ca đoạt hồn giữa đêm khuya',
@@ -9,7 +9,8 @@ VALUES ('ea728084-f3fe-4ea8-9d32-83653bee2580',
         <p>“Thật vô lễ, các người chỉ là hạ nhân mà dám bước thêm một bước nữa, hoàng đế sẽ cho ngũ mã phanh thây các ngươi, tru di cửu tộc các ngươi,” cô gái Băng Băng, tức giận và phẫn nộ, ra lệnh cho các bảo vệ mặc đồng phục ở bên trái, cô vung tay khiến các bảo vệ hoảng sợ và liên tục lùi lại.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/khuc_ca_doat_hon.webp');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
@@ -57,7 +58,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('3f4398cd-f79d-43c6-adb0-0cd919cbf42e',
+       ('3f4398cd-f79d-43c6-adb0-0cd919cbf42e',
         2,
         'Vào một đêm trăng sáng...',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -90,7 +91,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:17:00.000000'),
 
-        ('743c7ea9-7be0-406c-8dcf-35dbeb1fd5a0',
+       ('743c7ea9-7be0-406c-8dcf-35dbeb1fd5a0',
         3,
         'Căn phòng chết chóc 1',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -141,7 +142,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('483533c6-1bd5-481b-8efa-f6a02971a7ad',
+       ('483533c6-1bd5-481b-8efa-f6a02971a7ad',
         4,
         'Căn phòng chết chóc 2',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -205,7 +206,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('b39a7804-797c-4ced-aa87-10b02e057e95',
+       ('b39a7804-797c-4ced-aa87-10b02e057e95',
         5,
         'Căn phòng chết chóc 3',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -249,7 +250,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('7a6b190d-94d0-4c97-a3ea-869ee7e18e55',
+       ('7a6b190d-94d0-4c97-a3ea-869ee7e18e55',
         6,
         'Căn phòng chết chóc 4',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -292,7 +293,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('07b01b7a-9e33-4007-9784-5eec9187e9a2',
+       ('07b01b7a-9e33-4007-9784-5eec9187e9a2',
         7,
         'Thấy người không thấy mặt 1',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -315,7 +316,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('e66bd110-2718-4fc7-ac26-e83b42e59684',
+       ('e66bd110-2718-4fc7-ac26-e83b42e59684',
         8,
         'Thấy người không thấy mặt 2',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -351,7 +352,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('b33db1bb-bbb5-4395-808a-2bf1189277c6',
+       ('b33db1bb-bbb5-4395-808a-2bf1189277c6',
         9,
         'Bên trong quan tài',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -398,7 +399,7 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('6ce3f8c2-8c99-49be-aee5-c1a220c169b3',
+       ('6ce3f8c2-8c99-49be-aee5-c1a220c169b3',
         10,
         'Vòng tròn chết chóc',
         'ea728084-f3fe-4ea8-9d32-83653bee2580',
@@ -424,14 +425,15 @@ VALUES ('f8e08934-24e1-47f3-9a22-1eb814e2fda3',
 
 -- Insert story 2
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('9e530ef0-fc69-4f1a-a12b-803c687c006e',
         true,
         'Quỷ Sự Miền Quê Xưa',
         '<p>Xóm tui một nơi hẻo lánh hẻo của miền tây, những năm cuối 1800 đầu 1900, thời mà chưa biết đến điện là gì, nhà thì cả một vùng rộng lớn được vài ba cái nóc. Cây cối mọc um tùm như rừng như hang, mặt đất quanh năm chẳng được 1 tia nắng chiếu xuống, trên bờ thì nào tre nào keo, cặp sông thì dừa nước, bần, ô rô, cám dây chằng chịt. Mồ hoang mã lạng chẳng biết đâu mà lần, cái thời mà còn hùm beo thú dữ đi nghênh ngang khắp chốn. Người ta có câu “dưới sông sấu bắt, trên bờ cọp tha” cũng từ những vùng quê này mà ra. Xóm tui tuy đất rộng nhưng người lại thưa, nhà lại cách nhau đến vài mẫu đất, mỗi khi có đám tiệc gì cũng chạy rã cặp dò mới mời được hết xóm.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/quy_su_mien_que_xua.webp');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
@@ -456,7 +458,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('8c23aa3f-4820-4cda-8273-f0f8705ba82c',
+       ('8c23aa3f-4820-4cda-8273-f0f8705ba82c',
         2,
         'Chương 2',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -477,7 +479,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:17:00.000000'),
 
-        ('4bdaaf87-dba8-4f7d-9ad0-6451a63a0878',
+       ('4bdaaf87-dba8-4f7d-9ad0-6451a63a0878',
         3,
         'Chương 3',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -508,7 +510,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('4c7d2f4f-3921-4bc0-8971-4ba68edf29e0',
+       ('4c7d2f4f-3921-4bc0-8971-4ba68edf29e0',
         4,
         'Chương 4',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -525,7 +527,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('3e047cde-fef5-45ac-b4ca-c83ed9051827',
+       ('3e047cde-fef5-45ac-b4ca-c83ed9051827',
         5,
         'Chương 5',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -542,7 +544,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('1cff7a53-71c4-41c2-9598-498a351916f9',
+       ('1cff7a53-71c4-41c2-9598-498a351916f9',
         6,
         'Chương 6',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -567,7 +569,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('e1cb90fb-d5d2-4616-9846-4fa7183aad70',
+       ('e1cb90fb-d5d2-4616-9846-4fa7183aad70',
         7,
         'Chương 7',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -607,7 +609,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('2fcfbccb-f743-4cfb-9e2c-3dd236279e98',
+       ('2fcfbccb-f743-4cfb-9e2c-3dd236279e98',
         8,
         'Chương 8',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -630,7 +632,7 @@ VALUES ('9e4f7a4a-e2b4-449a-8dc7-70db963a6efd',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('9fd63528-13ea-4946-a195-910ae5f53d8c',
+       ('9fd63528-13ea-4946-a195-910ae5f53d8c',
         9,
         'Chương 9',
         '9e530ef0-fc69-4f1a-a12b-803c687c006e',
@@ -670,63 +672,63 @@ VALUES ('7c86c041-8940-4c95-9fe1-34d63d504eb4',
         '<p>tôi không phải là thầy, cũng không có khả năng về tâm linh, chỉ là kể lại những câu chuyện mình đã từng gặp thôi. năm 27 tuổi ddang ngồi uống nước chè tại khu phố ở hà nội. có ông già thường xem bói cho mọi người, ai cho bao nhiêu tuỳ tâm. ông xem cho mấy người, tôi hiếu kì cũng nhờ ông xem . ô nhìn mặt tôi rồi bảo mắt cậu có sao, không xem được. lúc đó tôi không hiểu. năm 29 tuổi nhà tôi gặp đại nạn, công việc làm ăn thất bại phá sản, mẹ thì bệnh nặng, nợ nần chồng chất. nhiều áp lực, trước lúc bà mất tôi có chăm sóc bà được 2 tháng. bà mất được một thời gian thì tôi rất là may mắn, có 1.5t đi đánh bạc được hơn một tỷ. ban đầu tôi nghĩ là mình tài giỏi nên kiếm được, sau này đi chùa tìm hiểu phật pháp mới biết đó là phước mà tôi chăm sóc mẹ lúc bà bệnh. rất tiếc là tôi sử dụng những đồng tiền dễ kiếm đó vào ăn chơi, cờ bạc, ma tuý và gái gú. rất nhanh hết phước. khi hết phước rồi dù có thông minh tài giỏi cũng không kiếm được tiền nữa, do chơi bời quá độ thân thể còn mang theo một số bệnh. mọi người xa lánh, trong lúc bế tắc tôi bắt đầu tìm hiểu về tâm linh. tìm hiểu về phật pháp. trùng hợp là vợ chồng đứa em gái theo ông thầy bên tứ phủ, đưa tôi lên gặp thầy ở đường lương thế vinh, hà nội. thầy xem cho bảo tôi căn cô đôi thượng ngàn, chuyên chữa bệnh bằng tâm linh cứu người, dùng bát nước và hương có thể chữa rất nhiều bệnh, sau này người đến đông xe sếp hàng cây số. theo thầy thì thầy giúp cho. tôi đồng ý, ông thầy niệm cái gì đó rồi chỉ tay từ trên đỉnh đầu tôi xuống, lập tức nghe gió vù vù xung quanh người, hương thơm ngào ngạt, tôi quan sát gió như vậy nhưng tấm mành treo vẫn đứng yên. tôi muon nói nhưng không nói được, chỉ ngồi cười thôi. sau ông ta lại niệm chú vào chén nước rồi cho uống thì mới nói được. tôi ngủ lại nhà thầy để sáng mai đi lễ sớm. ngủ có mấy tiếng mà sáng dậy người rất nhẹ nhàng không mệt mỏi buồn ngủ. tôi đi xuống cầu thang thì  gặp con chó nhỏ nó lập tức quỳ chân trước cúi đầu một lúc. chưa bao giờ gặp con chó nào như vậy, tôi bảo nó đứng lên thì nó đứng dậy và đi lùi lại. tôi biết là con chó nhìn thấy gì đó liền đi soi gương, vẫn là mặt mình nhưng khi tôi sờ lên má thì camr giác như không phải mặt mình mà da dẻ mềm mại như phụ nữ vậy. ban đầu tôi rất ấn tượng bởi phép thuật của ông thầy. thầy có bằng tiến sỹ, vợ là hiệu trưởng 1 trường tiểu học. sau đó tôi phải rất khổ sở để thoát khỏi ông thầy và thế lực tâm linh của ông ta…..</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('0dabcf85-4647-49a2-b945-454d161cc93b',
+       ('0dabcf85-4647-49a2-b945-454d161cc93b',
         2,
         'Chương 2',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 2 tiếp theo, sáng dậy sớm đi lễ có cô đồng ten lan anh đệ tử của thầy, cô này có khả năng nhìn và nghe, truyền đạt lại lời của người âm cho ông thầy. khi thỉnh chư vị về thì ông thầy thường hỏi cô đồng vị đó mặc áo gì, áo xanh, áo trắng, râu dài cầm phất trần, là cô cậu, hay quan..trong nhóm đi lễ thì gồm nhiều thành phần, vợ chồng đứa em gái thì buôn hải sản bán cho trung quốc, có ông khoảng gần 70 nhưng già hơn tuổi sức khỏe yếu, kinh doanh bất động sản nghe kể giàu ú ụ. tài sản mấy đời ăn không hết nhưng vẫn hay đi lễ cầu tài lộc cho con giàu nữa giàu nữa. đúng là con người lòng tham vô đáy. tiền nhiều mà nhìn ông ta rất khổ sở tóc rụng gần hết người thì đầy bệnh. có cả quan chức làm trong chính phủ nhờ thầy lễ cho để lên chức đồng thời dùng tâm linh để hại, hạ bế đối thủ, người thì kinh doanh khách sạn, kẻ thì chuyên chạy chọt mua quan bán chức. trong nhóm đi lễ hôm đấy mỗi tôi kém nhất chả có gì. ông thầy nói rất hay nào là cứu nhân độ thế. nói những chuyên lớn lao, tôi ngây thơ hỏi: "anh giỏi thế sao không trừng chị mấy ông quan tham để giúp dân giúp nước". ông ta bảo quan tham nó có ma quỷ , tà thần độ đâu phải muốn đụng vào họ mà dễ. tối đến mọi người thuê khách sạn nghỉ, ông thầy giới thiệu tôi có khả năng chữa bệnh, ông lão tóc chưa mọc hết bảo: bác nhiều bệnh lắm người thường xuyên đau ốm, đi viện nhiều mà không đỡ cháu thử chữa giúp bác xem. tôi quan sát thì thấy ông này vì tâm tham quá suy nghĩ nhiều, hay lo lắng dẫn đến tóc rụng máu huyết không lưu thông. bệnh thân thì tôi dùng tay xoa bóp là đỡ, mà bệnh tâm thì tôi chưa đủ đức hạnh để khuyên bảo ông. tâm bệnh thì bệnh viện không chữa dứt điểm là đúng rồi. xoa bóp đả thông khí huyết cho ông, sáng hôm sau nhìn ông rất tươi tỉnh, mặc dù rất kẹt sỷ nhưng ông cũng móc túi cho tôi 1 triệu, bác thấy dễ chịu lắm cháu ạ. ông thầy đưa tôi đi hết đền này phủ nọ mà chưa kiếm được vị nào hợp với xác tôi. đến đền thờ cô đôi khi tôi quỳ xuống nhắm mắt , ông thầy làm lễ xin thì tự nhiên tôi thấy trước mặt tôi có đốm sáng to bằng quả trứng rồi sáng chói loà lên. tôi mở mắt ra và nói với ông thầy như vậy. ông thầy cười cười nói cô vừa cho em một chỉ khí. lúc đầu tôi cũng nghĩ là thánh thần nhưng sau đi chùa gặp thầy mới biết đó laf con quỷ già sống hàng trăm năm rồi. ông thầy cho nhập vào để khống chế, theo dõi tôi. đồng thời cũng giúp tôi có một số năng lực về tâm linh. nếu tôi không làm theo ý ông thầy nó sẽ quay ra phá tôi. làm tâm trí tôi bất an hoảng loạn. làm giảm dương khí của tôi dần dần sẽ bị khống chế toàn bộ. ai đã theo ông ta đều không có cửa thoát ra. kể cả công an hay quan chức cũng không ngoại lệ. người có tiền ông ta sẽ từ từ hút tiền của họ mà họ vẫn không hề biết vẫn tôn sùng ông ta, vì ông chỉ đường mách lối cho làm ăn. người có tài ông ta sẽ sử dụng để phô trương thanh thế, làm việc phục vu mục đích của ông ta.</p>',
         '2025-05-01 10:17:00.000000'),
 
-        ('93bad6e1-8ef8-4fca-8fe6-559fbe25537c',
+       ('93bad6e1-8ef8-4fca-8fe6-559fbe25537c',
         3,
         'Chương 3',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 3. tối hôm sau cos một chị trong nhóm kêu thường xuyên bị mệt mỏi, ngủ không ngon đau đầu và nặng vai gáy. nhờ tôi sang chữa giúp. ông thầy trêu thằng hoà sang bóp cho chị thì mở cửa ra có gì kêu lên anh em còn sang cứu. hôm trước hóng hớt với thói quen bóc phốt và nói xấu nhau sau lưng của nhóm thì biết chị này gốc ở dưới quê nhà nghèo nhưng học giỏi, lên hà nội học đại học. chị rất đẹp da trắng, còn nhỏ đã biết dùng sắc đẹp để kiếm tiền ăn học, hiện chị 2 đời chồng đi lễ thì cặp với 1 anh thạc sỹ làm giảng viên đại học. chị có 1 đứa con với chồng cũ chồng mới thì chưa. đang làm chủ một nhà hàng trên hà nội, tôi hỏi chị đau như thế nào. chị bảo bị đau đầu vai gáy đi bệnh viện châm cứu mà không hết. thầy xem cho thì bảo bị vong thai nhi nó bám. chị có phá mấy đứa. nhờ thầy lễ rồi cúng cho ăn cho mặc, cho đồ chơi không thiếu thứ gì mà chúng vẫn không tha chị mệt mỏi lắm. tôi kiểm tra thì thấy chị vai gáy bình thường nhưng cũng bóp cho chị một tý. gái đẹp tội gì không bóp. tôi nghĩ một lúc trẻ em cúng đầy đủ rồi thì thiếu gì. đầu tôi loé lên như có người sui chị thiếu tình thương, tình mẹ, chúng nó cũng là con chị, chị phá đi nó đã hận lắm rồi. nó là những đứa trẻ ngoài ăn mặc nó cần tình cảm người mẹ. mỗi khi chúng cần hơi ấm của mẹ bu vào vai chị, thì chị khó chịu mắng chửi chúng nó tủi thân và ghen tỵ với thằng con đang sống của chị. bây giờ chúng nó còn bé chưa làm gì được chị, nó lớn nó phá cho không yên được với chúng nó đâu. chị phải xin lỗi nói lời yêu thương thật dịu dàng, thật chân thành, bây giờ giàu có rồi bỏ thói quen bồ bịch đi. chồng chị không biết nhưng các con nó biết nó không thích đâu. chị thành tâm sửa đổi em tin là chúng nó sẽ tha thứ cho chị. sau này lớn còn phù hộ cho mẹ nữa. tôi bảo mấy đứa mà đồng ý thì báo hiệu gì đó cho chú biết nào. tự nhiên thấy cái mặt như có con mạt nhảy rất yếu nhưng cảm nhận được. chắc hôm qua thầy cho con quỷ già nhập vào người nên cũng có chút cảm ứng với người âm. không biết phải lũ trẻ nó mừng nhảy lên thơm vaof mặt tôi không nhỉ. vì sau này tôi có việc đi qua viện nhi đại yên thường hay vào thắp hương cho các cháu thai nhi bị phá thai, thắp hương xong là chúng nó bu đầy mặt đầy vai, phải dỗ mai là ở lại viện ngayf ngay thầy cúng cho ăn đi theo chú, chú không biết cũng đâu. tôi làm như vậy vì lúc còn sinh viên tôi cũng làm cô bạn gái có bầu rồi sui cô ấy đi phá vì 2 đứa còn hoc. sau này biết duf là cục máu chúng cũng có hồn rồi. hối hận quá sám hối khuyên người không nên phá thai, các bé thật là đáng thương ,từ đó về sau không gặp lại bà chị. không biết là chị có khỏi chưa. lấy thêm chồng nào nữa không , còn một anh rất thích đánh cầu lông, cái đầu gối bị đau không chạy nhảy được đi viện khám đầu gối thì không việc gì. đoán là bệnh âm nên hôm nay đi lễ. tôi kiểm tra đầu giiis thì không thấy sưng viêm gì. theo kinh nghiệm học chữa sương khớp trên mạng thì đoán anh này bị cột sống chứ không phải đầu gối. vậy là tôi kéo dãn cột sống, rồi chỉnh lại đốt bị lệch, kéo 2 chân cho bằng nhau. anh ta đi lại bình thường. không kém gì lương y võ hoàng yên. người không hiểu tưởng là thần thánh phương nào. sau vụ này ông thầy tung hô tôi lên tận mây xanh. thực sự ngoài chém gió ra tôi chẳng thấy mình có khả năng gì về tâm linh. thỉnh thoảng gặp người nào hoặc chỗ nào có vong linh là con quỷ già lại làm tim tôi đập nhanh, gặp vong nào giữ một tý mình chưa chạy quỷ già đã nấp ở đâu mất rồi. gặp vong nữ nó làm tôi sốn sang, hồi hộp. tôi từ trước có nhát gái vậy đâu. chắc tại nó nhát gái lây sang tôi nên tôi ế đến giờ. ông thầy giữ tôi lại chữa cho mẹ ông bị ung thư vừa mổ xong rất yếu sợ không qua khỏi. ông ta bảo tý anh chuyển cho em một ít khí em lên xoa bóp cho mẹ anh.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('dc6ca73a-2ab1-4e17-8512-615c848a0a85',
+       ('dc6ca73a-2ab1-4e17-8512-615c848a0a85',
         4,
         'Chương 4',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 4. trên đường đi lễ về ông ta tâm sự là mẹ vợ bị ung thư đã mổ rồi, lành ít dữ nhiều. anh đang làm lễ để xin đổi 5 năm tuổi thọ của mình để cho mẹ được sống thêm. lúc đó sự hiểu biết chưa nhiều nên cũng chỉ nghe vậy thôi. sau này tôi giúp cho người âm, họ biết tôi muốn giup cho người mẹ đã mất của mình. nên nói với tôi một người con hiếu thảo bằng sự thành tâm tạo được nhiều công đức, phước đức, hay dùng tuổi thọ của mình làm lễ cảm động đến trời đất có thể giups cha mẹ bệnh nặng được sống lâu hơn. còn nếu đã mất thì nhanh được siêu lên cảnh giới sung sướng hơn. chỉ có duy nhất con cái vì nợ ơn sinh thành nuôi dưỡng của cha mẹ nên mới xin được, còn ngược lại cha mẹ không xin được cho con. mẹ tôi nghiệp nặng bệnh chết đi rồi mà vong vẫn mang bệnh, có lần mơ thấy bà đau bệnh tiều tụy thật đáng thương, vậy mà vẫn đưa tiền cho tôi rồi căn dặn ” mày chỉ giỏi lo cho người thôi, cái thân mày thì mày lại không lo”. tôi chỉ cười vì biết baf chưa có tu thấy con mình làm phước giúp người nên sợ thiệt thân , sau nhiều năm cả nhà tôi cùng tu tập làm phước hồi hướng cho bà thì cách đây 2 năm bà cũng hết bệnh, vui vẻ hơn, hình như là còn biết bay không phải đi lê lết nữa. ông thầy đưa tôi lên một toà chung cư rồi vào một căn phòng rộng rãi, đó là nơi dưỡng bệnh của mẹ thầy, bà nằm trên giường bệnh đang có người bơm thức ăn vào thẳng dạ dày. người ta mổ toang bụng bà ra vết mổ rất dài. gương mặt bà đau đớn khổ sở, đôi mắt mở nhưng lờ đờ vô hồn, đúng là sống không bằng chết. không biết bà đã lam gì để phải trả nghiệp đau đớn như vậy. chẳng phải người thân nhưng tôi rất thương bà. chân tay bà thì lạnh toát, đầu và thân thì nóng sốt. tôi không dám làm gì manh chỉ sợ bà đứt hơi. xoa nhè nhẹ cho khí huyết lưu thông, đến khi thấy đầu bà đỡ nóng chân tay ấm dần lên thì tôi cứ ngồi bên cạnh nắm lấy bàn tay bà. bắt đầu dải tâm từ, tôi đọc trên mạng thấy bảo tâm từ bi như nước cam lồ của quan âm bồ tát. có thể làm mát lành, bớt đi đau khổ cho chúng sinh. khoảng 1 tiếng thì tôi thấy sắc mặt bà hồng lên một chút, các cơ mặt giãn ra, mắt linh hoạt hơn miệng thì mấp máy như muốn nói gì. chuấn bị đến giờ ăn trưa thì thầy vào bảo tôi đi rửa tay rồi ăn cơm. khi tôi quay ra thì thầy bảo bà muốn ngồi dậy. vậy là chúng tôi đỡ bà dậy cho bà lên xe lăn rồi đẩy ra bàn ăn ngồi cùng mọi người. bà có ý muốn tôi ở lại chăm sóc nhưng tôi từ chối sáng hôm sau về quảng ninh luôn. hơn tháng sau thì bà mất. tôi về vì trong lúc nói chuyện tôi hỏi em dốt như này bao giờ mới giỏi được như anh. ông thầy có khoe, lúc đầu anh cũng như chú có biết gì đâu. 3 năm trước ông ta có theo một người thầy nhưng sau đó xẩy ra mâu thuẫn. người thầy đó chửi ông thầy là tà đạo, thờ toàn ma quỷ. sau đó người thầy bệnh nôn ra máu cũng vừa mới chết. ông ta cười nham hiểm, chửi anh thì chỉ có chết thôi. rồi ông ta kể một số câu chuyện hại người nữa để khoe tài đồng thời cũng là dọa tôi.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('d27d3353-b776-4333-b162-39df0cdcb72c',
+       ('d27d3353-b776-4333-b162-39df0cdcb72c',
         5,
         'Chương 5',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 5. ông thầy khoe là đã tu 9 kiếp rồi. ban đầu tôi không tin, sau đi chùa được nghe các thầy giảng, nghiên cứu đọc nhiều kinh sách phật mới thấy ông không hẳn nói quá, vì thầy có bằng tiến sỹ theo nhân quả do nhiều kiếp tu huệ, chia sẻ lại những điều hay, những kiến thức bổ ích cho mọi người nên kiếp này thông minh đỗ đạt cao, nói láo cũng có người nghe theo,gia đình kinh tế khá giả được nhiều người kính trọng là do nhiều kiếp tu phước, được quỷ thần độ mạng, giúp đỡ, là người có đức. thậm trí ông còn được thánh trần cấp sắc trừ tà diệt quỷ. tôi rất kính trọng các thiền sư và các anh hùng thời nhà trần. nhưng lạ một điều là khi vào lễ đền trần thì ông thầy nói với tôi là bên thánh cô thì được nhưng bên thánh trần thì không hài lòng với tôi. ông thầy đoán là do tôi không thành tâm. nhưng nguyên nhân là khi vừa tốt nghiệp đại học ra trường thì có người bạn cấp 3 rủ về nhà anh ta ở đảo hoàng tân, gần đảo tuần châu hạ long bây giờ để làm ăn ,đảo còn hoang sơ chưa có nước ngọt, tôi đồng ý vì tôi đang có cô người yêu đang làm giảng viên đại học dân lập hải phòng, từ đảo hoàng tân qua phà rừng là sang hải phòng rồi rất gần. nhà bạn rất nghèo, nhưng đất rộng, mà đất những năm đấy chưa có giá trị. trên đất có cây đa rất to lâu năm lắm rồi, đang đi ngoài trời nắng nóng thì rẽ vào đi qua cây đa thấy mát lạnh hết sống lưng. gia đình bạn tôi gôm mẹ, vợ và 2 đứa con ở trong nhà cấp 4 nhỏ xíu, chúng tôi sửa lại cái chuồng lợn rồi kê giường ngủ dưới đó. đêm đó đang ngủ thì thấy con rắn trắng to bằng bắp đùi bò vào giường, tôi mở mắt ra, chắc không muốn dọa tôi sợ nên nó lập tức biến thành một vị tướng mặc áo giáp như trong phim tàu, tay cầm 1 thanh đao dài chống xuống đất, tôi đứng dậy nois chuyện với vij ấy bằng tiếng trung quốc. 2 người nói chuyện một lúc rồi đi ra ngoài, vừa ra cửa thấy ngoài sân quân lính rất đông đang cầm giáo mác tập luyện, không khác gì trong phim nhưng quần áo thì cũ và rách. chúng tôi vừa đi vừa nói chuyện và xem quân lính tập luyện, sau đó vị tướng múa đao nhanh đến nỗi chỉ thấy loang loáng ánh đao. sáng tỉnh dậy mới biết là mơ nhưng người đau ê ẩm như vừa tập gim xong. tôi kể cho bà cụ nghe thì bà bảo, nghe nói quân nguyên mông bị quân nhà trần đánh chạy vế nước thì gặp bão dạt vào đảo này. sau đó cả quân tướng đều bỏ mạng trên đảo không về nước được, họ chôn vàng bạc châu báu, đồ cổ trên đảo rất nhiều. không biết vì lý do gì nhà nước xây một ngôi đền thờ trần hưng đạo đại vương chấn đúng trung tâm thị xã quảng yên. nếu muốn về trung quốc bằng đường bộ thì phải qua ngôi đền trần đó. vì thế gần một nghìn năm rồi mà đội quân trung quốc vẫn lang thang trên đảo. chắc đêm đó tôi đã hứa giúp đội quân đó về nước để siêu thoát nên các thánh trần không hài lòng thì phải. làm ăn được 1 thời gian có chút tiền, cậu bạn tôi hay qua lại với cô bồ ở ninh bình nên tốn kém, thường xuyên vay tiền tôi làm việc này việc nọ, đưa bao nhiêu cũng hết. cậu ta hay đi vài ngày mới về tôi không cho vay nữa thì một thời gian, cậu ta đồn tôi có qua lại với vợ cậu ta nhưng không ai tin cả, vì vợ cậu ta vừa già vừa xấu, còn người yêu tôi bên hải phòng trẻ đẹp hơn. người nhà cậu bạn ai cũng bò lăn ra cười. tôi biết cậu ta đồn như thế để đuổi tôi đi để không phải trả số nợ. tôi đi một thơì gian do chơi bời quen nêm cậu ta làm liều buôn ma tuý được vài chuyến thì bị bắt. nhà đã nghèo giờ lại phải cần tiền để chạy án xuống 7 năm. phải bán đất nhưng không ai mua. vì đất rộng maf chưa có giấy tờ. bà mẹ lại gọi cho tôi nhờ tôi giúp. tôi biết người âm ở mảnh đất đó giữ đất cho tôi nên đồng ý mua nhưng phải cộng cả số nợ cũ vào. nhân quả đúng là công bằng nợ muốn không trả cũng không được. đội quân trung quốc do không có tu nên ai mà hại tôi, không phải với tôi là xẩy ra chuyện liền, họ tự động làm. lại nói đến việc ông thầy dọa tôi. để nói về mặt xã hội ông ta không đủ bản lĩnh bằng tôi. ngứa mắt là tôi đấm luôn. nhưng về mặt tâm linh tôi lúc đó phúc mỏng nghiệp dầy, đức thì chưa có bao nhiêu. phần độ rất hung hăng nhưng cũng không phải đối thủ nhà trần. nhiều lần đàm đạo cùng thầy và mấy đệ tử tôi toàn bị họ coi thường, họ hùa vào cười nhạo tôi, tôi nói anh chưa đủ đức làm thầy em. trong lòng tôi cứ thôi thúc sang trung quốc làm việc. ông ta nói em mà sang trung quốc thì tâm linh bên ấy nó không cho về đâu. tôi muốn chứng minh ông thầy chỉ chém gió cho em gái và em rể tôi biết để nó không mù quáng theo ông thầy này nữa. tôi nói em đi rồi em về cho anh xem. vậy là tôi làm hộ chiếu…</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('aba317e0-f4d1-4e9f-9015-8510f0e3c0d0',
+       ('aba317e0-f4d1-4e9f-9015-8510f0e3c0d0',
         6,
         'Chương 6',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 6. khi nghe ông thầy nói tôi đi trung quốc thì không về được nữa đứa em gái rất là lo lắng. vì nó tin ông thầy kinh khủng. cô đồng lan anh bảo hay là lên điện thỉnh cô về xin ý kiến. vậy là tôi được mặc một bộ quần áo kiểu hầu đồng, ngồi khoanh chân rồi phủ khăn lên đầu. ông thầy niệm niệm cái gì đó gió lại nổi lên hương thơm ngào ngạt, tôi cảm thấy có cái gì đó đi vòng vòng xung quanh người nhưng không nhập được vào tôi. tôi niệm thầm nam mô quan thế âm bồ tát vài lần. tự nhiên cô đồng bị nhập nói giọng rất nghiêm nghị,” từ nay các con không được làm trò này nưã”. mọi người không hiểu gì. riêng ông thầy mặt tái mét, thất thần như vừa mất thứ gì đó. đúng là từ đó về sau ông thầy không bao giờ bảo tôi hầu đồng nữa. ai theo ông cũng phải hầu đồng riêng vợ chồng đứa em gái thì mỗi tháng ít nhất phải lái xe từ móng cá lên hà nội để đi lễ. gần đến ngày là người boonf chồn khó ở, trong người thì ông ta cho âm binh nhập điều khiển, trong nhà thì yểm đầy ma quỷ, sao mà yên được. hầu đồng thì tuỳ điều kiện kinh tế mà có người vài trục triệu đến vài trăm triệu. 2 đứa em tin lắm vì ông ta bảo tháng 10 năm nay thánh cho lộc mua ô tô mới, tháng 5 sang năm mua thêm lốt đất. mọi việc đều chính xác. tôi bảo chúng nó là mua xe mua đất cũng là phúc của các em, do kiếp trước 2 đứa làm nhiều việc tốt, bố thí cúng dường, người vô phúc thánh muốn cho cũng không nhận được. như anh phúc mỏng có xin mỏi miệng thánh cũng không cho đâu. chúng nó nhìn nhau cười như kiểu tôi bị hâm dở dám nói trái lời thầy. mình càng nói đạo lý, khuyên thì thằng em rể bảo: anh xem lại mình đi rổi nói. anh có bằng tiến sỹ không, anh có nhà hà nội chưa. anh có xe chưa. còn về tâm linh người ta được cấp ấn cấp sắc, cứu nhân độ thế. tôi thấy mình lạc lõng giữa mọi người. sao tôi lại có tư tưởng khác họ. sao không hùa theo họ để được giàu có, có danh có tiếng. trong đầu tôi đấu tranh vì tôi chỉ cần đừng ngang bướng nghe lời họ là sẽ có nhiều thứ. tôi vẫn chọn tin lời phật. cố gắng tích đức cải mệnh. quyết định đi trung quốc, trong thời gian chờ hộ chiếu tôi cứ nghĩ không biết đi chùa tu nhuw thế nào, ước gì gặp được ông sư để hỏi. vì năm đó ngoài móng cái là vùng biên giới có chùa nhưng không có tăng. mà có tăng cũng chưa chắc tu đúng, toàn mê tín dị đoan là nhiều. 2 hôm sau đang ngồi quán nước đối diện thấy một vị sư trẻ tự nhiên đi thẳng vào trong ngõ, vào thẳng nhà tôi, tôi chạy về nhà giót nước mời thầy cười toe toét, ôi con đợi thầy mãi. đợi thầy uống nước xong tôi hỏi những điều thắc mắc, rồi thầy xin tên họ năm sinh dặn lên chùa thầy ở bắc giang quy y. lần đầu gặp sư nên cũng không biết mời sư ăn gì, sư không ăn, cúng dường sư ít tiền đi lại sư cũng không lấy rồi sư đi mất. qua sự việc này tôi tin là ai mà thật sự có tâm tu các vị bên vô hình se xoay chuyển cho gặp được thầy . làm xong visa trong túi còn lại vài trăm đồng, sao trùng hợp vậy chưa đi đã có điềm số tiền đó chỉ đủ tiền tàu xe, ăn uống 2 ngày. nếu xẩy ra chuyện gì thì không có tiền quay về nữa. tôi đến quý châu trung quốc từ móng cái đi tàu phải đi 4 chuyến vì rất xa hàng nghìn cây số.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('e1a61ab2-562f-4ff5-8f18-6581e3d23112',
+       ('e1a61ab2-562f-4ff5-8f18-6581e3d23112',
         7,
         'Chương 7',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 7. đi đến vân nam thì bị nhỡ tàu. nghe nói người vân nam chính là người bách việt, có chung nguồn gốc tổ tiên với người việt nam ta. tại ga tàu có trang trí những cái trống đồng khổng lồ hoa văn y như trống đồng của việt nam. đành đi tìm nhà trọ để qua đêm sáng mai đi sớm. tìm được nhà trọ 80 đồng. lúc vào thì cũng nhá nhem tối rồi, củng có 1 số người nhỡ tàu nghỉ lại qua đêm. căn nhà hơi tối, âm u kiểu gì ấy , phòng tôi có cái cửa kính nhìn ra ngoài, thỉnh thoảng có đốm sáng lướt qua không biết là đom đóm hay ánh đèn xe. cả ngày đi mệt vừa đắp cái chăn mỏng lên định nhắm mắt thì vụt một cái bóng đen qua cửa kính, nhìn rõ lại thì tối đen không thấy gì, lạ nhà thấy hơi sợ sợ rồi, kéo cái rèm che cửa lại. tim đập thình thịch, không dám nhắm mắt nữa, được một lúc thì buồn ngủ quá mow màng thấy trong phòng toàn ma, người thì cụt đầu, người thì cụt chân, người còn nửa người thôi, người thì lè lưỡi dài ngoằng, người trợn lồi mắt ra, đánh nhau đuổi nhau khắp phòng, tôi giật mình mở mắt ra thì không thấy gì nữa, tưởng là mơ nhưng sợ lắm nằm co quắp lại, không dám thở mạnh, quấn chặt cái chăn mỏng chỉ sợ thòi chân ra ngoài. cố mở mắt ra không nhắm mắt nữa nhưng không chống lại được cơn buồn ngủ, vừa nhắm mắt lại thấy toàn máu me, ruột gan nội tạng khắp phòng, thật là kinh dị. cả đêm đó cứ như vậy. nó làm cho không tài nào ngủ ngon được. không hiểu sao lúc đó lại không nhớ niệm phật hay bồ tát mà cứ để im chịu trận thôi . ban đầu nghĩ phòng gì mà toàn ma sợ gần chết, sau mới biết đó là âm binh do ông thầy hoá hiện ra cảnh kinh dị như vậy muốn làm tôi sợ hãi không dám đi nữa. lúc đó chưa có tu định lực còn kém nên sợ ma, bây giờ tao chơi với chúng mày luôn cho vui, thực ra bonj ma này chỉ trêu dọa thôi chứ không hại dược người, nhưng mà không biết thì cũng sợ lắm .cả một đêm mất ngủ như vậy nhưng sáng ra tôi lại không thấy mệt, mất thêm 80 đồng nên không dám ăn sáng mà cũng không đói. thay vì đi tàu điện siêu nhanh vận tốc có thể đạt 280km/h sợ không đủ tiền nên đi loại tàu hỏa cũ nhất, ghế được đóng bằng ghỗ, tàu chạy được một lúc nhìn ra ngoài toàn đổi với núi gục xuống bàn trước mặt ngủ lúc nào không biết. chẳng biết đi bao lâu thấy trên đầu ấm ấm mở mắt ra thì có một bà lão khoảng 80 tuổi cắt tóc ngắn, mặc cái áo xanh đang nhìn tôi rồi cười, đang ngái ngủ tôi cũng chẳng quan tâm lại gục xuống ngủ tiếp mấy phút sau mở mắt ra lại không thấy bà đâu. về sau mới biết đó là bà tổ cô đi theo phù hộ đuổi hết bọn âm binh của ông thầy đi. tôi dậy mua 1 quả ngô ăn 5 đồng lúc đó tôi chỉ ăn chay thôi. quả ngô trung quốc rất to cũng đủ no bụng, mà thật ra là không thấy đói nhớ bữa thì ăn thôi. từ lúc đó may mắn hẳn lên đến đâu cũng được người giúp chỉ đường, tàu đi càng lên cao lại càng lạnh, mọi người bắt đầu lấy áo khoác ra mặc, tôi lại không biết là khí hậu ở đây lạnh nên chỉ mặc một cái áo cộc và cái quần soóc. có một cậu thanh niên hỏi tôi lạnh không thực ra tôi chỉ thấy mát mát thôi. nhưng người khác sờ vào thì người tôi lạnh cóng, lạ là tôi lại không thấy lạnh và không đói. thật là may mắn cậu thanh niên đó cũng đến đúng gaanf chỗ tôi làm và đưa tôi đến tận nơi. đến nơi tôi được ông chủ nhận ngay. tôi chào ông chủ nhưng ông bảo gọi anh là anh quân thôi. vì ông chủ hơn tôi có vài tuổi. anh quân là một đại ka xã hội đen gấu nhất nhì khu vực. anh quân bảo tôi nuôi gà chọi vì chủ tịch của anh ta laf anh dương thích chơi gà chọi. lại nói về con gà chắc có nhiều người chưa biết tại sao từ xa xưa các cụ nhà ta chọn cúng con gà mà không phải cungs con vịt. ông cha ta rất thâm thuý muốn thông qua con gà để dạy con cháu nên có những đức tính tốt như gà. con gà trống trong gia đình là một người chồng tốt kheos nịnh vợ. nó kiếm được miếng mồi ngon không ăn mà kêu cục cục gọi vợ đến. ” cục cục ở đây theo tôi phiên dịch là em ăn đi cho con nó mập” gà mái ăn xong e thẹn mặt mào đỏ hồng nằm xuống cho gà trống trèo lên. nghệ thuật tán gái là đây chứ đâu. gà trống là người chồng chu đáo biết chăm con. trong lúc nuôi con gà mái bị bệnh hoặc chết thì gà trống cũng biết nuôi con, biết xù lông ư ấm cho con, đặc biệt trong lúc nuôi con thấy gà mái lạ mặc dù mắt có liếc liếc nhưng tuyệt đối không bao giờ bỏ con theo mái lạ. gà trống là trụ cột trong gia đình nhà phải có nóc, gà trống chưa biết sợ vợ bao giờ, một mình nó có thể quản lý đến 10 vợ nhưng sắp sếp đâu vào đấy, thỉnh thoảng có sẩy ra sự việc ngoài ý muốn ví dụ bà cả đánh nhau với bà hai nó nhảy vào giữa can liền, bà cả muốn đá bà 2 một cái nó liền đưa mặt ra đỡ, rồi bà 2 đá bà cả nó lại đưa mặt ra đỡ không hề bênh ai, thực ra mấy bà mà lên cơn đá cũng rất đau vì thấy một lúc sau gà trống mặt cungx sưng vù, máu me be bét, lông lá tế tua. ” nghĩ cũng thấy thương cho mấy ông lắm bồ nhiều vợ”. gà trống rất anh dũng để bảo veej gà thân, lãnh thổ nos sẵn sàng đánh nhau đổ máu thậm trí bỏ mạng. gà trống rất uy tín không biết tối qua đạp mái bao nhiêu cái nhưng sáng sớm hôm sau vẫn dậy đúng giờ gáy to gọi mọi người cùng dậy. trên mạng bảo ” dậy sớm để thành công”. gà mái cũng rất giỏi chiều chồng lại khéo nuôi con. từ lúc ấp đến lúc nuôi con gà mái thường xác xơ vì nos không ăn toàn nhưởng hết cho con, còn mình nhịn đói thậm chí thức ăn có thừa nó cũng đợi con ăn no hết rồi mới ăn. mưa rét nó chịu giang cánh ra che chở cho con. khó khăn nguy hiểm nó chiến đấu đến chết chứ không chịu bỏ con. con người khó khăn chút là phá thai rồi. tại các bạn cứ muốn viết nhiều nên thêm khúc con gà vào.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('48ae82b9-7aae-4652-bf89-8df25a2b57e2',
+       ('48ae82b9-7aae-4652-bf89-8df25a2b57e2',
         8,
         'Chương 8',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 8. ông chủ đưa tôi đến một ngôi nhà 3 tầng rộng dãi trên núi. ngôi nhà xây khá lâu rồi nhìn cũ kĩ nhưng sạch sẽ. sáng nào tôi cũng lên sân thượng cho hơn chục con gà ăn, dọn vệ sinh. mỗi tháng lương 3000 tệ khoảng 10 triệu tiền việt. từ nhỏ gia đình tôi kinh tế khá chưa phải làm thuê bao giờ. nay tôi sang trung quốc làm việc 1 phần là về tâm linh họ xoay chuyển, mục đích chính là để rèn luyện bản thân. tôi rất nóng tính, làm việc cẩu thả thiếu kiên trì. sau khi học phật pháp từ trên mạng, tôi hoàn toàn tin tưởng vào lời phật dạy. muốn thay đổi vận mệnh và có kiếp sau sung sướng hơn tôi quyết định dành phần đời còn lại để thay đổi tính cách, tích cực làm phước, lúc có nhiều tiền thì không biết bố thí cho ai thứ gì, ăn chơi hết, giờ hết tiền nhưng còn sức khỏe, tôi làm những việc nhỏ nhặt nhất như giửa bát mà dính mấy hạt cơm tôi cũng gom lại để cho mấy con kiếm ăn, ăn cơm vừa đủ không để thừa dù là một hạt cơm. học cách sống biết đủ không dám hưởng phước, thậm trí sử dụng điện nước thoải mái bao nhiêu chủ chịu, nhưng tôi cũng tiết kiệm từng giọt nước vì tôi biết mình dùng tuy lúc này không phải trả tiền nhưng bên âm đã bị trừ vào phước rồi. không có gì hưởng miễn phí cả đâu đều là hưởng phước của mình hoặc vay của người khác mà thôi. tôi cố gắng giúp đỡ tất cả từ con vật đến con người, loài hữu hình hay vô hình. thậm chí thấy con ruồi rơi vào bồn cầu tôi cũng lấy tay vớt nó lên cho nó sống. tự nhiên tình thương yêu tôi bao la quý trọng từng mạng sống. chẳng có gì để bố thí. thấy mấy con muỗi bay vo ve cả đêm mà không kiếm được gì ăn cũng thương thò tay ra cho hút máu. ” ở chùa đang dịch sốt xuất huyết có mấy người phải nhập viện cả quý thầy cũng bị, tôi vẫn tự nguyện cho muỗi đốt, muỗi vằn trong nam to hơn muỗi ngoài bắc, vậy mà chẳng bị gì”tôi chán đời nên mới làm vậy các bạn đừng làm theo nha muỗi vằn đốt nguy hiểm lắm. từ đó về sau nếu có 2 người thì muỗi nó sẽ chọn đốt người kia. mọi người thấy lạ mà không hiểu vì sao. tôi nghĩ nợ máu trả bằng máu, tôi đã trả đủ máu cho muỗi rồi. chỗ làm có nuôi 2 con chó, một con chó đen từ đầu đến chân, lông dài, nó khá già rồi, mặt lúc nào cũng buồn thiu, lúc nào cũng ngồi trước sân, ánh mắt nhìn về nơi xa xăm như đang suy nghĩ tiếc nuối điều gì. ngôi nhà cũ kĩ âm u nhưng vào trong thì ấm, ngủ rất ngon, không thấy âm binh của ông thầy quấy nhiễu nữa. sáng mở cửa phòng thường thấy con chó đen nằm ở cầu thang đối diện phòng tôi ngủ. nó thấy tôi dậy là nó lại đi xuống sân ngồi, chẳng bao giờ thấy nó sủa cũng chẳng thấy nó mừng ai. sau này mới biết chó đen nó nhìn thấy người âm, tà ma rất sợ nó. và chó thường là người thân trong dòng họ do lúc mất còn điều gì đó chưa nói hết, quyến luyến thương con thương cháu quá muốn bảo vệ chăm sóc. vì những ý nghiệp đó mà tái sinh thành chó trông nom nhà cửa cho con cháu. có những con chó có tính linh nó nhớ tiền kiếp mà người nhà không nhận ra nên nó buồn. đang là ông nội giờ tái sinh thành chó bị cháu xoa đầu kêu ku nếu là tôi, tôi cũng buồn mà không biết nói cùng ai. vậy nên chúng ta không nên ăn thịt chó , tôi đoán là như vậy thấy nó buồn nên hay nói phật pháp cho nó nghe, khuyên nó buông bỏ, tiếng trung cũng conf kém nên thỉnh thoảng đá vài câu tiếng việt không biết nó hiểu không. còn con chó trắng thì thân thiện hoạt bát hơn, tôi phát hiện thỉnh thoảng nó nhìn trộm tôi, mỗi khi nghỉ trưa tôi thường ra võng nằm thì nó lại ra nằm dưới võng. ngày nào cũng thế, cái này thì do tôi ăn chay không sát sinh, thương loài vật, từ trường rất mát lành loài vật nó cảm nhận được nên thích lại gần cảm giác rấy dễ chịu và bình yên. các cô gái cũng có khả năng cảm nhận này. có những vị ẩn tu trong rừng chim muông, rắn rết, thậm chí hổ báo thú dữ đều thích lại gần vị ấy. nhiều con có tính linh nó còn biết cúng dường thức ăn và bảo vệ. có lần lúc mới phát tâm tu thôi. tôi đến nhà ông anh ở uông bí chơi, nhà nuôi rất nhiều chó to, lại không có ai ở nhà, anh bạn động tay vào cánh cổng thì nó mở toang ra, vậy là đàn chó nó lao ra, anh bạn đi cùng hoảng quá kiếm chỗ thoát thân còn tôi chỉ biết đứng im. cả đàn lao ra rất hung cả to nhỏ hơn chục con sủa ing ỏi. gặp tôi cả đàn dừng lại, lúc đó nó mà lao vào cắn chắc cả đàn nó xé xác ra luôn. tôi cố gắng giữ bình tĩnh đứng yên thì con chó to đi vào ngửi ngửi rồi đi ra bên cạnh ngồi, tiếp theo mấy con kia cũng vậy chúng ngồi xung quanh tôi. đứng yên một lúc tôi từ từ đi vào. chúng nó không để ý đến tôi nữa thì tôi vào thẳng nhà ngồi. lúc ông anh về bảo sao em vào được nhà mà chó nó không cắn. tôi bảo em không biết thấy nó không cắn em cứ vào thôi.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('4139eb92-a30e-45e3-95a3-6548544dc5a0',
+       ('4139eb92-a30e-45e3-95a3-6548544dc5a0',
         9,
         'Chương 9',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
         '<p>phần 9. chỗ làm việc từng dưới có 2 ông bà già là bố mẹ ông chủ. 2 ông bà ngoài 60 mươi vẫn lao động tốt chưa phải nhờ con. nước mắt chảy xuôi mà. 1 mẹ nuôi được 10 con nhưng 10 con không nuôi nổi một mẹ. ông bà kinh doanh bán bình nước, xe chở bình đến hai ông bà phải bê bình nước, công nhân làm cho ông chủ rất nhiều, thấy 2 cụ già bê bình nước mặc dù đang ngồi chơi nhưng chúng nó mặc kệ. nó làm cho ông chủ chỉ biết ông chủ thôi bố mẹ ông chủ nó cũng kệ. ông cụ bị tai nạn 1 chân vùng mắt cá dập nát hết đi lại khó khăn. tôi thấy thương ông quá bảo: ông để cháu bê binhf nước cho, ông cụ cười tươi vẻ mắt mãn nguyện, người già họ biết chẳng sống được bao lâu, con cháu có hiếu họ sung sướng vô cùng. thấy chân ông đau tối bảo tối cháu bấm huyệt bóp chân cho ông, không hiểu được bề trên gia hộ như nào mà cái chân dập nát bao năm bóp một lúc cái khớp chân lại hoạt động lại được 5 phần giúp ông đi lại dễ dàng hơn, tối nào tôi cũng xoa bóp cho ông bà, đứa con giai và con dâu ngồi xem. mắt rơm rớm nước mắt hỏi; ở việt nam con cái đều có hiếu với cha mẹ như này à? được đà tôi bảo: bên việt nam con cái có người có hiếu nhiều có người có hiếu ít nhưng tựu trung lại đều có hiếu cả. thông qua hành động này làm con cái ông lão quan tâm hơn, có hiếu hơn nên ông bà rất quý. có đồ ngon toàn đế dành cho tôi ăn. tôi lại thấm câu làm phước không sợ thiệt. đến hạn tôi phải về xin thêm visa, ông bà biết tôi ăn chay niệm phật lúc về chắp tay cuí đầu chào, làm tôi bất ngờ, bình thường con chó đen rất lạnh lùng bất cần nhưng hôm về nó cũng ra theo, tôi nhìn thẳng vào mắt nó rồi xoa đầu, nó chảy nước mắt bà con ạ. tôi về đến nhà đứa em gái mừng lắm lại rủ tôi lên chỗ ông thầy. tôi bảo thầy ơi em vẫn về an toàn. ông thầy cười ngượng bảo mày mày có bà tổ cô đỡ không thì đừng hòng về được, lần này mày đi nữa không ai đỡ cho nữa đâu. tôi bảo nhiệm vụ em đưa người âm về lại trung quốc xong rồi. nhưng anh nói thế em lại đi tiếpkkkk. ông thầy cười nhếch mép. 2 tuần sau tôi lại sang trung quốc thì nghe nói con chó đen chết rồi. người thường không hiểu tại sao con chó đen chết. tôi biết những ngày nói phật pháp cho nó nghe, nói bằng tiếng trung hay tiếng việt không quan trọng. nó hiểu được từ tâm tôi chứ không phải qua ngôn ngữ. nó đã buông được không còn chấp nữa. nó tự nguyện bỏ thân xác để về cảnh giới lành. nhưng chó đen chết sẽ không còn ai bảo vệ tôi trước âm binh của ông thầy. đêm nó không cho tôi ngủ cứ có tiếng người đi ngoài hành lang, thỉnh thoảng cửa lại hé ra. lại có tiếng người nói thầm thì. mở cửa ra xem lại không thấy gì. rút kinh nghiệm lần trước tôi kệ không sợ nữa. nó không dọa được tôi thì quay ra hại gia đình ông chủ. ông chủ tai nạn gãy chân, nhiều việc không được may mắn. tôi nghĩ người ta cố tình chơi mình rồi thì cũng không ở được. tôi quyết định về, hôm về bà lão khóc. lúc qua cửa khẩu phải đưa hộ chiếu cho hải quan xem còn đóng dấu, mọi người đưa xổ cho hải quan bằng 1 tay, còn tôi mở xổ ra đưa bằng 2 tay. chú hải quan trung quốc xem xổ rồi nhìn nhìn đình nói gì nhưng lại bảo thôi anh qua đi. thực ra hooj chiếu tôi đã quá thời hạn 2 ngày rồi. sẽ bị giữ lại và phạt tiền. nhưng tôi được đi qua bởi hành động tôn trọng anh ta. chỉ một cử chỉ mà đỡ mất được bao nhiêu tiền. về đến việt nam tôi lại lên ông thầy bảo anh ơi em vân về được. nói vậy thôi nhưng tự mình biết khó thoát khỏi tay ông thầy. tôi bảo với ông thầy anh ơi chuyến này em định vào chùa tu. ông ta cười nói: đã theo anh rổi đừng có bướng, có mấy thằng bướng với anh giờ nhặt lá đá ống bơ, điên điên khungf khùng. chuyện này có thật ông ta không hề dọa. nhưng tôi có niềm tin vào đức phật tuyệt đối ngãi sẽ không để tôi như lời ông thầy nói. vậy là tôi vẫn bí mật vào nam, ở chùa hoằng pháp.</p>',
         '2025-05-01 10:16:00.000000'),
 
-        ('786dbadc-7f63-4b84-88b7-5912bcc6efb0',
+       ('786dbadc-7f63-4b84-88b7-5912bcc6efb0',
         10,
         'Chương 10',
         '42d316d4-c6f0-499d-8f67-07c6e70f72ec',
@@ -736,14 +738,15 @@ VALUES ('7c86c041-8940-4c95-9fe1-34d63d504eb4',
 
 -- Insert story 4
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
         true,
         'Ma trẻ con',
         '<p>Thằng bạn tớ định kể tên là Thức, học dưới tớ một năm, tức là khoảng đầu năm hai thì nó mới được xếp vào cùng phòng ký túc. Ngoại hình cao gầy, mặt mũi tương đối thông minh, từ đầu thằng bé đã thể hiện là đứa cởi mở, vui tính, nhưng chỉ được khoảng nửa năm thì tính cách nó gần như thay đổi hẳn.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/ma_tre_con.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
@@ -771,7 +774,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('5c2dea6a-8b54-4c10-9c58-4743da171d2c',
+       ('5c2dea6a-8b54-4c10-9c58-4743da171d2c',
         2,
         'Chương 2 - Anh thứ bị chết đuối',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -788,7 +791,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:17:00.000000'),
 
-        ('50f19cbb-ef54-426e-a8a7-26681c411193',
+       ('50f19cbb-ef54-426e-a8a7-26681c411193',
         3,
         'Chương 3 - Bắt vía',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -807,7 +810,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('00bc2b86-f146-42cc-a6ac-8d8516caa3b1',
+       ('00bc2b86-f146-42cc-a6ac-8d8516caa3b1',
         4,
         'Chương 3 - Duyên âm',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -828,7 +831,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('c978fb31-68b0-45de-a290-c16bf4c15b16',
+       ('c978fb31-68b0-45de-a290-c16bf4c15b16',
         5,
         'Chương 5 - Cách nhận biết vong ám',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -859,7 +862,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('f2ff9fed-45ec-4379-ae5e-7beb294e7a8c',
+       ('f2ff9fed-45ec-4379-ae5e-7beb294e7a8c',
         6,
         'Chương 6 - Phát duyên',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -882,7 +885,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('bee0e030-f009-427a-b232-a582e1a433fe',
+       ('bee0e030-f009-427a-b232-a582e1a433fe',
         7,
         'Chương 7 - Chùa Hàm Long',
         '1d9a43d3-cd54-4b85-9734-a905eaa1cc69',
@@ -905,7 +908,7 @@ VALUES ('8a82ebae-7210-47e4-b298-545c141c6d16',
 
 -- Insert story 5
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
         true,
         'Chết Mất Xác',
@@ -913,7 +916,8 @@ VALUES ('e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
         <p>Anh ể oải mà bước xuống giường rồi ra ngoài để mở cửa.Cánh cổng trong nhà vừa được mở ra thì một người phụ nữ ngoài 50 tuổi nắm lấy tay anh mà hỏi dồn dập:</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/chet_mat_xac.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
@@ -1029,7 +1033,7 @@ VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('7f5da50f-1809-4abf-ab50-e64f88f75e95',
+       ('7f5da50f-1809-4abf-ab50-e64f88f75e95',
         2,
         'Chap 2',
         'e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
@@ -1191,7 +1195,7 @@ VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
         ',
         '2025-05-01 10:17:00.000000'),
 
-        ('d4e65bda-2e18-450d-8cc8-1589788da94b',
+       ('d4e65bda-2e18-450d-8cc8-1589788da94b',
         3,
         'Chap 3',
         'e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
@@ -1305,7 +1309,7 @@ VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('e94f7227-f64d-4a41-96cf-f63461139346',
+       ('e94f7227-f64d-4a41-96cf-f63461139346',
         4,
         'Chap 4',
         'e2a8d4c2-2e2b-4176-83a8-5ae919c1faf6',
@@ -1500,7 +1504,7 @@ VALUES ('a4f5edcf-6ff2-44ff-bf1e-3c675f03e491',
 
 -- Insert story 6
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('a97855e5-2f3d-4f13-9f85-8858b2dcab03',
         true,
         'Ngãi Miên-(Ngãi Ăn Thịt)',
@@ -1508,7 +1512,8 @@ VALUES ('a97855e5-2f3d-4f13-9f85-8858b2dcab03',
         <p>Vào năm 2005 thì trong xóm có một tiếng thét vang lên, ai nghe cũng giật mình và chạy lại thì thấy cái cô gái kia đang ôm xác con gái của mình( nghe kể lại rằng là ruột gan với tim…nó rơi ra và lòng thòng).</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/ngai_mien.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('74e2d51c-2a9d-4bf1-bccc-01eac97ff4cc',
@@ -1534,7 +1539,7 @@ VALUES ('74e2d51c-2a9d-4bf1-bccc-01eac97ff4cc',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('fecaf94d-b2f8-44bf-ae20-a9734146f991',
+       ('fecaf94d-b2f8-44bf-ae20-a9734146f991',
         2,
         'Chương 2',
         'a97855e5-2f3d-4f13-9f85-8858b2dcab03',
@@ -1568,14 +1573,15 @@ VALUES ('74e2d51c-2a9d-4bf1-bccc-01eac97ff4cc',
 
 -- Insert story 7
 INSERT INTO story
-(story_id, release_status, story_title, story_description, user_id, created_time, language)
+(story_id, release_status, story_title, story_description, user_id, created_time, language, cover_image_uri)
 VALUES ('3f04f812-2977-4f62-b233-29f4fc99fddb',
         true,
         'Tiếng khóc đêm trăng',
         '<p>Tôi nhớ buổi chiều đó, vừa đi học về đã thấy má chuẩn bị rất nhiều quà chất lên xe. Khỏi cần hỏi má, tôi cũng biết đó là những hộp bánh trung thu, mà bà nội và má cất công đi chọn lựa mấy ngày hôm nay, để ngày mai cả nhà tôi về quê thăm ông bà ngoại.</p>',
         '061460f1-45fd-40a8-b243-5da3f0f35523',
         '2025-05-06 09:15:00.000000',
-        'vi');
+        'vi',
+        '/uploads/sample_book_cover/tieng_khoc_dem_trang.jpg');
 
 INSERT INTO chapter (chapter_id, chapter_number, chapter_title, story_id, chapter_content, created_time)
 VALUES ('2c3318cd-ab84-4e9c-87be-5a3ece28e0e6',
@@ -1638,7 +1644,7 @@ VALUES ('2c3318cd-ab84-4e9c-87be-5a3ece28e0e6',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('9851aaef-99cf-420b-8f4f-91d8c1a7f9ef',
+       ('9851aaef-99cf-420b-8f4f-91d8c1a7f9ef',
         2,
         'Chương 2',
         '3f04f812-2977-4f62-b233-29f4fc99fddb',
@@ -1706,7 +1712,7 @@ VALUES ('2c3318cd-ab84-4e9c-87be-5a3ece28e0e6',
         ',
         '2025-05-01 10:17:00.000000'),
 
-        ('7752ceeb-7345-4741-bf04-49b35bd3eb80',
+       ('7752ceeb-7345-4741-bf04-49b35bd3eb80',
         3,
         'Chương 3',
         '3f04f812-2977-4f62-b233-29f4fc99fddb',
@@ -1804,7 +1810,7 @@ VALUES ('2c3318cd-ab84-4e9c-87be-5a3ece28e0e6',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('338f7738-e31b-4e1b-9d7d-e8e034de862c',
+       ('338f7738-e31b-4e1b-9d7d-e8e034de862c',
         4,
         'Chương 4',
         '3f04f812-2977-4f62-b233-29f4fc99fddb',
@@ -1916,7 +1922,7 @@ VALUES ('f56af3cb-a042-4d71-bfc4-e059545471b2',
         ',
         '2025-05-01 10:16:00.000000'),
 
-        ('6a0c5fe2-77d3-4e3d-b504-c28b58e1c2d6',
+       ('6a0c5fe2-77d3-4e3d-b504-c28b58e1c2d6',
         2,
         'Phần 2 - Ma ám',
         'cec70be2-959b-42ca-8be2-042a38e6ef70',

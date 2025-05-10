@@ -14,7 +14,7 @@ import java.util.UUID;
 @Builder
 public class StoryResponse {
     private UUID storyId;
-    
+
     private LocalDate releaseDate;
 
     private LocalDate createdDate;
@@ -29,6 +29,8 @@ public class StoryResponse {
 
     private Integer numberOfLikes;
 
+    private Integer numberOfViews;
+
     private String coverImageUri;
 
     private String storyDescription;
@@ -38,6 +40,8 @@ public class StoryResponse {
     private Double averageRating;
 
     private UUID userId;
+
+    private String userPost;
 
     private List<ChapterStoryResponse> chapters;
 }

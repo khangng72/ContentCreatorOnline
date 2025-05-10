@@ -206,4 +206,104 @@ public class UserServiceImpl implements UserService {
         ).toList();
     }
 
+    @Override
+    public void updateUser(UUID userId, UpdateUserRequest updateUserRequest) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        user.setFirstName(updateUserRequest.getFirstName());
+        user.setLastName(updateUserRequest.getLastName());
+        user.setGender(updateUserRequest.getGender());
+        user.setNationality(updateUserRequest.getNationality());
+        user.setBirthday(updateUserRequest.getBirthday());
+        user.setIntroduction(updateUserRequest.getIntroduction());
+
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserResponseDTO getUserById(UUID userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+        Integer numberOfStories = user.getStoryPost().size();
+        Integer numberOfFollowers = user.getFollowers().size();
+        Integer numberOfFollowing = user.getFollowing().size();
+
+        return UserResponseDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .gender(user.getGender())
+                .isAdmin(user.isAdmin())
+                .isActive(user.isActive())
+                .nationality(user.getNationality())
+                .birthday(user.getBirthday())
+                .avatarUrl(user.getAvatarUrl())
+                .backgroundUrl(user.getBackgroundUrl())
+                .introduction(user.getIntroduction())
+                .numberOfFollowers(numberOfFollowers)
+                .numberOfStories(numberOfStories)
+                .numberOfFollowing(numberOfFollowing)
+                .build();
+    }
+
+    @Override
+    public boolean checkIfCurrentUserHaveFollowGivenId(UUID currentUserId, UUID userId) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        for (User user : currentUser.getFollowing()) {
+            if (user.getId().equals(userId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void toggleFollow(UUID currentUserId, UUID userId) {
+        User userToFollow = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Current user not found"));
+
+        Set<User> followers = userToFollow.getFollowers();
+
+        if (followers.contains(currentUser)) {
+            followers.remove(currentUser);
+        } else {
+            followers.add(currentUser);
+        }
+
+        userToFollow.setFollowers(followers);
+        userRepository.save(userToFollow);
+    }
+
+    @Override
+    public ReadPreference getReadingPreference(UUID currentUserId) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        return ReadPreference.builder()
+                .defaultReadingLineHeight(currentUser.getDefaultReadingLineHeight())
+                .defaultReadingWordSpacing(currentUser.getDefaultReadingWordSpacing())
+                .defaultReadingTextSize(currentUser.getDefaultReadingTextSize())
+                .build();
+    }
+
+    @Override
+    public void updateReadingPreference(UUID currentUserId, ReadPreference readPreference) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+        currentUser.setDefaultReadingLineHeight(readPreference.getDefaultReadingLineHeight());
+        currentUser.setDefaultReadingWordSpacing(readPreference.getDefaultReadingWordSpacing());
+        currentUser.setDefaultReadingTextSize(readPreference.getDefaultReadingTextSize());
+
+        userRepository.save(currentUser);
+    }
+
 }

@@ -56,4 +56,23 @@ public class ChapterController {
         return ResponseEntity.ok(new GetBasicChaptersInfoResponse(HttpStatus.OK.value(), basicChaptersInfo));
     }
 
+    @GetMapping("/{chapterId}")
+    public ResponseEntity<ChapterDTO> getChapterById(@PathVariable UUID chapterId) {
+        ChapterDTO chapter = chapterService.getChapterById(chapterId);
+        return ResponseEntity.ok(chapter);
+    }
+
+    @GetMapping("/check_if_current_user_liked/{chapterId}")
+    public ResponseEntity<Boolean> checkIfCurrentUserLiked(@PathVariable UUID chapterId) {
+        boolean isLiked = chapterService.checkIfCurrentUserLiked(chapterId);
+        return ResponseEntity.ok(isLiked);
+    }
+
+    @PostMapping("/toggle_current_user_like/{chapterId}")
+    public ResponseEntity<Boolean> toggleCurrentUserLiked(@PathVariable UUID chapterId) {
+        System.out.println("toggleCurrentUserLiked chapterId: " + chapterId);
+        boolean isLiked = chapterService.toggleCurrentUserLike(chapterId);
+        return ResponseEntity.ok(isLiked);
+    }
+
 }
