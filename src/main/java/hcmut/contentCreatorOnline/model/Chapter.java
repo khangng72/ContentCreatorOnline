@@ -1,8 +1,7 @@
 package hcmut.contentCreatorOnline.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,9 +9,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "chapter")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "chapter")
+@Builder
 public class Chapter {
     @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     List<Comment> comments;
@@ -31,8 +33,9 @@ public class Chapter {
     @Column(name = "number_of_likes")
     private Integer numberOfLikes = 0;
 
+    @Builder.Default
     @Column(name = "is_published")
-    private Boolean isPublished = true;
+    private Boolean isPublished = false;
 
     @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
