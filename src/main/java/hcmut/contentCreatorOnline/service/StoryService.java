@@ -277,7 +277,6 @@ public class StoryService {
         Set<UserReadStory> userReadStories = user.getUserReadStory();
 
         return userReadStories.stream()
-                .sorted()
                 .map(
                         userReadStory -> CurrentReadDTO.builder()
                                 .storyId(userReadStory.getStory().getStoryId())
