@@ -305,4 +305,18 @@ public class StoryService {
                 .map(this::mapToStoryDTO
                 ).toList();
     }
+
+    public void deleteStory(UUID storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        // Check if the user is the owner of the story
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not authorized to delete this story");
+        }
+
+        // Delete the story
+        storyRepository.delete(story);
+    }
 }

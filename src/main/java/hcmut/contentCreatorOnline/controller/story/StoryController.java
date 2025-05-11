@@ -104,5 +104,11 @@ public class StoryController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{story_id}")
+    public ResponseEntity<String> deleteStory(@PathVariable UUID story_id) {
+        storyService.deleteStory(story_id);
+        return ResponseEntity.ok("Story deleted successfully");
+    }
+
 
 }
