@@ -104,6 +104,12 @@ public class StoryController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/current-user/all-stories")
+    public ResponseEntity<List<StoryDTO>> getAllStoriesByCurrentUser() {
+        List<StoryDTO> result = storyService.getAllStoriesByCurrentUser();
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/{story_id}")
     public ResponseEntity<String> deleteStory(@PathVariable UUID story_id) {
         storyService.deleteStory(story_id);
@@ -115,6 +121,12 @@ public class StoryController {
         System.out.println(story_id);
         PublishedInfo publishedInfo = storyService.getPublishedInfo(story_id);
         return ResponseEntity.ok(publishedInfo);
+    }
+
+    @PutMapping("/unpublish/{story_id}")
+    public ResponseEntity<String> unpublishStory(@PathVariable UUID story_id) {
+        storyService.unpublishStory(story_id);
+        return ResponseEntity.ok("Story unpublished successfully");
     }
 
 

@@ -339,4 +339,33 @@ public class StoryService {
                 .draft(draft)
                 .build();
     }
+
+    public void unpublishStory(UUID storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        // Check if the user is the owner of the story
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not authorized to unpublish this story");
+        }
+
+        // Unpublish the story
+        story.setReleaseStatus(false);
+        for (Chapter chapter : story.getChapters()) {
+            chapter.setIsPublished(false);
+        }
+        storyRepository.save(story);
+    }
+
+    public List<StoryDTO> getAllStoriesByCurrentUser() {
+        UserPrincipal principal = SecurityUtils.getCurrentUser();
+        User user = userRepository.findById(principal.getId())
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        List<Story> stories = storyRepository.findByUserPost_Id(user.getId());
+        return stories.stream()
+                .map(this::mapToStoryDTO
+                ).toList();
+    }
 }
