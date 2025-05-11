@@ -91,4 +91,10 @@ public class StoryController {
         StoryDTO response = storyService.getStoryBasicInfoByStoryId(story_id);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/currentReading")
+    public ResponseEntity<List<CurrentReadDTO>> getCurrentReading() {
+        List<CurrentReadDTO> result = storyService.getCurrentReading();
+        return ResponseEntity.ok(result);
+    }
 }

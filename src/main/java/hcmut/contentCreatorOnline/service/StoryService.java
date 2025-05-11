@@ -7,6 +7,7 @@ import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.*;
 import hcmut.contentCreatorOnline.repository.GenreRepository;
 import hcmut.contentCreatorOnline.repository.StoryRepository;
+import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Tuple;
@@ -26,13 +27,15 @@ public class StoryService {
     private final StoryRepository storyRepository;
     private final GenreRepository genreRepository;
     private final EntityManager entityManager;
+    private final UserRepository userRepository;
     @Value("${spring.application.fuzzy-search.threshold}")
     private double threshold;
 
-    public StoryService(StoryRepository storyRepository, GenreRepository genreRepository, EntityManager entityManager) {
+    public StoryService(StoryRepository storyRepository, GenreRepository genreRepository, EntityManager entityManager, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.genreRepository = genreRepository;
         this.entityManager = entityManager;
+        this.userRepository = userRepository;
     }
 
     private StoryDTO mapToStoryDTO(Story story) {
@@ -263,5 +266,31 @@ public class StoryService {
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
 
         return mapToStoryDTO(story);
+    }
+
+
+    public List<CurrentReadDTO> getCurrentReading() {
+        UserPrincipal principal = SecurityUtils.getCurrentUser();
+        User user = userRepository.findById(principal.getId())
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        Set<UserReadStory> userReadStories = user.getUserReadStory();
+
+        return userReadStories.stream()
+                .sorted()
+                .map(
+                        userReadStory -> CurrentReadDTO.builder()
+                                .storyId(userReadStory.getStory().getStoryId())
+                                .storyTitle(userReadStory.getStory().getStoryTitle())
+                                .storyDescription(userReadStory.getStory().getStoryDescription())
+                                .coverImageUri(userReadStory.getStory().getCoverImageUri())
+                                .userPost(userReadStory.getStory().getUserPost().getFirstName() + " " + userReadStory.getStory().getUserPost().getLastName())
+                                .userId(userReadStory.getStory().getUserPost().getId())
+                                .numberOfViews(userReadStory.getStory().getUserReadStory().size())
+                                .numberOfChapters(userReadStory.getStory().getChapters().size())
+                                .currentChapterId(userReadStory.getChapterId())
+                                .averageRating(userReadStory.getStory().getAverageRating())
+                                .build()
+                ).toList();
     }
 }
