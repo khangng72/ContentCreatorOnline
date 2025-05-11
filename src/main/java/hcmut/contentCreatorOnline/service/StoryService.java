@@ -49,6 +49,8 @@ public class StoryService {
                 .numberOfViews(story.getUserReadStory().size())
                 .numberOfChapters(story.getChapters().size())
                 .averageRating(story.getAverageRating())
+                .updatedTime(story.getUpdatedTime())
+                .createdTime(story.getCreatedTime())
                 .genres(
                         story.getGenres().stream()
                                 .map(genre -> GenreResult.builder()
@@ -300,7 +302,7 @@ public class StoryService {
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
 
         List<Story> stories = storyRepository
-                .findByUserPost_IdAndReleaseStatusOrderByUpdatedTime(user.getId(), true);
+                .findByUserPost_IdAndReleaseStatusOrderByUpdatedTimeDesc(user.getId(), true);
         return stories.stream()
                 .map(this::mapToStoryDTO
                 ).toList();
@@ -363,9 +365,27 @@ public class StoryService {
         User user = userRepository.findById(principal.getId())
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
 
-        List<Story> stories = storyRepository.findByUserPost_Id(user.getId());
+        List<Story> stories = storyRepository.findByUserPost_IdOrderByUpdatedTimeDesc(user.getId());
         return stories.stream()
                 .map(this::mapToStoryDTO
                 ).toList();
+    }
+
+    public void publishStory(UUID storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        // Check if the user is the owner of the story
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not authorized to publish this story");
+        }
+
+        // Unpublish the story
+        story.setReleaseStatus(true);
+        for (Chapter chapter : story.getChapters()) {
+            chapter.setIsPublished(true);
+        }
+        storyRepository.save(story);
     }
 }

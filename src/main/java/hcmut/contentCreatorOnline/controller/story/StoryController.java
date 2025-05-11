@@ -129,5 +129,11 @@ public class StoryController {
         return ResponseEntity.ok("Story unpublished successfully");
     }
 
+    @PutMapping("/publish/{story_id}")
+    public ResponseEntity<String> publishStory(@PathVariable UUID story_id) {
+        storyService.publishStory(story_id);
+        return ResponseEntity.ok("Story is published successfully");
+    }
+
 
 }
