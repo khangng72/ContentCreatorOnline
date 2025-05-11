@@ -54,8 +54,14 @@ public class CommentController {
     }
 
     @PostMapping("/like/{commentId}")
-    public ResponseEntity<String> likeComment(@PathVariable("commentId") UUID commentId) {
-        String result = commentService.likeComment(commentId);
+    public ResponseEntity<String> toggleLikeComment(@PathVariable("commentId") UUID commentId) {
+        String result = commentService.toggleLikeComment(commentId);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/isLiked/{commentId}")
+    public ResponseEntity<Boolean> isLiked(@PathVariable("commentId") UUID commentId) {
+        Boolean result = commentService.isLiked(commentId);
         return ResponseEntity.ok(result);
     }
 

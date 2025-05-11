@@ -160,7 +160,7 @@ public class CommentService {
                 .build();
     }
 
-    public String likeComment(UUID commentId) {
+    public String toggleLikeComment(UUID commentId) {
         UserPrincipal currentUser = SecurityUtils.getCurrentUser();
         UUID userId = currentUser.getId();
         // Load User
@@ -175,8 +175,28 @@ public class CommentService {
         if (!user.getLikedComments().contains(comment)) {
             user.getLikedComments().add(comment);
             userRepository.save(user);
+        } else {
+            // Remove the like (many-to-many)
+            user.getLikedComments().remove(comment);
+            userRepository.save(user);
         }
 
         return "success";
+    }
+
+    public Boolean isLiked(UUID commentId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID userId = currentUser.getId();
+        // Load User
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        for (Comment comment : user.getLikedComments()) {
+            if (comment.getCommentId().equals(commentId)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "comment")
@@ -46,11 +43,13 @@ public class Comment {
     @JoinColumn(name = "parent_comment_id")
     private Comment parentComment;
 
+    @Builder.Default
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> replies;
+    private List<Comment> replies = new ArrayList<>();
 
     private Boolean isDeleted;
 
+    @Builder.Default
     @ManyToMany(mappedBy = "likedComments")
     private Set<User> likedByUsers = new HashSet<>();
 
