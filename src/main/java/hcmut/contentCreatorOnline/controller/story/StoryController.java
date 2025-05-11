@@ -110,5 +110,12 @@ public class StoryController {
         return ResponseEntity.ok("Story deleted successfully");
     }
 
+    @GetMapping("/published-info/{story_id}")
+    public ResponseEntity<PublishedInfo> getPublishedInfo(@PathVariable UUID story_id) {
+        System.out.println(story_id);
+        PublishedInfo publishedInfo = storyService.getPublishedInfo(story_id);
+        return ResponseEntity.ok(publishedInfo);
+    }
+
 
 }

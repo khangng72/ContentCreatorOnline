@@ -319,4 +319,24 @@ public class StoryService {
         // Delete the story
         storyRepository.delete(story);
     }
+
+    public PublishedInfo getPublishedInfo(UUID storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        // Check if the user is the owner of the story
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not authorized to get published info for this story");
+        }
+
+        Integer published = story.getChapters().stream().filter(Chapter::getIsPublished).toList().size();
+        Integer draft = story.getChapters().stream().filter(chapter -> !chapter.getIsPublished()).toList().size();
+
+        return PublishedInfo.builder()
+                .storyId(story.getStoryId())
+                .published(published)
+                .draft(draft)
+                .build();
+    }
 }
