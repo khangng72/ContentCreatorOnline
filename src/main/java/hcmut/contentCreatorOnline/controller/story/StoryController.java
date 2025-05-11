@@ -97,4 +97,12 @@ public class StoryController {
         List<CurrentReadDTO> result = storyService.getCurrentReading();
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/published-stories")
+    public ResponseEntity<List<StoryDTO>> getPublishedStories() {
+        List<StoryDTO> result = storyService.getPublishedStories();
+        return ResponseEntity.ok(result);
+    }
+
+
 }

@@ -293,4 +293,16 @@ public class StoryService {
                                 .build()
                 ).toList();
     }
+
+    public List<StoryDTO> getPublishedStories() {
+        UserPrincipal principal = SecurityUtils.getCurrentUser();
+        User user = userRepository.findById(principal.getId())
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        List<Story> stories = storyRepository
+                .findByUserPost_IdAndReleaseStatusOrderByUpdatedTime(user.getId(), true);
+        return stories.stream()
+                .map(this::mapToStoryDTO
+                ).toList();
+    }
 }

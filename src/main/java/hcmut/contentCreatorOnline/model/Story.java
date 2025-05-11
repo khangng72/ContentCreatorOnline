@@ -32,6 +32,9 @@ public class Story {
     @Column(name = "created_time")
     private LocalDateTime createdTime = LocalDateTime.now();
 
+    @Column(name = "updated_time")
+    private LocalDateTime updatedTime = LocalDateTime.now();
+
     @Column(name = "release_status")
     private Boolean releaseStatus = true;
 
