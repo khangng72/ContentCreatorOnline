@@ -135,5 +135,11 @@ public class StoryController {
         return ResponseEntity.ok("Story is published successfully");
     }
 
+    @PutMapping("/update/{story_id}")
+    public ResponseEntity<String> updateStoryInfo(@PathVariable UUID story_id,
+                                                  @RequestBody UpdateStoryRequest updateStoryRequest) {
+        storyService.updateStoryInfo(story_id, updateStoryRequest);
+        return ResponseEntity.ok("Story updated successfully");
+    }
 
 }

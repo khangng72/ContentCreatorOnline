@@ -388,4 +388,36 @@ public class StoryService {
         }
         storyRepository.save(story);
     }
+
+    public void updateStoryInfo(UUID storyId, UpdateStoryRequest updateStoryRequest) {
+
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
+
+        // Check if the user is the owner of the story
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not authorized to update this story");
+        }
+
+        // Update the story information
+        if (updateStoryRequest.getStoryTitle() != null) {
+            story.setStoryTitle(updateStoryRequest.getStoryTitle());
+        }
+
+        if (updateStoryRequest.getStoryDescription() != null) {
+            story.setStoryDescription(updateStoryRequest.getStoryDescription());
+        }
+
+        if (updateStoryRequest.getCoverImageUri() != null) {
+            story.setCoverImageUri(updateStoryRequest.getCoverImageUri());
+        }
+
+        if (updateStoryRequest.getGenres() != null) {
+            updateStoryGenres(story.getStoryId(), updateStoryRequest.getGenres());
+        }
+
+        // Save the updated story
+        storyRepository.save(story);
+    }
 }
