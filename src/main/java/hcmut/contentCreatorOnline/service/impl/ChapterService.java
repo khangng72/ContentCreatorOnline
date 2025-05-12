@@ -239,4 +239,12 @@ public class ChapterService {
 
         chapterRepository.save(chapter);
     }
+
+    public void updateChapterContent(UUID chapterId, UpdateContentRequest updateContentRequest) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+        chapter.setChapterContent(updateContentRequest.getChapterContent());
+
+        chapterRepository.save(chapter);
+    }
 }

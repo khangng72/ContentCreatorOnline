@@ -93,4 +93,13 @@ public class ChapterController {
         return ResponseEntity.ok("Chapter title updated successfully");
     }
 
+    @PutMapping("/update-chapter-content/{chapterId}")
+    public ResponseEntity<String> updateChapterContent(
+            @PathVariable UUID chapterId,
+            @RequestBody UpdateContentRequest updateContentRequest) {
+        chapterService.updateChapterContent(chapterId, updateContentRequest);
+
+        return ResponseEntity.ok("Chapter content updated successfully");
+    }
+
 }
