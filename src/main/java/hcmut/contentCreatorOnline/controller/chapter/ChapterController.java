@@ -102,4 +102,17 @@ public class ChapterController {
         return ResponseEntity.ok("Chapter content updated successfully");
     }
 
+    @GetMapping("/check-if-published/{chapterId}")
+    public ResponseEntity<Boolean> checkIfPublished(@PathVariable UUID chapterId) {
+        Boolean result = chapterService.checkIfPublished(chapterId);
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/toggle-publish/{chapterId}")
+    public ResponseEntity<String> togglePublish(@PathVariable UUID chapterId) {
+        chapterService.togglePublish(chapterId);
+
+        return ResponseEntity.ok("Chapter published successfully");
+    }
+
 }

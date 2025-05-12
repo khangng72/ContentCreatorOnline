@@ -247,4 +247,44 @@ public class ChapterService {
 
         chapterRepository.save(chapter);
     }
+
+    public Boolean checkIfPublished(UUID chapterId) {
+
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+        return chapter.getIsPublished();
+    }
+
+    public void unpublishStoryIfAllChaptersAreDraft(UUID storyId) {
+        Story story = storyRepository
+                .findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found"));
+
+        int numberOfPublishedChapters = story
+                .getChapters().stream().filter(Chapter::getIsPublished).toList().size();
+
+        if (numberOfPublishedChapters == 0) {
+            story.setReleaseStatus(false);
+        }
+
+        storyRepository.save(story);
+    }
+
+    public void togglePublish(UUID chapterId) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        if (chapter.getIsPublished()) {
+            chapter.setIsPublished(false);
+            Chapter updatedChapter = chapterRepository.save(chapter);
+            unpublishStoryIfAllChaptersAreDraft(updatedChapter.getStory().getStoryId());
+            return;
+        }
+
+        chapter.setIsPublished(true);
+        chapter.getStory().setReleaseStatus(true);
+        chapterRepository.save(chapter);
+
+
+    }
 }
