@@ -230,4 +230,13 @@ public class ChapterService {
 
         chapterRepository.delete(chapter);
     }
+
+    public void updateChapterTitle(UUID chapterId, UpdateTitleRequest updateTitleRequest) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        chapter.setChapterTitle(updateTitleRequest.getChapterTitle());
+
+        chapterRepository.save(chapter);
+    }
 }

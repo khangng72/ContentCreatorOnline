@@ -87,4 +87,10 @@ public class ChapterController {
         return ResponseEntity.ok("Chapter deleted successfully");
     }
 
+    @PutMapping("/update-chapter-title/{chapterId}")
+    public ResponseEntity<String> updateChapterTitle(@PathVariable UUID chapterId, @RequestBody UpdateTitleRequest updateTitleRequest) {
+        chapterService.updateChapterTitle(chapterId, updateTitleRequest);
+        return ResponseEntity.ok("Chapter title updated successfully");
+    }
+
 }
