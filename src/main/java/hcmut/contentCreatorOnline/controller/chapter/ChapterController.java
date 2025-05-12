@@ -75,4 +75,10 @@ public class ChapterController {
         return ResponseEntity.ok(isLiked);
     }
 
+    @GetMapping("/all-by-story/{storyId}")
+    public ResponseEntity<List<ChapterDTO>> getAllChaptersByStoryId(@PathVariable UUID storyId) {
+        List<ChapterDTO> chapters = chapterService.getAllChaptersByStoryId(storyId);
+        return ResponseEntity.ok(chapters);
+    }
+
 }

@@ -188,4 +188,36 @@ public class ChapterService {
             return true; // User liked the chapter
         }
     }
+
+    public List<ChapterDTO> getAllChaptersByStoryId(UUID storyId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found"));
+
+        System.out.println("user_id " + currentUser.getId());
+        System.out.println("user_id " + story.getUserPost().getId());
+        if (!story.getUserPost().getId().equals(currentUser.getId())) {
+            throw new ApplicationException(ErrorConst.FORBIDDEN, "You are not the author of this story");
+        }
+
+        return story.getChapters().stream()
+                .map(chapter -> ChapterDTO.builder()
+                        .chapterId(chapter.getChapterId())
+                        .chapterTitle(chapter.getChapterTitle())
+                        .chapterDescription(chapter.getChapterDescription())
+                        .chapterContent(chapter.getChapterContent())
+                        .chapterNumber(chapter.getChapterNumber())
+                        .createdTime(chapter.getCreatedTime())
+                        .updatedTime(chapter.getUpdatedTime())
+                        .nextChapterId(null) // Set to null or handle as needed
+                        .numberOfLikes(chapter.getUsersLikeChapter().size())
+                        .numberOfComments(chapter.getComments().size())
+                        .storyTitle(story.getStoryTitle())
+                        .storyId(story.getStoryId())
+                        .chapterImageUri(chapter.getChapterImageUri())
+                        .isPublished(chapter.getIsPublished())
+                        .build())
+                .collect(Collectors.toList());
+    }
 }

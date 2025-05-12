@@ -18,9 +18,11 @@ public class ChapterDTO {
     private Integer chapterNumber;
     private String chapterImageUri;
     private LocalDateTime createdTime;
+    private LocalDateTime updatedTime;
     private Integer numberOfLikes;
     private Integer numberOfComments;
     private UUID nextChapterId;
     private String storyTitle;
     private UUID storyId;
+    private Boolean isPublished;
 }

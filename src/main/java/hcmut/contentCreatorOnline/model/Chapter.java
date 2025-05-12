@@ -40,8 +40,15 @@ public class Chapter {
     @Column(name = "chapter_description", columnDefinition = "TEXT")
     private String chapterDescription;
 
+    @Builder.Default
     @Column(name = "created_time")
     private LocalDateTime createdTime = LocalDateTime.now();
+
+
+    @Builder.Default
+    @Column(name = "updated_time")
+    private LocalDateTime updatedTime = LocalDateTime.now();
+
 
     @Column(name = "chapter_content", columnDefinition = "TEXT")
     private String chapterContent;
