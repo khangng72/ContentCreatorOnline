@@ -154,10 +154,6 @@ public class StoryService {
         Story story = storyRepository.findById(storyId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId));
 
-        if (!story.getReleaseStatus()) {
-            throw new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Story not found with ID: " + storyId);
-        }
-
         List<ChapterStoryResponse> chapterList = story.getChapters().stream()
                 .sorted(Comparator.comparingInt(Chapter::getChapterNumber))
                 .map(
@@ -214,8 +210,9 @@ public class StoryService {
 
         return """
                  SELECT story_id FROM story
-                        WHERE similarity(story_title, :query) > :threshold
-                           OR document @@ plainto_tsquery('english', :query)
+                        WHERE (similarity(story_title, :query) > :threshold
+                           OR document @@ plainto_tsquery('english', :query))
+                        AND release_status = true
                         ORDER BY
                             ts_rank(document, plainto_tsquery('english', :query)) DESC,
                             similarity(story_title, :query) DESC,

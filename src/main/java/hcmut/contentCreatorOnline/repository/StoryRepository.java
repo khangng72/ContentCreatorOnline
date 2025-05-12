@@ -17,7 +17,7 @@ public interface StoryRepository extends JpaRepository<Story, UUID> {
 
     List<Story> findByUserPost_Id(UUID userId);
 
-    @Query("SELECT s FROM Story s JOIN s.genres g WHERE g.genreId = :genreId ORDER BY s.averageRating DESC, s.numberOfViews DESC")
+    @Query("SELECT s FROM Story s JOIN s.genres g WHERE g.genreId = :genreId AND s.releaseStatus=true ORDER BY s.averageRating DESC, s.numberOfViews DESC")
     Page<Story> findByGenreId(@Param("genreId") Integer genreId, Pageable pageable);
 
     List<Story> findByUserPost_IdAndReleaseStatusOrderByUpdatedTimeDesc(UUID userId, boolean releaseStatus);
