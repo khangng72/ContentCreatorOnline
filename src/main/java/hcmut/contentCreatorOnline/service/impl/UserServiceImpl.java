@@ -306,4 +306,27 @@ public class UserServiceImpl implements UserService {
         userRepository.save(currentUser);
     }
 
+    @Override
+    public WritePreference getWritingPreference(UUID currentUserId) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        return WritePreference.builder()
+                .defaultWritingLineHeight(currentUser.getDefaultWritingLineHeight())
+                .defaultWritingWordSpacing(currentUser.getDefaultWritingWordSpacing())
+                .defaultWritingTextSize(currentUser.getDefaultWritingTextSize())
+                .build();
+    }
+
+    @Override
+    public void updateWritingPreference(UUID currentUserId, WritePreference writePreference) {
+        User currentUser = userRepository.findById(currentUserId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+        currentUser.setDefaultWritingLineHeight(writePreference.getDefaultWritingLineHeight());
+        currentUser.setDefaultWritingWordSpacing(writePreference.getDefaultWritingWordSpacing());
+        currentUser.setDefaultWritingTextSize(writePreference.getDefaultWritingTextSize());
+
+        userRepository.save(currentUser);
+    }
+
 }

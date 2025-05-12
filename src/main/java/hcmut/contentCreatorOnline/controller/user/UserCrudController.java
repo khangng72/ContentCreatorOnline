@@ -154,4 +154,24 @@ public class UserCrudController {
         userService.updateReadingPreference(currentUserId, readPreference);
         return ResponseEntity.ok("Update reading preference successfully");
     }
+
+    @GetMapping("/write_preference")
+    public ResponseEntity<WritePreference> getCurrentUserWritingPreference() {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        WritePreference writingPreference = userService.getWritingPreference(currentUserId);
+        return ResponseEntity.ok(writingPreference);
+    }
+
+    @PutMapping("/write_preference")
+    public ResponseEntity<String> updateCurrentUserWritingPreference(
+            @RequestBody WritePreference writePreference
+    ) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UUID currentUserId = currentUser.getId();
+
+        userService.updateWritingPreference(currentUserId, writePreference);
+        return ResponseEntity.ok("Update reading preference successfully");
+    }
 }

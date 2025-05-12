@@ -126,5 +126,14 @@ public class User {
     @Column(name = "default_reading_line_height")
     private Double defaultReadingLineHeight;
 
+    // Writing Preference
+    @Column(name = "default_writing_text_size")
+    private Double defaultWritingTextSize;
+
+    @Column(name = "default_writing_word_spacing")
+    private Double defaultWritingWordSpacing;
+
+    @Column(name = "default_writing_line_height")
+    private Double defaultWritingLineHeight;
 
 }

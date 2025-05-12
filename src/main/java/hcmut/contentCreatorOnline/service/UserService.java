@@ -31,5 +31,9 @@ public interface UserService {
 
     ReadPreference getReadingPreference(UUID currentUserId);
 
+    WritePreference getWritingPreference(UUID currentUserId);
+
     void updateReadingPreference(UUID currentUserId, ReadPreference readPreference);
+
+    void updateWritingPreference(UUID currentUserId, WritePreference writePreference);
 }

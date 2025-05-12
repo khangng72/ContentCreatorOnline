@@ -125,6 +125,7 @@ public class ChapterService {
                         chapter.getChapterDescription(),
                         chapter.getChapterNumber(),
                         chapter.getCreatedTime()))
+
                 .toList();
 
     }
@@ -151,6 +152,7 @@ public class ChapterService {
                 .chapterContent(targetChapter.getChapterContent())
                 .chapterNumber(targetChapter.getChapterNumber())
                 .createdTime(targetChapter.getCreatedTime())
+                .updatedTime(targetChapter.getUpdatedTime())
                 .nextChapterId(nextChapterId)
                 .numberOfLikes(targetChapter.getUsersLikeChapter().size())
                 .numberOfComments(targetChapter.getComments().size())
