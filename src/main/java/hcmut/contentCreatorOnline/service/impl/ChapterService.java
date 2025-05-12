@@ -159,6 +159,7 @@ public class ChapterService {
                 .storyTitle(targetChapter.getStory().getStoryTitle())
                 .storyId(targetChapter.getStory().getStoryId())
                 .chapterImageUri(targetChapter.getChapterImageUri())
+                .isPublished(targetChapter.getIsPublished())
                 .build();
     }
 
