@@ -81,4 +81,10 @@ public class ChapterController {
         return ResponseEntity.ok(chapters);
     }
 
+    @DeleteMapping("/{chapterId}")
+    public ResponseEntity<String> deleteChapter(@PathVariable UUID chapterId) {
+        chapterService.deleteChapterById(chapterId);
+        return ResponseEntity.ok("Chapter deleted successfully");
+    }
+
 }

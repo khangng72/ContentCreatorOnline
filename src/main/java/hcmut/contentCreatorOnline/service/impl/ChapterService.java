@@ -220,4 +220,12 @@ public class ChapterService {
                         .build())
                 .collect(Collectors.toList());
     }
+
+
+    public void deleteChapterById(UUID chapterId) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        chapterRepository.delete(chapter);
+    }
 }
