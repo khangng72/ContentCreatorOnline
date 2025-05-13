@@ -4,7 +4,9 @@ spring:
     fuzzy-search:
       threshold: 0.001
   datasource:
-    url: jdbc:postgresql://localhost:5431/content_creator_online
+#    url: jdbc:postgresql://localhost:5431/content_creator_online
+
+    url: jdbc:postgresql://content-creator-online.cyj6aaiumjp3.us-east-1.rds.amazonaws.com:5432/contentcreatoronline
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
