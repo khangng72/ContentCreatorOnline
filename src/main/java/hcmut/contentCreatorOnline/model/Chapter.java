@@ -59,6 +59,7 @@ public class Chapter {
     @JoinColumn(name = "story_id", nullable = false)
     private Story story;
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(name = "user_like_chapter", joinColumns = @JoinColumn(name = "chapter_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> usersLikeChapter = new ArrayList<>();
