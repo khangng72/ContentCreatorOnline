@@ -59,7 +59,10 @@ public class CreateNewUserTests {
                 gender,
                 isAdmin,
                 nationality,
-                birthday);
+                birthday,
+                new HashSet<>()
+        );
+
 
         return mockRequest;
     }
