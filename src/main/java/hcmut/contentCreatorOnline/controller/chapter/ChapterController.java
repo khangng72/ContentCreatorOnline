@@ -115,4 +115,12 @@ public class ChapterController {
         return ResponseEntity.ok("Chapter published successfully");
     }
 
+    @PutMapping("/update-image/{chapterId}")
+    public ResponseEntity<String> updateImage(@PathVariable UUID chapterId,
+                                              @RequestBody UpdateImageRequest updateImageRequest) {
+        chapterService.updateImage(chapterId, updateImageRequest);
+
+        return ResponseEntity.ok("Image updated successfully");
+    }
+
 }

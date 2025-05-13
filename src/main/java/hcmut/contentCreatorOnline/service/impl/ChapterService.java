@@ -58,6 +58,7 @@ public class ChapterService {
         chapter.setChapterDescription(request.getChapterDescription());
         chapter.setChapterContent(request.getChapterContent());
         chapter.setChapterImageUri(request.getChapterImageUri());
+        chapter.setIsPublished(request.getIsPublished());
         chapter.setStory(story);
 
         return chapterRepository.save(chapter);
@@ -287,5 +288,13 @@ public class ChapterService {
         chapterRepository.save(chapter);
 
 
+    }
+
+    public void updateImage(UUID chapterId, UpdateImageRequest updateImageRequest) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        chapter.setChapterImageUri(updateImageRequest.getChapterImageUri());
+        chapterRepository.save(chapter);
     }
 }

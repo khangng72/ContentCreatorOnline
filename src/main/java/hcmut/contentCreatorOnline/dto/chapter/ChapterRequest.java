@@ -12,4 +12,5 @@ public class ChapterRequest {
     private String chapterDescription;
     private String ChapterContent;
     private String chapterImageUri;
+    private Boolean isPublished = false;
 }

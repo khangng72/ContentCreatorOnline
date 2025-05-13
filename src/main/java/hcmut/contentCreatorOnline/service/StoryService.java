@@ -104,7 +104,7 @@ public class StoryService {
         story.setStoryDescription(createStoryRequest.getStoryDescription());
         story.setUserPost(creator);
         story.setReleaseDate(createStoryRequest.getReleaseDate());
-        story.setReleaseStatus(false);
+        story.setReleaseStatus(createStoryRequest.getReleaseStatus());
 
         Story saveStoryResult = storyRepository.save(story);
         return new CreateStoryResult(saveStoryResult.getStoryId());
