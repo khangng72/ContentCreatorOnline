@@ -52,8 +52,12 @@ public class UserReportChapterController {
     }
 
     @GetMapping("/admin/reported-chapters/{chapterId}")
-    public ResponseEntity<List<UserReportChapterDetailDTO>> getReportDetails(@PathVariable UUID chapterId) {
-        return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId));
+    public ResponseEntity<List<UserReportChapterDetailDTO>> getReportDetails(
+            @PathVariable UUID chapterId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId,page,size));
     }
 
 }
