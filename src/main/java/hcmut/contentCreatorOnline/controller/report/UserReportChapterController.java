@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.controller.report;
 
 import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
 import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
+import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.model.UserReportChapter;
 import hcmut.contentCreatorOnline.service.UserReportChapterService;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/report")
@@ -49,7 +51,9 @@ public class UserReportChapterController {
         return ResponseEntity.ok(summaries);
     }
 
-
-
+    @GetMapping("/admin/reported-chapters/{chapterId}")
+    public ResponseEntity<List<UserReportChapterDetailDTO>> getReportDetails(@PathVariable UUID chapterId) {
+        return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId));
+    }
 
 }

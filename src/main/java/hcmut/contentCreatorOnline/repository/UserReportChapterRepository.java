@@ -1,11 +1,13 @@
 package hcmut.contentCreatorOnline.repository;
 
 import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
+import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.model.UserReportChapter;
 import hcmut.contentCreatorOnline.model.UserReportChapterId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,5 +31,22 @@ public interface UserReportChapterRepository extends JpaRepository<UserReportCha
     """
 )
     List<ReportedChapterSummaryDTO> findUnresolvedReportedChaptersSummary(Pageable pageable);
+
+    @Query("""
+    SELECT new hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO(
+        u.id,
+        CONCAT(u.firstName, ' ', u.lastName),
+        urc.reason,
+        urc.resolve_state,
+        urc.resolveDate
+    )
+    FROM UserReportChapter urc
+    JOIN urc.user u
+    WHERE urc.chapter.chapterId = :chapterId
+        and urc.resolve_state = 'unresolved'
+    ORDER BY urc.resolveDate DESC
+""")
+    List<UserReportChapterDetailDTO> findReportDetailsByChapterId(@Param("chapterId") UUID chapterId);
+
 }
 

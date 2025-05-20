@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
 import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
+import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserReportChapterService {
@@ -66,4 +68,9 @@ public class UserReportChapterService {
         Pageable pageable = PageRequest.of(page, size);
         return userReportChapterRepository.findUnresolvedReportedChaptersSummary(pageable);
     }
+
+    public List<UserReportChapterDetailDTO> getReportDetailsByChapterId(UUID chapterId) {
+        return userReportChapterRepository.findReportDetailsByChapterId(chapterId);
+    }
+
 }
