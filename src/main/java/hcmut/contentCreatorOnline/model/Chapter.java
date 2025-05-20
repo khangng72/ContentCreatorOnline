@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "chapter")
@@ -20,6 +18,7 @@ public class Chapter {
     List<Comment> comments;
 
     @Id
+    @Column(name = "chapter_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
     private UUID chapterId;
 
@@ -63,4 +62,6 @@ public class Chapter {
     @JoinTable(name = "user_like_chapter", joinColumns = @JoinColumn(name = "chapter_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> usersLikeChapter = new ArrayList<>();
 
+    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserReportChapter> userReportChapters = new HashSet<>();
 }
