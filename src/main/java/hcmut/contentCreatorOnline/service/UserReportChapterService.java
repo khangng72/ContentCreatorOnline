@@ -1,6 +1,7 @@
 package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
+import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.Chapter;
@@ -12,6 +13,8 @@ import hcmut.contentCreatorOnline.repository.UserReportChapterRepository;
 import hcmut.contentCreatorOnline.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,4 +62,8 @@ public class UserReportChapterService {
         return "Created report successfully!";
     }
 
+    public List<ReportedChapterSummaryDTO> getUnresolvedReportedChapters(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return userReportChapterRepository.findUnresolvedReportedChaptersSummary(pageable);
+    }
 }
