@@ -46,7 +46,10 @@ public interface UserReportChapterRepository extends JpaRepository<UserReportCha
         and urc.resolve_state = 'unresolved'
     ORDER BY urc.resolveDate DESC
 """)
-    List<UserReportChapterDetailDTO> findReportDetailsByChapterId(@Param("chapterId") UUID chapterId);
+    List<UserReportChapterDetailDTO> findReportDetailsByChapterId(
+            @Param("chapterId") UUID chapterId,
+            Pageable pageable
+    );
 
 }
 

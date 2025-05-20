@@ -69,8 +69,9 @@ public class UserReportChapterService {
         return userReportChapterRepository.findUnresolvedReportedChaptersSummary(pageable);
     }
 
-    public List<UserReportChapterDetailDTO> getReportDetailsByChapterId(UUID chapterId) {
-        return userReportChapterRepository.findReportDetailsByChapterId(chapterId);
+    public List<UserReportChapterDetailDTO> getReportDetailsByChapterId(UUID chapterId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return userReportChapterRepository.findReportDetailsByChapterId(chapterId,pageable);
     }
 
 }
