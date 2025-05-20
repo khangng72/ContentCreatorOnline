@@ -123,4 +123,11 @@ public class ChapterController {
         return ResponseEntity.ok("Image updated successfully");
     }
 
+    @PutMapping("/{chapterId}/unpublish")
+    public ResponseEntity<?> unpublishChapter(@PathVariable UUID chapterId) {
+        String updated = chapterService.unpublishChapter(chapterId);
+
+        return ResponseEntity.ok(updated);
+    }
+
 }

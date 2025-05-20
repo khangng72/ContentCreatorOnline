@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -296,5 +297,17 @@ public class ChapterService {
 
         chapter.setChapterImageUri(updateImageRequest.getChapterImageUri());
         chapterRepository.save(chapter);
+    }
+
+    //unpublish chapter
+    public String unpublishChapter(UUID chapterId) {
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        chapter.setIsPublished(false);
+        chapter.setUpdatedTime(LocalDateTime.now());
+
+        chapterRepository.save(chapter);
+        return "Unpublished";
     }
 }

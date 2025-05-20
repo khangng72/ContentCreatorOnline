@@ -28,12 +28,12 @@ public class UserReportChapter {
     @Column(name = "reason")
     private String reason;
 
-    @Column(name = "state")
-    private String state;
+    @Column(name = "resolve_state")  //unresolved/resolved
+    private String resolve_state;
 
     @Column(name = "resolve_date")
-    private Date ResolveDate;
+    private Date resolveDate;
 
-    @Column(name = "report_date")
-    private Date ReportDate;
+//    @Column(name = "report_date")
+//    private Date ReportDate;
 }
