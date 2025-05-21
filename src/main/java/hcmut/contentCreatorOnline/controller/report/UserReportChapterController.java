@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.controller.report;
 
-import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
-import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
-import hcmut.contentCreatorOnline.dto.report.UserReportChapterDTO;
-import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
+import hcmut.contentCreatorOnline.dto.report.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.model.UserReportChapter;
 import hcmut.contentCreatorOnline.service.UserReportChapterService;
@@ -79,4 +76,17 @@ public class UserReportChapterController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/resolve/{chapterId}")
+    public ResponseEntity<String> banChapter(
+            @PathVariable UUID chapterId,
+            @RequestBody BanChapterDTO banChapterDTO
+    ) {
+        try {
+            System.out.println("this is banned: " + banChapterDTO.getIsBanned());
+            String result = userReportChapterService.resolveChapter(chapterId, banChapterDTO);
+            return ResponseEntity.ok(result);
+        } catch (ApplicationException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 }

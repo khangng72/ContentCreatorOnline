@@ -43,7 +43,7 @@ public class Chapter {
     @Column(name = "created_time")
     private LocalDateTime createdTime = LocalDateTime.now();
 
-    @Column(name = "isBanned")
+    @Column(name = "is_banned")
     @Builder.Default
     private Boolean isBanned = false;
 

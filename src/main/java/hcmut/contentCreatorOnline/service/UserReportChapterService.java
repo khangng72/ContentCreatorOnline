@@ -1,9 +1,6 @@
 package hcmut.contentCreatorOnline.service;
 
-import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
-import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
-import hcmut.contentCreatorOnline.dto.report.UserReportChapterDTO;
-import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
+import hcmut.contentCreatorOnline.dto.report.*;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
 import hcmut.contentCreatorOnline.model.*;
@@ -104,4 +101,31 @@ public class UserReportChapterService {
                         .build())
                 .toList();
     }
+
+    public String resolveChapter(UUID chapterId, BanChapterDTO banChapterDTO) {
+
+        Chapter chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
+
+        chapter.setIsBanned(banChapterDTO.getIsBanned());
+        chapter.setIsPublished(!banChapterDTO.getIsBanned());
+        chapterRepository.save(chapter);
+
+        User user = userRepository.findById(banChapterDTO.getUserReportId())
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "User not found"));
+
+        UserReportChapterId reportId = new UserReportChapterId(user.getId(), chapterId);
+
+        UserReportChapter report = userReportChapterRepository.findById(reportId)
+                .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Report not found"));
+
+        report.setResolve_state("resolved");
+        report.setResolveDate(new Date());
+
+        userReportChapterRepository.save(report);
+
+        return "Ban chapter successfully!";
+
+    }
 }
+

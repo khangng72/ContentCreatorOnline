@@ -25,4 +25,5 @@ public class ChapterDTO {
     private String storyTitle;
     private UUID storyId;
     private Boolean isPublished;
+    private Boolean isBanned;
 }

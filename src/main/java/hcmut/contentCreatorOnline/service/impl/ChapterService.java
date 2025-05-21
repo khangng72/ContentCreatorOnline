@@ -162,6 +162,7 @@ public class ChapterService {
                 .storyId(targetChapter.getStory().getStoryId())
                 .chapterImageUri(targetChapter.getChapterImageUri())
                 .isPublished(targetChapter.getIsPublished())
+                .isBanned(targetChapter.getIsBanned())
                 .build();
     }
 
@@ -299,7 +300,7 @@ public class ChapterService {
         chapterRepository.save(chapter);
     }
 
-    //unpublish chapter
+    // unpublish chapter
     public String unpublishChapter(UUID chapterId) {
         Chapter chapter = chapterRepository.findById(chapterId)
                 .orElseThrow(() -> new ApplicationException(ErrorConst.RESOURCE_NOT_FOUND, "Chapter not found"));
