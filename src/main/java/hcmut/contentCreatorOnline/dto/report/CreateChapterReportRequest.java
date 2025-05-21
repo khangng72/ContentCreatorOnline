@@ -10,7 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateChapterReportRequest {
-    private UUID userId;
     private UUID chapterId;
     private String reason;
 }
