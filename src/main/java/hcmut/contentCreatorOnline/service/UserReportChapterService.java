@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.service;
 
 import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
 import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
+import hcmut.contentCreatorOnline.dto.report.UserReportChapterDTO;
 import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.exception.ErrorConst;
@@ -10,8 +11,11 @@ import hcmut.contentCreatorOnline.repository.ChapterRepository;
 import hcmut.contentCreatorOnline.repository.UserReportChapterRepository;
 import hcmut.contentCreatorOnline.repository.UserRepository;
 import hcmut.contentCreatorOnline.utils.SecurityUtils;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -78,5 +82,26 @@ public class UserReportChapterService {
         UserPrincipal currentUser = SecurityUtils.getCurrentUser();
         UserReportChapterId reportId = new UserReportChapterId(currentUser.getId(), chapterId);
         return userReportChapterRepository.existsById(reportId);
+    }
+
+    public List<UserReportChapterDTO> getAllReportsPagination(String resolveState, String sortBy, String direction, int page, int size) {
+        Sort sort = direction.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending() :
+                Sort.by(sortBy).ascending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Specification<UserReportChapter> spec = UserReportChapterSpecifications.hasResolveState(resolveState);
+        Page<UserReportChapter> entities = userReportChapterRepository.findAll(spec, pageable);
+
+        return entities.getContent().stream()
+                .map(entity -> UserReportChapterDTO.builder()
+                        .chapterId(entity.getChapter().getChapterId())
+                        .userId(entity.getUser().getId())
+                        .reason(entity.getReason())
+                        .resolveState(entity.getResolve_state())
+                        .reportDate(entity.getReportDate())
+                        .build())
+                .toList();
     }
 }

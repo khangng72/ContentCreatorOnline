@@ -35,5 +35,5 @@ public class UserReportChapter {
     private Date resolveDate;
 
     @Column(name = "report_date")
-    private Date ReportDate;
+    private Date reportDate;
 }

@@ -2,6 +2,7 @@ package hcmut.contentCreatorOnline.controller.report;
 
 import hcmut.contentCreatorOnline.dto.report.CreateChapterReportRequest;
 import hcmut.contentCreatorOnline.dto.report.ReportedChapterSummaryDTO;
+import hcmut.contentCreatorOnline.dto.report.UserReportChapterDTO;
 import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.model.UserReportChapter;
@@ -58,11 +59,24 @@ public class UserReportChapterController {
         return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId, page, size));
     }
 
-    @GetMapping("/current-user/{chapterId}")
+    @GetMapping("/check-if-user-reported/{chapterId}")
     public ResponseEntity<Boolean> checkIfCurrentUserHasReportedChapter(
             @PathVariable UUID chapterId
     ) {
         return ResponseEntity.ok(userReportChapterService.checkIfCurrentUserHasReportedChapter(chapterId));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<UserReportChapterDTO>> getAllReportsPagination(
+            @RequestParam(defaultValue = "all") String resolveState,
+            @RequestParam(defaultValue = "reportDate") String sortBy,
+            @RequestParam(defaultValue = "desc") String direction,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+
+        List<UserReportChapterDTO> result = userReportChapterService.getAllReportsPagination(resolveState, sortBy, direction, page, size);
+        return ResponseEntity.ok(result);
     }
 
 }
