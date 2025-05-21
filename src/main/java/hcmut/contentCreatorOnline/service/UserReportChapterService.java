@@ -74,4 +74,9 @@ public class UserReportChapterService {
         return userReportChapterRepository.findReportDetailsByChapterId(chapterId, pageable);
     }
 
+    public Boolean checkIfCurrentUserHasReportedChapter(UUID chapterId) {
+        UserPrincipal currentUser = SecurityUtils.getCurrentUser();
+        UserReportChapterId reportId = new UserReportChapterId(currentUser.getId(), chapterId);
+        return userReportChapterRepository.existsById(reportId);
+    }
 }

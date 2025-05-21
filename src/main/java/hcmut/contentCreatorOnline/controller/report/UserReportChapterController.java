@@ -6,8 +6,6 @@ import hcmut.contentCreatorOnline.dto.report.UserReportChapterDetailDTO;
 import hcmut.contentCreatorOnline.exception.ApplicationException;
 import hcmut.contentCreatorOnline.model.UserReportChapter;
 import hcmut.contentCreatorOnline.service.UserReportChapterService;
-import org.springframework.boot.logging.logback.ApplicationNameConverter;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +19,7 @@ public class UserReportChapterController {
 
     private final UserReportChapterService userReportChapterService;
 
-    public UserReportChapterController( UserReportChapterService userReportChapterService) {
+    public UserReportChapterController(UserReportChapterService userReportChapterService) {
         this.userReportChapterService = userReportChapterService;
     }
 
@@ -57,7 +55,14 @@ public class UserReportChapterController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId,page,size));
+        return ResponseEntity.ok(userReportChapterService.getReportDetailsByChapterId(chapterId, page, size));
+    }
+
+    @GetMapping("/current-user/{chapterId}")
+    public ResponseEntity<Boolean> checkIfCurrentUserHasReportedChapter(
+            @PathVariable UUID chapterId
+    ) {
+        return ResponseEntity.ok(userReportChapterService.checkIfCurrentUserHasReportedChapter(chapterId));
     }
 
 }
