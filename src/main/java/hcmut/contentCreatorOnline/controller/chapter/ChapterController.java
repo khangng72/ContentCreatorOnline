@@ -70,7 +70,6 @@ public class ChapterController {
 
     @PostMapping("/toggle_current_user_like/{chapterId}")
     public ResponseEntity<Boolean> toggleCurrentUserLiked(@PathVariable UUID chapterId) {
-        System.out.println("toggleCurrentUserLiked chapterId: " + chapterId);
         boolean isLiked = chapterService.toggleCurrentUserLike(chapterId);
         return ResponseEntity.ok(isLiked);
     }
@@ -124,11 +123,9 @@ public class ChapterController {
     }
 
     @PutMapping("/{chapterId}/unpublish")
-    public ResponseEntity<?> unpublishChapter(@PathVariable UUID chapterId) {
+    public ResponseEntity<String> unpublishChapter(@PathVariable UUID chapterId) {
         String updated = chapterService.unpublishChapter(chapterId);
 
         return ResponseEntity.ok(updated);
     }
-//test commit and push with jira
-
-//test commit and push with jira
+}

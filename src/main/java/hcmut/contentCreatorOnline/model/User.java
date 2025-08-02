@@ -110,14 +110,14 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<UserReadStory> userReadStory = new HashSet<>();
-
+    
     @ManyToMany
     @JoinTable(
             name = "user_likes_comment",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "comment_id")
     )
-    private Set<Comment> likedComments = new HashSet<>();
+    private Set<Comment> likedComments;
 
     // Reading Preference
     @Column(name = "default_reading_text_size")
